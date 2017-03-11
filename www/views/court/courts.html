@@ -10,18 +10,18 @@
             </div>
             <div class="parrent media-body">
                 <div class="tab-content faded-bg">
-                    <div class="tab-pane active" id="find-courts-tab">
-                        <div class="courts-list-item col-md-4 col-sm-6 col-xs-12" ng-repeat="court in vm.courtsSearched">
-                            <div class="court-details-wrap">
-                                <div class="court-image-wrap"><a href="#/"><img class="court-image img-thumbnail img-rounded" ng-src="{{court.imagePath}}" /></a></div>
-                                <div class="court-details">
-                                    <h4 class="ellipsis" ><a href="#/">{{court.name}}</a></h4>
-                                    <p><b>Rate: </b><span>{{court.rate}}</span></p>
-                                    <p class="ellipsis"><b>Location: </b><span>{{court.location}}</span></p>
-                                    <p><b>Contact #: </b><span>{{court.contactNo}}</span></p>
-                                </div>
-                            </div>
+                    <div class="tab-pane active transparent-bg" id="find-courts-tab">
+                        <div>
+                            <div class="control-panel">
+                                <form class="float-left">
+                                    <label>Search Courts: </label>
+                                    <input type="text" ng-model="searchKey" />
+                                    <button class="">Go</button>
+                                </form>
+                                <button class="float-right">Register a Court</button>
+                            </div>                            
                         </div>
+                        <div class="courts-list-item col-md-4 col-sm-6 col-xs-12" ng-repeat="court in vm.courtsSearched" courts-list-item="{{court}}"></div>
                     </div>
                     <div class="tab-pane col-md-12" id="my-courts-tab">
                         <p>

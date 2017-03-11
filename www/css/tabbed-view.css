@@ -31,3 +31,16 @@
     padding-right: 15px;*/
     overflow:auto;
 }
+
+.tab-pane > div{
+    padding-top: 15px;
+    padding-left: 15px;
+    overflow: auto;
+}
+
+.tab-wrap .control-panel{
+    overflow: auto;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #fff;
+}
