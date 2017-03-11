@@ -1,0 +1,38 @@
+﻿<div ng-controller="courtCtrl as vm">
+    <div class="tab-wrap">
+        <div class="media">
+            <div class="pull-left">
+                <ul class="nav nav-tabs nav-stacked">
+                    <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Find Courts</a></li>
+                    <li class=""><a href="#my-courts-tab" data-toggle="tab" class="analistic-02">My Courts</a></li>
+                    <li class=""><a href="#followed-courts-tab" data-toggle="tab" class="tehnical">Followed Courts</a></li>
+                </ul>
+            </div>
+            <div class="parrent media-body">
+                <div class="tab-content faded-bg">
+                    <div class="tab-pane active" id="find-courts-tab">
+                        <div class="courts-list-item col-md-4 col-sm-6 col-xs-12" ng-repeat="court in vm.courtsSearched">
+                            <div class="court-details-wrap">
+                                <div class="court-image-wrap"><a href="#/"><img class="court-image img-thumbnail img-rounded" ng-src="{{court.imagePath}}" /></a></div>
+                                <div class="court-details">
+                                    <h4 class="ellipsis" ><a href="#/">{{court.name}}</a></h4>
+                                    <p><b>Rate: </b><span>{{court.rate}}</span></p>
+                                    <p class="ellipsis"><b>Location: </b><span>{{court.location}}</span></p>
+                                    <p><b>Contact #: </b><span>{{court.contactNo}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane col-md-12" id="my-courts-tab">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                    <div class="text-container tab-pane col-md-12" id="followed-courts-tab">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+                    </div>
+                </div> <!--/.tab-content-->
+            </div> <!--/.media-body-->
+        </div> <!--/.media-->
+    </div><!--/.tab-wrap-->
+</div>
