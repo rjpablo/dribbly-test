@@ -20,7 +20,7 @@
                                         <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                                     </div>
                                 </form>
-                                <button class="float-right btn btn-primary">Register a Court</button>
+                                <button class="float-right btn btn-primary" ng-click="vm.openAddModal('lg')">Register a Court</button>
                             </div>                            
                         </div>
                         <courts-list-item court="court" ng-repeat="court in vm.courtsSearched"></courts-list-item>
