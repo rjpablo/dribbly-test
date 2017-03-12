@@ -13,12 +13,14 @@
                     <div class="tab-pane active transparent-bg" id="find-courts-tab">
                         <div>
                             <div class="control-panel">
-                                <form class="float-left">
-                                    <label>Search Courts: </label>
-                                    <input type="text" ng-model="searchKey" />
-                                    <button class="">Go</button>
+                                <form class="form-inline float-left">
+                                    <div class="form-group">
+                                        <label>Search Courts: </label>
+                                        <input type="text" ng-model="searchKey" />
+                                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                    </div>
                                 </form>
-                                <button class="float-right">Register a Court</button>
+                                <button class="float-right btn btn-primary">Register a Court</button>
                             </div>                            
                         </div>
                         <courts-list-item court="court" ng-repeat="court in vm.courtsSearched"></courts-list-item>
