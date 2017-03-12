@@ -21,7 +21,7 @@
                                 <button class="float-right">Register a Court</button>
                             </div>                            
                         </div>
-                        <div class="courts-list-item col-md-4 col-sm-6 col-xs-12" ng-repeat="court in vm.courtsSearched" courts-list-item="{{court}}"></div>
+                        <courts-list-item court="court" ng-repeat="court in vm.courtsSearched"></courts-list-item>
                     </div>
                     <div class="tab-pane col-md-12" id="my-courts-tab">
                         <p>
