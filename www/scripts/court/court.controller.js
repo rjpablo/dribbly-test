@@ -148,6 +148,7 @@
               angular.element($document[0].querySelector(parentSelector)) : undefined;
             var addCourtModal = $uibModal.open({
                 animation: vm.animationsEnabled,
+                backdrop:'static',
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
                 templateUrl: '/www/views/court/add-modal-template.html',
@@ -184,8 +185,10 @@
         var uploadPath = 'http://localhost:52964/api/fileUpload/Upload';
 
         var __this = this;
+        var imagesFolderPath = 'images/uploads/courts/'
 
         this.photos = [];
+        this.galleryPhotos = [];
         this.progress;
 
         __this.username = 'RJ';
@@ -197,11 +200,7 @@
             });
 
             file.upload.then(function (response) {
-                $timeout(function () {
-                    __this.court.imagePath = 'images/uploads/courts/' + file.name;
-                    console.log('Uploaded image: ' + response.data)
-                    $scope.$apply();
-                });
+                
             }, function (response) {
                 if (response.status > 0)
                     __this.errorMsg = response.status + ': ' + response.data;
@@ -214,17 +213,14 @@
 
         //For uploading multiple files
 
-        this.uploadFiles = function (files) {
-            __this.photos = files;
-            console.log('Starting uploads...')
+        this.addPhotos = function (files) {
             if (files && files.length) {
                 for (var i = 0; i < files.length; i++) {
                     console.log('Uploading ' + files[i] + '...')
                     __this.uploadPic(files[i]);
+                    this.photos.push(files[i]);
+                    this.galleryPhotos.push({ url: imagesFolderPath + files[i].name });
             }
-                $scope.$apply();
-            // or send them all together for HTML5 browsers:
-            //Upload.upload({..., data: {file: files}, ...})...;
     }
 }
 
@@ -255,6 +251,7 @@
 
 
         this.ok = function () {
+            __this.court.imagePath = imagesFolderPath + __this.photos[0].name;
             $uibModalInstance.close(__this.court);
         };
 

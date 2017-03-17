@@ -6,6 +6,7 @@
                 'ui.router',
                 'ui.bootstrap',
 				'dibari.angular-ellipsis',
-                'ngFileUpload'
+                'ngFileUpload',
+                'thatisuday.ng-image-gallery'
             ]);
 })();

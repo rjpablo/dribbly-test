@@ -23,32 +23,26 @@
 
             <label for="photo">Photos:</label>
 
-            <!--For single file upload-->
-            <!--<input class="form-control" type="file" file-model="addCourtCtrl.picFile" name="photo">
-            <button class="btn btn-primary form-control" ng-click="addCourtCtrl.uploadPic(addCourtCtrl.picFile)">upload me</button>
-            <span class="progress" ng-show="addCourtCtrl.picFile.progress >= 0">
-                <div style="width:{{addCourtCtrl.picFile.progress}}%"
-                     ng-bind="addCourtCtrl.picFile.progress + '%'"></div>
-            </span>
-            <span ng-show="picFile.result">Upload Successful</span>
-            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>-->
-
-
-            <!--For multi file upload-->
-            <div class="btn btn-primary" ngf-select="addCourtCtrl.uploadFiles($files)" multiple="multiple">Upload on file select</div>
             <div>
-                <img style="width: 50px; height:50px;" ng-repeat="photo in addCourtCtrl.photos" ng-src="images/uploads/courts/{{photo.name}}" />
-                <img class="add-photo-button" />
+                <ng-image-gallery images="addCourtCtrl.galleryPhotos"
+                                  methods="methods"
+                                  thumbnails="true"
+                                  inline="false"
+                                  img-bubbles="true"
+                                  bg-close="true"
+                                  bubbles="false"
+                                  img-anim="pop"
+                                  on-open=""
+                                  on-close=""
+                                  show-add-button="true"
+                                  ></ng-image-gallery>
             </div>
-            Drop File:
-            <div ngf-drop="addCourtCtrl.uploadFiles(addCourtCtrl.photos)" class="drop-box"
-                 ngf-drag-over-class="'dragover'" ngf-multiple="true"
-                 ngf-pattern="'image/*,application/pdf'">Drop Images or PDFs files here</div>
-            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-            <span class="progress" ng-show="addCourtCtrl.progress >= 0">
+            <div class="btn btn-primary" ngf-select="addCourtCtrl.addPhotos($files)" multiple="multiple"><i class="fa fa-plus"></i>&nbsp;Add Photos</div>
+            
+            <!--<span class="progress" ng-show="addCourtCtrl.progress >= 0">
                 <div style="width:{{addCourtCtrl.progress}}%"
                      ng-bind="addCourtCtrl.progress + '%'"></div>
-            </span>
+            </span>-->
             
         </div>
         <div class="block form-group">
@@ -58,6 +52,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button ng-disabled="!addCourtCtrl.picFile" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
+    <button ng-disabled="!addCourtCtrl.photos" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
     <button class="btn btn-warning" type="button" ng-click="addCourtCtrl.cancel()">Cancel</button>
 </div>

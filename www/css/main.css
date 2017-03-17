@@ -208,6 +208,15 @@ body > section {
 
 
 /*************************
+    Directive Overrides
+**************************/
+
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb {
+    border: 1px solid #ccc;
+}
+
+
+/*************************
       Body
 **************************/
 
