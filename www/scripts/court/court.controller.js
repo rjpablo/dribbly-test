@@ -185,17 +185,8 @@
 
         var __this = this;
 
-        this.picFile = {}
-
-        this.uploadFile = function () {
-            var file = this.picFile;
-
-            console.log('file is ');
-            console.dir(file);
-
-            var uploadUrl = "/www/images/uploads/courts";
-            fileUpload.uploadFileToUrl(file, uploadUrl);
-        };
+        this.photos = [];
+        this.progress;
 
         __this.username = 'RJ';
 
@@ -216,10 +207,26 @@
                     __this.errorMsg = response.status + ': ' + response.data;
             }, function (evt) {
                 // Math.min is to fix IE which reports 200% sometimes
-                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                console.log(file.progress)
+                __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
         }
+
+
+        //For uploading multiple files
+
+        this.uploadFiles = function (files) {
+            __this.photos = files;
+            console.log('Starting uploads...')
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    console.log('Uploading ' + files[i] + '...')
+                    __this.uploadPic(files[i]);
+            }
+                $scope.$apply();
+            // or send them all together for HTML5 browsers:
+            //Upload.upload({..., data: {file: files}, ...})...;
+    }
+}
 
         //this.uploadFiles = function (files, errFiles) {
         //    this.files = files;
