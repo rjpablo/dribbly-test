@@ -5,6 +5,7 @@
         .module('mainApp', [
                 'ui.router',
                 'ui.bootstrap',
-				'dibari.angular-ellipsis'
+				'dibari.angular-ellipsis',
+                'ngFileUpload'
             ]);
 })();

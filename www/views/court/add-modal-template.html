@@ -2,7 +2,7 @@
     <h3 class="modal-title" id="modal-title">Court Registration</h3>
 </div>
 <div class="modal-body" id="modal-body">
-    <form class="form-inline">
+    <form name="addRegisterForm" class="form-inline">
         <div class="block form-group">
             <label for="name">Court Name:</label>
             <input type="text" class="form-control" id="name" ng-model="addCourtCtrl.court.name">
@@ -20,12 +20,39 @@
             <input type="number" class="form-control" id="rate" ng-model="addCourtCtrl.court.rate">
         </div>
         <div class="block form-group">
+
+            <label for="photo">Photos:</label>
+
+            <!--For single file upload-->
+            <input class="form-control" type="file" file-model="addCourtCtrl.picFile" name="photo">
+            <button class="btn btn-primary form-control" ng-click="addCourtCtrl.uploadPic(addCourtCtrl.picFile)">upload me</button>
+            <span class="progress" ng-show="addCourtCtrl.picFile.progress >= 0">
+                <div style="width:{{addCourtCtrl.picFile.progress}}%"
+                     ng-bind="addCourtCtrl.picFile.progress + '%'"></div>
+            </span>
+            <span ng-show="picFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+
+            <!--For multi file upload-->
+
+            <!--<label for="photo">Photos:</label>
+            <input type="file" ngf-select ng-model="addCourtCtrl.picFile" name="file"
+                   accept="image/*" ngf-max-size="2MB" required
+                   ngf-model-invalid="errorFile">
+            <img ng-show="addRegisterForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="addCourtCtrl.picFile = null" ng-show="addCourtCtrl.picFile">Remove</button>
+            <br>
+            <button ng-click="addCourtCtrl.uploadPic(addCourtCtrl.picFile)">
+                Upload
+            </button>-->
+        </div>
+        <div class="block form-group">
             <label for="description">Say something about this court:</label>
             <textarea id="description" rows="5" class="form-control" ng-model="addCourtCtrl.court.description"></textarea>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
+    <button ng-disabled="!addCourtCtrl.picFile" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
     <button class="btn btn-warning" type="button" ng-click="addCourtCtrl.cancel()">Cancel</button>
 </div>
