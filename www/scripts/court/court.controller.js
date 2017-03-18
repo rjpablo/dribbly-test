@@ -186,12 +186,14 @@
 
         var __this = this;
         var imagesFolderPath = 'images/uploads/courts/'
-
-        this.photos = [];
         this.galleryPhotos = [];
         this.progress;
 
         __this.username = 'RJ';
+
+        this.removePhoto = function (index) {
+            __this.galleryPhotos.splice(index, 1);
+        }
 
         this.uploadPic = function (file) {
             file.upload = Upload.upload({
@@ -216,10 +218,8 @@
         this.addPhotos = function (files) {
             if (files && files.length) {
                 for (var i = 0; i < files.length; i++) {
-                    console.log('Uploading ' + files[i] + '...')
                     __this.uploadPic(files[i]);
-                    this.photos.push(files[i]);
-                    this.galleryPhotos.push({ url: imagesFolderPath + files[i].name });
+                    __this.galleryPhotos.push({ url: imagesFolderPath + files[i].name });
             }
     }
 }
@@ -251,7 +251,7 @@
 
 
         this.ok = function () {
-            __this.court.imagePath = imagesFolderPath + __this.photos[0].name;
+            __this.court.imagePath = this.galleryPhotos[0].url;
             $uibModalInstance.close(__this.court);
         };
 

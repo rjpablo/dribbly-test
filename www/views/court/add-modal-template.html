@@ -2,26 +2,46 @@
     <h3 class="modal-title" id="modal-title">Court Registration</h3>
 </div>
 <div class="modal-body" id="modal-body">
-    <form name="addRegisterForm" class="form-inline">
-        <div class="block form-group">
-            <label for="name">Court Name:</label>
-            <input type="text" class="form-control" id="name" ng-model="addCourtCtrl.court.name">
+    <form name="addCourtForm" class="" data-toggle="validator">
+        <div class="block form-group" ng-class="{'has-error':addCourtForm.name.$invalid && addCourtForm.name.$touched}" >
+            <label class="control-label" for="name">Court Name:*</label>
+            <input type="text" class="form-control" required minlength="5" name="name" ng-model="addCourtCtrl.court.name">
+            <div class="help-block" ng-messages="addCourtForm.name.$error" role="alert">
+                <div ng-message="required">The court's name is required.</div>
+                <div ng-message="minlength">Court's name must be at least 5 characters long.</div>
+            </div>
         </div>
-        <div class="block form-group">
-            <label for="address">Address:</label>
-            <input type="text" class="form-control" id="address" ng-model="addCourtCtrl.court.location">
+        <div class="block form-group" ng-class="{'has-error':addCourtForm.address.$invalid && addCourtForm.address.$touched}" >
+            <label class="control-label" for="address">Address:*</label>
+            <input type="text" class="form-control" name="address" required minlength="10" ng-model="addCourtCtrl.court.location">
+            <div class="help-block" ng-messages="addCourtForm.address.$error" role="alert">
+                <div ng-message="required">The court's address is required.</div>
+                <div ng-message="minlength">Court's address must be at least 10 characters long.</div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="tel-no">Contact #:</label>
-            <input class="form-control" id="tel-no" ng-model="addCourtCtrl.court.contactNo">
+        <div class="sm-form-group form-group" ng-class="{'has-error':addCourtForm.telNo.$invalid && addCourtForm.telNo.$touched}" >
+            <label class="control-label" for="telNo">Contact #:</label>
+            <input class="form-control" name="telNo" ng-model="addCourtCtrl.court.contactNo">
         </div>
-        <div class="rate-form-group form-group">
-            <label for="rate">Rate per hour:</label>
-            <input type="number" class="form-control" id="rate" ng-model="addCourtCtrl.court.rate">
+        <div class="sm-form-group form-group" ng-class="{'has-error':addCourtForm.email.$invalid && addCourtForm.email.$touched}">
+            <label class="control-label" for="telNo">Email Address:</label>
+            <input type="email" class="form-control" name="email" ng-model="addCourtCtrl.court.email">
+            <div class="help-block" ng-messages="addCourtForm.email.$error" role="alert">
+                <div ng-message="email">E-mail address is not valid.</div>
+            </div>
         </div>
-        <div class="block form-group">
+        <div class="form-group" style="max-width: 240px" ng-class="{'has-error':addCourtForm.rate.$invalid && addCourtForm.rate.$touched}" >
+            <label class="control-label" for="rate">Rate per hour:*</label>
+            <input type="number" class="form-control" required min="0"  name="rate" ng-model="addCourtCtrl.court.rate">
+            <div class="help-block" ng-messages="addCourtForm.rate.$error" role="alert">
+                <div ng-message="required">Rate is required.</div>
+                <div ng-message="number">Rate must be a positive number.</div>
+                <div ng-message="min">Rate cannot be less than zero.</div>
+            </div>
+        </div>
+        <div class="block form-group" ng-class="{'has-error':addCourtCtrl.galleryPhotos.length < 1}">
 
-            <label for="photo">Photos:</label>
+            <label class="control-label" for="photo">Photos:*</label>
 
             <div>
                 <ng-image-gallery images="addCourtCtrl.galleryPhotos"
@@ -35,23 +55,26 @@
                                   on-open=""
                                   on-close=""
                                   show-add-button="true"
+                                  add-file="addCourtCtrl.addPhotos"
+                                  remove-function="addCourtCtrl.removePhoto(index)"
+                                  allow-remove="true"
                                   ></ng-image-gallery>
+                <!--<span class="progress" ng-show="addCourtCtrl.progress >= 0">
+                    <div style="width:{{addCourtCtrl.progress}}%">
+                        {{'Uploading(' + addCourtCtrl.progress + '%)...'}}
+                    </div>
+                </span>-->
             </div>
+            <div class="help-block">({{addCourtCtrl.galleryPhotos.length}})Please add at least one photo.</div>
             <div class="btn btn-primary" ngf-select="addCourtCtrl.addPhotos($files)" multiple="multiple"><i class="fa fa-plus"></i>&nbsp;Add Photos</div>
-            
-            <!--<span class="progress" ng-show="addCourtCtrl.progress >= 0">
-                <div style="width:{{addCourtCtrl.progress}}%"
-                     ng-bind="addCourtCtrl.progress + '%'"></div>
-            </span>-->
-            
         </div>
         <div class="block form-group">
-            <label for="description">Say something about this court:</label>
+            <label class="control-label" for="description">Say something about this court:</label>
             <textarea id="description" rows="5" class="form-control" ng-model="addCourtCtrl.court.description"></textarea>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button ng-disabled="!addCourtCtrl.photos" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
+    <button ng-disabled="addCourtCtrl.galleryPhotos.length < 1 || addCourtForm.$invalid" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
     <button class="btn btn-warning" type="button" ng-click="addCourtCtrl.cancel()">Cancel</button>
 </div>

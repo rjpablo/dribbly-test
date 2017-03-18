@@ -46,7 +46,8 @@
 	}])
 	.directive('ngImageGallery', ['$rootScope', '$timeout', '$q', 'ngImageGalleryOpts',
 	function($rootScope, $timeout, $q, ngImageGalleryOpts){
-		return {
+	    return {
+            //priority:1,
 			replace : true,
 			transclude : false,
 			restrict : 'AE',
@@ -64,14 +65,18 @@
 				imgAnim 		: 	'@?',		// {name}
 
 				onOpen 			: 	'&?',		// function
-				onClose 		: 	'&?'		// function
+				onClose 		: 	'&?',		// function
+				addFile         :   '&?',
+                allowRemove     :   '=?',       // true|false
+				removeFunction  :   '&?',
 			},
 			template : 	'<div class="ng-image-gallery img-move-dir-{{imgMoveDirection}}" ng-class="{inline:inline}">'+
 							
 							// Thumbnails container
 							//  Hide for inline gallery
 							'<div ng-if="thumbnails && !inline" class="ng-image-gallery-thumbnails">'+
-								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (image.thumbUrl || image.url) + \')\' }"  ng-attr-title="{{image.title || undefined}}"></div>'+
+								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (image.thumbUrl || image.url) + \')\' }"  ng-attr-title="{{image.title || undefined}}"><span ng-if="allowRemove" ng-click="$event.stopPropagation(); removeFunction({index: $index})" ><i class="fa fa-times delete-photo"></i></span></div>' +
+                                //'<div class="thumb" ngf-select="addFile($files)" multiple="multiple" ng-style="{ \'background-image\': \'url(images/icons/grey-plus-3.png)\' }"></div>' +
 							'</div>'+
 
 							// Modal container

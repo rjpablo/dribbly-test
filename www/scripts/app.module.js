@@ -7,6 +7,7 @@
                 'ui.bootstrap',
 				'dibari.angular-ellipsis',
                 'ngFileUpload',
-                'thatisuday.ng-image-gallery'
+                'thatisuday.ng-image-gallery',
+                'ngMessages'
             ]);
 })();
