@@ -97,7 +97,11 @@
 										'<a class="ext-url" ng-repeat="image in images track by $index" ng-if="activeImg == image && image.extUrl" href="{{image.extUrl}}"></a>'+
 
 										// Close Icon (hidden in inline gallery)
-										'<div class="close" ng-click="methods.close();" ng-if="!inline"></div>'+
+										'<div class="close" ng-click="methods.close();" ng-if="!inline"></div>' +
+
+                                        //'<span class="delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-times"></i></span>' +
+                                        '<span class="delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-trash-o delete"></i></span>' +
+                                        //'<i class="fa fa-trash-o delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex}) "></i>' +
 									'</div>'+
 
 									// Prev-Next Icons
@@ -109,8 +113,12 @@
 									'<div class="galleria">'+
 										
 										// Images container
-										'<div class="galleria-images img-anim-{{imgAnim}} img-move-dir-{{imgMoveDirection}}">'+
-											'<img class="galleria-image" ng-right-click ng-repeat="image in images track by $index" ng-if="activeImg == image" ng-src="{{image.url}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}"/>'+
+										'<div class="galleria-images img-anim-{{imgAnim}} img-move-dir-{{imgMoveDirection}}">' +
+                                            '<img class="galleria-image" ng-repeat="image in images track by $index" ng-right-click ng-if="activeImg == image" ng-src="{{image.url}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}" />' +
+                                            //'<div>' +
+											//    '<img class="galleria-image" ng-repeat="image in images track by $index" ng-right-click ng-if="activeImg == image" ng-src="{{image.url}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}" />' +
+                                            //    '<span class="delete-button" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-times"></i></span>' +
+                                            //'</div>' +
 										'</div>'+
 
 										// Bubble navigation container
@@ -237,27 +245,35 @@
 				// If images populate dynamically, reset gallery
 				var imagesFirstWatch = true;
 				scope.$watch('images', function(){
-					if(imagesFirstWatch){
-						imagesFirstWatch = false;
-					}
-					else if(scope.images.length) scope.setActiveImg(
+				    scope.resetGallery();
+				});
+
+				scope.resetGallery = function () {
+				    if (imagesFirstWatch) {
+				        imagesFirstWatch = false;
+				    }
+				    else if (scope.images.length) scope.setActiveImg(
 						scope.images[scope.activeImageIndex || 0]
 					);
-				});
+				}
 
 				// Watch index of visible/active image
 				// If index changes, make sure to load/change image
 				var activeImageIndexFirstWatch = true;
 				scope.$watch('activeImageIndex', function(newImgIndex){
-					if(activeImageIndexFirstWatch){
-						activeImageIndexFirstWatch = false;
-					}
-					else if(scope.images.length){
-						scope.setActiveImg(
-							scope.images[newImgIndex]
-						);
-					}
+				    scope.activeImageIndexChange(newImgIndex);
 				});
+
+				scope.activeImageIndexChange = function (newImgIndex) {
+				    if (activeImageIndexFirstWatch) {
+				        activeImageIndexFirstWatch = false;
+				    }
+				    else if (scope.images.length) {
+				        scope.setActiveImg(
+							scope.images[newImgIndex < scope.images.length?newImgIndex:0]
+						);
+				    }
+				}
 
 				// Open modal automatically if inline
 				scope.$watch('inline', function(){
@@ -276,8 +292,12 @@
 
 				// Open gallery modal
 				scope.methods.open = function(imgIndex){
-					// Open modal from an index if one passed
-					scope.activeImageIndex = (imgIndex) ? imgIndex : 0;
+				    // Open modal from an index if one passed
+				    if (scope.activeImageIndex == imgIndex && (imgIndex != undefined) ) {
+				        scope.activeImageIndexChange(imgIndex);
+				    } else {
+				        scope.activeImageIndex = (imgIndex) ? imgIndex : 0;
+				    }
 
 					scope.opened = true;
 
@@ -322,6 +342,24 @@
 					else{
 						scope.activeImageIndex--;
 					}
+				}
+
+			    // Delete current image
+				scope.methods.delete = function (index) {
+				    scope.images.splice(index, 1);
+
+				    if (scope.opened) {
+				        if (scope.images.length == 0) {
+				            scope.methods.close();
+				        }
+				        else if (index == scope.images.length) {
+				            scope.activeImageIndex--;
+				        }
+				        else {
+				            //trigger watcher
+				            scope.activeImageIndexChange(scope.activeImageIndex);
+				        }
+				    }
 				}
 
 				// Close gallery on background click

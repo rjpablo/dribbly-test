@@ -177,7 +177,8 @@
         right: 10px;
         top: 20px; }
         .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .ext-url,
-        .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close {
+        .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close,
+        .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .delete {
           position: relative;
           display: inline-block;
           width: 30px;
@@ -188,12 +189,14 @@
           color: #fff;
           vertical-align: bottom; }
           .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .ext-url:hover,
-          .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close:hover {
+          .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close:hover,
+          .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .delete:hover {
             -webkit-transition: background-color 0.3s ease-in-out;
             transition: background-color 0.3s ease-in-out;
             background-color: rgba(255, 255, 255, 0.1); }
           .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .ext-url:before,
-          .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close:before {
+          .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close:before,
+          .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .delete:before {
             content: "";
             display: block;
             position: absolute;
@@ -256,6 +259,7 @@
               -ms-flex: 1;
                   flex: 1;
           width: 100%;
+
           /*****************************************************/
           /*****************************************************/ }
           .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .galleria .galleria-images .galleria-image {

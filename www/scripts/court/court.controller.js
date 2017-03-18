@@ -188,11 +188,12 @@
         var imagesFolderPath = 'images/uploads/courts/'
         this.galleryPhotos = [];
         this.progress;
+        this.galleryMethods = {};
 
         __this.username = 'RJ';
 
         this.removePhoto = function (index) {
-            __this.galleryPhotos.splice(index, 1);
+            __this.methods.delete(index);
         }
 
         this.uploadPic = function (file) {
