@@ -47,13 +47,25 @@
             }
         }
 
+        $scope.$on('modal.closing', function (event, reason, submitting) {
+            if (!submitting) {
+                if (confirm('Cancel Registration?')) {
+                    __this.galleryPhotos.forEach(function (photo) {
+                        fileService.deleteCourtPhoto(photo.fileName);
+                    })
+                } else {
+                    event.preventDefault();
+                }
+            }
+        });
 
-        this.ok = function () {
+
+        this.ok = function (e) {
             __this.court.imagePath = this.galleryPhotos[0].url;
             $uibModalInstance.close(__this.court);
         };
 
-        this.cancel = function () {
+        this.cancel = function (e) {
             $uibModalInstance.dismiss('cancel');
         };
     }
