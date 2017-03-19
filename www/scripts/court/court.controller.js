@@ -156,17 +156,12 @@
                 controllerAs: 'addCourtCtrl',
                 size: size,
                 appendTo: parentElem
-                //resolve: {
-                //    items: function () {
-                //        return this.items;
-                //    }
-                //}
             });
 
             addCourtModal.result.then(function (court) {
                 vm.addCourt(court);
             }, function (reason) {
-                console.log('Reason for closing: ' + reason);
+                
             });
         };
 
@@ -175,99 +170,5 @@
         }
 
     };
-
-    angular
-        .module('mainApp')
-        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', 'fileUpload', '$scope','$http', addCourtCtrl]);
-
-    function addCourtCtrl($uibModalInstance, Upload, $timeout, fileUpload, $scope, $http) {
-
-        var uploadPath = 'http://localhost:52964/api/file/Upload';
-
-        var __this = this;
-        var imagesFolderPath = 'images/uploads/courts/'
-        this.galleryPhotos = [];
-        this.progress;
-        this.galleryMethods = {};
-
-        __this.username = 'RJ';
-
-        this.removePhoto = function (index) {
-            __this.deleteServerFile(__this.galleryPhotos[index].fileName);
-            __this.methods.delete(index);
-        }
-
-        this.uploadPic = function (file) {
-            return Upload.upload({
-                url: uploadPath,
-                data: { username: __this.username, file: file },
-            });
-        }
-
-        this.deleteServerFile = function (fileName) {
-            $http.delete('http://localhost:52964/api/file/delete', { params: {filename:fileName} }).then(function (response) {
-                console.log(response.data);
-            }, function (response) {
-                console.log(response.message);
-            });
-        }
-
-
-        //For uploading multiple files
-
-        this.addPhotos = function (files) {
-            if (files && files.length) {
-                for (var i = 0; i < files.length; i++) {
-                    var fileName;
-
-                    __this.uploadPic(files[i]).then(function (response) {
-                        fileName = response.data;
-                        __this.galleryPhotos.push({ url: imagesFolderPath + fileName, fileName: fileName });
-                    }, function (response) {
-                        if (response.status > 0)
-                            __this.errorMsg = response.status + ': ' + response.data;
-                    }, function (evt) {
-                        // Math.min is to fix IE which reports 200% sometimes
-                        __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                    });;                    
-            }
-    }
-}
-
-        //this.uploadFiles = function (files, errFiles) {
-        //    this.files = files;
-        //    this.errFiles = errFiles;
-        //    angular.forEach(files, function (file) {
-        //        file.upload = Upload.upload({
-        //            url: '/',
-        //            data: { file: file }
-        //        });
-
-        //        file.upload.then(function (response) {
-        //            $timeout(function () {
-        //                file.result = response.data;
-        //            });
-        //        }, function (response) {
-        //            if (response.status > 0)
-        //                __this.errorMsg = response.status + ': ' + response.data;
-        //        }, function (evt) {
-        //            file.progress = Math.min(100, parseInt(100.0 *
-        //                                     evt.loaded / evt.total));
-        //        });
-        //    });
-        //}
-
-        this.court = {};
-
-
-        this.ok = function () {
-            __this.court.imagePath = this.galleryPhotos[0].url;
-            $uibModalInstance.close(__this.court);
-        };
-
-        this.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    }
 
 })();

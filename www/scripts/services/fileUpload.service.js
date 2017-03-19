@@ -3,40 +3,41 @@
 
     angular
         .module('mainApp')
-        .service('fileUpload', ['$http', function ($http) {
-            this.uploadFileToUrl = function(file, uploadUrl){
-                var fd = new FormData();
-                fd.append('file', file);
+        .service('fileService', ['Upload', '$http', function (Upload, $http) {
 
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', uploadUrl, true);
-                xhr.send(fd);
+            var uploadUrl = 'http://localhost:52964/api/file/Upload';
+            var deleteUrl = 'http://localhost:52964/api/file/delete';
 
-
-                //$.ajax({
-                //    url: 'Your url here',
-                //    data: fd,
-                //    type: 'POST',
-                //    // THIS MUST BE DONE FOR FILE UPLOADING
-                //    contentType: false,
-                //    processData: false
-                //});
+            this.uploadCourtPhoto = function (file) {
+                return Upload.upload({
+                    url: uploadUrl,
+                    data: {file: file },
+                });
             }
-        }])
-        .directive('fileModel', ['$parse', function ($parse) {
-            return {
-                restrict: 'A',
-                link: function (scope, element, attrs) {
-                    var model = $parse(attrs.fileModel);
-                    var modelSetter = model.assign;
 
-                    element.bind('change', function () {
-                        scope.$apply(function () {
-                            modelSetter(scope, element[0].files[0]);
-                        });
-                    });
-                }
-            };
+            this.deleteCourtPhoto = function (fileName) {
+                return $http.delete(deleteUrl, { params: { filename: fileName } });
+            }
+
+            //For uploading multiple files
+            //this.addPhotos = function (files) {
+            //    if (files && files.length) {
+            //        for (var i = 0; i < files.length; i++) {
+            //            var fileName;
+
+            //            __this.uploadPic(files[i]).then(function (response) {
+            //                fileName = response.data;
+            //                __this.galleryPhotos.push({ url: imagesFolderPath + fileName, fileName: fileName });
+            //            }, function (response) {
+            //                if (response.status > 0)
+            //                    __this.errorMsg = response.status + ': ' + response.data;
+            //            }, function (evt) {
+            //                // Math.min is to fix IE which reports 200% sometimes
+            //                __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            //            });;
+            //        }
+            //    }
+            //}
+
         }]);
-
 })();
