@@ -7,7 +7,6 @@
 
     function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService) {
 
-        var uploadPath = 'http://localhost:52964/api/file/Upload';
         var imagesFolderPath = 'images/uploads/courts/'
 
         this.galleryPhotos = [];
@@ -19,7 +18,7 @@
 
         this.removePhoto = function (index) {
             //if (confirm('Remove Photo?')) {
-                fileService.deleteCourtPhoto(__this.galleryPhotos[index].fileName);
+            fileService.deleteCourtPhoto(__this.galleryPhotos[index].fileName);
                 __this.methods.delete(index);
             //}
         }
