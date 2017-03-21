@@ -3,87 +3,19 @@
 
     angular
         .module('mainApp')
-        .controller('courtCtrl', ['$scope','$uibModal', '$document', '$http', courtCtrl]);
+        .controller('courtCtrl', ['$scope','$uibModal', '$document', '$http', 'settings', 'genericService', courtCtrl]);
 
-    function courtCtrl($scope, $uibModal, $document, $http) {
+    function courtCtrl($scope, $uibModal, $document, $http, settings, genericService) {
 
 		var vm = this;
 	
         this.courtsSearched = {};
 
-        //function createCORSRequest(method, url) {
-        //    var xhr = new XMLHttpRequest();
-        //    if ("withCredentials" in xhr) {
-        //        // XHR for Chrome/Firefox/Opera/Safari.
-        //        xhr.open(method, url, true);
-        //    } else if (typeof XDomainRequest != "undefined") {
-        //        // XDomainRequest for IE.
-        //        xhr = new XDomainRequest();
-        //        xhr.open(method, url);
-        //    } else {
-        //        // CORS not supported.
-        //        xhr = null;
-        //    }
-        //    return xhr;
-        //}
-
         var setCourtsSearched = function(courts){
             return courts;
         }
 
-        /* var getCourts = $.ajax({
-            url: 'http://localhost:52964/api/Court/GetCourts',
-            type: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': 'http://example.org'
-            }
-        });
-
-        getCourts.done(function (result) {
-            vm.courtsSearched = result
-            $scope.$apply();
-        });
-
-        getCourts.fail(function (result) {
-            vm.courtsSearched = result
-        }); */
-
-        //function (callback) {
-
-            
-
-        //    //$http.post('http://localhost:52964/api/Court/GetCourts').then(
-        //    //    function (res) {
-        //    //        alert('Success: ' + res.data);
-        //    //        return res.data;
-        //    //    }
-        //    //    , function (res) {
-        //    //        alert('Error: ' + res.responseText);
-        //    //        return res.data;
-        //    //    });
-
-        //    //var result = {};
-
-        //    //var xhr = createCORSRequest('GET', 'http://localhost:52964/api/Court/GetCourts');
-        //    //if (!xhr) {
-        //    //    alert('CORS not supported');
-        //    //    return;
-        //    //}
-
-        //    //// Response handlers.
-        //    //xhr.onload = function () {
-        //    //    __this.courtsSearched = JSON.parse(xhr.response);
-        //    //};
-
-        //    //xhr.onerror = function () {
-        //    //    alert('Failed to fetch courts =(');
-        //    //    __this.courtsSearched = {};
-        //    //};
-
-        //    //xhr.send();
-
-            
-        //}
+        var getCourts = genericService.get('Court/GetCourts');
 
         this.tempCourts = [
             {
@@ -136,8 +68,16 @@
             }
         ];//Sample Courts
 		
-
-        this.courtsSearched = this.tempCourts;
+        if (settings.onTestingMode) {
+            this.courtsSearched = this.tempCourts;
+        } else {
+            getCourts.then(
+            function (result) {
+                vm.courtsSearched = result.data
+            }, function (result) {
+                vm.courtsSearched = null;
+            });
+        }        
 
         //getCourts(setCourtsSearched);
 

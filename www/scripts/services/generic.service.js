@@ -6,25 +6,13 @@
 
     function genericService($http, settings) {
         var _get = function (url, data) {
-            return $http.get(settings.apiBaseURL + url, {params:data}).then(function (response) {
-                console.log('')
-            }, function (err) {
-                console.log('')
-            })
+            return $http.get(settings.apiBaseURL + url, { params: data });
         }
         var _post = function (url, data) {
-            return $http.post(settings.apiBaseURL + url, { params: data }).then(function (response) {
-                console.log('')
-            }, function (err) {
-                console.log('')
-            })
+            return $http.post(settings.apiBaseURL + url, { params: data });
         }
         var _delete = function (url, data) {
-            return $http.delete(settings.apiBaseURL + url, { params: data }).then(function (response) {
-                console.log('')
-            }, function (err) {
-                console.log('')
-            })
+            return $http.delete(settings.apiBaseURL + url, { params: data });
         }
 
         this.get = _get;
