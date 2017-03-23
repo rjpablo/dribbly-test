@@ -3,16 +3,15 @@
     
     angular
         .module('mainApp')
-        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', addCourtCtrl]);
+        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', 'settings', addCourtCtrl]);
 
-    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService) {
-
-        var imagesFolderPath = 'images/uploads/courts/'
+    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService, settings) {
 
         this.galleryPhotos = [];
         this.galleryMethods = {};
         this.progress;
         this.court = {};
+        this.imageUploadPath = settings.imageUploadPath;
 
         var __this = this;
 
@@ -34,7 +33,7 @@
 
                     __this.uploadPic(files[i]).then(function (response) {
                         fileName = response.data;
-                        __this.galleryPhotos.push({ url: imagesFolderPath + fileName, fileName: fileName });
+                        __this.galleryPhotos.push({ url: settings.imageUploadPath + fileName, fileName: fileName });
                     }, function (response) {
                         if (response.status > 0)
                             __this.errorMsg = response.status + ': ' + response.data;
@@ -60,7 +59,7 @@
 
 
         this.ok = function (e) {
-            __this.court.imagePath = this.galleryPhotos[0].url;
+            __this.court.imagePath = this.galleryPhotos[0].fileName;
             $uibModalInstance.close(__this.court);
         };
 

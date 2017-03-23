@@ -8,7 +8,10 @@
 		return {
 			//priority: 2,
 			restrict: "E",
-			scope: {'court':'='},
+			scope: {
+			    'court': '=',
+                'ngSrcPrefix' : '='
+			},
 			templateUrl: '/www/js/directives/courtsListItem/courts.listItem.template.html'
 		}
 	}

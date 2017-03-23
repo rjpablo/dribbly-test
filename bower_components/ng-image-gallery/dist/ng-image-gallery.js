@@ -68,7 +68,7 @@
 				onClose 		: 	'&?',		// function
 				addFile         :   '&?',
                 allowRemove     :   '=?',       // true|false
-				removeFunction  :   '&?',
+                removeFunction  :   '&?',
 			},
 			template : 	'<div class="ng-image-gallery img-move-dir-{{imgMoveDirection}}" ng-class="{inline:inline}">'+
 							
@@ -94,7 +94,7 @@
 									// destroy icons container
 									'<div class="destroy-icons-container">'+
 										// External link icon
-										'<a class="ext-url" ng-repeat="image in images track by $index" ng-if="activeImg == image && image.extUrl" href="{{image.extUrl}}"></a>'+
+										'<a class="ext-url" ng-repeat="image in images track by $index" ng-if="activeImg == image && image.extUrl" href="{{image.extUrl}}"></a>' +
 
 										// Close Icon (hidden in inline gallery)
 										'<div class="close" ng-click="methods.close();" ng-if="!inline"></div>' +

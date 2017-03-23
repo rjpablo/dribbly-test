@@ -23,7 +23,7 @@
                                 <button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>
                             </div>                            
                         </div>
-                        <courts-list-item court="court" ng-repeat="court in vm.courtsSearched"></courts-list-item>
+                        <courts-list-item court="court" ng-src-prefix="vm.imageUploadPath" ng-repeat="court in vm.courtsSearched"></courts-list-item>
                     </div>
                     <div class="tab-pane col-md-12" id="my-courts-tab">
                         <p>

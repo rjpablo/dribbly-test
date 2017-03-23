@@ -2,17 +2,17 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('genericService',['$http', 'settings', genericService]);
+        .service('genericService',['$http', genericService]);
 
-    function genericService($http, settings) {
+    function genericService($http) {
         var _get = function (url, data) {
-            return $http.get(settings.apiBaseURL + url, { params: data });
+            return $http.get(url, { params: data });
         }
         var _post = function (url, data) {
-            return $http.post(settings.apiBaseURL + url, { params: data });
+            return $http.post(url, { params: data });
         }
         var _delete = function (url, data) {
-            return $http.delete(settings.apiBaseURL + url, { params: data });
+            return $http.delete(url, { params: data });
         }
 
         this.get = _get;

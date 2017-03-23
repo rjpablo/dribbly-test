@@ -7,7 +7,7 @@
     function fileService(settings, genericService, Upload) {
 
         var uploadCourtPhotoUrl = settings.apiBaseURL + 'file/upload';
-        var deleteCourtPhotoUrl = 'file/delete';
+        var deleteCourtPhotoUrl = settings.apiBaseURL + 'file/delete';
 
         this.uploadCourtPhoto = function (file) {
             return Upload.upload({
