@@ -3,9 +3,9 @@
         <div class="media">
             <div class="pull-left">
                 <ul class="nav nav-tabs nav-stacked">
-                    <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Find Courts</a></li>
-                    <li class=""><a href="#my-courts-tab" data-toggle="tab" class="analistic-02">My Courts</a></li>
-                    <li class=""><a href="#followed-courts-tab" data-toggle="tab" class="tehnical">Followed Courts</a></li>
+                    <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Find&nbsp;Courts</a></li>
+                    <li class=""><a href="#my-courts-tab" data-toggle="tab" class="analistic-02">My&nbsp;Courts</a></li>
+                    <li class=""><a href="#followed-courts-tab" data-toggle="tab" class="tehnical">Followed&nbsp;Courts</a></li>
                 </ul>
             </div>
             <div class="parrent media-body">
@@ -15,12 +15,13 @@
                             <div class="control-panel">
                                 <form class="form-inline float-left">
                                     <div class="form-group">
-                                        <label>Search Courts: </label>
-                                        <input type="text" ng-model="searchKey" />
+                                        <input placeholder="Enter search keyword..." type="text" ng-model="searchKey" />
                                         <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                        <a class="button-link"><i class="fa fa-caret-down"></i>&nbsp;More&nbsp;Options</a>
                                     </div>
                                 </form>
-                                <button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>
+                                <a class="button-link right-item" ng-click="vm.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>
+                                <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
                             </div>                            
                         </div>
                         <courts-list-item court="court" ng-src-prefix="vm.imageUploadPath" ng-repeat="court in vm.courtsSearched"></courts-list-item>

@@ -7,6 +7,7 @@
     function indexCtrl(toastService, $state) {
         this.state = $state;
         this.toastSettings = toastService.settings;
+        this.isNavCollapsed = true;
     }
 
 })();

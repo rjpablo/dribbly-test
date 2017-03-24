@@ -5,7 +5,7 @@
         .service('settings',['genericService', settings]);
 
     function settings(genericService) {
-        var _onTestingMode = false;
+        var _onTestingMode = true;
         var _useLocalData = false;
         var _serverRoot = _onTestingMode ? 'http://localhost:52964/': 'http://drbly-test.somee.com/';
         var _apiBaseUrl = _serverRoot + 'api/';

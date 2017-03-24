@@ -175,6 +175,10 @@ body > section {
     Generics
 **************************/
 
+p{
+    background-color: #fff;
+}
+
 .float-right{
     float:right;
 }
@@ -219,6 +223,17 @@ body > section {
 
 .has-error .help-block{
     display:block;
+}
+
+.button-link{
+    color: #666;
+    cursor: pointer;
+    line-height: 30px;
+}
+
+.button-link:hover{
+    text-decoration:underline;
+    color: #666;
 }
 
 

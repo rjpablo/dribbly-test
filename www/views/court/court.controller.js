@@ -107,7 +107,7 @@
                 commonServices.toast.success('New court has been added successfully.')
                 vm.addCourt(court);
             }, function (reason) {
-                commonServices.toast.info('No new court was added.')
+                //commonServices.toast.info('No new court was added.')
             });
         };
 
