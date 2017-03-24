@@ -3,9 +3,9 @@
     
     angular
         .module('mainApp')
-        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', 'settings', addCourtCtrl]);
+        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', 'settings', 'commonServices', addCourtCtrl]);
 
-    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService, settings) {
+    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService, settings, commonServices) {
 
         this.galleryPhotos = [];
         this.galleryMethods = {};
@@ -17,9 +17,26 @@
 
         this.removePhoto = function (index) {
             //if (confirm('Remove Photo?')) {
-            fileService.deleteCourtPhoto(__this.galleryPhotos[index].fileName);
-                __this.methods.delete(index);
+            fileService.deleteCourtPhoto(__this.galleryPhotos[index].fileName).then(
+                function () {
+                    //commonServices.toast.info('Photo deleted')
+                }, function () {
+                    commonServices.log.error('Failed to delete photo: ' + __this.galleryPhotos[index].fileName);
+                }
+            );
+            __this.methods.delete(index);
             //}
+        }
+
+        this.deleteAllPhotos = function () {
+            if(__this.galleryPhotos.length > 0) {
+                fileService.deleteCourtPhoto(__this.galleryPhotos[0].fileName).then(function () {
+                    __this.methods.delete(0);
+                    __this.deleteAllPhotos();
+                }, function () {
+                    commonServices.log.error('Failed to delete photo: ' + __this.galleryPhotos[0].fileName);
+                });
+            }
         }
 
         this.uploadPic = function (file) {
@@ -64,6 +81,7 @@
         };
 
         this.cancel = function (e) {
+            __this.deleteAllPhotos();
             $uibModalInstance.dismiss('cancel');
         };
     }

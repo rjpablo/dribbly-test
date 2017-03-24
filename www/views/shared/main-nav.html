@@ -12,9 +12,9 @@
 
         <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
             <ul id="categories-menu" class="nav navbar-nav">
-                <li ng-class="{'active':state.current.name == 'courts'}"><a ui-sref="courts">Courts</a></li>
-                <li ng-class="{'active':state.current.name == 'games'}"><a ui-sref="games">Games</a></li>
-                <li ng-class="{'active':state.current.name == 'players'}"><a ui-sref="players">Players</a></li>
+                <li ng-class="{'active':indexCtrl.state.current.name == 'courts'}"><a ui-sref="courts">Courts</a></li>
+                <li ng-class="{'active':indexCtrl.state.current.name == 'games'}"><a ui-sref="games">Games</a></li>
+                <li ng-class="{'active':indexCtrl.state.current.name == 'players'}"><a ui-sref="players">Players</a></li>
                 <li id="user-menu-mob" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
                         <img id="profile_pic" src="images/profile_pic.png" />&nbsp;&nbsp;<i class="fa fa-angle-down"></i>

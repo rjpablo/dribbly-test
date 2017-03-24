@@ -249,6 +249,12 @@ body > section {
     display:inline-block;
 }
 
+/* toaster */
+#toast-container>div{
+    opacity:1 !important;
+}
+
+
 
 /*************************
       Body

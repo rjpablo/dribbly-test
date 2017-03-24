@@ -30,9 +30,9 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">-->
 </head><!--/head-->
 
-<body ng-app="mainApp" ng-controller="mainCtrl" class="homepage">
+<body ng-app="mainApp" ng-controller="indexCtrl as indexCtrl" class="homepage">
 
-    <toaster-container></toaster-container>
+    <toaster-container toaster-options="{{indexCtrl.toastSettings}}" ></toaster-container>
 
     <header id="header">
         
@@ -66,9 +66,12 @@
     <script src="scripts/services/settings.service.js"></script>
     <script src="scripts/services/generic.service.js"></script>
     <script src="scripts/services/file.service.js"></script>
+    <script src="scripts/services/toast.service.js"></script>
+    <script src="scripts/services/common.service.js"></script>
 
 
     <!--Controllers-->
+    <script src="scripts/index.controller.js"></script>
     <script src="views/court/court.controller.js"></script>
     <script src="views/court/add.court.controller.js"></script>
     <script src="js/directives/courtsListItem/courts.listItem.directive.js"></script>

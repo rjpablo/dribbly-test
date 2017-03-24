@@ -17,12 +17,7 @@
         }
 
         this.deleteCourtPhoto = function (fileName) {
-            return genericService.delete(deleteCourtPhotoUrl, { filename: fileName }).then(
-                function () {
-                    console.log('')
-                }, function () {
-                    console.log('')
-                });
+            return genericService.delete(deleteCourtPhotoUrl, { filename: fileName })
         }
 
         return this;

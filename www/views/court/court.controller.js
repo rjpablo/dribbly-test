@@ -3,9 +3,9 @@
 
     angular
         .module('mainApp')
-        .controller('courtCtrl', ['$scope','$uibModal', '$document', '$http', 'settings', 'genericService', courtCtrl]);
+        .controller('courtCtrl', ['$scope', '$uibModal', '$document', '$http', 'settings', 'genericService', 'commonServices', courtCtrl]);
 
-    function courtCtrl($scope, $uibModal, $document, $http, settings, genericService) {
+    function courtCtrl($scope, $uibModal, $document, $http, settings, genericService, commonServices) {
 
 		var vm = this;
 	
@@ -18,7 +18,7 @@
         }
 
         var getCourts = function () {
-            return genericService.get(settings.apiBaseURL + 'Court/GetCourts');
+            return genericService.get(settings.apiBaseURL + 'Court/GetCourts')
         }
 
         this.tempCourts = [
@@ -72,13 +72,14 @@
             }
         ];//Sample Courts
 		
-        if (settings.onTestingMode) {
+        if (settings.useLocalData) {
             this.courtsSearched = this.tempCourts;
         } else {
             getCourts().then(
             function (result) {
                 vm.courtsSearched = result.data
-            }, function (result) {
+            }, function (error) {
+                commonServices.handleError(error);
                 vm.courtsSearched = null;
             });
         }        
@@ -103,9 +104,10 @@
             });
 
             addCourtModal.result.then(function (court) {
+                commonServices.toast.success('New court has been added successfully.')
                 vm.addCourt(court);
             }, function (reason) {
-                
+                commonServices.toast.info('No new court was added.')
             });
         };
 
