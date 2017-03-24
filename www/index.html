@@ -15,7 +15,8 @@
     <link href="css/court.css" rel="stylesheet" />
 
     <link href="css/animate.min.css" rel="stylesheet">
-    <!--<link href="css/responsive.css" rel="stylesheet">-->
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="../bower_components/AngularJS-Toaster/toaster.min.css" rel="stylesheet" />
     <link href="css/tabbed-view.css" rel="stylesheet" />
     <!--<link href="css/prettyPhoto.css" rel="stylesheet">-->
     <!--[if lt IE 9]>
@@ -30,6 +31,8 @@
 </head><!--/head-->
 
 <body ng-app="mainApp" ng-controller="mainCtrl" class="homepage">
+
+    <toaster-container></toaster-container>
 
     <header id="header">
         
@@ -52,6 +55,7 @@
     <script src="../bower_components/ng-image-gallery/dist/ng-image-gallery.js"></script>
     <script src="../bower_components/angular-messages/angular-messages.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/AngularJS-Toaster/toaster.min.js"></script>
 
     <!--Custom JS Files-->
     <script src="scripts/app.module.js"></script>
