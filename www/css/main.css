@@ -229,15 +229,45 @@ p{
     color: #666;
     cursor: pointer;
     line-height: 30px;
+    text-decoration:underline;
 }
 
 .button-link:hover{
-    text-decoration:underline;
+    text-decoration:none;
     color: #666;
 }
 
 .form-group .map-container{
     margin-top: 10px;
+}
+
+div.image-with-bg{
+    display: block;
+    height:180px;
+    overflow: hidden;
+    position: relative;
+    background: url(http://localhost:52964/files/uploads/images/1.jpg);
+    background-size: cover;
+}
+
+.image-with-bg::after{
+    background: #d9d9d9;
+    content: "";
+    opacity: .7;
+    display: block;
+    height: 100%;
+}
+
+.image-with-bg img{
+    position: absolute;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    min-height: 100%;
 }
 
 /*************************

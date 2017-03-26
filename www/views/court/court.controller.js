@@ -25,7 +25,7 @@
             {
                 id: 1,
                 name: 'Ballers Court',
-                location: '#123 Paraiso St., Makati City, Manila',
+                address: '#123 Paraiso St., Makati City, Manila',
                 rate: '200',
                 contactNo: '+63 932 987 7865',
                 imagePath: '1.jpg'
@@ -33,7 +33,7 @@
             {
                 id: 2,
                 name: 'Masters Court',
-                location: '#123 Pinaglabanan St., San Juan, Manila',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
                 rate: '250',
                 contactNo: '+63 932 123 7865',
                 imagePath: '2.jpg'
@@ -41,7 +41,7 @@
             {
                 id: 3,
                 name: 'XYZ Basketball Court',
-                location: '#33 Connecticut St., Sampaloc City, Manila',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
                 rate: '500',
                 contactNo: '+63 932 123 5665',
                 imagePath: '3.jpg'
@@ -49,7 +49,7 @@
             {
                 id: 4,
                 name: 'Ballers Court',
-                location: '#123 Paraiso St., Makati City, Manila',
+                address: '#123 Paraiso St., Makati City, Manila',
                 rate: '200',
                 contactNo: '+63 932 987 7865',
                 imagePath: '4.jpg'
@@ -57,7 +57,7 @@
             {
                 id: 5,
                 name: 'Masters Court',
-                location: '#123 Pinaglabanan St., San Juan, Manila',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
                 rate: '250',
                 contactNo: '+63 932 123 7865',
                 imagePath: '5.jpg'
@@ -65,7 +65,7 @@
             {
                 id: 6,
                 name: 'XYZ Basketball Court',
-                location: '#33 Connecticut St., Sampaloc City, Manila',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
                 rate: '500',
                 contactNo: '+63 932 123 5665',
                 imagePath: '2.jpg'

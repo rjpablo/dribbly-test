@@ -19,10 +19,10 @@
                    readonly="readonly"  
                    type="text"
                    name="address"
-                   location-picker
+                   location-picker="addCourtCtrl.court.location"
                    on-location-select="addCourtCtrl.updateLocation(loc)"
                    placeholder="Click to select a location"
-                   ng-model="addCourtCtrl.court.location" />
+                   ng-model="addCourtCtrl.court.address" />
             <!--<input class="form-control"
                    type="text"
                    name="address"

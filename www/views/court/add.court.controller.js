@@ -76,7 +76,8 @@
         });
 
         this.updateLocation = function (loc) {
-            this.court.location = loc.formatted_address;
+            this.court.address = loc.formatted_address;
+            this.court.location = loc;
         }
 
 

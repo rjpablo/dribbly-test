@@ -8,6 +8,7 @@
         return {
             restrict: "EA",
             scope: {
+                startPosition: '=?',
                 onLocationSelect: '&?'
             },
             link: function (scope, element, attrs) {
@@ -15,7 +16,7 @@
                 element.on('click', showDialog);
 
                 function showDialog() {
-                    var locatinoPickerModal = $uibModal.open({
+                    var locationPickerModal = $uibModal.open({
                         animation: true,
                         backdrop: 'static',
                         ariaLabelledBy: 'modal-title',
@@ -23,6 +24,7 @@
                         templateUrl: '/www/js/directives/locationPicker/location.picker.template.html',
                         controller: function ($scope, NgMap, mapService, commonServices, $uibModalInstance, $timeout) {
                             $scope.address;
+                            $scope.completeAddress;
                             $scope.types = ['geocode']
                             $scope.center = '15,121';
 
@@ -33,37 +35,54 @@
 
                             NgMap.getMap({ id: 'locationPickerMap' }).then(function (map) {
                                 $scope.map = map;
-                                focusCurrentPosition();
+                                setInitialPosition();
                             });
+
+                            var setInitialPosition = function () {
+                                if ($scope.startPosition) {
+                                    $scope.address = $scope.startPosition.formatted_address;
+                                    $scope.completeAddress = $scope.startPosition.formatted_address;
+                                    $scope.selectedLocation = $scope.startPosition;
+                                    resetMark($scope.startPosition.geometry);
+                                } else {
+                                    focusCurrentPosition();
+                                }
+                            }
 
                             function focusCurrentPosition() {
                                 mapService.getCurrentPosition(
                                     function (pos) {
 
                                         var currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                                        $scope.map.setCenter(currentPos);
+                                        centerMap(currentPos);
 
-                                        mapService.getAddress(currentPos).then(function (res) {
-                                            if (res.data.results.length > 0) {
+                                        //mapService.getAddress(currentPos).then(function (res) {
+                                        //    if (res.data.results.length > 0) {
 
-                                                $scope.address = res.data.results[0].formatted_address;
-                                                $scope.selectedLocation = res.data.results[0];
-                                                resetMark(res.data.results[0].geometry);
+                                        //        //$scope.address = res.data.results[0].formatted_address;
+                                        //        //$scope.completeAddress = res.data.results[0].formatted_address;
+                                        //        //$scope.selectedLocation = res.data.results[0];
+                                        //        //resetMark(res.data.results[0].geometry);
 
-                                            } else {
-                                                console.log('No address was retrieved.' +
-                                                    'Please try a different location.');
-                                            }
-                                        }, function () {
-                                            console.log('An error occured while trying to retrieve address' +
-                                                ' based on clicked location.');
-                                        },
-                                        { enableHighAccuracy: true });
+                                        //    } else {
+                                        //        console.log('No address was retrieved.' +
+                                        //            'Please try a different location.');
+                                        //    }
+                                        //}, function () {
+                                        //    console.log('An error occured while trying to retrieve address' +
+                                        //        ' based on clicked location.');
+                                        //},
+                                        //{ enableHighAccuracy: true });
 
                                     },
                                     function (error) {
                                         console.log('Unable to get location: ' + error.message);
-                                    })
+                                    },
+                                    { enableHighAccuracy: true })
+                            }
+
+                            var centerMap = function (latLng) {
+                                $scope.map.setCenter(latLng);
                             }
 
                             $scope.focusCurrentSelection = function () {
@@ -133,6 +152,7 @@
                             }
 
                             $scope.ok = function (e) {
+                                $scope.selectedLocation.formatted_address = $scope.completeAddress;
                                 $uibModalInstance.close($scope.selectedLocation);
                             };
 
@@ -143,7 +163,7 @@
                         },
                         size: 'md'
                     });
-                    locatinoPickerModal.result.then(function (loc) {
+                    locationPickerModal.result.then(function (loc) {
                         scope.onLocationSelect({ loc:loc })
                     }, function (reason) {
                         //commonServices.toast.info('No new court was added.')

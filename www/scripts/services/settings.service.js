@@ -6,7 +6,7 @@
 
     function settings(genericService) {
         var _onTestingMode = true;
-        var _useLocalData = true;
+        var _useLocalData = false;
         var _serverRoot = _onTestingMode ? 'http://localhost:52964/': 'http://drbly-test.somee.com/';
         var _apiBaseUrl = _serverRoot + 'api/';
         var _imageUploadPath = _serverRoot + "files/uploads/images/";

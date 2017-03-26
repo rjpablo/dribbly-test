@@ -11,8 +11,8 @@
             return geocoder.geocode({ address: address }, callback);
         }
 
-        var _addMarker = function (latLng, map, RemoveOtherMarkers) {
-            var marker = new google.maps.Marker({ position: latLng, map: map, draggable: true });
+        var _addMarker = function (latLng, map) {
+            var marker = new google.maps.Marker({ position: latLng, map: map});
             map.panTo(latLng);
             return marker;
         }
