@@ -236,6 +236,9 @@ p{
     color: #666;
 }
 
+.form-group .map-container{
+    margin-top: 10px;
+}
 
 /*************************
     Directive Overrides
@@ -269,7 +272,10 @@ p{
     opacity:1 !important;
 }
 
-
+/* ngMap */
+.pac-container {
+    z-index: 1100;
+}
 
 /*************************
       Body

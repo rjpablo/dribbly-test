@@ -9,6 +9,7 @@
                 'ngFileUpload',
                 'thatisuday.ng-image-gallery',
                 'ngMessages',
-                'toaster'
+                'toaster',
+                'ngMap',
             ]);
 })();

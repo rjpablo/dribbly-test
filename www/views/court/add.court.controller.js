@@ -12,6 +12,7 @@
         this.progress;
         this.court = {};
         this.imageUploadPath = settings.imageUploadPath;
+        this.map = {};
 
         var __this = this;
 
@@ -74,6 +75,10 @@
             }
         });
 
+        this.updateLocation = function (loc) {
+            this.court.location = loc.formatted_address;
+        }
+
 
         this.ok = function (e) {
             __this.court.imagePath = this.galleryPhotos[0].fileName;
@@ -84,6 +89,7 @@
             __this.deleteAllPhotos();
             $uibModalInstance.dismiss('cancel');
         };
+
     }
 
 })();
