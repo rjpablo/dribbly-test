@@ -3,16 +3,18 @@
     
     angular
         .module('mainApp')
-        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', 'settings', 'commonServices', addCourtCtrl]);
+        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', 'settings', 'commonServices','genericService', addCourtCtrl]);
 
-    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService, settings, commonServices) {
+    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService, settings, commonServices, genericService) {
 
         this.galleryPhotos = [];
         this.galleryMethods = {};
         this.progress;
-        this.court = {};
         this.imageUploadPath = settings.imageUploadPath;
         this.map = {};
+        this.court = {
+            rate: 0
+        };
 
         var __this = this;
 
@@ -78,12 +80,23 @@
         this.updateLocation = function (loc) {
             this.court.address = loc.formatted_address;
             this.court.location = loc;
+            this.court.latitude = loc.geometry.location.lat;
+            this.court.longitude = loc.geometry.location.lng;
         }
 
 
         this.ok = function (e) {
+
             __this.court.imagePath = this.galleryPhotos[0].fileName;
-            $uibModalInstance.close(__this.court);
+            __this.court.dateRegistered = new Date();
+
+            genericService.post(settings.apiBaseURL + 'court/register/', __this.court).then(
+                function (res) {
+                    $uibModalInstance.close(__this.court);
+                }, function (err) {
+                    commonServices.handleError(err);
+                }
+            );
         };
 
         this.cancel = function (e) {
