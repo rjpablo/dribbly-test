@@ -10,7 +10,8 @@
             <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
         </div>
 
-        <div class="collapse navbar-collapse" uib-collapse="indexCtrl.isNavCollapsed">
+        <!--<div class="collapse navbar-collapse" uib-collapse="indexCtrl.isNavCollapsed">-->
+        <div class="menu-container" >
             <ul id="categories-menu" class="nav navbar-nav">
                 <li class="menu-item" ng-class="{'active':indexCtrl.state.current.name == 'courts'}"><a ui-sref="courts"><span class="menu-icon court-icon"></span><span class="menu-text">Courts</span></a></li>
                 <li class="menu-item" ng-class="{'active':indexCtrl.state.current.name == 'games'}"><a ui-sref="games"><span class="menu-icon game-icon"></span><span class="menu-text">Games</span></a></li>
