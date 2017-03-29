@@ -6,22 +6,25 @@
 
     function toastService(toaster) {
 
+        var timeout = 3000;
+
         var _settings = {
             'position-class': 'toast-top-center',
             'limit': 3,
-            'time-out': 3000
+            'time-out': timeout,
+            'showCloseButton': true
         }
 
         var _error = function (message, title) {
-            toaster.pop('error', title || 'Error!', message);
+            toaster.pop({ type: 'error', title: (title || 'Error!'), body: message, showCloseButton: true, 'timeout': timeout });
         }
 
         var _success = function (message, title) {
-            toaster.pop('success', title || 'Success!', message);
+            toaster.pop({ type: 'success', title: (title || 'Success!'), body: message, showCloseButton: true, 'timeout': timeout });
         }
 
         var _info = function (message, title) {
-            toaster.pop('info', title || 'Information!', message);
+            toaster.pop({ type: 'info', title: (title || 'Information!'), body: message, showCloseButton: true, 'timeout': timeout });
         }
 
         this.settings = _settings;
