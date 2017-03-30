@@ -2,6 +2,17 @@
 *******Header******
 **************************/
 
+#main-nav .navbar-brand{
+    padding: 6px 0;
+}
+
+#main-logo-full {
+    
+}
+
+#main-logo-icon {
+    display:none;
+}
 
 #header .search {
     display: inline-block;
@@ -11,7 +22,17 @@
     margin-left: 0;
 }
 
+#main-nav .navbar-collapse{
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.navbar-nav {
+    margin: 7.5px 0px;
+}
+
 @media (max-width: 767px) {
+
     .navbar-nav > li > a {
         width: 100%;
     }
@@ -25,7 +46,17 @@
     }
 
     .navbar-inverse .navbar-nav .dropdown-menu{
-        background-color:transparent !important;
+        /*background-color:transparent !important;*/
+    }
+}
+
+@media (max-width: 467px) {
+    #main-logo-full {
+        display:none;
+    }
+
+    #main-logo-icon {
+        display:block;
     }
 }
 
@@ -253,7 +284,9 @@ input.search-form {
         margin-top: 0;
         border-top: 0;
         border-radius: 0;
-        /*left: 0;*/
+        left:initial !important;
+        right: 0;
+        position:absolute;
     }
 
         .navbar-inverse .navbar-nav .dropdown-menu:before {

@@ -9,6 +9,12 @@
 }
 
 @media (max-width: 767px){
+
+    .tab-wrap .media-body{
+        display:block;
+        width: 100%;
+    }
+
     .tab-wrap .nav li {
         border-radius: 0;
         display: inline-block;
