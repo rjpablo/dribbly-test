@@ -1,0 +1,17 @@
+﻿.dr-timetable{
+    display:table;
+    position: relative;
+}
+
+.dr-timetable .dr-timetable-column-headers{
+    display:table-row-group;
+}
+
+.dr-timetable .dr-timetable-row-headers{
+    display:table-column-group;
+}
+
+.dr-timetable .dr-timetable-header{
+    display:table-cell;
+    border: 1px solid;
+}

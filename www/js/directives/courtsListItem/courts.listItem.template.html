@@ -1,6 +1,6 @@
 ﻿<div class="courts-list-item col-md-4 col-sm-6 col-xs-12">
     <div class="court-details-wrap">
-        <a href="#/"><div class="image-with-bg court-image-wrap"><img class="court-image" ng-src="{{ngSrcPrefix + court.imagePath}}" /></div></a>
+        <a href="#/"><div style="background:url({{ngSrcPrefix + court.imagePath}}) no-repeat center; background-size: cover" class="image-with-bg court-image-wrap"><img class="court-image" ng-src="{{ngSrcPrefix + court.imagePath}}" /></div></a>
         <div ng-cloak class="court-details">
             <h4 class="button-link ellipsis"><a href="#/">{{court.name}}</a></h4>
             <p><b>Rate: </b><span>{{court.rate}}</span></p>

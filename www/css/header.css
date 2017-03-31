@@ -2,6 +2,10 @@
 *******Header******
 **************************/
 
+#main-nav .navbar-header, #main-nav .menu-container{
+    float: left;
+}
+
 #main-nav .navbar-brand{
     padding: 6px 0;
 }
@@ -33,8 +37,13 @@
 
 @media (max-width: 767px) {
 
+    #main-nav .navbar-header{
+        margin: 5px 30px 5px 0;
+    }
+
     .navbar-nav > li > a {
         width: 100%;
+        border-radius: 0 !important;
     }
     
     #user-menu-mob{
@@ -45,12 +54,22 @@
         display:none;
     }
 
+    #user-menu .navbar-nav{
+        margin: 0 !important;
+    }
+
+    #user-menu .navbar-nav .dropdown-toggle{
+        height: 60px;
+        padding: 16px 12px;
+    }
+
     .navbar-inverse .navbar-nav .dropdown-menu{
         /*background-color:transparent !important;*/
     }
 }
 
 @media (max-width: 467px) {
+
     #main-logo-full {
         display:none;
     }
@@ -227,15 +246,29 @@ input.search-form {
 }
 
 @media (max-width: 767px) {
-    #main-nav .menu-text{
-        display:none;
+    #main-nav{
+        padding: 0;
     }
+
+    #main-nav #categories-menu{
+        margin:0px;
+    }
+
+    #main-nav .menu-text{
+        display:block;
+        font-size: 12px;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        text-align: center;
+    }
+
 }
 
 /*Cancels responsiveness of the navbar*/
 
 .navbar-inverse .navbar-nav > li > a {
-    padding: 5px 12px;
+    padding: 5px 8px;
     margin: 0;
     border-radius: 3px;
     color: #fff;
