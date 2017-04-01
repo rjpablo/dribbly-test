@@ -12,7 +12,7 @@
 			    'court': '=',
                 'ngSrcPrefix' : '='
 			},
-			templateUrl: '/www/js/directives/courtsListItem/courts.listItem.template.html'
+			templateUrl: '/js/directives/courtsListItem/courts.listItem.template.html'
 		}
 	}
 })()

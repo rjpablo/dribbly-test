@@ -7,7 +7,7 @@
 
   function config($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('courts');
+      $urlRouterProvider.otherwise('courts');
 
     $stateProvider
         .state('courts', {
@@ -27,6 +27,7 @@
 
 
     $locationProvider.hashPrefix('');
+    //$locationProvider.html5Mode(true);
 
   }
 

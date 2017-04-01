@@ -13,21 +13,21 @@
         </div>
         <div class="block form-group" ng-class="{'has-error':addCourtForm.address.$invalid && addCourtForm.address.$touched}" >
             <label class="control-label" for="address">Address:*</label>
-            <input class="form-control"
+            <!--<input class="form-control"
                    required
                    type="text"
                    name="address"
                    on-location-select="addCourtCtrl.updateLocation(loc)"
                    placeholder="Click to select a location"
-                   ng-model="addCourtCtrl.court.address" />
-            <!--<input class="form-control"
+                   ng-model="addCourtCtrl.court.address" />-->
+            <input class="form-control"
                    required
                    type="text"
                    name="address"
                    location-picker="addCourtCtrl.court.location"
                    on-location-select="addCourtCtrl.updateLocation(loc)"
                    placeholder="Click to select a location"
-                   ng-model="addCourtCtrl.court.address" />-->
+                   ng-model="addCourtCtrl.court.address" />
             <div class="help-block" ng-messages="addCourtForm.address.$error" role="alert">
                 <div ng-message="required">The court's address is required.</div>
             </div>

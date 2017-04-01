@@ -12,9 +12,12 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('browserSync', function () {
     browserSync.init({
-        startPath: './www',
+        startPath: '/',
         server: {
-            baseDir: './'
+            baseDir: 'www',
+            routes: {
+                '/bower_components': 'bower_components'
+            }
         },
         port:8888
     })

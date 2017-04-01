@@ -1,5 +1,5 @@
 {
-  "name": "bower_test",
+  "name": "dribbly-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,11 +8,12 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
+    "connect-modrewrite": "^0.10.1",
     "gulp": "^3.9.1"
   },
   "scripts": {
     "test": "\u001b[A\u001b[B"
   },
-  "author": "",
+  "author": "RJ Pablo",
   "license": "ISC"
 }
