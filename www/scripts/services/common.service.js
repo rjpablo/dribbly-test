@@ -32,9 +32,24 @@
             }
         }
 
+        //function _alert(message,title) {
+        //    alert = $mdDialog.alert({
+        //        title: title,
+        //        textContent: message,
+        //        ok: 'Ok'
+        //    });
+
+        //    $mdDialog
+        //      .show(alert)
+        //      .finally(function () {
+        //          alert = undefined;
+        //      });
+        //}
+
         this.toast = toastService;
         this.handleError = _handleError;
         this.log = $log;
+        //this.alert = _alert;
 
     }
 

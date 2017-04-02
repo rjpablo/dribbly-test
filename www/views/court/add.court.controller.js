@@ -16,6 +16,8 @@
             rate: 0
         };
 
+        this.maxNumOfPhotos = 5;
+
         var __this = this;
 
         this.setPrimary = function (index) {
@@ -70,21 +72,31 @@
         }
 
         this.addPhotos = function (files) {
-            if (files && files.length) {
-                for (var i = 0; i < files.length; i++) {
-                    var fileName;
 
-                    __this.uploadPic(files[i]).then(function (response) {
-                        fileName = response.data;
-                        __this.galleryPhotos.push({ url: settings.imageUploadPath + fileName, fileName: fileName });
-                    }, function (response) {
-                        if (response.status > 0)
-                            __this.errorMsg = response.status + ': ' + response.data;
-                    }, function (evt) {
-                        // Math.min is to fix IE which reports 200% sometimes
-                        __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                    });;
+            if (__this.galleryPhotos.length + files.length <= __this.maxNumOfPhotos) {
+                if (files && files.length) {
+                    for (var i = 0; i < files.length; i++) {
+                        fileService.validateFile(files[i], function (result) {
+                            var fileName;
+
+                            __this.uploadPic(files[i]).then(function (response) {
+                                fileName = response.data;
+                                __this.galleryPhotos.push({ url: settings.imageUploadPath + fileName, fileName: fileName });
+                            }, function (response) {
+                                commonServices.toast.error('Upload failed.')
+                                __this.errorMsg = response.status + ': ' + response.data;
+                            }, function (evt) {
+                                // Math.min is to fix IE which reports 200% sometimes
+                                __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                            });;
+                        }, function (errors) {
+                            commonServices.toast.error(errors.join('\n'));
+                        });
+                    }
                 }
+            } else {
+                //TODO: Make this an alert instead of a toast
+                commonServices.toast.error('Sorry, you may only upload up to a maximum of ' + __this.maxNumOfPhotos + ' photos.')
             }
         }
 

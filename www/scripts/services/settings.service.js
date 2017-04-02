@@ -5,8 +5,8 @@
         .service('settings',['genericService', settings]);
 
     function settings(genericService) {
-        var _useLocalServer = false;
-        var _useLocalData = true;
+        var _useLocalServer = true;
+        var _useLocalData = false;
         var _serverRoot = _useLocalServer ? 'http://localhost:52964/' : 'http://drbly-test.somee.com/';
         var _apiBaseUrl = _serverRoot + 'api/';
         var _imageUploadPath = _serverRoot + "files/uploads/images/";
