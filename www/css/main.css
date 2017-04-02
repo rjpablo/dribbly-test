@@ -305,6 +305,42 @@ div.image-with-bg{
 /*************************
     Directive Overrides
 **************************/
+.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container{
+    z-index: 1;
+}
+
+
+.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .control-button {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    vertical-align: bottom;
+    text-align:center;
+}
+
+.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close:before{
+    background-image:none;
+}
+
+
+.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .control-button:hover {
+    -webkit-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ng-image-gallery .destroy-icons-container .control-button i{
+    line-height: 30px;
+    font-size: 20px;
+    color:#aaa;
+}
+
+
 
 .ng-image-gallery .ng-image-gallery-thumbnails .thumb {
     border: 1px solid #ccc;
@@ -314,18 +350,31 @@ div.image-with-bg{
     margin-bottom: 5px;
 }
 
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb .delete-photo{
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb i{
     display:none;
-    position: absolute;
-    right: 2px;
     line-height: 1;
-    top: 2px;
-    color: #a94442;
-    background: rgba(255, 255, 255, .5);
+    background: rgba(0, 0, 0, .5);
     border-radius: 2px;
+    float:right;
+    margin-top: 2px;
+    margin-right: 2px;
 }
 
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb:hover .delete-photo{
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb .delete-photo {
+    color: #a94442;
+}
+
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb .set-primary {
+    color: #eee;
+}
+
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb .primary-photo i.set-primary,
+.ng-image-gallery .destroy-icons-container .primary-photo.control-button i.set-primary{
+    display: inline-block;
+    color: #36f636;
+}
+
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb:hover i{
     display:inline-block;
 }
 

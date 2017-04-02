@@ -18,17 +18,40 @@
 
         var __this = this;
 
+        this.setPrimary = function (index) {
+            __this.court.imagePath = __this.galleryPhotos[index].fileName
+            for (var x = 0; x < __this.galleryPhotos.length; x++) {
+                __this.galleryPhotos[x].isPrimary = false;
+            }
+            __this.galleryPhotos[index].isPrimary = true;
+        }
+
         this.removePhoto = function (index) {
-            //if (confirm('Remove Photo?')) {
-            fileService.deleteCourtPhoto(__this.galleryPhotos[index].fileName).then(
+            var fileName = __this.galleryPhotos[index].fileName;
+            
+            if (fileName != __this.court.imagePath) {
+                //if (confirm('Remove Photo?')) {
+                deleteCourtPhoto(fileName, index);                    
+                //}
+            } else {
+                if (confirm('Delete primary photo?')) {
+                    deleteCourtPhoto(fileName, index);
+                    __this.court.imagePath = ""
+                }
+            }            
+        }
+
+        function deleteCourtPhoto(fileName, index) {
+            fileService.deleteCourtPhoto(fileName).then(
                 function () {
                     //commonServices.toast.info('Photo deleted')
                 }, function () {
-                    commonServices.log.error('Failed to delete photo: ' + __this.galleryPhotos[index].fileName);
+                    commonServices.log.error('Failed to delete photo: ' + fileName);
                 }
             );
+
             __this.methods.delete(index);
-            //}
+
         }
 
         this.deleteAllPhotos = function () {
@@ -86,17 +109,20 @@
 
 
         this.ok = function (e) {
+            if (__this.court.imagePath) {
+                //__this.court.imagePath = this.galleryPhotos[0].fileName;
+                __this.court.dateRegistered = new Date();
 
-            __this.court.imagePath = this.galleryPhotos[0].fileName;
-            __this.court.dateRegistered = new Date();
-
-            genericService.post(settings.apiBaseURL + 'court/register/', __this.court).then(
-                function (res) {
-                    $uibModalInstance.close(__this.court);
-                }, function (err) {
-                    commonServices.handleError(err);
-                }
-            );
+                genericService.post(settings.apiBaseURL + 'court/register/', __this.court).then(
+                    function (res) {
+                        $uibModalInstance.close(__this.court);
+                    }, function (err) {
+                        commonServices.handleError(err);
+                    }
+                );
+            } else {
+                commonServices.toast.error('Please select a primary photo.')
+            }
         };
 
         this.cancel = function (e) {

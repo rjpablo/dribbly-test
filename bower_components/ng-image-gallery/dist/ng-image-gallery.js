@@ -69,13 +69,17 @@
 				addFile         :   '&?',
                 allowRemove     :   '=?',       // true|false
                 removeFunction  :   '&?',
+                setPrimary      :   '&?'
 			},
 			template : 	'<div class="ng-image-gallery img-move-dir-{{imgMoveDirection}}" ng-class="{inline:inline}">'+
 							
 							// Thumbnails container
 							//  Hide for inline gallery
 							'<div ng-if="thumbnails && !inline" class="ng-image-gallery-thumbnails">'+
-								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (image.thumbUrl || image.url) + \')\' }"  ng-attr-title="{{image.title || undefined}}"><span ng-if="allowRemove" ng-click="$event.stopPropagation(); removeFunction({index: $index})" ><i class="fa fa-times delete-photo"></i></span></div>' +
+								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (image.thumbUrl || image.url) + \')\' }"  ng-attr-title="{{image.title || undefined}}">' +
+                                    '<span class="remove" ng-if="allowRemove" ng-click="$event.stopPropagation(); removeFunction({index: $index})" ><i class="fa fa-times delete-photo"></i></span>' +
+                                    '<span ng-class="{\'primary-photo\': image.isPrimary}" class="set-primary" ng-if="allowRemove" ng-click="$event.stopPropagation(); setPrimary({index: $index})" ><i class="fa fa-star set-primary"></i></span>' +
+                                '</div>' +
                                 //'<div class="thumb" ngf-select="addFile($files)" multiple="multiple" ng-style="{ \'background-image\': \'url(images/icons/grey-plus-3.png)\' }"></div>' +
 							'</div>'+
 
@@ -93,14 +97,12 @@
 									
 									// destroy icons container
 									'<div class="destroy-icons-container">'+
-										// External link icon
-										'<a class="ext-url" ng-repeat="image in images track by $index" ng-if="activeImg == image && image.extUrl" href="{{image.extUrl}}"></a>' +
-
 										// Close Icon (hidden in inline gallery)
-										'<div class="close" ng-click="methods.close();" ng-if="!inline"></div>' +
+										'<span class="control-button close" ng-click="methods.close();" ng-if="!inline"><i class="fa fa-times"></i></span>' +
 
                                         //'<span class="delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-times"></i></span>' +
-                                        '<span class="delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-trash-o delete"></i></span>' +
+                                        '<span class="control-button delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-trash-o"></i></span>' +
+                                        '<span  class="control-button"  ng-class="{\'primary-photo\': activeImg.isPrimary}" class="set-primary" ng-click="$event.stopPropagation(); setPrimary({index: activeImageIndex})" ><i class="fa fa-star set-primary"></i></span>' +
                                         //'<i class="fa fa-trash-o delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex}) "></i>' +
 									'</div>'+
 
@@ -115,10 +117,6 @@
 										// Images container
 										'<div class="galleria-images img-anim-{{imgAnim}} img-move-dir-{{imgMoveDirection}}">' +
                                             '<img class="galleria-image" ng-repeat="image in images track by $index" ng-right-click ng-if="activeImg == image" ng-src="{{image.url}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}" />' +
-                                            //'<div>' +
-											//    '<img class="galleria-image" ng-repeat="image in images track by $index" ng-right-click ng-if="activeImg == image" ng-src="{{image.url}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}" />' +
-                                            //    '<span class="delete-button" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-times"></i></span>' +
-                                            //'</div>' +
 										'</div>'+
 
 										// Bubble navigation container
