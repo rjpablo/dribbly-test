@@ -17,6 +17,11 @@
         };
 
         this.maxNumOfPhotos = 5;
+        this.progress = 0;
+        this.uploadingFiles = [] //the files to be uploaded
+        this.uploading = false; //whether or not an upload is in progress
+        this.uploadIndex = 0; //The index of file (in the array of files to be uploaded) that's currently being updated
+        this.showUploadDetails = false;
 
         var __this = this;
 
@@ -40,7 +45,7 @@
                     deleteCourtPhoto(fileName, index);
                     __this.court.imagePath = ""
                 }
-            }            
+            }
         }
 
         function deleteCourtPhoto(fileName, index) {
@@ -71,23 +76,78 @@
             return fileService.uploadCourtPhoto(file);
         }
 
-        this.addPhotos = function (files) {
+        this.uploadFiles = function (files) {
+            fileService.validateFile(files[__this.uploadIndex], function (result) {
+                __this.showUploadDetails = true;
+                __this.uploading = true;
+                var currFile = files[__this.uploadIndex]
+                var fileName;
+                currFile.progress = 0;
+
+                __this.uploadPic(currFile).then(function (response) {
+                    __this.progress = 0
+                    fileName = response.data;
+                    __this.galleryPhotos.push({ url: settings.imageUploadPath + fileName, fileName: fileName });
+                    __this.uploadIndex++
+                    if (__this.uploadIndex == files.length) {
+                        __this.uploading = false;
+                    } else {
+                        __this.uploadFiles(files)
+                    }
+                }, function (response) {
+                    __this.progress = 0
+                    commonServices.toast.error('Upload failed for \'' + currFile.name + '\'');
+                    __this.errorMsg = response.status + ': ' + response.data;
+                    __this.uploadIndex++
+                    if (__this.uploadIndex == files.length) {
+                        __this.uploading = false;
+                    } else {
+                        __this.uploadFiles(files)
+                    }
+                }, function (evt) {
+                    // Math.min is to fix IE which reports 200% sometimes
+                    __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                    currFile.progress = __this.progress;                    
+                });;
+            }, function (errors) {
+                commonServices.toast.error(errors.join('\n'));
+            });
+        }
+
+        this.addPhotos = function (files) {            
 
             if (__this.galleryPhotos.length + files.length <= __this.maxNumOfPhotos) {
                 if (files && files.length) {
+                    __this.uploadingFiles = files;
+                    
+                    /**Alternate upload method. Shows only one progressbar for each upload**/
+
+                    __this.uploadIndex = 0;
+                    __this.uploadFiles(files);
+                    return;
+
+                    /************************/
+
+                    this.showUploadDetails = true;
+                    __this.uploading = true;
                     for (var i = 0; i < files.length; i++) {
                         fileService.validateFile(files[i], function (result) {
+                            var currFile = files[i];
                             var fileName;
+                            currFile.progress = 0;
 
-                            __this.uploadPic(files[i]).then(function (response) {
+                            __this.uploadPic(currFile).then(function (response) {
                                 fileName = response.data;
                                 __this.galleryPhotos.push({ url: settings.imageUploadPath + fileName, fileName: fileName });
                             }, function (response) {
-                                commonServices.toast.error('Upload failed.')
+                                commonServices.toast.error('Upload failed for \'' + currFile.name + '\'');
                                 __this.errorMsg = response.status + ': ' + response.data;
+                                if (i == files.length) __this.uploading = false;
                             }, function (evt) {
                                 // Math.min is to fix IE which reports 200% sometimes
-                                __this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                                //__this.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                                currFile.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                                if (i == files.length) __this.uploading = false;
                             });;
                         }, function (errors) {
                             commonServices.toast.error(errors.join('\n'));

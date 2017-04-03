@@ -8,7 +8,7 @@
 
         var uploadCourtPhotoUrl = settings.apiBaseURL + 'file/upload';
         var deleteCourtPhotoUrl = settings.apiBaseURL + 'file/delete';
-        var maxSizeKB = 2000000;
+        var maxSizeKB = 2000000; //1M = 1G, 0 = no limit
 
         this.uploadCourtPhoto = function (file) {
             return Upload.upload({
@@ -25,7 +25,7 @@
             return new Promise(function (resolve, reject) {
                 var errors = [];
 
-                if (file.size > maxSizeKB) {
+                if (maxSizeKB > 0 && file.size > maxSizeKB) {
                     errors.push('\'' + file.name + '\' exceeds the maximum file size for photos.')
                 }
 
@@ -41,7 +41,7 @@
         this.validateFile = function (file, valid, invalid) {
             var errors = [];
 
-            if (file.size > maxSizeKB) {
+            if (maxSizeKB > 0 && file.size > maxSizeKB) {
                 errors.push('\'' + file.name + '\' exceeds the maximum file size for photos.')
             }
 

@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body" id="modal-body">
     <form name="addCourtForm" class="" data-toggle="validator">
-        <div class="block form-group" ng-class="{'has-error':addCourtForm.name.$invalid && addCourtForm.name.$touched}" >
+        <div class="block form-group" ng-class="{'has-error':addCourtForm.name.$invalid && addCourtForm.name.$touched}">
             <label class="control-label" for="name">Court Name:*</label>
             <input type="text" class="form-control" required minlength="5" name="name" ng-model="addCourtCtrl.court.name">
             <div class="help-block" ng-messages="addCourtForm.name.$error" role="alert">
@@ -11,7 +11,7 @@
                 <div ng-message="minlength">Court's name must be at least 5 characters long.</div>
             </div>
         </div>
-        <div class="block form-group" ng-class="{'has-error':addCourtForm.address.$invalid && addCourtForm.address.$touched}" >
+        <div class="block form-group" ng-class="{'has-error':addCourtForm.address.$invalid && addCourtForm.address.$touched}">
             <label class="control-label" for="address">Address:*</label>
             <!--<input class="form-control"
                    required
@@ -32,7 +32,7 @@
                 <div ng-message="required">The court's address is required.</div>
             </div>
         </div>
-        <div class="sm-form-group form-group" ng-class="{'has-error':addCourtForm.telNo.$invalid && addCourtForm.telNo.$touched}" >
+        <div class="sm-form-group form-group" ng-class="{'has-error':addCourtForm.telNo.$invalid && addCourtForm.telNo.$touched}">
             <label class="control-label" for="telNo">Contact #:</label>
             <input class="form-control" name="telNo" ng-model="addCourtCtrl.court.contactNo">
         </div>
@@ -43,9 +43,9 @@
                 <div ng-message="email">E-mail address is not valid.</div>
             </div>
         </div>
-        <div class="form-group" style="max-width: 240px" ng-class="{'has-error':addCourtForm.rate.$invalid && addCourtForm.rate.$touched}" >
+        <div class="form-group" style="max-width: 240px" ng-class="{'has-error':addCourtForm.rate.$invalid && addCourtForm.rate.$touched}">
             <label class="control-label" for="rate">Rate per hour:*</label>
-            <input type="number" class="form-control" required min="0"  name="rate" ng-model="addCourtCtrl.court.rate">
+            <input type="number" class="form-control" required min="0" name="rate" ng-model="addCourtCtrl.court.rate">
             <div class="help-block" ng-messages="addCourtForm.rate.$error" role="alert">
                 <div ng-message="required">Rate is required.</div>
                 <div ng-message="number">Rate must be a positive number.</div>
@@ -68,15 +68,28 @@
                                   show-add-button="true"
                                   add-file="addCourtCtrl.addPhotos"
                                   remove-function="addCourtCtrl.removePhoto(index)"
-                                  set-primary ="addCourtCtrl.setPrimary(index)"
+                                  set-primary="addCourtCtrl.setPrimary(index)"
                                   allow-remove="true"></ng-image-gallery>
-                <!--<span class="progress" ng-show="addCourtCtrl.progress >= 0">
-                    <div style="width:{{addCourtCtrl.progress}}%">
-                        {{'Uploading(' + addCourtCtrl.progress + '%)...'}}
-                    </div>
-                </span>-->
+                <!-- For upload with multiple progress bars -->
+                <!--<div ng-show="addCourtCtrl.showUploadDetails">
+                    <p>{{(addCourtCtrl.uploading?'Uploading files.':'Upload complete!')}}</p>
+                    <uib-progressbar ng-repeat="file in addCourtCtrl.uploadingFiles" ng-hide="file.progress == 0" max="100" value="file.progress"><span style="color:white; white-space:nowrap;">{{file.name + ' (' + file.progress + ')'}}%</span></uib-progressbar>
+                </div>-->
+
+                <!--For upload with single progress bar-->                    
+                <div ng-show="addCourtCtrl.showUploadDetails" >
+                    <p>{{(addCourtCtrl.uploading?'Uploading ' + (addCourtCtrl.uploadIndex + 1) + ' of ' + addCourtCtrl.uploadingFiles.length + ' files.':'Upload complete!')}}</p>
+                    <uib-progressbar animate="true"  ng-show="addCourtCtrl.uploading" max="100" value="addCourtCtrl.progress"><span style="color:white; white-space:nowrap;">{{addCourtCtrl.progress}}%</span></uib-progressbar>
+                </div>
+
             </div>
-            <a ng-hide="addCourtCtrl.galleryPhotos.length == addCourtCtrl.maxNumOfPhotos" class="button-link" ngf-select="addCourtCtrl.addPhotos($files)" multiple="multiple" ><i class="fa fa-plus"></i>&nbsp;Add Photos</a>
+            <!--<a ng-hide="addCourtCtrl.galleryPhotos.length == addCourtCtrl.maxNumOfPhotos" class="button-link"
+               ngf-select="addCourtCtrl.addPhotos($files)" multiple="multiple" ngf-pattern="'image/*'"
+               ngf-accept="'image/*'" ><i class="fa fa-plus"></i>&nbsp;Add Photos</a>-->
+            <a ng-disabled="addCourtCtrl.uploading" ng-hide="addCourtCtrl.galleryPhotos.length == addCourtCtrl.maxNumOfPhotos" class="button-link"
+               ngf-select="addCourtCtrl.addPhotos($files)" multiple="multiple"ngf-pattern="'image/*'" ngf-accept="'image/*'" >
+                <i class="fa fa-plus"></i>&nbsp;Add Photos
+            </a>
             <div class="help-block">At least one photo is required.</div>
         </div>
         <div class="block form-group">
