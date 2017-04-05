@@ -2,7 +2,7 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('genericService', ['$http', genericService]);
+        .service('httpService', ['$http', genericService]);
 
     function genericService($http) {
         var _get = function (url, data) {

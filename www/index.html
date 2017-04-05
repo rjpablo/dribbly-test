@@ -15,6 +15,7 @@
     <link href="../bower_components/ng-image-gallery/dist/ng-image-gallery.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet">
     <link href="css/header.css" rel="stylesheet" />
+    <link href="css/details-block.css" rel="stylesheet" />
     <link href="css/court.css" rel="stylesheet" />
 
     <link href="css/animate.min.css" rel="stylesheet">
@@ -63,18 +64,21 @@
     <script src="../bower_components/AngularJS-Toaster/toaster.min.js"></script>
     <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDpOtXt6dRo4HWYCiEe7pt7hAgpULa1atU&libraries=places&sensor=false"></script>-->
 
-    <!--Custom JS Files-->
+    <!--App JS Files-->
     <script src="scripts/app.module.js"></script>
     <script src="scripts/app.controller.js"></script>
     <script src="scripts/app.config.js"></script>
-    <script src="scripts/services/map.service.js"></script>
 
     <!--Services-->
     <script src="scripts/services/settings.service.js"></script>
-    <script src="scripts/services/generic.service.js"></script>
+    <script src="scripts/services/map.service.js"></script>
+    <script src="scripts/services/http.service.js"></script>
     <script src="scripts/services/file.service.js"></script>
     <script src="scripts/services/toast.service.js"></script>
     <script src="scripts/services/common.service.js"></script>
+
+    <!--Context-->
+    <script src="views/court/court.context.js"></script>
 
     <!--Directives-->
     <script src="js/directives/locationPicker/location.picker.directive.js"></script>
@@ -85,6 +89,7 @@
     <script src="views/court/court.controller.js"></script>
     <script src="views/court/add.court.controller.js"></script>
     <script src="js/directives/courtsListItem/courts.listItem.directive.js"></script>
+    <script src="views/court/courtDetails/court.details.controller.js"></script>
 
     <!--<script src="../bower_components/angular-ui/build/angular-ui.js"></script>-->  
     

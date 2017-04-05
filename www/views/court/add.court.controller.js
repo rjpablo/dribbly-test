@@ -3,9 +3,9 @@
     
     angular
         .module('mainApp')
-        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', '$http', 'fileService', 'settings', 'commonServices','genericService', addCourtCtrl]);
+        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', 'fileService', 'settings', 'commonServices', 'courtContext', addCourtCtrl]);
 
-    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, $http, fileService, settings, commonServices, genericService) {
+    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, fileService, settings, commonServices, courtContext) {
 
         this.galleryPhotos = [];
         this.galleryMethods = {};
@@ -49,13 +49,13 @@
         }
 
         function deleteCourtPhoto(fileName, index) {
-            fileService.deleteCourtPhoto(fileName).then(
-                function () {
-                    //commonServices.toast.info('Photo deleted')
-                }, function () {
-                    commonServices.log.error('Failed to delete photo: ' + fileName);
-                }
-            );
+            //fileService.deleteCourtPhoto(fileName).then(
+            //    function () {
+            //        //commonServices.toast.info('Photo deleted')
+            //    }, function () {
+            //        commonServices.log.error('Failed to delete photo: ' + fileName);
+            //    }
+            //);
 
             __this.methods.delete(index);
 
@@ -173,10 +173,9 @@
         });
 
         this.updateLocation = function (loc) {
-            this.court.address = loc.formatted_address;
-            this.court.location = loc;
-            this.court.latitude = loc.geometry.location.lat;
-            this.court.longitude = loc.geometry.location.lng;
+            __this.court.address = loc.formatted_address;
+            __this.court.latitude = loc.geometry.location.lat;
+            __this.court.longitude = loc.geometry.location.lng;
         }
 
 
@@ -184,8 +183,9 @@
             if (__this.court.imagePath) {
                 //__this.court.imagePath = this.galleryPhotos[0].fileName;
                 __this.court.dateRegistered = new Date();
+                __this.court.photos = __this.galleryPhotos;
 
-                genericService.post(settings.apiBaseURL + 'court/register/', __this.court).then(
+                courtContext.register(__this.court).then(
                     function (res) {
                         $uibModalInstance.close(__this.court);
                     }, function (err) {

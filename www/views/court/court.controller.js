@@ -3,11 +3,11 @@
 
     angular
         .module('mainApp')
-        .controller('courtCtrl', ['$scope', '$uibModal', '$document', '$http', 'settings', 'genericService', 'commonServices', courtCtrl]);
+        .controller('courtCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'courtContext', courtCtrl]);
 
-    function courtCtrl($scope, $uibModal, $document, $http, settings, genericService, commonServices) {
+    function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, courtContext) {
 
-		var vm = this;
+        var vm = this;
 	
 		this.courtsSearched = {};
 
@@ -15,10 +15,6 @@
 
         var setCourtsSearched = function(courts){
             return courts;
-        }
-
-        var getCourts = function () {
-            return genericService.get(settings.apiBaseURL + 'Court/GetCourts')
         }
 
         this.tempCourts = [
@@ -75,7 +71,7 @@
         if (settings.useLocalData) {
             this.courtsSearched = this.tempCourts;
         } else {
-            getCourts().then(
+            courtContext.getCourts().then(
             function (result) {
                 vm.courtsSearched = result.data
             }, function (error) {

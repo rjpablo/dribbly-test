@@ -1,0 +1,61 @@
+﻿<div ng-controller="courtDetailsCtrl as vm">
+    <div class="tab-wrap">
+        <div class="media">
+            <div class="pull-left">
+                <ul class="nav nav-tabs nav-stacked">
+                    <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Court&nbsp;Details</a></li>
+                    <li class=""><a href="#my-courts-tab" data-toggle="tab" class="analistic-02">Schedule</a></li>
+                </ul>
+            </div>
+            <div class="parrent media-body">
+                <div class="tab-content">
+                    <div class="tab-pane active transparent-bg" id="court-details-tab">
+                        <div class="photos">
+                            <ng-image-gallery images="vm.court.photos"
+                                              methods="vm.methods"
+                                              thumbnails="true"
+                                              inline="true"
+                                              url-prefix="vm.imageDir"
+                                              img-bubbles="true"
+                                              bubbles="false"
+                                              img-anim="pop"
+                                              show-add-button="true"
+                                              add-file="vm.addPhotos"
+                                              remove-function="vm.removePhoto(index)"
+                                              set-primary="vm.setPrimary(index)"
+                                              show-controls="vm.owned"></ng-image-gallery>
+                        </div>
+                        <div class="details-block">
+                            <h3>Court Details</h3>
+                            <div class="detail-group" >
+                                <label>Court Name:</label>
+                                <span>{{vm.court.name}}</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Address:</label>
+                                <span>{{vm.court.address}}</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Contact #:</label>
+                                <span>{{vm.court.contactNo}}</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Email:</label>
+                                <span>{{vm.court.email}}</span>
+                            </div>
+                            <div class="detail-group">
+                                <label>Rate:</label>
+                                <span>{{vm.court.rate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane col-md-12" id="my-courts-tab">
+                        <p>
+                            This page is not yet available
+                        </p>
+                    </div>
+                </div> <!--/.tab-content-->
+            </div> <!--/.media-body-->
+        </div> <!--/.media-->
+    </div><!--/.tab-wrap-->
+</div>

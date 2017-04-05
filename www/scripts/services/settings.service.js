@@ -2,9 +2,9 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('settings',['genericService', settings]);
+        .service('settings', ['httpService', settings]);
 
-    function settings(genericService) {
+    function settings(httpService) {
         var _useLocalServer = true;
         var _useLocalData = false;
         var _serverRoot = _useLocalServer ? 'http://localhost:52964/' : 'http://drbly-test.somee.com/';
@@ -12,7 +12,7 @@
         var _imageUploadPath = _serverRoot + "files/uploads/images/";
 
         var getSettingsFromServer = function () {
-            genericService.get(_apiBaseUrl + 'settings/').then(
+            httpService.get(_apiBaseUrl + 'settings/').then(
                 function (result) {
                     console.log(result.data);
                 }, function (error) {

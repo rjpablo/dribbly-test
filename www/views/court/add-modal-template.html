@@ -61,6 +61,7 @@
                                   methods="addCourtCtrl.methods"
                                   thumbnails="true"
                                   inline="false"
+                                  url-prefix="addCourtCtrl.imageUploadPath"
                                   img-bubbles="true"
                                   bg-close="true"
                                   bubbles="false"
@@ -69,7 +70,7 @@
                                   add-file="addCourtCtrl.addPhotos"
                                   remove-function="addCourtCtrl.removePhoto(index)"
                                   set-primary="addCourtCtrl.setPrimary(index)"
-                                  allow-remove="true"></ng-image-gallery>
+                                  show-controls="true"></ng-image-gallery>
                 <!-- For upload with multiple progress bars -->
                 <!--<div ng-show="addCourtCtrl.showUploadDetails">
                     <p>{{(addCourtCtrl.uploading?'Uploading files.':'Upload complete!')}}</p>

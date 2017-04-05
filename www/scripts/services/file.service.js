@@ -2,9 +2,9 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('fileService', ['settings','genericService', 'Upload',fileService]);
+        .service('fileService', ['settings', 'httpService', 'Upload', fileService]);
 
-    function fileService(settings, genericService, Upload) {
+    function fileService(settings, httpService, Upload) {
 
         var uploadCourtPhotoUrl = settings.apiBaseURL + 'file/upload';
         var deleteCourtPhotoUrl = settings.apiBaseURL + 'file/delete';
@@ -18,7 +18,7 @@
         }
 
         this.deleteCourtPhoto = function (fileName) {
-            return genericService.delete(deleteCourtPhotoUrl, { filename: fileName })
+            return httpService.delete(deleteCourtPhotoUrl, { filename: fileName })
         }
 
         this.validateFiles = function (file) {

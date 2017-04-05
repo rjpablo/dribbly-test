@@ -69,16 +69,18 @@
 				addFile         :   '&?',
                 allowRemove     :   '=?',       // true|false
                 removeFunction  :   '&?',
-                setPrimary      :   '&?'
+                setPrimary      :   '&?',
+                urlPrefix       :   '=?',       //string
+                showControls    :   '=?'
 			},
 			template : 	'<div class="ng-image-gallery img-move-dir-{{imgMoveDirection}}" ng-class="{inline:inline}">'+
 							
 							// Thumbnails container
 							//  Hide for inline gallery
 							'<div ng-if="thumbnails && !inline" class="ng-image-gallery-thumbnails">'+
-								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (image.thumbUrl || image.url) + \')\' }"  ng-attr-title="{{image.title || undefined}}">' +
-                                    '<span class="remove" ng-if="allowRemove" ng-click="$event.stopPropagation(); removeFunction({index: $index})" ><i class="fa fa-times delete-photo"></i></span>' +
-                                    '<span ng-class="{\'primary-photo\': image.isPrimary}" class="set-primary" ng-if="allowRemove" ng-click="$event.stopPropagation(); setPrimary({index: $index})" ><i class="fa fa-star set-primary"></i></span>' +
+								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (urlPrefix + image.fileName) + \')\' }"  ng-attr-title="{{image.title || undefined}}">' +
+                                    '<span ng-class="{\'primary-photo\': image.isPrimary}" class="set-primary" ng-if="showControls" ng-click="$event.stopPropagation(); setPrimary({index: $index})" ><i class="fa fa-star set-primary"></i></span>' +
+                                    '<span class="remove" ng-if="showControls" ng-click="$event.stopPropagation(); removeFunction({index: $index})" ><i class="fa fa-times delete-photo"></i></span>' +
                                 '</div>' +
                                 //'<div class="thumb" ngf-select="addFile($files)" multiple="multiple" ng-style="{ \'background-image\': \'url(images/icons/grey-plus-3.png)\' }"></div>' +
 							'</div>'+
@@ -101,8 +103,8 @@
 										'<span class="control-button close" ng-click="methods.close();" ng-if="!inline"><i class="fa fa-times"></i></span>' +
 
                                         //'<span class="delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-times"></i></span>' +
-                                        '<span class="control-button delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-trash-o"></i></span>' +
-                                        '<span  class="control-button"  ng-class="{\'primary-photo\': activeImg.isPrimary}" class="set-primary" ng-click="$event.stopPropagation(); setPrimary({index: activeImageIndex})" ><i class="fa fa-star set-primary"></i></span>' +
+                                        '<span ng-if="showControls" class="control-button"  ng-class="{\'primary-photo\': activeImg.isPrimary}" class="set-primary" ng-click="$event.stopPropagation(); setPrimary({index: activeImageIndex})" ><i class="fa fa-star set-primary"></i></span>' +
+                                        '<span ng-if="showControls" class="control-button delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex})" ><i class="fa fa-trash-o"></i></span>' +
                                         //'<i class="fa fa-trash-o delete" ng-click="$event.stopPropagation(); removeFunction({index: activeImageIndex}) "></i>' +
 									'</div>'+
 
@@ -116,7 +118,7 @@
 										
 										// Images container
 										'<div class="galleria-images img-anim-{{imgAnim}} img-move-dir-{{imgMoveDirection}}">' +
-                                            '<img class="galleria-image" ng-repeat="image in images track by $index" ng-right-click ng-if="activeImg == image" ng-src="{{image.url}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}" />' +
+                                            '<img class="galleria-image" ng-repeat="image in images track by $index" ng-right-click ng-if="activeImg == image" ng-src="{{urlPrefix + image.fileName}}" ondragstart="return false;" ng-attr-title="{{image.title || undefined}}" ng-attr-alt="{{image.alt || undefined}}" />' +
 										'</div>'+
 
 										// Bubble navigation container
@@ -177,7 +179,7 @@
 
 					// Process image
 					var img = new Image();
-					img.src = imgObj.url;
+					img.src = scope.urlPrefix + imgObj.fileName;
 					img.onload = function(){
 						// Hide loder
 						if(!imgObj.hasOwnProperty('cached')) scope.hideLoader();
@@ -242,8 +244,10 @@
 				
 				// If images populate dynamically, reset gallery
 				var imagesFirstWatch = true;
-				scope.$watch('images', function(){
-				    scope.resetGallery();
+				scope.$watch('images', function () {
+				    if (scope.images) {
+				        scope.resetGallery();
+				    }
 				});
 
 				scope.resetGallery = function () {

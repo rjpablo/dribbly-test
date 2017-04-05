@@ -23,6 +23,14 @@
         .state('players', {
             url: '/players',
             templateUrl: 'views/player/players.html'
+        })
+
+        .state('court', {
+            url: '/court/{id}',
+            params: {
+                id:null
+            },
+            templateUrl: 'views/court/courtDetails/court.details.html'
         });
 
 
