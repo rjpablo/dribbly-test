@@ -305,8 +305,19 @@ div.image-with-bg{
 /*************************
     Directive Overrides
 **************************/
+
+.ng-image-gallery.inline{
+    padding-top: 15px;
+}
+
 .ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container{
     z-index: 1;
+}
+
+.ng-image-gallery.inline .destroy-icons-container,
+.ng-image-gallery.inline .prev,
+.ng-image-gallery.inline .next{
+    background-color: #efefef;
 }
 
 
@@ -376,6 +387,15 @@ div.image-with-bg{
 
 .ng-image-gallery .ng-image-gallery-thumbnails .thumb:hover i{
     display:inline-block;
+}
+
+.ng-image-gallery.inline .ng-image-gallery-modal .ng-image-gallery-content:before
+{
+    background: #d9d9d9;
+    content: "";
+    opacity: .7;
+    display: block;
+    height: 100%;
 }
 
 /* toaster */

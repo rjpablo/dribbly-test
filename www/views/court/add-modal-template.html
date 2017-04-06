@@ -100,6 +100,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button ng-disabled="addCourtCtrl.galleryPhotos.length < 1 || addCourtForm.$invalid" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">Submit</button>
+    <button ng-disabled="addCourtCtrl.saving || addCourtCtrl.galleryPhotos.length < 1 || addCourtForm.$invalid" class="btn btn-primary" type="button" ng-click="addCourtCtrl.ok()">{{addCourtCtrl.saving?'Saving...':'Submit'}}</button>
     <button class="btn btn-warning" type="button" ng-click="addCourtCtrl.cancel()">Cancel</button>
 </div>

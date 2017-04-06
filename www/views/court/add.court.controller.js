@@ -16,6 +16,8 @@
             rate: 0
         };
 
+        this.saving = false;
+
         this.maxNumOfPhotos = 5;
         this.progress = 0;
         this.uploadingFiles = [] //the files to be uploaded
@@ -180,6 +182,7 @@
 
 
         this.ok = function (e) {
+            __this.saving = true;
             if (__this.court.imagePath) {
                 //__this.court.imagePath = this.galleryPhotos[0].fileName;
                 __this.court.dateRegistered = new Date();
@@ -188,12 +191,15 @@
                 courtContext.register(__this.court).then(
                     function (res) {
                         $uibModalInstance.close(__this.court);
+                        __this.saving = false;
                     }, function (err) {
                         commonServices.handleError(err);
+                        __this.saving = false;
                     }
                 );
             } else {
                 commonServices.toast.error('Please select a primary photo.')
+                __this.saving = false;
             }
         };
 

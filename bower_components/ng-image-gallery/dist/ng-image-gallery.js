@@ -79,8 +79,8 @@
 							//  Hide for inline gallery
 							'<div ng-if="thumbnails && !inline" class="ng-image-gallery-thumbnails">'+
 								'<div class="thumb" ng-repeat="image in images track by $index" ng-click="methods.open($index);" ng-style="{ \'background-image\': \'url(\' + (urlPrefix + image.fileName) + \')\' }"  ng-attr-title="{{image.title || undefined}}">' +
-                                    '<span ng-class="{\'primary-photo\': image.isPrimary}" class="set-primary" ng-if="showControls" ng-click="$event.stopPropagation(); setPrimary({index: $index})" ><i class="fa fa-star set-primary"></i></span>' +
                                     '<span class="remove" ng-if="showControls" ng-click="$event.stopPropagation(); removeFunction({index: $index})" ><i class="fa fa-times delete-photo"></i></span>' +
+                                    '<span ng-class="{\'primary-photo\': image.isPrimary}" class="set-primary" ng-if="showControls" ng-click="$event.stopPropagation(); setPrimary({index: $index})" ><i class="fa fa-star set-primary"></i></span>' +
                                 '</div>' +
                                 //'<div class="thumb" ngf-select="addFile($files)" multiple="multiple" ng-style="{ \'background-image\': \'url(images/icons/grey-plus-3.png)\' }"></div>' +
 							'</div>'+
@@ -95,7 +95,7 @@
 								
 								// Gallery contents container
 								// (hide when image is loading)
-								'<div class="ng-image-gallery-content" ng-show="!imgLoading" ng-click="backgroundClose($event);">'+
+								'<div style="{{inline?\'background: url(\' + urlPrefix + activeImg.fileName + \'); background-size: cover;\': \'\'}}" class="ng-image-gallery-content" ng-show="!imgLoading" ng-click="backgroundClose($event);">' +
 									
 									// destroy icons container
 									'<div class="destroy-icons-container">'+

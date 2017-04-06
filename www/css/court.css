@@ -1,7 +1,6 @@
 ﻿
 .courts-list-item{
-    padding-top: 10px;
-    padding-right: 0;
+    
 }
 
 /*.courts-list-item .court-image{
@@ -16,8 +15,8 @@
 }
 
 .court-details-wrap{
-    padding: 10px;
     background-color: #fff;
+    margin-bottom: 30px;
 }
 
 .courts-list-item .court-details p{
@@ -29,8 +28,7 @@
 }
 
 #find-courts-tab{
-    padding:0;
-    padding-right: 15px;
+    
 }
 
 .rate-form-group{

@@ -1,3 +1,4 @@
+/// <binding AfterBuild='watch' />
 var gulp = require('gulp');
 
 gulp.task('watch',['browserSync'], function () {

@@ -10,7 +10,7 @@
             <div class="parrent media-body">
                 <div class="tab-content">
                     <div class="tab-pane active transparent-bg" id="court-details-tab">
-                        <div class="photos">
+                        <div class="col-lg-12 photos">
                             <ng-image-gallery images="vm.court.photos"
                                               methods="vm.methods"
                                               thumbnails="true"
@@ -25,27 +25,27 @@
                                               set-primary="vm.setPrimary(index)"
                                               show-controls="vm.owned"></ng-image-gallery>
                         </div>
-                        <div class="details-block">
-                            <h3>Court Details</h3>
-                            <div class="detail-group" >
-                                <label>Court Name:</label>
-                                <span>{{vm.court.name}}</span>
-                            </div>
+                        <div class="col-lg-12 details-block">
+                            <h3 class="header">{{vm.court.name}}</h3>
                             <div class="detail-group">
                                 <label>Address:</label>
                                 <span>{{vm.court.address}}</span>
                             </div>
-                            <div class="detail-group">
+                            <div ng-if="vm.court.contactNo" class="detail-group">
                                 <label>Contact #:</label>
                                 <span>{{vm.court.contactNo}}</span>
                             </div>
-                            <div class="detail-group">
+                            <div ng-if="vm.court.email" class="detail-group">
                                 <label>Email:</label>
                                 <span>{{vm.court.email}}</span>
                             </div>
                             <div class="detail-group">
                                 <label>Rate:</label>
                                 <span>{{vm.court.rate}}</span>
+                            </div>
+                            <div ng-if="vm.court.description" class="detail-group">
+                                <label>Description:</label>
+                                <span>{{vm.court.description}}</span>
                             </div>
                         </div>
                     </div>
