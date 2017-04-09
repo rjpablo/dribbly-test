@@ -4,8 +4,8 @@
             <div class="left-side-bar">
                 <div class="left-side-content tab-headers pull-left">
                     <ul class="nav nav-tabs nav-stacked">
-                        <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Court&nbsp;Details</a></li>
-                        <li class=""><a href="#court-schedule-tab" data-toggle="tab" class="analistic-02">Schedule</a></li>
+                        <li class="active"><a ui-sref="" href="#court-details-tab" data-toggle="tab" class="analistic-01">Court&nbsp;Details</a></li>
+                        <li class=""><a ui-sref="" href="#court-schedule-tab" data-toggle="tab" class="analistic-02">Schedule</a></li>
                     </ul>
                 </div>
                 <ng-include src="'views/shared/left-side-contents/quick-links.html'"></ng-include>
@@ -43,7 +43,7 @@
                                 <span>{{vm.court.email}}</span>
                             </div>
                             <div class="detail-group">
-                                <label>Rate/Hour:</label>
+                                <label>Rate per hour:</label>
                                 <span>{{vm.court.rate}}</span>
                             </div>
                             <div ng-if="vm.court.description" class="detail-group">
@@ -53,9 +53,7 @@
                         </div>
                     </div>
                     <div class="tab-pane col-md-12" id="court-schedule-tab">
-                        <p>
-                            This page is not yet available
-                        </p>
+                        <div ui-view="schedule"></div>
                     </div>
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->

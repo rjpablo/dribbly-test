@@ -12,7 +12,7 @@
     $stateProvider
         .state('courts', {
           url: '/courts',
-          templateUrl: 'views/court/courts.html'
+          templateUrl: 'views/courts/courts/courts.html'
         })
 
         .state('games', {
@@ -29,8 +29,23 @@
             url: '/court/{id}',
             params: {
                 id:null
+            },            
+            views: {
+                '':{
+                    templateUrl: 'views/courts/court/details/court.details.html',
+                },
+                'schedule@court': {
+                    templateUrl: 'views/courts/court/schedule/court.schedule.html'
+                }
+            }
+        })
+
+        .state('court.schedule', {
+            url: '/court/{id}',
+            params: {
+                id: null
             },
-            templateUrl: 'views/court/courtDetails/court.details.html'
+            templateUrl: 'views/court/courtDetails/court.schedule.html'
         });
 
 

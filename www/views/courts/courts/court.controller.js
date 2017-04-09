@@ -92,7 +92,7 @@
                 backdrop:'static',
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
-                templateUrl: '/views/court/add-modal-template.html',
+                templateUrl: '/views/courts/courts/add-modal-template.html',
                 controller: 'addCourtCtrl',
                 controllerAs: 'addCourtCtrl',
                 size: size,
