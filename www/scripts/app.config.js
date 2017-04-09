@@ -32,6 +32,23 @@
             templateUrl: 'views/courts/courts/myCourts/my-courts.html'
         })
 
+        .state('court', {
+            abstract: true,
+            default: '.details',
+            url: '/court',
+            templateUrl: 'views/courts/court/court.html'
+        })
+
+        .state('court.details', {
+            url: '/details/{id}',
+            templateUrl: 'views/courts/court/details/court.details.html'
+        })
+
+        .state('court.schedule', {
+            url: '/schedule/{id}',
+            templateUrl: 'views/courts/court/schedule/court.schedule.html'
+        })
+
         .state('games', {
             url: '/games',
             templateUrl: 'views/game/games.html'
@@ -42,28 +59,20 @@
             templateUrl: 'views/player/players.html'
         })
 
-        .state('court', {
-            url: '/court/{id}',
-            params: {
-                id:null
-            },            
-            views: {
-                '':{
-                    templateUrl: 'views/courts/court/details/court.details.html',
-                },
-                'schedule@court': {
-                    templateUrl: 'views/courts/court/schedule/court.schedule.html'
-                }
-            }
-        })
-
-        .state('court.schedule', {
-            url: '/court/{id}',
-            params: {
-                id: null
-            },
-            templateUrl: 'views/court/courtDetails/court.schedule.html'
-        });
+        //.state('court', {
+        //    url: '/court/{id}',
+        //    params: {
+        //        id:null
+        //    },            
+        //    views: {
+        //        '':{
+        //            templateUrl: 'views/courts/court/details/court.details.html',
+        //        },
+        //        'schedule@court': {
+        //            templateUrl: 'views/courts/court/schedule/court.schedule.html'
+        //        }
+        //    }
+        //})
 
 
     $locationProvider.hashPrefix('');

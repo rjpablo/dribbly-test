@@ -3,7 +3,7 @@
 
     angular
         .module('mainApp')
-        .controller('courtCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'courtContext', '$log', courtCtrl]);
+        .controller('courtsCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'courtContext', '$log', courtCtrl]);
 
     function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, courtContext, $log) {
 

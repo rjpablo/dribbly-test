@@ -1,21 +1,18 @@
-﻿<div ng-controller="courtsCtrl as courts">
+﻿<div ng-controller="courtCtrl as courtCtrl">
     <div class="tab-wrap">
         <div class="media">
             <div class="left-side-bar">
                 <div class="left-side-content tab-headers pull-left">
                     <ul class="nav nav-tabs nav-stacked">
-                        <li ng-class="{'active':courts.activeTabIndex == 0}" class=""><a ui-sref="courts.find" class="analistic-01">Find&nbsp;Courts</a></li>
-                        <li ng-class="{'active':courts.activeTabIndex == 1}" class=""><a ui-sref="courts.myCourts" class="analistic-02">My&nbsp;Courts</a></li>
-                        <li ng-class="{'active':courts.activeTabIndex == 2}" class=""><a ui-sref="courts.followed" class="tehnical">Followed&nbsp;Courts</a></li>
+                        <li ng-class="{'active':courtCtrl.activeTabIndex == 0}" class=""><a ui-sref="court.details({id:{{courtCtrl.courtId}}})" ng-click="setActiveTab(0)" class="analistic-01">Court&nbsp;Details</a></li>
+                        <li ng-class="{'active':courtCtrl.activeTabIndex == 1}" class=""><a ui-sref="court.schedule({id:{{courtCtrl.courtId}}})" ng-click="setActiveTab(1)" class="analistic-02">Schedule</a></li>
                     </ul>
                 </div>
                 <ng-include src="'views/shared/left-side-contents/quick-links.html'"></ng-include>
-            </div>
+            </div>                
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    
-                <ui-view></ui-view>                    
-                    
+                    <ui-view></ui-view>                    
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">

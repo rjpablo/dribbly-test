@@ -3,9 +3,11 @@
 
     angular
         .module('mainApp')
-        .controller('courtCtrl', ['settings', 'httpService', 'commonServices', '$stateParams', 'courtContext', courtCtrl]);
+        .controller('courtCtrl', ['$scope', 'settings', 'httpService', 'commonServices', '$stateParams', 'courtContext', courtDetailsCtrl]);
 
-    function courtCtrl(settings, httpService, commonServices, $stateParams, courtContext) {
+    function courtDetailsCtrl($scope, settings, httpService, commonServices, $stateParams, courtContext) {
+
+        $scope.setActiveNavIndex(-1);
 
         var vm = this;
         this.owned = true; //whether or not the viewer owns the court being viewed
@@ -13,8 +15,13 @@
 		this.court = {}
 		this.courtId = $stateParams.id;
 		this.imageDir = settings.imageUploadPath;
+		this.activeTabIndex = 0;
 
 		this.imageUploadPath = settings.imageUploadPath;
+
+		$scope.setActiveTab = function (index) {
+		    vm.activeTabIndex = index;
+		}
 
         var setCourtsSearched = function(courts){
             return courts;
