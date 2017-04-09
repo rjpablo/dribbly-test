@@ -1,0 +1,16 @@
+﻿<div ng-controller="findCourtCtrl as findCourt" class="tab-pane active transparent-bg" id="find-courts-tab">
+    <div class="col-lg-12">
+        <div class="control-panel">
+            <form class="form-inline float-left">
+                <div class="form-group">
+                    <input placeholder="Enter search keyword..." type="text" ng-model="searchKey" />
+                    <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    <a class="button-link" uib-tooltip="Show more search options"><i class="fa fa-caret-down"></i>&nbsp;More&nbsp;Options</a>
+                </div>
+            </form>
+            <a uib-tooltip="Register a new court." class="button-link right-item" ng-click="findCourt.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>
+            <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
+        </div>
+    </div>
+    <courts-list-item court="court" ng-src-prefix="courts.imageUploadPath" ng-repeat="court in findCourt.courtsSearched"></courts-list-item>
+</div>

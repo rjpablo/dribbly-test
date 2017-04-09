@@ -11,8 +11,25 @@
 
     $stateProvider
         .state('courts', {
-          url: '/courts',
-          templateUrl: 'views/courts/courts/courts.html'
+            abstract: true,
+            default: '.find',
+            url: '',
+            templateUrl: 'views/courts/courts/courts.html'
+        })
+
+        .state('courts.find', {
+            url:'/courts',
+            templateUrl: 'views/courts/courts/findCourts/find-courts.html'
+        })
+
+        .state('courts.followed', {
+            url:'/followed',
+            templateUrl: 'views/courts/courts/followedCourts/followed-courts.html'
+        })
+
+        .state('courts.myCourts', {
+            url:'/myCourts',
+            templateUrl: 'views/courts/courts/myCourts/my-courts.html'
         })
 
         .state('games', {

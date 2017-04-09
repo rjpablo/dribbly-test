@@ -11,5 +11,6 @@
                 'ngMessages',
                 'toaster',
                 'ngMap',
+                'ui.router.default'
             ]);
 })();

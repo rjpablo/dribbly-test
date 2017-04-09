@@ -1,42 +1,21 @@
-﻿<div ng-controller="courtCtrl as vm">
+﻿<div ng-controller="courtCtrl as courts">
     <div class="tab-wrap">
         <div class="media">
             <div class="left-side-bar">
                 <div class="left-side-content tab-headers pull-left">
                     <ul class="nav nav-tabs nav-stacked">
-                        <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Find&nbsp;Courts</a></li>
-                        <li class=""><a href="#my-courts-tab" data-toggle="tab" class="analistic-02">My&nbsp;Courts</a></li>
-                        <li class=""><a href="#followed-courts-tab" data-toggle="tab" class="tehnical">Followed&nbsp;Courts</a></li>
+                        <li ng-class="{'active':courts.activeTabIndex == 0}" class=""><a ui-sref="courts.find" class="analistic-01">Find&nbsp;Courts</a></li>
+                        <li ng-class="{'active':courts.activeTabIndex == 1}" class=""><a ui-sref="courts.myCourts" class="analistic-02">My&nbsp;Courts</a></li>
+                        <li ng-class="{'active':courts.activeTabIndex == 2}" class=""><a ui-sref="courts.followed" class="tehnical">Followed&nbsp;Courts</a></li>
                     </ul>
                 </div>
                 <ng-include src="'views/shared/left-side-contents/quick-links.html'"></ng-include>
             </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    <div class="tab-pane active transparent-bg" id="find-courts-tab">
-                        <div class="col-lg-12">
-                            <div class="control-panel">
-                                <form class="form-inline float-left">
-                                    <div class="form-group">
-                                        <input placeholder="Enter search keyword..." type="text" ng-model="searchKey" />
-                                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                        <a class="button-link" uib-tooltip="Show more search options"><i class="fa fa-caret-down"></i>&nbsp;More&nbsp;Options</a>
-                                    </div>
-                                </form>
-                                <a uib-tooltip="Register a new court." class="button-link right-item" ng-click="vm.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>
-                                <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
-                            </div>
-                        </div>
-                        <courts-list-item court="court" ng-src-prefix="vm.imageUploadPath" ng-repeat="court in vm.courtsSearched"></courts-list-item>
-                    </div>
-                    <div class="tab-pane col-md-12" id="my-courts-tab">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <div class="text-container tab-pane col-md-12" id="followed-courts-tab">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
-                    </div>
+                    
+                <ui-view></ui-view>                    
+                    
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">
