@@ -9,15 +9,7 @@
                         <li class=""><a href="#followed-courts-tab" data-toggle="tab" class="tehnical">Followed&nbsp;Courts</a></li>
                     </ul>
                 </div>
-                <div id="quick-links" class="left-side-content extra-content">
-                    <h4>Quick Links</h4>
-                    <ul class="quick-links">
-                        <li><a class="button-link" href="#">Quick link 1</a></li>
-                        <li><a class="button-link" href="#">Quick link 2</a></li>
-                        <li><a class="button-link" href="#">Quick link 3</a></li>
-                        <li><a class="button-link" href="#">Quick link 4</a></li>
-                    </ul>
-                </div>
+                <ng-include src="'views/shared/left-side-contents/quick-links.html'"></ng-include>
             </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
@@ -48,15 +40,7 @@
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">
-                <div id="quick-links" class="left-side-content extra-content">
-                    <h4>Featured Courts</h4>
-                    <ul class="quick-links">
-                        <li><a class="button-link" href="#">Court 1</a></li>
-                        <li><a class="button-link" href="#">Court 2</a></li>
-                        <li><a class="button-link" href="#">Court 3</a></li>
-                        <li><a class="button-link" href="#">Court 4</a></li>
-                    </ul>
-                </div>
+                <ng-include src="'views/shared/right-side-contents/featured-courts.html'"></ng-include>
             </div>
         </div> <!--/.media-->
     </div><!--/.tab-wrap-->
