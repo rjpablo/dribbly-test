@@ -4,7 +4,7 @@
             <div class="pull-left">
                 <ul class="nav nav-tabs nav-stacked">
                     <li class="active"><a href="#find-courts-tab" data-toggle="tab" class="analistic-01">Court&nbsp;Details</a></li>
-                    <li class=""><a href="#my-courts-tab" data-toggle="tab" class="analistic-02">Schedule</a></li>
+                    <li class=""><a href="#court-schedule-tab" data-toggle="tab" class="analistic-02">Schedule</a></li>
                 </ul>
             </div>
             <div class="parrent media-body">
@@ -40,7 +40,7 @@
                                 <span>{{vm.court.email}}</span>
                             </div>
                             <div class="detail-group">
-                                <label>Rate:</label>
+                                <label>Rate/Hour:</label>
                                 <span>{{vm.court.rate}}</span>
                             </div>
                             <div ng-if="vm.court.description" class="detail-group">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane col-md-12" id="my-courts-tab">
+                    <div class="tab-pane col-md-12" id="court-schedule-tab">
                         <p>
                             This page is not yet available
                         </p>

@@ -91,7 +91,6 @@ hr {
 
 a:hover,
 a:focus {
-    color: #fff;
     text-decoration: none;
     outline: none;
 }
@@ -303,117 +302,11 @@ div.image-with-bg{
 
 
 /*************************
-    Directive Overrides
-**************************/
-
-.ng-image-gallery.inline{
-    padding-top: 15px;
-}
-
-.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container{
-    z-index: 1;
-}
-
-.ng-image-gallery.inline .destroy-icons-container,
-.ng-image-gallery.inline .prev,
-.ng-image-gallery.inline .next{
-    background-color: #efefef;
-}
-
-
-.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .control-button {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    vertical-align: bottom;
-    text-align:center;
-}
-
-.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .close:before{
-    background-image:none;
-}
-
-
-.ng-image-gallery .ng-image-gallery-modal .ng-image-gallery-content .destroy-icons-container .control-button:hover {
-    -webkit-transition: background-color 0.3s ease-in-out;
-    transition: background-color 0.3s ease-in-out;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.ng-image-gallery .destroy-icons-container .control-button i{
-    line-height: 30px;
-    font-size: 20px;
-    color:#aaa;
-}
-
-
-
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb {
-    border: 1px solid #ccc;
-    position:relative;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 5px;
-}
-
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb i{
-    display:none;
-    line-height: 1;
-    background: rgba(0, 0, 0, .5);
-    border-radius: 2px;
-    float:right;
-    margin-top: 2px;
-    margin-right: 2px;
-}
-
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb .delete-photo {
-    color: #a94442;
-}
-
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb .set-primary {
-    color: #eee;
-}
-
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb .primary-photo i.set-primary,
-.ng-image-gallery .destroy-icons-container .primary-photo.control-button i.set-primary{
-    display: inline-block;
-    color: #36f636;
-}
-
-.ng-image-gallery .ng-image-gallery-thumbnails .thumb:hover i{
-    display:inline-block;
-}
-
-.ng-image-gallery.inline .ng-image-gallery-modal .ng-image-gallery-content:before
-{
-    background: #d9d9d9;
-    content: "";
-    opacity: .7;
-    display: block;
-    height: 100%;
-}
-
-/* toaster */
-#toast-container>div{
-    opacity:1 !important;
-}
-
-/* ngMap */
-.pac-container {
-    z-index: 1100;
-}
-
-/*************************
       Body
 **************************/
 
 body{
-    background: url("../images/backgrounds/1.jpg") fixed center;
+    /*background: url("../images/backgrounds/1.jpg") fixed center;*/
     /*background-color:transparent;
     background-image:url("../images/backgrounds/1.jpg");*/
 }
@@ -425,10 +318,92 @@ body{
 **************************/
 
 #content{
+    margin-top: 80px;
     min-height: 500px;
     /*background-color: rgba(255, 255, 255, 0.75);*/
-    width: 100%;
+    /*width: 100%;*/
     padding-top: 15px;
+}
+
+
+.left-side-bar{
+    width: 160px;
+}
+
+@media(max-width: 767px){
+    .extra-content{
+        display: none !important;
+    }
+
+    .left-side-bar{
+        width: 100%;
+    }
+}
+
+.center-content{
+    width: 820px;
+}
+
+.right-side-bar{
+    width: 160px;
+}
+
+@media(max-width: 1199px) {
+    .center-content{
+        width: 620px;
+        clear: none !important;
+    }
+}
+
+@media(max-width: 991px) {
+    .center-content {
+        width: 560px;
+        clear: none !important;
+    }
+
+    .right-side-bar {
+        display: none !important;
+    }
+}
+
+/*************************
+*******Left side bar******
+**************************/
+
+.left-side-content {
+    display: inline-block;
+    clear: both;
+    float: left;
+    min-width: 160px;
+    margin-bottom: 30px;
+}
+
+.left-side-content> h4 {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.left-side-content ul {
+    padding: 0;
+}
+
+.left-side-content li{
+    list-style: none;
+}
+
+.left-side-content.extra-content li {
+    height: 22px;
+}
+
+.left-side-content ul:not(.nav) li a {
+    line-height: 22px;
+}
+
+.left-side-content li a{
+    padding-left: 10px;
+    display: block;
 }
 
 /*************************

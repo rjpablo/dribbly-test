@@ -1,6 +1,12 @@
 ﻿/*************************
 *******Header******
 **************************/
+#header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+}
 
 #main-nav .navbar-header, #main-nav .menu-container{
     float: left;

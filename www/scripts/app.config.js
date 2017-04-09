@@ -5,9 +5,9 @@
     .module('mainApp')
     .config(config);
 
-  function config($stateProvider, $urlRouterProvider, $locationProvider) {
+  function config($stateProvider, $urlRouterProvider, $locationProvider, $uibTooltipProvider) {
 
-      $urlRouterProvider.otherwise('courts');
+    $urlRouterProvider.otherwise('courts');
 
     $stateProvider
         .state('courts', {
@@ -35,7 +35,13 @@
 
 
     $locationProvider.hashPrefix('');
-    //$locationProvider.html5Mode(true);
+      //$locationProvider.html5Mode(true);
+
+    $uibTooltipProvider.options({
+        placement: "bottom",
+        animate: true,
+        appenToBody: false
+    })
 
   }
 

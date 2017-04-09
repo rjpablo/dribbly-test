@@ -1,14 +1,23 @@
-﻿.tab-wrap .nav{
+﻿.tab-wrap .media > div{
+    display: inline-block;
+    float: left;
+}
+.tab-wrap .nav{
     border-bottom: none;
 }
 .tab-wrap .nav li {
-    background-color: #326867;
-    color: #fff;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    /*background-color: #326867;*/
+    /*color: #fff;*/
+    /*border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;*/
+    border-bottom: 1px solid #eee;
 }
 
 @media (max-width: 767px){
+
+    .tab-headers{
+        margin-bottom: 5px;
+    }
 
     .tab-wrap .media-body{
         display:block;
@@ -35,7 +44,7 @@
 
 
 .tab-wrap .nav li.active{
-    background-color: #2dc5c3;
+    /*background-color: #2dc5c3;*/
 }
 
 .tab-wrap .tab-pane{
@@ -44,12 +53,13 @@
 
 .tab-wrap .nav-tabs li a{
     margin-right: 0;
-    background-color: transparent !important;
     border:none !important;
+    color: #a0a0a0 ;
 }
 
 .tab-wrap .nav-tabs li.active a {
-    color:#205d5c;
+    color:#545454;
+    font-weight: bold;
 }
 
 .tab-wrap .tab-content{
