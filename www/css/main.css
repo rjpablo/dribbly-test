@@ -331,6 +331,10 @@ body{
 }
 
 @media(max-width: 767px){
+    #content {
+        margin-top: 60px;
+    }
+
     .extra-content{
         display: none !important;
     }

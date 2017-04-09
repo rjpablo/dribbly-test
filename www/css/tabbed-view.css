@@ -17,6 +17,11 @@
 
     .tab-headers{
         margin-bottom: 5px;
+        border-bottom: 1px solid #eee;        
+    }
+
+    .tab-headers .nav li {
+        border-bottom: none;
     }
 
     .tab-wrap .media-body{
