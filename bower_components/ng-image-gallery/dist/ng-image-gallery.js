@@ -190,6 +190,11 @@
 						return deferred.resolve(imgObj);
 					}
 
+					img.onerror = function () {
+					    scope.hideLoader()
+					    return deferred.reject();
+					}
+
 					return deferred.promise;
 				}
 
@@ -200,8 +205,7 @@
 						(
 							scope.images.indexOf(scope.activeImg) - scope.images.indexOf(imgObj) <= 0 && 
 							scope.images.indexOf(scope.activeImg) - scope.images.indexOf(imgObj) != -(scope.images.length - 1)
-						)
-						
+						)						
 					){
 						scope.imgMoveDirection = 'forward';
 					}
@@ -212,6 +216,8 @@
 					// Load image
 					scope.loadImg(imgObj).then(function(imgObj){
 						scope.activeImg = imgObj;
+					}, function (err) {
+					    console.log('Image failed to load');
 					});
 				}
 

@@ -1,0 +1,38 @@
+﻿<div ng-class="registration" ng-controller="registrationCtrl as regCtrl">
+    <h3>Registration</h3>
+    <form name="RegistrationForm" id="registrationForm" class="" data-toggle="validator">
+        <div class="form-group" ng-class="{'has-error':RegistrationForm.username.$invalid && RegistrationForm.username.$touched}">
+            <label class="control-label" for="username">Username:*</label>
+            <input type="text" class="form-control" required minlength="6" name="username" ng-model="regCtrl.userData.Username">
+            <div class="help-block" ng-messages="RegistrationForm.username.$error" role="alert">
+                <div ng-message="required">Username is required.</div>
+                <div ng-message="minlength">Username must be at least 6 characters long.</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':RegistrationForm.email.$invalid && RegistrationForm.email.$touched}">
+            <label class="control-label" for="email">E-mail Address:</label>
+            <input type="email" class="form-control" name="email" required ng-model="regCtrl.userData.Email">
+            <div class="help-block" ng-messages="RegistrationForm.email.$error" role="alert">
+                <div ng-message="required">E-mail address is required.</div>
+                <div ng-message="email">Please enter a valid e-mail address.</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':RegistrationForm.password.$invalid && RegistrationForm.password.$touched}">
+            <label class="control-label" for="password">Password:</label>
+            <input type="password" class="form-control" name="password" required minlength="6" ng-model="regCtrl.userData.Password">
+            <div class="help-block" ng-messages="RegistrationForm.password.$error" role="alert">
+                <div ng-message="required">Password is required.</div>
+                <div ng-message="minlength">Password must be at least 6 characters long.</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':RegistrationForm.confirmPassword.$invalid && RegistrationForm.confirmPassword.$touched}">
+            <label class="control-label" for="confirmPassword">Confirm Password:</label>
+            <input type="password" match-field="regCtrl.userData.Password" match-value="{{regCtrl.userData.Password}}" class="form-control" name="confirmPassword" ng-model="regCtrl.userData.ConfirmPassword">
+            <div class="help-block" ng-messages="RegistrationForm.confirmPassword.$error" role="alert">
+                <div ng-message="required">Password is required.</div>
+                <div ng-message="match">Passwords do not match.</div>
+            </div>
+        </div>
+        <button type="submit" ng-click="regCtrl.Register(RegistrationForm)" class="btn btn-primary">Submit</button>
+    </form>
+</div>

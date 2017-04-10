@@ -9,7 +9,13 @@
 
     $urlRouterProvider.otherwise('courts');
 
-    $stateProvider
+      $stateProvider
+
+          .state('registration', {
+              url: '/registration',
+              templateUrl: 'views/account/registration/registration.html'
+          })
+
         .state('courts', {
             abstract: true,
             default: '.find',

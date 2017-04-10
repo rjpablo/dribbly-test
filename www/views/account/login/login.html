@@ -1,0 +1,29 @@
+﻿
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Login</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="LoginForm" id="loginForm" class="" data-toggle="validator">
+        <h4 ng-if="loginCtrl.message">{{loginCtrl.message}}</h4>
+        <div class="form-group" ng-class="{'has-error':LoginForm.username.$invalid && LoginForm.username.$touched}">
+            <label class="control-label" for="username">Username:*</label>
+            <input type="text" class="form-control" required minlength="6" name="username" ng-model="loginCtrl.userData.Username">
+            <div class="help-block" ng-messages="LoginForm.username.$error" role="alert">
+                <div ng-message="required">Username is required.</div>
+                <div ng-message="minlength">Username must be at least 6 characters long.</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':LoginForm.password.$invalid && LoginForm.password.$touched}">
+            <label class="control-label" for="password">Password:</label>
+            <input type="password" class="form-control" name="password" required minlength="6" ng-model="loginCtrl.userData.Password">
+            <div class="help-block" ng-messages="LoginForm.password.$error" role="alert">
+                <div ng-message="required">Password is required.</div>
+                <div ng-message="minlength">Password must be at least 6 characters long.</div>
+            </div>
+        </div>        
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-disabled="loginCtrl.validating" class="btn btn-primary" type="button" ng-click="loginCtrl.Login(LoginForm)">{{loginCtrl.validating?'Validating...':'Login'}}</button>
+    <button class="btn btn-warning" type="button" ng-click="addCourtCtrl.cancel()">Cancel</button>
+</div>

@@ -11,24 +11,31 @@
 	<!-- core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link href="../bower_components/ng-image-gallery/dist/ng-image-gallery.css" rel="stylesheet" />
+    <link href="../bower_components/AngularJS-Toaster/toaster.min.css" rel="stylesheet" />
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/directive-overrides.css" rel="stylesheet" />
+
+    <!-- custom styles: Generic -->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/header.css" rel="stylesheet" />
     <link href="css/details-block.css" rel="stylesheet" />
-    <link href="css/court.css" rel="stylesheet" />
-    <link href="css/directive-overrides.css" rel="stylesheet" />
-
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="../bower_components/AngularJS-Toaster/toaster.min.css" rel="stylesheet" />
     <link href="css/tabbed-view.css" rel="stylesheet" />
+
+    <!-- custom styles: Page-Specific -->
+    <link href="css/login-modal.css" rel="stylesheet" />
+    <link href="css/registration.css" rel="stylesheet" />
+    <link href="css/court.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    
+    
     <!--<link href="css/prettyPhoto.css" rel="stylesheet">-->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <![endif]-->
+    
     <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
@@ -70,9 +77,11 @@
     <script src="scripts/app.module.js"></script>
     <script src="scripts/app.controller.js"></script>
     <script src="scripts/app.config.js"></script>
+    <script src="scripts/app.run.js"></script>
 
     <!--Services-->
     <script src="scripts/services/settings.service.js"></script>
+    <script src="scripts/services/authentication.service.js"></script>
     <script src="scripts/services/map.service.js"></script>
     <script src="scripts/services/http.service.js"></script>
     <script src="scripts/services/file.service.js"></script>
@@ -84,10 +93,13 @@
 
     <!--Directives-->
     <script src="js/directives/locationPicker/location.picker.directive.js"></script>
+    <script src="js/directives/comparevalidator.directive.js"></script>
 
 
     <!--Controllers-->
+    <script src="views/account/login/login.controller.js"></script>
     <script src="scripts/index.controller.js"></script>
+    <script src="views/account/registration/registration.controller.js"></script>
 
     <!-- Courts -->
     <script src="views/courts/courts/courts.controller.js"></script>
