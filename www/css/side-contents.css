@@ -1,0 +1,29 @@
+﻿.side-content > h4{
+    background-color: #2dc5c3;
+    color: #fff;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 20px;
+    /*border-radius: 4px;*/
+}
+
+.side-content ul {
+    padding: 0;
+}
+
+.side-content li{
+    list-style: none;
+    height: 22px;
+}
+
+.side-content li:hover {
+    background-color: #eee;
+}
+
+.side-content li a {
+    line-height: 22px;
+    text-decoration: none;
+    padding: 0 10px;
+    display: block;
+}

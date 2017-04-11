@@ -225,40 +225,17 @@ body{
 *******Left side bar******
 **************************/
 
-.left-side-content {
-    display: inline-block;
-    clear: both;
-    float: left;
-    min-width: 160px;
+.left-side-bar .tab-headers {
     margin-bottom: 30px;
 }
 
-.left-side-content> h4 {
-    margin: 0;
-    margin-left: 10px;
-    font-size: 14px;
-    line-height: 20px;
-}
-
-.left-side-content ul {
-    padding: 0;
-}
-
-.left-side-content li{
-    list-style: none;
-}
-
-.left-side-content.extra-content li {
-    height: 22px;
-}
-
-.left-side-content ul:not(.nav) li a {
-    line-height: 22px;
-}
-
-.left-side-content li a{
-    padding-left: 10px;
+.left-side-bar .side-content {
     display: block;
+    clear: both;
+}
+
+.left-side-bar .extra-content li {
+    height: 22px;
 }
 
 /*************************

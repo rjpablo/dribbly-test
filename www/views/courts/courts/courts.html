@@ -2,14 +2,14 @@
     <div class="tab-wrap">
         <div class="media">
             <div class="left-side-bar">
-                <div class="left-side-content tab-headers pull-left">
+                <div class="tab-headers pull-left">
                     <ul class="nav nav-tabs nav-stacked">
                         <li ng-class="{'active':courts.activeTabIndex == 0}" class=""><a ui-sref="courts.find" class="analistic-01">Find&nbsp;Courts</a></li>
                         <li ng-class="{'active':courts.activeTabIndex == 1}" class=""><a ui-sref="courts.myCourts" class="analistic-02">My&nbsp;Courts</a></li>
                         <li ng-class="{'active':courts.activeTabIndex == 2}" class=""><a ui-sref="courts.followed" class="tehnical">Followed&nbsp;Courts</a></li>
                     </ul>
                 </div>
-                <ng-include src="'views/shared/left-side-contents/quick-links.html'"></ng-include>
+                <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
             </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
@@ -19,7 +19,7 @@
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">
-                <ng-include src="'views/shared/right-side-contents/featured-courts.html'"></ng-include>
+                <ng-include src="'views/shared/side-contents/featured-courts.html'"></ng-include>
             </div>
         </div> <!--/.media-->
     </div><!--/.tab-wrap-->
