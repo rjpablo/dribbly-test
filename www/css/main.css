@@ -2,173 +2,7 @@
 
 /*Old Red: #c52d2f*/
 
-/*************************
-*******Typography******
-**************************/
 
-body {
-    background: #fff;
-    font-family: 'Open Sans', sans-serif;
-    color: #4e4e4e;
-    line-height: 22px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
-    color: #4e4e4e;
-}
-
-h1 {
-    font-size: 36px;
-    color: #fff;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-h3 {
-    font-size: 16px;
-    color: #787878;
-    font-weight: 400;
-    line-height: 24px;
-}
-
-h4 {
-    font-size: 16px;
-}
-
-a {
-    color: #fff;
-    -webkit-transition: color 300ms, background-color 300ms;
-    -moz-transition: color 300ms, background-color 300ms;
-    -o-transition: color 300ms, background-color 300ms;
-    transition: color 300ms, background-color 300ms;
-}
-
-hr {
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #fff;
-}
-
-.btn{
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: none;
-    color: #fff;
-}
-
-.btn-primary {
-    background: #2dc5c3;
-}
-
-
-.btn-primary:hover {
-    background: #31dddb;
-    outline: none;
-    box-shadow: none;
-}
-
-.btn-primary:focus{
-    background: #2dc5c3;
-}
-
-.btn-transparent {
-    border: 3px solid #fff;
-    background: transparent;
-    color: #fff;
-}
-
-    .btn-transparent:hover {
-        border-color: rgba(255, 255, 255, 0.5);
-    }
-
-a:hover,
-a:focus {
-    text-decoration: none;
-    outline: none;
-}
-
-.dropdown-menu {
-    margin-top: -1px;
-    min-width: 180px;
-}
-
-.center h2 {
-    font-size: 36px;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.media > .pull-left {
-    margin-right: 0;
-    padding-right: 0;
-}
-
-.media > .pull-right {
-    margin-left: 20px;
-}
-
-body > section {
-    padding: 70px 0;
-}
-
-.center {
-    text-align: center;
-    padding-bottom: 55px;
-}
-
-.scaleIn {
-    -webkit-animation-name: scaleIn;
-    animation-name: scaleIn;
-}
-
-.lead {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-}
-
-.transparent-bg {
-    background-color: transparent !important;
-    margin-bottom: 0;
-}
-
-@-webkit-keyframes scaleIn {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-@keyframes scaleIn {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        -ms-transform: scale(0);
-        transform: scale(0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-        transform: scale(1);
-    }
-}
 
 /*************************
     Generics
@@ -298,6 +132,23 @@ div.image-with-bg{
 .menu-icon.player-icon::before{
     background-image: url('../images/icons/basketball-player.svg');
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+/*****************
+    Modals
+*****************/
+
+.modal-dialog .modal-header > * {
+    display: inline-block;
+}
+
+.modal-dialog .modal-header > .close-button {
+    float:right;
+}
+
 
 
 

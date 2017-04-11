@@ -1,4 +1,43 @@
 ﻿.login-modal > .modal-dialog{
-    max-width: 300px;
     margin: 10px auto;
+    width: 60%;
+    min-width: 282px;
+}
+
+.login-modal .modal-body{
+    overflow: auto;
+    padding-bottom: 40px;
+}
+
+.login-modal .modal-body > div {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    min-width: 250px;
+}
+
+@media(min-width: 600px){
+    .login-modal > .modal-dialog{
+        width: 562px;
+    }
+
+    .login-modal  div.left-side{
+        width: 250px;
+        padding-right: 30px;
+        border-right: 1px solid #ccc;
+    }
+
+    .login-modal  div.right-side{
+        width: 250px;
+        margin-left: 30px;
+    }
+
+}
+
+@media(max-width: 599px){
+    .login-modal .btn-social{
+        width: 200px;
+        margin-left:auto;
+        margin-right:auto;
+    }
 }
