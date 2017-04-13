@@ -2,12 +2,12 @@
     'user strict';
 
     angular.module('mainApp')
-        .controller('indexCtrl',['$scope', 'toastService', '$state', 'authentication', indexCtrl]);
+        .controller('indexCtrl',['$scope', 'toastService', '$state', 'authentication', '$rootScope', indexCtrl]);
 
-    function indexCtrl($scope, toastService, $state, authentication) {
+    function indexCtrl($scope, toastService, $state, authentication, $rootScope) {
         var vm = this;
 
-        this.currentUser = null;
+        $scope.currentUser = null;
         this.activeNavIndex = -1;
         this.state = $state;
         this.toastSettings = toastService.settings;
@@ -26,8 +26,16 @@
         }
 
         $scope.setCurrentUser = function (user) {
-            vm.currentUser = user;
+            $scope.currentUser = user;
         }
+
+        $rootScope.$on('AUTHORIZATION_SUCCESSFUL', function (evt, user) {
+            $scope.setCurrentUser(user);
+        });
+
+        $rootScope.$broadcast('AUTHORIZATION_FAILED', function () {
+            $scope.setCurrentUser(null);
+        });
 
     }
 

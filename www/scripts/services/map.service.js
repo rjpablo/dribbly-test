@@ -2,9 +2,9 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('mapService', ['httpService', map]);
+        .service('mapService', ['$http', map]);
 
-    function map(httpService) {
+    function map($http) {
 
         var _getAddressCoordinates = function (address, callback) {
             var geocoder = new google.maps.Geocoder;
@@ -18,7 +18,7 @@
         }
 
         var _getAddress = function (latLng) {
-            return httpService.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latLng.lat() + ',' + latLng.lng() + '&sensor=false');
+            return $http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latLng.lat() + ',' + latLng.lng() + '&sensor=false');
         }
 
         var _getCurrentPosition = function (cbSuccess, cbError) {

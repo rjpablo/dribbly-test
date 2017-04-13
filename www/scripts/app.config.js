@@ -3,7 +3,7 @@
 
   angular
     .module('mainApp')
-    .config(config);
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$uibTooltipProvider', config]);
 
   function config($stateProvider, $urlRouterProvider, $locationProvider, $uibTooltipProvider) {
 

@@ -97,6 +97,11 @@
                 templateUrl: '/views/courts/courts/add-modal-template.html',
                 controller: 'addCourtCtrl',
                 controllerAs: 'addCourtCtrl',
+                resolve: {
+                    currentUser: function(){
+                        return $scope.currentUser
+                    }
+                },
                 size: size,
                 appendTo: parentElem
             });

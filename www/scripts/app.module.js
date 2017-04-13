@@ -11,6 +11,7 @@
                 'ngMessages',
                 'toaster',
                 'ngMap',
-                'ui.router.default'
+                'ui.router.default',
+                'ngStorage'
             ]);
 })();

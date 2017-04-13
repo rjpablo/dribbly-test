@@ -3,9 +3,9 @@
 
     angular
         .module('mainApp')
-        .controller('loginCtrl', ['$scope', 'settings', 'httpService', 'commonServices', 'authentication', 'message', registerFn]);
+        .controller('loginCtrl', ['$scope', 'settings', 'httpService', 'commonServices', 'authentication', 'message', '$location', registerFn]);
 
-    function registerFn($scope, settings, httpService, commonServices, authentication, message) {
+    function registerFn($scope, settings, httpService, commonServices, authentication, message, $location) {
 
         var vm = this;
 
@@ -20,9 +20,9 @@
             if (loginForm.$valid) {
                 authentication.login(vm.userData).then(
                     function (result) {
-                        console.log('Login successful!')
+                        $location.path('courts/')
                     }, function (err) {
-                        console.log('Login failed: ' + err.Message);
+                        commonServices.handleError(err);
                     }
                 )
             }

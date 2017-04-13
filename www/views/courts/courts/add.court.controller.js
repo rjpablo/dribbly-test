@@ -3,9 +3,9 @@
     
     angular
         .module('mainApp')
-        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', 'fileService', 'settings', 'commonServices', 'courtContext', addCourtCtrl]);
+        .controller('addCourtCtrl', ['$uibModalInstance', 'Upload', '$timeout', '$scope', 'fileService', 'settings', 'commonServices', 'courtContext', 'currentUser', addCourtCtrl]);
 
-    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, fileService, settings, commonServices, courtContext) {
+    function addCourtCtrl($uibModalInstance, Upload, $timeout, $scope, fileService, settings, commonServices, courtContext, currentUser) {
 
         this.galleryPhotos = [];
         this.galleryMethods = {};
@@ -187,6 +187,7 @@
                 //__this.court.imagePath = this.galleryPhotos[0].fileName;
                 __this.court.dateRegistered = new Date();
                 __this.court.photos = __this.galleryPhotos;
+                __this.court.userId = currentUser.UserId;
 
                 courtContext.register(__this.court).then(
                     function (res) {

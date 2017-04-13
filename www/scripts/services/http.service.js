@@ -2,17 +2,28 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('httpService', ['$http', genericService]);
+        .service('httpService', ['$http', '$localStorage', genericService]);
 
-    function genericService($http) {
+    function genericService($http, $localStorage) {
         var _get = function (url, data) {
-            return $http.get(url, { params: data });
+            var userData = $localStorage.authorizationData;
+            //return $http.get(url, data, { Authorization: 'Bearer ' + userData.Token });
+            return $http({
+                    method: 'GET',
+                    url: url,
+                    headers: {
+                        'Authorization': 'Bearer ' + userData.Token
+                    },
+                    params: data
+                });
         }
         var _post = function (url, data) {
-            return $http.post(url, data);
+            var userData = $localStorage.authorizationData;
+            return $http.post(url, data, { headers: { Authorization: 'Bearer ' + userData.Token } });
         }
         var _delete = function (url, data) {
-            return $http.delete(url, { params: data });
+            var userData = $localStorage.authorizationData;
+            return $http.delete(url, data, { headers: { Authorization: 'Bearer ' + userData.Token } });
         }
 
         this.get = _get;

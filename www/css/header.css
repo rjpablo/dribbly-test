@@ -38,7 +38,7 @@
 }
 
 .navbar-nav {
-    margin: 7.5px 0px;
+    /*margin: 7.5px 0px;*/
 }
 
 @media (max-width: 767px) {
@@ -46,6 +46,8 @@
     #main-nav .navbar-header{
         margin: 5px 30px 5px 0;
     }
+
+    
 
     .navbar-nav > li > a {
         width: 100%;
@@ -183,6 +185,10 @@ input.search-form {
     padding-bottom: 0;
 }
 
+#show-login-btn-container{
+    margin-top: 6px;
+}
+
 @media (min-width: 768px) {
     /*.navbar > .container > div {
         display: inline-block !important;
@@ -256,6 +262,10 @@ input.search-form {
         padding: 0;
     }
 
+    #show-login-btn-container{
+        margin-top: 12px;
+    }
+
     #main-nav #categories-menu{
         margin:0px;
     }
@@ -264,6 +274,11 @@ input.search-form {
         display:block;
         font-size: 12px;
     }
+    
+    #main-nav .navbar-nav > li{
+        padding-bottom: 0;
+    }
+
 
     .navbar-inverse .navbar-nav > li > a {
         text-align: center;
@@ -273,13 +288,20 @@ input.search-form {
 
 /*Cancels responsiveness of the navbar*/
 
-.navbar-inverse .navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a, #show-login-btn {
     padding: 5px 8px;
     margin: 0;
     border-radius: 3px;
     color: #fff;
     line-height: 24px;
     display: inline-block;
+}
+
+#show-login-btn:hover {
+    color: #fff;
+}
+#show-login-btn {
+    color: #999999;
 }
 
     .navbar-inverse .navbar-nav > li > a:hover,
