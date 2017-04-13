@@ -2,18 +2,59 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('authentication', ['httpService', 'settings', '$uibModal', '$document', '$q', '$localStorage', '$http', '$rootScope', userService]);
+        .service('authentication', ['httpService', 'settings', '$uibModal',
+            '$document', '$q', '$localStorage', '$http', '$rootScope', 'commonServices', userService]);
 
-    function userService(httpService, settings, $uibModal, $document, $q, $localStorage, $http, $rootScope) {
+    function userService(httpService, settings, $uibModal,
+        $document, $q, $localStorage, $http, $rootScope, commonServices) {
         var authorizationData = $localStorage.authorizationData;
         var _userId = '112112';
         var _username = 'RJ';
         var _token = '1234-5678-9012';
+        var _isAuthenticated = false;
+        var _currentUser = null;
 
         var baseURL = settings.apiBaseURL + 'Account/';
 
         var _isLoggedIn = function () {
 
+        }
+
+        var _checkAuthentication = function () {
+            var deferred = $q.defer();
+
+            if (_currentUser) {
+                deferred.resolve()
+            } else {
+                _showLoginModal().then(function (res) {
+                    deferred.resolve();
+                }, function () {
+                    deferred.reject();
+                })
+            }
+
+            return deferred.promise;
+
+        }
+
+        var _retrieveSavedAuthData = function () {
+            var authData = $localStorage.authorizationData
+        }
+
+        var _getCurrentUser = function () {
+            if (!_currentUser){
+                var authData = $localStorage.authorizationData;
+                if (authData && authData.UserId) {
+                    //TODO: Check if token is still valid
+                    _currentUser = {
+                        Username: authData.Username,
+                        UserId: authData.UserId
+                    }
+                } else {
+                    return null;
+                }
+            }
+            return _currentUser;
         }
 
         var _register = function (userData) {
@@ -45,16 +86,24 @@
                 data,
                 { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
             ).then(function (response) {
-                $localStorage.authorizationData = { Token: response.data.access_token, UserName: response.data.userName, refreshToken: "", UseRefreshTokens: false, StaySignedIn: loginData.StaySignedIn };
 
                 _getCurrentUserId().then(function (res) {
-                    var user = {
+                    _currentUser = {
                         Username: loginData.Username,
                         UserId: res.data
                     }
 
-                    $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', user);
-                    deffered.resolve(user)
+                    $localStorage.authorizationData = {
+                        Token: response.data.access_token,
+                        Username: response.data.userName,
+                        refreshToken: "",
+                        UseRefreshTokens: false,
+                        StaySignedIn: loginData.StaySignedIn,
+                        UserId: _currentUser.UserId
+                    };
+
+                    $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
+                    deffered.resolve(_currentUser)
 
                 }, function (userId) {
                     $rootScope.$broadcast('AUTHORIZATION_FAILED');
@@ -70,12 +119,27 @@
         }
 
         var _logout = function () {
+            var deferred = $q.defer();
 
+            httpService.post(
+                baseURL + 'Logout'
+            ).then(function (result) {
+                deferred.resolve()
+            }, function () {
+                deferred.reject()
+            })
+
+            _currentUser = null;
+            delete $localStorage.authorizationData
+            commonServices.toast.info('You have been logged out.');
+
+            return deferred.promise;
         }
 
         var _showLoginModal = function (message) {
+
             var parentElem = angular.element($document[0].querySelector('body'));
-            var addCourtModal = $uibModal.open({
+            var loginModal = $uibModal.open({
                 animation: true,
                 backdrop: true,
                 ariaLabelledBy: 'modal-title',
@@ -93,13 +157,11 @@
                 windowClass: 'login-modal'
             });
 
-            return addCourtModal.result;
+            return loginModal.result;
+
         }
 
         //variables
-        this.userId = _userId;
-        this.username = _username;
-        this.token = _token;
 
         //functions
         this.register = _register;
@@ -107,6 +169,8 @@
         this.logout = _logout;
         this.isLoggedIn = _isLoggedIn;
         this.showLoginModal = _showLoginModal;
+        this.getCurrentUser = _getCurrentUser;
+        this.checkAuthentication = _checkAuthentication;
 
     }
 

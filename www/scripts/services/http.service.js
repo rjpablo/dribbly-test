@@ -5,25 +5,42 @@
         .service('httpService', ['$http', '$localStorage', genericService]);
 
     function genericService($http, $localStorage) {
-        var _get = function (url, data) {
-            var userData = $localStorage.authorizationData;
-            //return $http.get(url, data, { Authorization: 'Bearer ' + userData.Token });
+        var _get = function (url, data, addAuthHeader) {
+            var headers = {};
+            if (addAuthHeader !== false) {
+                var userData = $localStorage.authorizationData;
+                if (userData) {
+                    headers = { 'Authorization': 'Bearer ' + userData.Token }
+                }
+            }
+
             return $http({
                     method: 'GET',
                     url: url,
-                    headers: {
-                        'Authorization': 'Bearer ' + userData.Token
-                    },
+                    headers: headers,
                     params: data
                 });
         }
-        var _post = function (url, data) {
-            var userData = $localStorage.authorizationData;
-            return $http.post(url, data, { headers: { Authorization: 'Bearer ' + userData.Token } });
+        var _post = function (url, data, addAuthHeader) {
+            var headers = {};
+            if (addAuthHeader !== false) {
+                var userData = $localStorage.authorizationData;
+                if (userData) {
+                    headers = { 'Authorization': 'Bearer ' + userData.Token }
+                }
+            }
+
+            return $http.post(url, data, { headers: headers });
         }
-        var _delete = function (url, data) {
-            var userData = $localStorage.authorizationData;
-            return $http.delete(url, data, { headers: { Authorization: 'Bearer ' + userData.Token } });
+        var _delete = function (url, data, addAuthHeader) {
+            var headers = {};
+            if (addAuthHeader !== false) {
+                var userData = $localStorage.authorizationData;
+                if (userData) {
+                    headers = { 'Authorization': 'Bearer ' + userData.Token }
+                }
+            }
+            return $http.delete(url, data, { headers: headers });
         }
 
         this.get = _get;

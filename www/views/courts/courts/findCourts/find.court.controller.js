@@ -3,9 +3,9 @@
 
     angular
         .module('mainApp')
-        .controller('findCourtCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'courtContext', courtCtrl]);
+        .controller('findCourtCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'courtContext', 'authentication', courtCtrl]);
 
-    function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, courtContext) {
+    function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, courtContext, authentication) {
 
         var vm = this;
 
@@ -87,31 +87,36 @@
         vm.animationsEnabled = true;
 
         vm.openAddModal = function (size, parentSelector) {
-            var parentElem = parentSelector ?
+            
+            authentication.checkAuthentication().then(function () {
+                var parentElem = parentSelector ?
               angular.element($document[0].querySelector(parentSelector)) : undefined;
-            var addCourtModal = $uibModal.open({
-                animation: vm.animationsEnabled,
-                backdrop:'static',
-                ariaLabelledBy: 'modal-title',
-                ariaDescribedBy: 'modal-body',
-                templateUrl: '/views/courts/courts/add-modal-template.html',
-                controller: 'addCourtCtrl',
-                controllerAs: 'addCourtCtrl',
-                resolve: {
-                    currentUser: function(){
-                        return $scope.currentUser
-                    }
-                },
-                size: size,
-                appendTo: parentElem
-            });
+                var addCourtModal = $uibModal.open({
+                    animation: vm.animationsEnabled,
+                    backdrop: 'static',
+                    ariaLabelledBy: 'modal-title',
+                    ariaDescribedBy: 'modal-body',
+                    templateUrl: '/views/courts/courts/add-modal-template.html',
+                    controller: 'addCourtCtrl',
+                    controllerAs: 'addCourtCtrl',
+                    resolve: {
+                        currentUser: function () {
+                            return $scope.currentUser
+                        }
+                    },
+                    size: size,
+                    appendTo: parentElem
+                });
 
-            addCourtModal.result.then(function (court) {
-                commonServices.toast.success('New court has been added successfully.')
-                vm.addCourt(court);
-            }, function (reason) {
-                //commonServices.toast.info('No new court was added.')
-            });
+                addCourtModal.result.then(function (court) {
+                    commonServices.toast.success('New court has been added successfully.')
+                    vm.addCourt(court);
+                }, function (reason) {
+                    //commonServices.toast.info('No new court was added.')
+                });
+            }, function () {
+
+            })            
         };
 
         this.addCourt = function (court) {

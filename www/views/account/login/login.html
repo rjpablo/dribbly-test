@@ -1,7 +1,7 @@
 ﻿
 <div class="modal-header">
     <h3 class="modal-title" id="modal-title">Log In Using Your Account</h3>
-    <h3 class="modal-title close-button" ><a class="button-link" ng-click="loginCtrl.close()" ><i class="fa fa-times"></i></a></h3>
+    <h3 class="modal-title close-button" ><a class="button-link" ng-click="loginCtrl.closeModal()" ><i class="fa fa-times"></i></a></h3>
 </div>
 <div class="modal-body" id="modal-body">
     <div class="left-side">
@@ -27,7 +27,7 @@
                 <label><input type="checkbox"> Remember me</label>
             </div>
             <button name="login-button" ng-disabled="loginCtrl.validating" class="btn btn-primary btn-block" type="button" ng-click="loginCtrl.Login(LoginForm)">{{loginCtrl.validating?'Validating...':'Login'}}</button>
-            <p style="text-align:center;" >Don't have an account? <a class="button-link" ui-sref="registration" >Register</a></p>
+            <p style="text-align:center;" >Don't have an account? <a class="button-link" ng-click="loginCtrl.register()" >Register</a></p>
         </form>
     </div>
     <div class="right-side" >

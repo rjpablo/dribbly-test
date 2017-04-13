@@ -7,7 +7,7 @@
     function indexCtrl($scope, toastService, $state, authentication, $rootScope) {
         var vm = this;
 
-        $scope.currentUser = null;
+        $scope.currentUser = authentication.getCurrentUser();
         this.activeNavIndex = -1;
         this.state = $state;
         this.toastSettings = toastService.settings;
@@ -27,6 +27,17 @@
 
         $scope.setCurrentUser = function (user) {
             $scope.currentUser = user;
+        }
+
+        $scope.logOut = function () {
+
+            $scope.currentUser = null
+
+            authentication.logout().then(function (result) {
+
+            }, function (result) {
+                console.log('User may have not been successfully logged out from the server.')
+            })
         }
 
         $rootScope.$on('AUTHORIZATION_SUCCESSFUL', function (evt, user) {
