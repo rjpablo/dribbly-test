@@ -88,7 +88,8 @@
 
         vm.openAddModal = function (size, parentSelector) {
             
-            authentication.checkAuthentication('Please log in to proceed.').then(function () {
+            authentication.checkAuthentication('Please log in to proceed.').then(function (res) {
+
                 var parentElem = parentSelector ?
               angular.element($document[0].querySelector(parentSelector)) : undefined;
                 var addCourtModal = $uibModal.open({
@@ -110,7 +111,7 @@
 
                 addCourtModal.result.then(function (court) {
                     commonServices.toast.success('New court has been added successfully.')
-                    vm.addCourt(court);
+                    vm.addCourt(court.data);
                 }, function (reason) {
                     //commonServices.toast.info('No new court was added.')
                 });

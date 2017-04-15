@@ -191,8 +191,7 @@
 
                 courtContext.register(__this.court).then(
                     function (res) {
-                        $uibModalInstance.close(__this.court);
-                        __this.saving = false;
+                        $uibModalInstance.close(res);
                     }, function (err) {
                         commonServices.handleError(err);
                         __this.saving = false;

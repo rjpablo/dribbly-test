@@ -21,15 +21,16 @@
         }
 
         var _checkAuthentication = function (message) {
-            var deferred = $q.defer();
+            
+            var deferred = $q.defer()
 
             if (_currentUser) {
-                deferred.resolve()
+                deferred.resolve(_currentUser)
             } else {
                 _showLoginModal(message).then(function (res) {
-                    deferred.resolve();
-                }, function () {
-                    deferred.reject();
+                    deferred.resolve(_currentUser)
+                }, function (res) {
+                    deferred.reject()
                 })
             }
 
@@ -81,15 +82,23 @@
 
             var data = "grant_type=password&username=" + encodeURIComponent(loginData.Username) + "&Password=" + encodeURIComponent(loginData.Password);
 
-            return $http.post(
+            $http.post(
                 settings.serverRootURL + '/Token',
                 data,
                 { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
             ).then(function (response) {
 
-                var deffered = $q.defer();
+                $localStorage.authorizationData = {
+                    Token: response.data.access_token,
+                    Username: response.data.userName,
+                    refreshToken: "",
+                    UseRefreshTokens: false,
+                    StaySignedIn: loginData.StaySignedIn,
+                    UserId: ""
+                };
 
                 _getCurrentUserId().then(function (res) {
+
                     _currentUser = {
                         Username: loginData.Username,
                         UserId: res.data
@@ -105,7 +114,8 @@
                     };
 
                     $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
-                    deffered.resolve(_currentUser)
+
+                    deffered.resolve(_currentUser);
 
                 }, function (userId) {
                     $rootScope.$broadcast('AUTHORIZATION_FAILED');

@@ -41,6 +41,7 @@
         }
 
         $rootScope.$on('AUTHORIZATION_SUCCESSFUL', function (evt, user) {
+            console.log('(indexCtrl) Received user: ' + user)
             $scope.setCurrentUser(user);
         });
 

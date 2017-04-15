@@ -1,6 +1,6 @@
 ﻿<div class="courts-list-item col-md-4 col-sm-6 col-xs-12">
     <div class="court-details-wrap">
-        <a ui-sref="court.details({id:{{court.id}}})"><div style="background:url({{ngSrcPrefix + court.imagePath}}) no-repeat center; background-size: cover" class="image-with-bg court-image-wrap"><img class="court-image" ng-src="{{ngSrcPrefix + court.imagePath}}" /></div></a>
+        <a ui-sref="court.details({id:{{court.id}}})"><div style="background:url({{ngSrcPrefix + court.userId + '/' +  court.imagePath}}) no-repeat center; background-size: cover" class="image-with-bg court-image-wrap"><img class="court-image" ng-src="{{ngSrcPrefix + court.userId + '/' + court.imagePath}}" /></div></a>
         <div ng-cloak class="court-details">
             <h4 class="button-link ellipsis"><a ui-sref="court.details({id:{{court.id}}})">{{court.name}}</a></h4>
             <p><b>Rate: </b><span>{{court.rate}}</span></p>
