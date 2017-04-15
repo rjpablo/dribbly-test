@@ -88,7 +88,7 @@
 
         vm.openAddModal = function (size, parentSelector) {
             
-            authentication.checkAuthentication().then(function () {
+            authentication.checkAuthentication('Please log in to proceed.').then(function () {
                 var parentElem = parentSelector ?
               angular.element($document[0].querySelector(parentSelector)) : undefined;
                 var addCourtModal = $uibModal.open({

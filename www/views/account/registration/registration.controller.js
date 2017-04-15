@@ -20,7 +20,8 @@
             if (regForm.$valid) {
                 authentication.register(vm.userData).then(
                     function (result) {
-                        console.log('Registration successful!')
+                        vm.userData = null;
+                        authentication.showLoginModal('Your registration was successful! You may now login.');
                     }, function (err) {
                         console.log('Registration failed: ' + err.Message);
                     }

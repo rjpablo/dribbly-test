@@ -10,7 +10,7 @@
         this.galleryPhotos = [];
         this.galleryMethods = {};
         this.progress;
-        this.imageUploadPath = settings.imageUploadPath;
+        this.imageUploadPath = settings.imageUploadPath + currentUser.UserId + '/';
         this.map = {};
         this.court = {
             rate: 0
@@ -51,13 +51,13 @@
         }
 
         function deleteCourtPhoto(fileName, index) {
-            //fileService.deleteCourtPhoto(fileName).then(
-            //    function () {
-            //        //commonServices.toast.info('Photo deleted')
-            //    }, function () {
-            //        commonServices.log.error('Failed to delete photo: ' + fileName);
-            //    }
-            //);
+            fileService.deleteCourtPhoto(fileName, currentUser.UserId).then(
+                function () {
+                    //commonServices.toast.info('Photo deleted')
+                }, function () {
+                    commonServices.log.error('Failed to delete photo: ' + fileName);
+                }
+            );
 
             __this.methods.delete(index);
 
@@ -65,7 +65,7 @@
 
         this.deleteAllPhotos = function () {
             if(__this.galleryPhotos.length > 0) {
-                fileService.deleteCourtPhoto(__this.galleryPhotos[0].fileName).then(function () {
+                fileService.deleteCourtPhoto(__this.galleryPhotos[0].fileName, currentUser.UserId).then(function () {
                     __this.methods.delete(0);
                     __this.deleteAllPhotos();
                 }, function () {
@@ -75,7 +75,7 @@
         }
 
         this.uploadPic = function (file) {
-            return fileService.uploadCourtPhoto(file);
+            return fileService.uploadCourtPhoto(file, currentUser.UserId);
         }
 
         this.uploadFiles = function (files) {

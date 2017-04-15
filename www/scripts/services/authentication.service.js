@@ -20,13 +20,13 @@
 
         }
 
-        var _checkAuthentication = function () {
+        var _checkAuthentication = function (message) {
             var deferred = $q.defer();
 
             if (_currentUser) {
                 deferred.resolve()
             } else {
-                _showLoginModal().then(function (res) {
+                _showLoginModal(message).then(function (res) {
                     deferred.resolve();
                 }, function () {
                     deferred.reject();
@@ -87,6 +87,8 @@
                 { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
             ).then(function (response) {
 
+                var deffered = $q.defer();
+
                 _getCurrentUserId().then(function (res) {
                     _currentUser = {
                         Username: loginData.Username,
@@ -107,7 +109,7 @@
 
                 }, function (userId) {
                     $rootScope.$broadcast('AUTHORIZATION_FAILED');
-                    deffered.reject();
+                    deffered.reject('Unable to retrieve current user.');
                 });
                 
             }, function (response) {
