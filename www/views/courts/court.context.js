@@ -21,11 +21,20 @@
             return fileService.deleteCourtPhoto(fileName, userId);
         }
 
+        var _updateCourt = function (court) {
+            return httpService.put(settings.apiBaseURL + 'court/update/', court);
+        }
+
+        var _updatePrimaryPhoto = function (courtId, fileName) {
+            return httpService.put(encodeURI(settings.apiBaseURL + 'court/setPrimaryPhoto/?courtId=' + courtId + '&fileName=' + fileName));
+        }
 
         this.register = _register;
         this.getCourts = _getCourts;
         this.getCourtDetails = _getCourtDetails;
         this.deletePhoto = _deletePhoto;
+        this.updateCourt = _updateCourt;
+        this.updatePrimaryPhoto = _updatePrimaryPhoto;
 
         return this;
 

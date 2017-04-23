@@ -10,7 +10,7 @@
         $scope.setActiveNavIndex(-1);
 
         var vm = this;
-        this.owned = true; //whether or not the viewer owns the court being viewed
+        this.owned; //whether or not the viewer owns the court being viewed
 	    
 		this.court = {}
 		this.courtId = $stateParams.id;
@@ -56,11 +56,17 @@
         }//dummy court
 
         this.setPrimary = function (index) {
-            vm.court.imagePath = vm.court.photos[index].fileName
-            for (var x = 0; x < vm.court.photos.length; x++) {
-                vm.court.photos[x].isPrimary = false;
-            }
-            vm.court.photos[index].isPrimary = true;
+            courtContext.updatePrimaryPhoto(vm.court.id, vm.court.photos[index].fileName).then(
+                function (result) {
+                    vm.court.imagePath = vm.court.photos[index].fileName
+                    for (var x = 0; x < vm.court.photos.length; x++) {
+                        vm.court.photos[x].isPrimary = false;
+                    }
+                    vm.court.photos[index].isPrimary = true;
+                    commonServices.toast.info("Primary photo has been updated!");
+                }, function (error) {
+                    commonServices.handleError(error);
+                });
         }
 
         this.setPrimaryByFileName = function (fileName) {
@@ -82,6 +88,9 @@
                 vm.court = result.data
                 if (vm.court) {
                     vm.setPrimaryByFileName(vm.court.imagePath);
+                    if ($scope.currentUser) {
+                        vm.owned = ($scope.currentUser.UserId == vm.court.userId)
+                    }
                 }
             }, function (error) {
                 commonServices.handleError(error);

@@ -49,11 +49,17 @@
         }//dummy court
 
         this.setPrimary = function (index) {
-            vm.court.imagePath = vm.court.photos[index].fileName
-            for (var x = 0; x < vm.court.photos.length; x++) {
-                vm.court.photos[x].isPrimary = false;
-            }
-            vm.court.photos[index].isPrimary = true;
+            courtContext.updatePrimaryPhoto(vm.court.id, vm.court.photos[index].fileName).then(
+                function (result) {
+                    vm.court.imagePath = vm.court.photos[index].fileName
+                    for (var x = 0; x < vm.court.photos.length; x++) {
+                        vm.court.photos[x].isPrimary = false;
+                    }
+                    vm.court.photos[index].isPrimary = true;
+                    commonService.toast.info("Primary photo has been updated!");
+                }, function (error) {
+                    commonServices.handleError(error);
+                });            
         }
 
         this.setPrimaryByFileName = function (fileName) {

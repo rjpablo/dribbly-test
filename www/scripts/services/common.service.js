@@ -9,7 +9,7 @@
         var _handleError = function (error) {
             switch (error.status) {
                 case 400: //bad request
-                    toastService.error(error.data.Message);
+                    toastService.error(error.data.message);
                     $log.error(error.data.Message)
                     break;
                 case 401: //unauthorized
@@ -17,14 +17,26 @@
                     $log.error(error.data.Message);
                     break;
                 case 500: //internal server error
-                    toastService.error('An internal error occured. Please try again.');
-                    $log.error(
+                    if (error.data) {
+                        if (error.data.userMessage) {
+                            toastService.error('error.data.userMessage');
+                        } else {
+                            toastService.error('An internal error occured. Please try again.');
+                        }
+
+                        $log.error(
                         'Exception Message: ' + error.data.ExceptionMessage + '\n' +
                         'StackTrace: ' + error.data.StackTrace
                         )
+
+                    } else {
+                        toastService.error('An internal error occured. Please try again.');
+                    }                   
+                    
                     break;
                 case -1: //Unable to connect to server
-                    toastService.error('Couldn\'t connect to the server. Please try again later.');
+                    toastService.error('An unexpected error occured.');
+                    $log.error('Could not send request.')
                     break;
                 default: //unknown error
                     toastService.error('An unknown error occured.');

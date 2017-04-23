@@ -66,7 +66,8 @@
                     Email: userData.Email,
                     Password: userData.Password,
                     ConfirmPassword: userData.ConfirmPassword
-                }
+                },
+                false
             );
         }
 
@@ -80,7 +81,7 @@
 
             var deffered = $q.defer();
 
-            var data = "grant_type=password&username=" + encodeURIComponent(loginData.Username) + "&Password=" + encodeURIComponent(loginData.Password);
+            var data = "grant_type=password&username=" + encodeURIComponent(loginData.Username) + "&Password=" + encodeURIComponent(loginData.Password) + '&client_id=dribbly-web';
 
             $http.post(
                 settings.serverRootURL + '/Token',
@@ -91,36 +92,20 @@
                 $localStorage.authorizationData = {
                     Token: response.data.access_token,
                     Username: response.data.userName,
-                    refreshToken: "",
+                    refreshToken: response.data.refresh_token,
                     UseRefreshTokens: false,
                     StaySignedIn: loginData.StaySignedIn,
-                    UserId: ""
+                    UserId: response.data.userId
                 };
 
-                _getCurrentUserId().then(function (res) {
+                _currentUser = {
+                    Username: loginData.Username,
+                    UserId: response.data.userId
+                }
 
-                    _currentUser = {
-                        Username: loginData.Username,
-                        UserId: res.data
-                    }
+                $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
 
-                    $localStorage.authorizationData = {
-                        Token: response.data.access_token,
-                        Username: response.data.userName,
-                        refreshToken: "",
-                        UseRefreshTokens: false,
-                        StaySignedIn: loginData.StaySignedIn,
-                        UserId: _currentUser.UserId
-                    };
-
-                    $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
-
-                    deffered.resolve(_currentUser);
-
-                }, function (userId) {
-                    $rootScope.$broadcast('AUTHORIZATION_FAILED');
-                    deffered.reject('Unable to retrieve current user.');
-                });
+                deffered.resolve(_currentUser);
                 
             }, function (response) {
                 $rootScope.$broadcast('AUTHORIZATION_FAILED');
