@@ -77,6 +77,12 @@
     overflow:auto;
 }
 
+.tab-content .tab-content-header {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #2dc5c3;
+}
+
 .tab-pane > div{
     /*padding: 15px;
     padding-left: 15px;

@@ -227,6 +227,7 @@ body{
 
 .left-side-bar .tab-headers {
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .left-side-bar .side-content {
