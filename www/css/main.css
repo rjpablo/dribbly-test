@@ -112,7 +112,7 @@ div.image-with-bg{
 
 .menu-icon::before {
     content: "";
-    display: inline-block;
+    display: block;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 24px;
@@ -169,11 +169,17 @@ body{
 **************************/
 
 #content{
-    margin-top: 80px;
+    margin-top: 60px;
     min-height: 500px;
     /*background-color: rgba(255, 255, 255, 0.75);*/
     /*width: 100%;*/
     padding-top: 15px;
+}
+
+@media(max-width: 519px){
+    #content {
+        padding: 15px 0;
+    }
 }
 
 
@@ -196,16 +202,17 @@ body{
 }
 
 .center-content{
-    width: 820px;
+    width:680px;
+    padding: 0 15px;
 }
 
 .right-side-bar{
-    width: 160px;
+    width: 300px;
 }
 
 @media(max-width: 1199px) {
     .center-content{
-        width: 620px;
+        width: 480px;
         clear: none !important;
     }
 }
@@ -221,13 +228,25 @@ body{
     }
 }
 
+@media(max-width: 767px) {
+    .center-content {
+        padding: 0;
+    }
+}
+
 /*************************
 *******Left side bar******
 **************************/
 
 .left-side-bar .tab-headers {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     width: 100%;
+}
+
+@media(max-width: 767px) {
+    .left-side-bar .tab-headers {
+        margin-bottom: 0;
+    }
 }
 
 .left-side-bar .side-content {

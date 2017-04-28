@@ -3,7 +3,7 @@
 **************************/
 
 body {
-    background: #fff;
+    background: #f1f1f1;
     font-family: 'Open Sans', sans-serif;
     color: #4e4e4e;
     line-height: 22px;
@@ -163,4 +163,38 @@ body > section {
         -ms-transform: scale(1);
         transform: scale(1);
     }
+}
+
+@font-face {
+   font-family: dribbly; 
+   src: url('../fonts/dribbly/fonts/icomoon.woff');
+} 
+
+.dr-font{
+    display: inline-block;
+    font-family: dribbly;    
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size: 24px;
+}
+
+.dr-font.court-inclined::before{
+    content: '\e903';
+}
+
+.dr-font.players::before{
+    content: '\e901';
+}
+
+.dr-font.games::before{
+    content: '\e904';
+}
+
+.dr-font.trashcan::before{
+    content: '\e905';
+}
+
+.dr-font.court-horizontal::before{
+    content: '\e900';
 }

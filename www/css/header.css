@@ -6,6 +6,11 @@
     width: 100%;
     top: 0;
     z-index: 3;
+    box-shadow: 0px 2px 2px #888888;
+}
+
+#main-nav .navbar-header{
+    margin: 0;
 }
 
 #main-nav .navbar-header, #main-nav .menu-container{
@@ -44,7 +49,7 @@
 @media (max-width: 767px) {
 
     #main-nav .navbar-header{
-        margin: 5px 30px 5px 0;
+        /*margin-right: 30px;*/
     }
 
     
@@ -67,11 +72,11 @@
     }
 
     #user-menu .navbar-nav .dropdown-toggle{
-        height: 60px;
-        padding: 16px 12px;
+        /*height: 60px;
+        padding: 16px 12px;*/
     }
 
-    .navbar-inverse .navbar-nav .dropdown-menu{
+    #main-nav .navbar-nav .dropdown-menu{
         /*background-color:transparent !important;*/
     }
 }
@@ -122,21 +127,21 @@ ul.social-share li {
     display: inline-block;
 }
 
-    ul.social-share li a {
-        display: inline-block;
-        color: #fff;
-        background: #404040;
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        text-align: center;
-        border-radius: 2px;
-    }
+ul.social-share li a {
+    display: inline-block;
+    color: #fff;
+    background: #404040;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 2px;
+}
 
-        ul.social-share li a:hover {
-            background: #c52d2f;
-            color: #fff;
-        }
+ul.social-share li a:hover {
+    background: #c52d2f;
+    color: #fff;
+}
 
 #profile_pic {
     height: 24px;
@@ -180,8 +185,7 @@ input.search-form {
 .navbar {
     border-radius: 0;
     margin-bottom: 0;
-    background: #151515;
-    padding: 15px 0;
+    background: #fff;
     padding-bottom: 0;
 }
 
@@ -189,55 +193,37 @@ input.search-form {
     margin-top: 6px;
 }
 
-@media (min-width: 768px) {
-    /*.navbar > .container > div {
-        display: inline-block !important;
-    }
-    #categories-menu {
-        margin-left: 35px;
+@media (min-width: 768px) {    
+
+    #main-nav .navbar-header{
+        width: 160px;
     }
 
-    .navbar-nav > li{
-        margin-left: 10px !important;
-        margin-bottom: -5px;
+    #main-nav .navbar-right{
+        margin-right: 0;
     }
-    
-    #user-menu{
-        display:inline-block;
-    }
-    
-    #user-menu-mob{
-        display:none;
-    }*/
+
 }
 
 /*Cancels responsiveness of the navbar*/
 
 #main-nav .menu-container, #main-nav .navbar-header{
-    display:inline-block !important;
-}
-
-#main-nav .navbar-header{
-    margin-right: 20px;
-    margin-bottom: 0 !important;
+    display:inline-block;
 }
 
 
 #main-nav .navbar-brand>img{
     height:100%;
+    margin: 0 auto;
 }
 
 #main-nav .menu-container{
-    
+    padding: 0 15px;
     margin:0 !important;
 }
 
 #main-nav .navbar-toggle{
     display:none !important;
-}
-
-#main-nav .navbar-nav {    
-    margin-top: 6px;
 }
 
 .navbar-nav > li {
@@ -246,6 +232,7 @@ input.search-form {
     float:left !important;
     padding-bottom: 18px;
     margin-left: 5px !important;
+    padding: 12px 0 13px;
 }
 
 #user-menu-mob{
@@ -255,6 +242,18 @@ input.search-form {
 #user-menu{
     display:inline-block !important;
     float:right;
+}
+
+#main-nav .navbar-nav > li > a,
+#show-login-btn,
+#main-nav .dropdown-toggle{
+    padding: 5px 8px;
+    margin: 0;
+    border-radius: 3px;
+    color: #777;
+    line-height: 24px;
+    display: inline-flex;
+    background-color: transparent !important;
 }
 
 @media (max-width: 767px) {
@@ -270,32 +269,45 @@ input.search-form {
         margin:0px;
     }
 
-    #main-nav .menu-text{
+    #main-nav .menu-icon{
+        display: inline;
+    }
+
+
+    #main-nav .menu-text,
+    #main-nav .username{
         display:block;
         font-size: 12px;
     }
     
     #main-nav .navbar-nav > li{
-        padding-bottom: 0;
+        padding: 0;
     }
 
 
-    .navbar-inverse .navbar-nav > li > a {
+    #main-nav .navbar-nav > li > a {
         text-align: center;
     }
 
+    #main-nav .navbar-nav > li > a,
+    #show-login-btn,
+    #main-nav .dropdown-toggle {
+        display: inline-block;
+    }
+
+
 }
 
-/*Cancels responsiveness of the navbar*/
+@media(max-width:374px){
+    #main-nav .navbar-header{
+        display:none;
+    }
 
-.navbar-inverse .navbar-nav > li > a, #show-login-btn {
-    padding: 5px 8px;
-    margin: 0;
-    border-radius: 3px;
-    color: #fff;
-    line-height: 24px;
-    display: inline-block;
+    #main-nav .menu-container{
+        padding: 0;
+    }
 }
+
 
 #show-login-btn:hover {
     color: #fff;
@@ -304,75 +316,77 @@ input.search-form {
     color: #999999;
 }
 
-    .navbar-inverse .navbar-nav > li > a:hover,
-    .navbar-inverse .dropdown-menu > li > a:hover {
-        background-color: #c52d2f !important;
-        color: #fff;
+    #main-nav .navbar-nav > li > a:hover,
+    #main-nav .dropdown-menu > li > a:hover {
+        color: #2dc5c3;
     }
 
-.navbar-inverse {
+#main-nav {
     border: none;
 }
 
-    .navbar-inverse .navbar-brand {
-        font-size: 36px;
-        line-height: 50px;
-        color: #fff;
-    }
+#main-nav .navbar-brand {
+    font-size: 36px;
+    line-height: 50px;
+    color: #fff;
+    width: 100%;
+    height: 60px;
+}
 
-    .navbar-inverse .navbar-nav > .active > a,
-    .navbar-inverse .navbar-nav > .active > a:hover,
-    .navbar-inverse .navbar-nav > .active > a:focus
-    /*.navbar-inverse .navbar-nav > .open > a,*/
-    /*.navbar-inverse .navbar-nav > .open > a:hover,*/
-    /*.navbar-inverse .navbar-nav > .open > a:focus */{
-        background-color: #c52d2f;
-        color: #fff;
-    }
+#main-nav .navbar-nav > .active > a,
+#main-nav .navbar-nav > .active > a:hover,
+#main-nav .navbar-nav > .active > a:focus
+/*#main-nav .navbar-nav > .open > a,*/
+/*#main-nav .navbar-nav > .open > a:hover,*/
+/*#main-nav .navbar-nav > .open > a:focus */{
+    color: #2dc5c3;
+}
 
-    .navbar-inverse .navbar-nav > .active > a {
-        font-weight: bold;
-        text-decoration: underline;
-    }
+#main-nav .navbar-nav > .active > a {
+    font-weight: bold;
+}
 
-    .navbar-inverse .navbar-nav .dropdown-menu {
-        background-color: rgba(0,0,0,.85);
-        -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
-        -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
-        border: 0;
-        padding: 0;
-        margin-top: 0;
-        border-top: 0;
-        border-radius: 0;
-        left:initial !important;
-        right: 0;
-        position:absolute;
-    }
+#main-nav .navbar-nav > .active > a .menu-text{
+    text-decoration: underline;
+}
 
-        .navbar-inverse .navbar-nav .dropdown-menu:before {
-            position: absolute;
-            top: 0;
-        }
+#main-nav .navbar-nav .dropdown-menu {
+    background-color: #fff;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+    border: 0;
+    padding: 0;
+    margin-top: 0;
+    border-top: 0;
+    border-radius: 0;
+    left:initial !important;
+    right: 0;
+    position:absolute;
+}
 
-        .navbar-inverse .navbar-nav .dropdown-menu > li > a {
-            padding: 8px 15px;
-            color: #fff;
-        }
+#main-nav .navbar-nav .dropdown-menu:before {
+    position: absolute;
+    top: 0;
+}
 
-        .navbar-inverse .navbar-nav .dropdown-menu > li:hover > a,
-        .navbar-inverse .navbar-nav .dropdown-menu > li:focus > a,
-        .navbar-inverse .navbar-nav .dropdown-menu > li.active > a {
-            background-color: #c52d2f;
-            color: #fff;
-        }
+#main-nav .navbar-nav .dropdown-menu > li > a {
+    padding: 8px 15px;
+    color: #777;
+}
 
-        .navbar-inverse .navbar-nav .dropdown-menu > li:last-child > a {
-            border-radius: 0 0 3px 3px;
-        }
+#main-nav .navbar-nav .dropdown-menu > li:hover > a,
+#main-nav .navbar-nav .dropdown-menu > li:focus > a,
+#main-nav .navbar-nav .dropdown-menu > li.active > a {
+    color: #777;
+}
 
-    .navbar-inverse .navbar-collapse,
-    .navbar-inverse .navbar-form {
-        border-top: 0;
-        padding-bottom: 0;
-    }
+#main-nav .navbar-nav .dropdown-menu > li:last-child > a {
+    border-radius: 0 0 3px 3px;
+}
+
+#main-nav .navbar-collapse,
+#main-nav .navbar-form {
+    border-top: 0;
+    padding-bottom: 0;
+}

@@ -43,6 +43,13 @@
         }
 
         var _getCurrentUser = function () {
+            if (settings.useLocalData) {
+                _currentUser = {
+                    Username: 'Test',
+                    UserId: 'test-user'
+                }
+                return _currentUser;
+            }
             if (!_currentUser){
                 var authData = $localStorage.authorizationData;
                 if (authData && authData.UserId) {

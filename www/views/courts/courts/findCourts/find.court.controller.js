@@ -26,7 +26,8 @@
                 address: '#123 Paraiso St., Makati City, Manila',
                 rate: '200',
                 contactNo: '+63 932 987 7865',
-                imagePath: '1.jpg'
+                imagePath: '1.jpg',
+                userId: 'test-user'
             },
             {
                 id: 2,
@@ -34,7 +35,8 @@
                 address: '#123 Pinaglabanan St., San Juan, Manila',
                 rate: '250',
                 contactNo: '+63 932 123 7865',
-                imagePath: '2.jpg'
+                imagePath: '2.jpg',
+                userId: 'test-user'
             },
             {
                 id: 3,
@@ -42,7 +44,8 @@
                 address: '#33 Connecticut St., Sampaloc City, Manila',
                 rate: '500',
                 contactNo: '+63 932 123 5665',
-                imagePath: '3.jpg'
+                imagePath: '3.jpg',
+                userId: 'test-user'
             },
             {
                 id: 4,
@@ -50,7 +53,8 @@
                 address: '#123 Paraiso St., Makati City, Manila',
                 rate: '200',
                 contactNo: '+63 932 987 7865',
-                imagePath: '4.jpg'
+                imagePath: '4.jpg',
+                userId: 'test-user'
             },
             {
                 id: 5,
@@ -58,7 +62,8 @@
                 address: '#123 Pinaglabanan St., San Juan, Manila',
                 rate: '250',
                 contactNo: '+63 932 123 7865',
-                imagePath: '5.jpg'
+                imagePath: '5.jpg',
+                userId: 'test-user'
             },
             {
                 id: 6,
@@ -66,7 +71,62 @@
                 address: '#33 Connecticut St., Sampaloc City, Manila',
                 rate: '500',
                 contactNo: '+63 932 123 5665',
-                imagePath: '2.jpg'
+                imagePath: '2.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 1,
+                name: 'Ballers Court',
+                address: '#123 Paraiso St., Makati City, Manila',
+                rate: '200',
+                contactNo: '+63 932 987 7865',
+                imagePath: '1.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 2,
+                name: 'Masters Court',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
+                rate: '250',
+                contactNo: '+63 932 123 7865',
+                imagePath: '2.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 3,
+                name: 'XYZ Basketball Court',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
+                rate: '500',
+                contactNo: '+63 932 123 5665',
+                imagePath: '3.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 4,
+                name: 'Ballers Court',
+                address: '#123 Paraiso St., Makati City, Manila',
+                rate: '200',
+                contactNo: '+63 932 987 7865',
+                imagePath: '4.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 5,
+                name: 'Masters Court',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
+                rate: '250',
+                contactNo: '+63 932 123 7865',
+                imagePath: '5.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 6,
+                name: 'XYZ Basketball Court',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
+                rate: '500',
+                contactNo: '+63 932 123 5665',
+                imagePath: '2.jpg',
+                userId: 'test-user'
             }
         ];//Sample Courts
 		

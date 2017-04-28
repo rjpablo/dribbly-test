@@ -2,9 +2,9 @@
     'user strict';
 
     angular.module('mainApp')
-        .controller('indexCtrl',['$scope', 'toastService', '$state', 'authentication', '$rootScope', indexCtrl]);
+        .controller('indexCtrl',['$scope', 'toastService', '$state', 'authentication', '$rootScope', 'settings', indexCtrl]);
 
-    function indexCtrl($scope, toastService, $state, authentication, $rootScope) {
+    function indexCtrl($scope, toastService, $state, authentication, $rootScope, settings) {
         var vm = this;
 
         $scope.currentUser = authentication.getCurrentUser();

@@ -6,9 +6,12 @@
 
     function settings(httpService) {
         var _useLocalServer = true;
-        var _useLocalData = false;
+        var _doNotUseBackend = true;
+        var _useLocalData = true;
         var _serverRoot = _useLocalServer ? 'http://localhost:52964/' : 'http://drbly-test.somee.com/';
-        _serverRoot = 'http://localhost:58266/' //AngularJS Authentiation Project URl
+        _serverRoot = _doNotUseBackend ? 'http://localhost:8888/' : _serverRoot
+        
+        //_serverRoot = 'http://localhost:58266/' //AngularJS Authentiation Project URl
         var _apiBaseUrl = _serverRoot + 'api/';
         var _imageUploadPath = _serverRoot + "files/uploads/images/";
 

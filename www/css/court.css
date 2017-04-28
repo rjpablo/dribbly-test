@@ -34,3 +34,9 @@
 .rate-form-group{
     max-width:240px;
 }
+
+@media(max-width:520px){
+    .courts-list-item{
+        width: 100%;
+    }
+}
