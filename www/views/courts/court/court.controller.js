@@ -28,7 +28,7 @@
         }
 
         var tempCourt = {
-            id: 1,
+            userId: 'test-user',
             name: 'MGM Basketball Court',
             address: '#123 Paraiso St., Makati City, Manila',
             rate: '200',

@@ -74,6 +74,15 @@ p{
     margin-top: 10px;
 }
 
+.form-control{
+    height: 28px;
+    padding: 4px 12px;
+}
+
+.btn {
+    padding: 4px 8px;
+}
+
 div.image-with-bg{
     display: block;
     height:180px;

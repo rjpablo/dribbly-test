@@ -12,6 +12,7 @@
                 'toaster',
                 'ngMap',
                 'ui.router.default',
-                'ngStorage'
+                'ngStorage',
+                'rzModule'
             ]);
 })();

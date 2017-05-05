@@ -10,6 +10,13 @@
         var vm = this;
 
         $scope.setActiveTab(0);
+
+        vm.searchCriteria = {
+            rangeMin: 0,
+            rangeMax: 1000,
+            courtName: '',
+            city: ''
+        };
 	
 		this.courtsSearched = {};
 
@@ -142,7 +149,9 @@
             });
         }        
 
-        //getCourts(setCourtsSearched);
+        vm.search = function (criteria) {
+            courtContext.searchCourts(criteria)
+        }
 
         vm.animationsEnabled = true;
 

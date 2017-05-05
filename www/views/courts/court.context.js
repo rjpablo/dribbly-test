@@ -29,12 +29,17 @@
             return httpService.put(encodeURI(settings.apiBaseURL + 'court/setPrimaryPhoto/?courtId=' + courtId + '&fileName=' + fileName));
         }
 
+        var _searchCourts = function (criteria) {
+            return httpService.get(settings.apiBaseURL + 'courts/search', { searchCriteria: criteria })
+        }
+
         this.register = _register;
         this.getCourts = _getCourts;
         this.getCourtDetails = _getCourtDetails;
         this.deletePhoto = _deletePhoto;
         this.updateCourt = _updateCourt;
         this.updatePrimaryPhoto = _updatePrimaryPhoto;
+        this.searchCourts = _searchCourts;
 
         return this;
 
