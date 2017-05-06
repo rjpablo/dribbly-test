@@ -43,7 +43,7 @@
 
                             $scope.cities = ['--Any City--', 'Makati', 'Ortigas', 'Mandaluyong', 'Manila', 'Sampaloc', 'Pasig']
 
-                            if (!searchCriteria) {
+                            if (searchCriteria.rangeMin == null || searchCriteria.rangeMax == null) {
                                 $scope.searchCriteria = {
                                     rangeMin: $scope.slider.options.floor,
                                     rangeMax: $scope.slider.options.ceil

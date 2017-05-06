@@ -12,8 +12,6 @@
         $scope.setActiveTab(0);
 
         vm.searchCriteria = {
-            rangeMin: 0,
-            rangeMax: 1000,
             courtName: '',
             city: '',
             address: ''
@@ -24,21 +22,26 @@
         vm.sortIndex = 0;
         vm.sortObjects = [
             {
-                description: 'Nearest First',
+                description: 'Court Name (Ascending)',
                 field: 'name',
                 reversed: false
             },
             {
-                description: 'Cheapest First',
+                description: 'Court Name (Descending)',
+                field: 'name',
+                reversed: true
+            },
+            {
+                description: 'Rate (Ascending)',
                 field: 'rate',
                 reversed: false
             },
             {
-                description: 'Most Expensive First',
+                description: 'Rate (Ascending)',
                 field: 'rate',
                 reversed: true
             }
-        ]
+        ]//Sort Objects
         vm.sortObject = vm.sortObjects[0]
         vm.searchCriteriaStr = '';
 

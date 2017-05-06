@@ -15,7 +15,7 @@
         </div>
         <div class="list-summary">
             <p><span><strong>{{findCourt.courtsSearched.length}} items found</strong></span> <span class="small">{{findCourt.searchCriteriaStr}}</span></p>
-            <span>Sort:</span> <select ng-model="findCourt.sortObject" ng-options="obj.description for obj in findCourt.sortObjects" ng-change="findCourt.sort()"></select>
+            <span>Sort By:</span> <select ng-model="findCourt.sortObject" ng-options="obj.description for obj in findCourt.sortObjects" ng-change="findCourt.sort()"></select>
         </div>
     </div>
     <courts-list-item court="court" ng-src-prefix="courts.imageUploadPath" ng-repeat="court in findCourt.courtsSearched | orderBy:findCourt.sortObject.field:findCourt.sortObject.reversed"></courts-list-item>
