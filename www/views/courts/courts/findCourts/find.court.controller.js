@@ -13,9 +13,9 @@
 
         vm.searchCriteria = {
             courtName: '',
+            address: '',
             city: '',
-            address: ''
-        };
+        }
 
         vm.sortField = 'rate'
         vm.sortReverse = true;
@@ -37,13 +37,14 @@
                 reversed: false
             },
             {
-                description: 'Rate (Ascending)',
+                description: 'Rate (Descending)',
                 field: 'rate',
                 reversed: true
             }
         ]//Sort Objects
         vm.sortObject = vm.sortObjects[0]
         vm.searchCriteriaStr = '';
+        vm.filtered = false; //whether or not the list is filtered
 
         this.courtsSearched = {};
 
@@ -53,10 +54,20 @@
             return courts;
         }
 
+        this.updateList = function () {
+            courtContext.getCourts(vm.filtered?vm.searchCriteria:undefined).then(
+            function (result) {
+                vm.courtsSearched = result.data
+            }, function (error) {
+                commonServices.handleError(error);
+                vm.courtsSearched = null;
+            });
+        }
+
         if (settings.useLocalData) {
             this.courtsSearched = courtContext.getTestCourts();
         } else {
-            courtContext.getCourts().then(
+            courtContext.getCourts(null).then(
             function (result) {
                 vm.courtsSearched = result.data
             }, function (error) {
@@ -66,21 +77,31 @@
         }
 
         vm.search = function (criteria) {
-            courtContext.searchCourts(criteria)
+            courtContext.getCourts(criteria).then(
+                function (res) {
 
-            var temp = '';
+                    vm.courtsSearched = res.data;
 
-            if (criteria.courtName != '') {
-                temp = temp + 'Name contains "' + criteria.courtName + '", '
-            }
+                    var temp = '(';
 
-            if (criteria.address != '') {
-                temp = temp + 'Address contains "' + criteria.address + '", '
-            }
+                    if (criteria.courtName) {
+                        temp = temp + 'Name contains "' + criteria.courtName + '", '
+                    }
 
-            temp = temp + 'Rate: ₱' + criteria.rangeMin + ' - ₱' + criteria.rangeMax;
+                    if (criteria.address) {
+                        temp = temp + 'Address contains "' + criteria.address + '", '
+                    }
 
-            vm.searchCriteriaStr = temp;
+                    temp = temp + 'Rate: ₱' + criteria.rangeMin + ' - ₱' + criteria.rangeMax + ')';
+
+                    vm.searchCriteriaStr = temp;
+
+                    vm.filtered = true;
+
+                }, function (err) {
+                    commonServices.handleError(err)
+                }
+            )
 
         }
 
@@ -111,7 +132,7 @@
 
                 addCourtModal.result.then(function (court) {
                     commonServices.toast.success('New court has been added successfully.')
-                    vm.addCourt(court.data);
+                    vm.updateList();
                 }, function (reason) {
                     //commonServices.toast.info('No new court was added.')
                 });
@@ -124,21 +145,18 @@
             vm.courtsSearched.push(court);
         }
 
-        vm.sort = function () {
-            switch (vm.sortIndex) {
-                case '1':
-                    vm.sortField = 'rate'
-                    vm.sortReverse = false;
-                    break;
-                case '2':
-                    vm.sortField = 'rate'
-                    vm.sortReverse = true;
-                    break;
-                default:
-                    vm.sortField = 'name'
-                    vm.sortReverse = false;
-                    break;
+        this.resetFilters = function () {
+            vm.searchCriteria = {
+                courtName: '',
+                address: '',
+                city: '',
             }
+
+            vm.searchCriteriaStr = ''
+            vm.filtered = false;
+
+            vm.updateList();
+
         }
 
     };

@@ -3,7 +3,7 @@
         <a ui-sref="court.details({id:{{court.id}}})"><div style="background:url({{ngSrcPrefix + court.userId + '/' +  court.imagePath}}) no-repeat center; background-size: cover" class="image-with-bg court-image-wrap"><img class="court-image" ng-src="{{ngSrcPrefix + court.userId + '/' + court.imagePath}}" /></div></a>
         <div ng-cloak class="court-details">
             <h4 class="button-link ellipsis"><a ui-sref="court.details({id:{{court.id}}})">{{court.name}}</a></h4>
-            <p><b>Rate: </b><span>{{court.rate}}</span></p>
+            <p><b>Rate: </b><span>₱{{court.rate}}</span></p>
             <p class="ellipsis"><b>Address: </b><span>{{court.address}}</span></p>
             <p><b>Contact #: </b><span>{{court.contactNo}}</span></p>
         </div>

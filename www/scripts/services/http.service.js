@@ -10,7 +10,7 @@
             if (addAuthHeader !== false) {
                 var userData = $localStorage.authorizationData;
                 if (userData) {
-                    headers = { 'Authorization': 'Bearer ' + userData.Token }
+                    headers = { 'Authorization': 'Bearer ' + userData.Token}
                 }
             }
 

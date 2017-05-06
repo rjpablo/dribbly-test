@@ -2,11 +2,15 @@
     'user strict';
 
     angular.module('mainApp')
-        .service('courtContext', ['httpService', 'settings', 'fileService', courtContext]);
+        .service('courtContext', ['httpService', 'settings', 'fileService', '$q', courtContext]);
 
-    function courtContext(httpService, settings, fileService) {
-        var _getCourts = function () {
-            return httpService.get(settings.apiBaseURL + 'courts')
+    function courtContext(httpService, settings, fileService, $q) {
+        var _getCourts = function (filters) {
+            if (filters) {
+                return httpService.post(settings.apiBaseURL + 'courts', filters)
+            } else {
+                return httpService.post(settings.apiBaseURL + 'courts')
+            }
         }
 
         var _getCourtDetails = function (courtId) {
@@ -31,6 +35,14 @@
 
         var _searchCourts = function (criteria) {
             return httpService.get(settings.apiBaseURL + 'courts/search', { searchCriteria: criteria })
+        }
+
+        var _getMaxRate = function () {
+            var deferred = $q.defer();
+
+            deferred.resolve(2000);
+
+            return deferred.promise;
         }
 
         var _getTestCourts = function () {
@@ -154,6 +166,7 @@
         this.updatePrimaryPhoto = _updatePrimaryPhoto;
         this.searchCourts = _searchCourts;
         this.getTestCourts = _getTestCourts;
+        this.getMaxRate = _getMaxRate;
 
         return this;
 
