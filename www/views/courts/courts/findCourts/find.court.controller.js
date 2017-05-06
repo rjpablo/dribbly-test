@@ -15,130 +15,43 @@
             rangeMin: 0,
             rangeMax: 1000,
             courtName: '',
-            city: ''
+            city: '',
+            address: ''
         };
-	
-		this.courtsSearched = {};
 
-		this.imageUploadPath = settings.imageUploadPath;
+        vm.sortField = 'rate'
+        vm.sortReverse = true;
+        vm.sortIndex = 0;
+        vm.sortObjects = [
+            {
+                description: 'Nearest First',
+                field: 'name',
+                reversed: false
+            },
+            {
+                description: 'Cheapest First',
+                field: 'rate',
+                reversed: false
+            },
+            {
+                description: 'Most Expensive First',
+                field: 'rate',
+                reversed: true
+            }
+        ]
+        vm.sortObject = vm.sortObjects[0]
+        vm.searchCriteriaStr = '';
 
-        var setCourtsSearched = function(courts){
+        this.courtsSearched = {};
+
+        this.imageUploadPath = settings.imageUploadPath;
+
+        var setCourtsSearched = function (courts) {
             return courts;
         }
 
-        this.tempCourts = [
-            {
-                id: 1,
-                name: 'Ballers Court',
-                address: '#123 Paraiso St., Makati City, Manila',
-                rate: '200',
-                contactNo: '+63 932 987 7865',
-                imagePath: '1.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 2,
-                name: 'Masters Court',
-                address: '#123 Pinaglabanan St., San Juan, Manila',
-                rate: '250',
-                contactNo: '+63 932 123 7865',
-                imagePath: '2.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 3,
-                name: 'XYZ Basketball Court',
-                address: '#33 Connecticut St., Sampaloc City, Manila',
-                rate: '500',
-                contactNo: '+63 932 123 5665',
-                imagePath: '3.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 4,
-                name: 'Ballers Court',
-                address: '#123 Paraiso St., Makati City, Manila',
-                rate: '200',
-                contactNo: '+63 932 987 7865',
-                imagePath: '4.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 5,
-                name: 'Masters Court',
-                address: '#123 Pinaglabanan St., San Juan, Manila',
-                rate: '250',
-                contactNo: '+63 932 123 7865',
-                imagePath: '5.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 6,
-                name: 'XYZ Basketball Court',
-                address: '#33 Connecticut St., Sampaloc City, Manila',
-                rate: '500',
-                contactNo: '+63 932 123 5665',
-                imagePath: '2.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 1,
-                name: 'Ballers Court',
-                address: '#123 Paraiso St., Makati City, Manila',
-                rate: '200',
-                contactNo: '+63 932 987 7865',
-                imagePath: '1.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 2,
-                name: 'Masters Court',
-                address: '#123 Pinaglabanan St., San Juan, Manila',
-                rate: '250',
-                contactNo: '+63 932 123 7865',
-                imagePath: '2.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 3,
-                name: 'XYZ Basketball Court',
-                address: '#33 Connecticut St., Sampaloc City, Manila',
-                rate: '500',
-                contactNo: '+63 932 123 5665',
-                imagePath: '3.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 4,
-                name: 'Ballers Court',
-                address: '#123 Paraiso St., Makati City, Manila',
-                rate: '200',
-                contactNo: '+63 932 987 7865',
-                imagePath: '4.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 5,
-                name: 'Masters Court',
-                address: '#123 Pinaglabanan St., San Juan, Manila',
-                rate: '250',
-                contactNo: '+63 932 123 7865',
-                imagePath: '5.jpg',
-                userId: 'test-user'
-            },
-            {
-                id: 6,
-                name: 'XYZ Basketball Court',
-                address: '#33 Connecticut St., Sampaloc City, Manila',
-                rate: '500',
-                contactNo: '+63 932 123 5665',
-                imagePath: '2.jpg',
-                userId: 'test-user'
-            }
-        ];//Sample Courts
-		
         if (settings.useLocalData) {
-            this.courtsSearched = this.tempCourts;
+            this.courtsSearched = courtContext.getTestCourts();
         } else {
             courtContext.getCourts().then(
             function (result) {
@@ -147,16 +60,31 @@
                 commonServices.handleError(error);
                 vm.courtsSearched = null;
             });
-        }        
+        }
 
         vm.search = function (criteria) {
             courtContext.searchCourts(criteria)
+
+            var temp = '';
+
+            if (criteria.courtName != '') {
+                temp = temp + 'Name contains "' + criteria.courtName + '", '
+            }
+
+            if (criteria.address != '') {
+                temp = temp + 'Address contains "' + criteria.address + '", '
+            }
+
+            temp = temp + 'Rate: ₱' + criteria.rangeMin + ' - ₱' + criteria.rangeMax;
+
+            vm.searchCriteriaStr = temp;
+
         }
 
         vm.animationsEnabled = true;
 
         vm.openAddModal = function (size, parentSelector) {
-            
+
             authentication.checkAuthentication('Please log in to proceed.').then(function (res) {
 
                 var parentElem = parentSelector ?
@@ -186,11 +114,28 @@
                 });
             }, function () {
 
-            })            
+            })
         };
 
         this.addCourt = function (court) {
             vm.courtsSearched.push(court);
+        }
+
+        vm.sort = function () {
+            switch (vm.sortIndex) {
+                case '1':
+                    vm.sortField = 'rate'
+                    vm.sortReverse = false;
+                    break;
+                case '2':
+                    vm.sortField = 'rate'
+                    vm.sortReverse = true;
+                    break;
+                default:
+                    vm.sortField = 'name'
+                    vm.sortReverse = false;
+                    break;
+            }
         }
 
     };

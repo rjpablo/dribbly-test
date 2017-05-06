@@ -71,7 +71,7 @@
                         size: 'md'
                     });
                     courtSearchModal.result.then(function (searchCriteria) {
-                        vm.searchCriteria = searchCriteria;
+                        scope.searchCriteria = searchCriteria;
                         scope.onSubmit({ criteria: searchCriteria })
                     }, function (reason) {
                         //commonServices.toast.info('No new court was added.')

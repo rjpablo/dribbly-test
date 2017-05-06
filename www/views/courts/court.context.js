@@ -33,6 +33,119 @@
             return httpService.get(settings.apiBaseURL + 'courts/search', { searchCriteria: criteria })
         }
 
+        var _getTestCourts = function () {
+            return [
+            {
+                id: 1,
+                name: 'Ballers Court',
+                address: '#123 Paraiso St., Makati City, Manila',
+                rate: '400',
+                contactNo: '+63 932 987 7865',
+                imagePath: '1.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 2,
+                name: 'Masters Court',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
+                rate: '250',
+                contactNo: '+63 932 123 7865',
+                imagePath: '2.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 3,
+                name: 'XYZ Basketball Court',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
+                rate: '550',
+                contactNo: '+63 932 123 5665',
+                imagePath: '3.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 4,
+                name: 'Ballers Court',
+                address: '#123 Paraiso St., Makati City, Manila',
+                rate: '200',
+                contactNo: '+63 932 987 7865',
+                imagePath: '4.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 5,
+                name: 'Masters Court',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
+                rate: '250',
+                contactNo: '+63 932 123 7865',
+                imagePath: '5.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 6,
+                name: 'XYZ Basketball Court',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
+                rate: '500',
+                contactNo: '+63 932 123 5665',
+                imagePath: '2.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 1,
+                name: 'Ballers Court',
+                address: '#123 Paraiso St., Makati City, Manila',
+                rate: '250',
+                contactNo: '+63 932 987 7865',
+                imagePath: '1.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 2,
+                name: 'Masters Court',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
+                rate: '750',
+                contactNo: '+63 932 123 7865',
+                imagePath: '2.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 3,
+                name: 'XYZ Basketball Court',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
+                rate: '800',
+                contactNo: '+63 932 123 5665',
+                imagePath: '3.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 4,
+                name: 'Ballers Court',
+                address: '#123 Paraiso St., Makati City, Manila',
+                rate: '450',
+                contactNo: '+63 932 987 7865',
+                imagePath: '4.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 5,
+                name: 'Masters Court',
+                address: '#123 Pinaglabanan St., San Juan, Manila',
+                rate: '400',
+                contactNo: '+63 932 123 7865',
+                imagePath: '5.jpg',
+                userId: 'test-user'
+            },
+            {
+                id: 6,
+                name: 'XYZ Basketball Court',
+                address: '#33 Connecticut St., Sampaloc City, Manila',
+                rate: '550',
+                contactNo: '+63 932 123 5665',
+                imagePath: '2.jpg',
+                userId: 'test-user'
+            }
+            ];
+        }
+
         this.register = _register;
         this.getCourts = _getCourts;
         this.getCourtDetails = _getCourtDetails;
@@ -40,6 +153,7 @@
         this.updateCourt = _updateCourt;
         this.updatePrimaryPhoto = _updatePrimaryPhoto;
         this.searchCourts = _searchCourts;
+        this.getTestCourts = _getTestCourts;
 
         return this;
 

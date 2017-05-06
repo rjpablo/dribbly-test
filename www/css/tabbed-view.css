@@ -103,6 +103,10 @@
     background-color: #fff;
 }
 
+.tab-wrap .list-summary{
+    margin-bottom: 15px;
+}
+
 .tab-wrap .control-panel .right-item{
     display: inline-block;
     float: right;

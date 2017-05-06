@@ -13,6 +13,10 @@
             <!--<a uib-tooltip="Register a new court." class="button-link right-item" ng-click="findCourt.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>-->
             <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
         </div>
+        <div class="list-summary">
+            <p><span><strong>{{findCourt.courtsSearched.length}} items found</strong></span> <span class="small">{{findCourt.searchCriteriaStr}}</span></p>
+            <span>Sort:</span> <select ng-model="findCourt.sortObject" ng-options="obj.description for obj in findCourt.sortObjects" ng-change="findCourt.sort()"></select>
+        </div>
     </div>
-    <courts-list-item court="court" ng-src-prefix="courts.imageUploadPath" ng-repeat="court in findCourt.courtsSearched"></courts-list-item>
+    <courts-list-item court="court" ng-src-prefix="courts.imageUploadPath" ng-repeat="court in findCourt.courtsSearched | orderBy:findCourt.sortObject.field:findCourt.sortObject.reversed"></courts-list-item>
 </div>
