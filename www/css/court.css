@@ -9,7 +9,7 @@
     overflow:hidden;
 }*/
 
-.courts-list-item h4>a{
+.courts-list-item .court-details-wrap{
     color:#4e4e4e;
     display:block;
 }
