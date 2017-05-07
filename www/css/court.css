@@ -19,6 +19,15 @@
     margin-bottom: 30px;
 }
 
+.court-details-wrap:hover{
+    background-color: #eee;
+}
+
+.court-details{
+    padding: 0 5px;
+}
+
+
 .courts-list-item .court-details p{
     margin-bottom: 0;
 }
