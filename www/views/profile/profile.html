@@ -1,0 +1,25 @@
+﻿<div ng-controller="profileController as profCtrl">
+    <div class="tab-wrap">
+        <div class="media">
+            <div class="left-side-bar">
+                <div class="tab-headers pull-left">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li ng-class="{'active':profCtrl.activeTabIndex == 0}" class=""><a  ng-click="setActiveTab(0)" class="analistic-01">Main Profile</a></li>
+                        <li ng-class="{'active':profCtrl.activeTabIndex == 1}" class=""><a  ng-click="setActiveTab(1)" class="analistic-02">Player Profile</a></li>
+                    </ul>
+                </div>
+                <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
+                <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
+            </div>
+            <div class="center-content parrent media-body">
+                <div class="tab-content">
+                    <ui-view></ui-view>
+                </div> <!--/.tab-content-->
+            </div> <!--/.media-body-->
+            <div class="right-side-bar">
+                <ng-include src="'views/shared/side-contents/featured-courts.html'"></ng-include>
+                <ng-include src="'views/shared/side-contents/featured-courts.html'"></ng-include>
+            </div>
+        </div> <!--/.media-->
+    </div><!--/.tab-wrap-->
+</div>

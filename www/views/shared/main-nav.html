@@ -22,7 +22,7 @@
                         <img id="profile_pic" src="images/profile_pic.png" />&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
                     </a>
                     <ul ng-show="currentUser"  class="dropdown-menu">
-                        <li class="menu-item"><a href="#">Settings</a></li>
+                        <li class="menu-item"><a ui-sref="profile.main">My Profile</a></li>
                         <!--<li role="separator" class="divider"></li>-->
                         <li class="menu-item"><a ng-click="logOut()">Logout</a></li>
                     </ul>
@@ -40,7 +40,7 @@
                         <img id="profile_pic" src="images/profile_pic.png" />&nbsp;<span class="menu-text username">{{currentUser.Username}} &nbsp;<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Settings</a></li>
+                        <li><a ui-sref="profile.main({userName: currentUser.Username})">My Profile</a></li>
                         <li><a ng-click="logOut()">Logout</a></li>
                     </ul>
                 </li>

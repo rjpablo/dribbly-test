@@ -46,7 +46,7 @@
         vm.searchCriteriaStr = '';
         vm.filtered = false; //whether or not the list is filtered
 
-        this.courtsSearched = {};
+        this.courtsSearched = [];
 
         this.imageUploadPath = settings.imageUploadPath;
 

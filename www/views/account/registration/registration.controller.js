@@ -23,7 +23,7 @@
                         vm.userData = null;
                         authentication.showLoginModal('Your registration was successful! You may now login.');
                     }, function (err) {
-                        console.log('Registration failed: ' + err.Message);
+                        commonServices.handleError(err);
                     }
                 )
             }

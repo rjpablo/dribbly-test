@@ -16,6 +16,23 @@
               templateUrl: 'views/account/registration/registration.html'
           })
 
+         /* Profile */
+
+        .state('profile', {
+            abstract: true,
+            default: '.find',
+            url: '',
+            templateUrl: 'views/profile/profile.html'
+        })
+
+        .state('profile.main', {
+            params:{userName:null},
+            url: '/main/{userName}',
+            templateUrl: 'views/profile/main/main.profile.html'
+        })
+
+         /* Courts */
+
         .state('courts', {
             abstract: true,
             default: '.find',
@@ -38,6 +55,8 @@
             templateUrl: 'views/courts/courts/myCourts/my-courts.html'
         })
 
+        /* Court */
+
         .state('court', {
             abstract: true,
             default: '.details',
@@ -55,10 +74,14 @@
             templateUrl: 'views/courts/court/schedule/court.schedule.html'
         })
 
+         /* Games */
+
         .state('games', {
             url: '/games',
             templateUrl: 'views/game/games.html'
         })
+
+         /* Players */
 
         .state('players', {
             url: '/players',
