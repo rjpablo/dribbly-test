@@ -40,7 +40,7 @@
                         <img id="profile_pic" src="images/profile_pic.png" />&nbsp;<span class="menu-text username">{{currentUser.Username}} &nbsp;<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a ui-sref="profile.main({userName: currentUser.Username})">My Profile</a></li>
+                        <li><a ui-sref="profile.main.photos({userName: currentUser.Username})">My Profile</a></li>
                         <li><a ng-click="logOut()">Logout</a></li>
                     </ul>
                 </li>

@@ -11,6 +11,7 @@
 
         $scope.setActiveNavIndex(0);
         $scope.profile = {};
+        $scope.$state = $state;
 
         var vm = this;
         vm.activeTabIndex = 0;
@@ -22,13 +23,17 @@
         }
 
         function getProfile() {
-            profileContext.getProfileByName($stateParams.userName).then(
+            if (settings.useLocalData) {
+                $scope.profile = profileContext.getTestProfiles()[0]
+            } else {
+                profileContext.getProfileByName($stateParams.userName).then(
                 function (res) {
                     $scope.profile = res.data;
                 },
                 function (err) {
                     commonServices.handleError(err);
                 })
+            }            
         }
 
     };

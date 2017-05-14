@@ -20,15 +20,46 @@
 
         .state('profile', {
             abstract: true,
-            default: '.find',
-            url: '',
+            default: '.main',
+            url: '/profile',
             templateUrl: 'views/profile/profile.html'
         })
 
         .state('profile.main', {
-            params:{userName:null},
-            url: '/main/{userName}',
+            abstract: true,
+            default: '.photos',
+            url: '/main',
             templateUrl: 'views/profile/main/main.profile.html'
+        })
+
+        .state('profile.main.photos', {
+            params: { userName: null },
+            url: '/photos/{userName}',
+            templateUrl: 'views/profile/main/sub-contents/photos.html'
+        })
+
+        .state('profile.main.details', {
+            params: { userName: null },
+            url: '/details/{userName}',
+            templateUrl: 'views/profile/main/sub-contents/details.html'
+        })
+
+        .state('profile.main.videos', {
+            params: { userName: null },
+            url: '/videos/{userName}',
+            templateUrl: 'views/profile/main/sub-contents/videos.html'
+        })
+
+        .state('profile.main.activities', {
+            params: { userName: null },
+            url: '/activities/{userName}',
+            templateUrl: 'views/profile/main/sub-contents/activities.html'
+        })
+
+        .state('profile.playerProfile', {
+            params: { userName: null },
+            url: '/playerProfile/{userName}',
+            templateUrl: 'views/profile/player/player.profile.html'
         })
 
          /* Courts */

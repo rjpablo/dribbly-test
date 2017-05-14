@@ -1,0 +1,21 @@
+﻿.profile .main-profile .top {
+    background-color: #0d5253;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+}
+
+.profile .main-profile .profile-photo{
+    display: block;
+    margin: 10px auto;
+    margin-top: 50px;
+    width: 120px;
+    height: 120px;
+}
+
+.profile .main-profile .username{
+    color: #fff;
+    text-align: center;
+    display: block;
+    margin: 5px auto;
+}

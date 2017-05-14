@@ -2,11 +2,11 @@
     display: inline-block;
     float: left;
 }
-.tab-wrap .nav{
+.tab-wrap .left-side-bar .nav{
     border-bottom: none;
     background-color: #fff;
 }
-.tab-wrap .nav li {
+.tab-wrap .left-side-bar .nav li {
     margin: 0;
     border-bottom: 1px solid #eee;
 }
@@ -67,7 +67,7 @@
     background-color: #2dc5c3;
 }
 
-.tab-wrap .nav>li>a:focus, .tab-wrap .nav>li>a:hover {
+.left-side-bar .tab-wrap .nav>li>a:focus, .left-side-bar .tab-wrap .nav>li>a:hover {
     color: #fff;    
     background-color: #2dc5c3;
 }

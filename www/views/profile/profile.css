@@ -1,0 +1,29 @@
+﻿.profile .tab-wrap .tab-content {
+    background-color: transparent;
+}
+
+.profile .top{
+    margin-bottom: 15px;
+}
+
+.profile .top .tab-headers{
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.profile .top .tab-headers > li{
+    display:inline-block;
+    float: left;
+    padding-right: 15px;
+}
+
+.profile .top .tab-headers li.active > a{
+    color: #2dc5c3;
+    border-bottom: 3px solid;
+}
+
+.profile .top .tab-headers li:not(.active) > a:hover{
+    color: #fff;
+    border-bottom: 3px solid #fff;
+}
