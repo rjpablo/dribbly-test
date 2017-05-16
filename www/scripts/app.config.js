@@ -38,10 +38,10 @@
             templateUrl: 'views/profile/main/sub-contents/photos.html'
         })
 
-        .state('profile.main.details', {
+        .state('profile.main.about', {
             params: { userName: null },
-            url: '/details/{userName}',
-            templateUrl: 'views/profile/main/sub-contents/details.html'
+            url: '/about/{userName}',
+            templateUrl: 'views/profile/main/sub-contents/about/about.html'
         })
 
         .state('profile.main.videos', {

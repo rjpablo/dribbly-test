@@ -19,12 +19,19 @@
                     sex: 'M',
                     dateJoined: new Date(),
                     address: '#243 Ben Harrison St. Pio Del Pilar, Makati City, Metro Manila',
+                    heightFt: 5,
+                    heightIn: 6
                 }
             ]
         }
 
+        var _updateProfile = function (profile) {
+            return httpService.put(settings.apiBaseURL + 'UserProfiles/Update', profile)
+        }
+
         this.getTestProfiles = _getTestProfiles;
         this.getProfileByName = _getProfileByName;
+        this.updateProfile = _updateProfile;
 
         return this;
 

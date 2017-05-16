@@ -4,13 +4,12 @@
     angular
         .module('mainApp')
         .controller('mainProfileController', ['$scope', 'settings', 'httpService', 'commonServices',
-            'authentication', '$location', '$uibModalInstance', '$state', controllerFn]);
+            'authentication', '$location', '$state', 'profileContext', controllerFn]);
 
     function controllerFn($scope, settings, httpService, commonServices, authentication,
-        $location, $uibModalInstance, $state) {
+        $location, $state, profileContext) {
 
         var vm = this;
-
     };
 
 })();

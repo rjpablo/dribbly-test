@@ -8,7 +8,52 @@
     overflow: auto;
 }
 
-@media(min-width: 768px) {
+.details-block .detail-group > *{
+    display: block;
+}
+
+.details-block .edit-field{
+    display: none;
+}
+
+.details-block .full-width{
+    width: 100%;
+} 
+
+.details-block .edit-field .input-field,
+.details-block .edit-field.input-field {
+    height: 22px;
+    margin-bottom: 5px;
+}
+
+.details-block .action-buttons .btn.save,
+.details-block .action-buttons .btn.cancel{
+    display:none
+}
+
+.details-block .action-buttons .btn{
+    margin-bottom: 5px;
+}
+
+.details-block.on-edit-mode .edit-field{
+    display:block;
+}
+
+.details-block.on-edit-mode .display-field{
+    display:none;
+}
+
+.details-block.on-edit-mode .action-buttons .btn.save,
+.details-block.on-edit-mode .action-buttons .btn.cancel{
+    display:inline-block;
+}
+
+.details-block.on-edit-mode .action-buttons .btn.edit{
+    display:none;
+}
+
+
+@media(min-width: 414px) {
 
     .details-block .detail-group > * {
         display: inline-block;
@@ -19,11 +64,7 @@
         width: 20%;
     }
 
-    .details-block .detail-group > span {
+    .details-block .detail-group > .value {
         width: 80%;
     }
-}
-
-.details-block .detail-group > *{
-    display: block;
 }

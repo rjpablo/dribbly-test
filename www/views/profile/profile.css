@@ -10,12 +10,14 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+    display: block;
 }
 
 .profile .top .tab-headers > li{
     display:inline-block;
     float: left;
     padding-right: 15px;
+    line-height: 30px;
 }
 
 .profile .top .tab-headers li.active > a{
@@ -26,4 +28,18 @@
 .profile .top .tab-headers li:not(.active) > a:hover{
     color: #fff;
     border-bottom: 3px solid #fff;
+}
+
+.profile .bottom{
+    display: inline-block;
+    width: 100%;
+}
+
+.profile .bottom .details-block{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.profile .bottom .details-block .detail-group > label{
+    width: 85px;
 }

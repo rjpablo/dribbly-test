@@ -1,12 +1,12 @@
-﻿<div class="main-profile profile-sub-content">
+﻿<div class="main-profile profile-sub-content" ng-controller="mainProfileController as mainProfileCtrl">
     <div class="top tab-pane col-md-12">
         <img class="profile-photo" ng-src="images/default-user-image.png" />
-        <h5 class="username">{{profile.userName}}</h5>
+        <h5 class="username">{{profile.details.userName}}</h5>
         <ul class="tab-headers">
             <li ng-class="{'active': $state.current.name == 'profile.main.activities'}"><a ui-sref="profile.main.activities" ng-click="">Activities</a></li>
             <li ng-class="{'active': $state.current.name == 'profile.main.photos'}"><a ui-sref="profile.main.photos" ng-click="">Photos</a></li>
             <li ng-class="{'active': $state.current.name == 'profile.main.videos'}"><a ui-sref="profile.main.videos" ng-click="">Videos</a></li>
-            <li ng-class="{'active': $state.current.name == 'profile.main.details'}"><a ui-sref="profile.main.details" ng-click="">Details</a></li>
+            <li ng-class="{'active': $state.current.name == 'profile.main.about'}"><a ui-sref="profile.main.about" ng-click="">About</a></li>
         </ul>
     </div>
     <div class="bottom tab-pane col-md-12">

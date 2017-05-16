@@ -13,7 +13,7 @@
 
 @media (max-width: 767px){
 
-    .tab-headers{
+    .left-side-bar .tab-headers {
         margin-bottom: 5px;
         border-bottom: 1px solid #eee;        
     }
