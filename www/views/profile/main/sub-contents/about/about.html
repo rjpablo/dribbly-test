@@ -52,8 +52,17 @@
     <div class="detail-group">
         <label>Address</label>
         <div class="value-field">
-            <span class="display-field">{{profile.details.address?profile.details.address:'(Not Specified)'}}</span>
-            <input name="address" type="text" class="full-width edit-field input-field" ng-model="aboutCtrl.tempProfile.address" />
+            <span class="display-field full-width">{{profile.details.address?profile.details.address:'(Not Specified)'}}</span>
+            <input class="full-width edit-field input-field"
+                   type="text"
+                   name="address"
+                   location-picker="aboutCtrl.location"
+                   on-location-select="aboutCtrl.updateAddress(loc)"
+                   placeholder="Click to select a location"
+                   ng-model="aboutCtrl.tempProfile.address" />
+            <!--<div class="edit-field">
+                <input name="address" type="text" class="full-width edit-field input-field" ng-model="aboutCtrl.tempProfile.address" />
+            </div>-->
         </div>
     </div>
     <div class="action-buttons">

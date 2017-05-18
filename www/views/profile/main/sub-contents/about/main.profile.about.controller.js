@@ -14,9 +14,16 @@
 
         vm.onEditMode = false;
         vm.saving = false;
+        vm.location = {}
 
         vm.setEditMode = function (val) {
             vm.onEditMode = val
+        }
+
+        vm.updateAddress = function (loc) {
+            vm.tempProfile.address = loc.formatted_address
+            vm.tempProfile.addressLat = loc.geometry.location.lat
+            vm.tempProfile.addressLng = loc.geometry.location.lng
         }
 
         vm.edit = function () {
