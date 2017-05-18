@@ -9,7 +9,7 @@
     <div class="detail-group">
         <label>Height</label>
         <div class="value-field">
-            <span class="display-field">{{(!profile.details.heightFt || !profile.details.heightIn)?'--':profile.details.heightFt + '\' ' + profile.details.heightIn + '"'}}</span>
+            <span class="display-field">{{(!profile.details.heightFt || !profile.details.heightIn)?'(Not Specified)':profile.details.heightFt + '\' ' + profile.details.heightIn + '"'}}</span>
             <div class="edit-field">
                 <select name="heightFt" class="input-field" ng-model="aboutCtrl.tempProfile.heightFt">
                     <option ng-value="">--</option>
@@ -41,8 +41,9 @@
     <div class="detail-group">
         <label>Sex</label>
         <div class="value-field">
-            <span class="display-field">{{profile.details.sex?(profile.details.sex == 'M'?'Male':'Female'):'--'}}</span>
+            <span class="display-field">{{profile.details.sex?(profile.details.sex == 'M'?'Male':'Female'):'(Not Specified)'}}</span>
             <select name="sex" class="edit-field input-field" ng-model="aboutCtrl.tempProfile.sex">
+                <option ng-value="''">--</option>
                 <option ng-value="'M'">Male</option>
                 <option ng-value="'F'">Female</option>
             </select>
@@ -51,7 +52,7 @@
     <div class="detail-group">
         <label>Address</label>
         <div class="value-field">
-            <span class="display-field">{{profile.details.address}}</span>
+            <span class="display-field">{{profile.details.address?profile.details.address:'(Not Specified)'}}</span>
             <input name="address" type="text" class="full-width edit-field input-field" ng-model="aboutCtrl.tempProfile.address" />
         </div>
     </div>

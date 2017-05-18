@@ -1,6 +1,19 @@
 ﻿<div class="main-profile profile-sub-content" ng-controller="mainProfileController as mainProfileCtrl">
     <div class="top tab-pane col-md-12">
-        <img class="profile-photo" ng-src="images/default-user-image.png" />
+        <div class="profile-photo-container">
+            <span class="change-profile-photo" ngf-select="mainProfileCtrl.replaceProfilePhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ><i class="fa fa-pencil"></i></span>
+            <!--<img class="profile-photo" ng-src="images/default-user-image.png" />-->
+            <ng-image-gallery images="mainProfileCtrl.profilePic"
+                              methods="addCourtCtrl.methods"
+                              thumbnails="true"
+                              inline="false"
+                              url-prefix="mainProfileCtrl.profilePicUrlPrefix"
+                              img-bubbles="false"
+                              bg-close="true"
+                              bubbles="false"
+                              img-anim="pop"
+                              show-controls="false"></ng-image-gallery>
+        </div>        
         <h5 class="username">{{profile.details.userName}}</h5>
         <ul class="tab-headers">
             <li ng-class="{'active': $state.current.name == 'profile.main.activities'}"><a ui-sref="profile.main.activities" ng-click="">Activities</a></li>
