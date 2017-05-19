@@ -48,4 +48,8 @@
     .courts-list-item{
         width: 100%;
     }
+
+    .courts-list-item .court-details .ellipsis {
+        white-space: initial;
+    }
 }

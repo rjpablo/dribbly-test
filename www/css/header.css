@@ -7,6 +7,7 @@
     top: 0;
     z-index: 3;
     box-shadow: 0px 2px 2px #888888;
+    min-width: 320px;
 }
 
 #main-nav .navbar-header{
@@ -15,6 +16,11 @@
 
 #main-nav .navbar-header, #main-nav .menu-container{
     float: left;
+}
+
+#user-menu{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #main-nav .navbar-brand{
@@ -303,7 +309,8 @@ input.search-form {
         display:none;
     }
 
-    #main-nav .menu-container{
+    #main-nav .menu-container,
+    #main-nav > .container{
         padding: 0;
     }
 }

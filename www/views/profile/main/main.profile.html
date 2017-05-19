@@ -1,7 +1,7 @@
 ﻿<div class="main-profile profile-sub-content" ng-controller="mainProfileController as mainProfileCtrl">
     <div class="top tab-pane col-md-12">
         <div class="profile-photo-container">
-            <span class="change-profile-photo" ng-if="isOwned" ngf-select="mainProfileCtrl.replaceProfilePhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ><i class="fa fa-pencil"></i></span>
+            <span class="change-profile-photo show-on-hover" ng-if="isOwned" ngf-select="mainProfileCtrl.replaceProfilePhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ><i class="fa fa-pencil"></i></span>
             <!--<img class="profile-photo" ng-src="images/default-user-image.png" />-->
             <ng-image-gallery images="mainProfileCtrl.profilePic"
                               methods="addCourtCtrl.methods"

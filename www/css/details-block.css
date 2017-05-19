@@ -1,7 +1,8 @@
 ﻿.details-block > .header{
     font-weight: bold;
-    color: #2dc5c3;
+    color: #777;
     border-bottom: 1px solid #eee;
+    margin-bottom: 0;
 }
 
 .details-block .detail-group{
@@ -14,13 +15,19 @@
 
 .details-block .detail-group,
 .details-block .action-buttons{
-    display: inline-block;
+    /*display: inline-block;*/
     padding: 5px 0;
     width: 100%;
+    display:block;
+    overflow: auto;
 }
 
 .details-block .detail-group > *{
     display: block;
+}
+
+.details-block .detail-group > label{
+    color: #aaa;
 }
 
 .details-block .detail-group .value-field.full-width > * {
@@ -30,6 +37,13 @@
 .details-block .edit-field{
     display: none;
 } 
+
+.details-block .detail-group label,
+.details-block .detail-group .display-field,
+.details-block .detail-group .edit-field{
+    margin: 0;
+    line-height: 22px;
+}
 
 .details-block .edit-field .input-field,
 .details-block .edit-field.input-field {

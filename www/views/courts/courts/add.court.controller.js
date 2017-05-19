@@ -10,7 +10,7 @@
         this.galleryPhotos = [];
         this.galleryMethods = {};
         this.progress;
-        this.imageUploadPath = settings.imageUploadPath + currentUser.UserId + '/';
+        this.imageUploadPath = settings.fileUploadBasePath + currentUser.UserId + '/courtPhotos/';
         this.map = {};
         this.court = {
             rate: 0

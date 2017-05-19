@@ -69,6 +69,12 @@
                 <textarea name="description" type="text" class="edit-field input-field" ng-model="courtCtrl.tempCourt.description" ></textarea>
             </div>
         </div>
+        <div class="detail-group read-only" ng-if="!courtCtrl.owned">
+            <label>Added By</label>
+            <div class="value-field full-width">
+                <a class="display-field button-link" ui-sref="profile.main.activities({userName: courtCtrl.court.owner.userName})">{{courtCtrl.court.owner.userName}}</a>   
+            </div>
+        </div>
         <div class="action-buttons" ng-if="courtCtrl.owned">
             <button class="btn btn-primary edit" ng-click="courtCtrl.edit()">Edit</button>
             <button class="btn btn-warning cancel" ng-click="courtCtrl.cancel()" ng-disabled="courtCtrl.detailsUpdating">Cancel</button>

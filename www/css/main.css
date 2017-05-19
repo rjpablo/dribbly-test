@@ -8,6 +8,10 @@
     Generics
 **************************/
 
+body{
+    min-width: 320px;
+}
+
 p{
     /*background-color: #fff;*/
 }
@@ -144,6 +148,22 @@ div.image-with-bg{
 
 .clickable {
     cursor: pointer;
+}
+
+* > .show-on-hover{
+    display:none;
+}
+
+*:hover > .show-on-hover{
+    display:block;
+}
+
+@media(max-width:991px){
+    
+    * > .show-on-hover{
+        display:block;
+    }
+    
 }
 
 /*****************

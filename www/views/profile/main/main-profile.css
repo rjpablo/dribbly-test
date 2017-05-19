@@ -35,15 +35,8 @@
     text-align: center;
     width: 22px;
     height: 22px;
-    display: none;
     z-index: 1;
     cursor: pointer;
-}
-
-@media(max-width: 991px){
-    .profile .main-profile .profile-photo-container .change-profile-photo{
-        display: block;
-    }
 }
 
 /*@media (min-width: 992px) and (max-width:1199px) {
@@ -51,10 +44,6 @@
         width: 335px;
     }
 }*/
-
-.profile .main-profile .profile-photo-container:hover .change-profile-photo{
-    display: block;
-}
 
 
 .profile .main-profile .username{
