@@ -1,4 +1,7 @@
-﻿/*@media (min-width: 768px) {
+﻿.court .details-block .detail-group.rate .input-field {
+        width: 60px;
+    }
+/*@media (min-width: 768px) {
     .court .details-block .detail-group > label {
         width: 95px;
     }

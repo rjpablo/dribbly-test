@@ -3,10 +3,10 @@
 
     angular.module('mainApp')
         .service('authentication', ['httpService', 'settings', '$uibModal',
-            '$document', '$q', '$localStorage', '$http', '$rootScope', 'commonServices', userService]);
+            '$document', '$q', '$localStorage', '$http', '$rootScope', 'commonServices', '$location', userService]);
 
     function userService(httpService, settings, $uibModal,
-        $document, $q, $localStorage, $http, $rootScope, commonServices) {
+        $document, $q, $localStorage, $http, $rootScope, commonServices, $location) {
         var authorizationData = $localStorage.authorizationData;
         var _userId = '112112';
         var _username = 'RJ';
@@ -133,6 +133,7 @@
                 deferred.reject()
             })
 
+            $location.path('courts/')
             _currentUser = null;
             delete $localStorage.authorizationData
             commonServices.toast.info('You have been logged out.');

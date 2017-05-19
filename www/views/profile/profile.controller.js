@@ -15,6 +15,7 @@
 
         var vm = this;
         var userName = $stateParams.userName || $scope.currentUser.Username;
+        $scope.isOwned = userName == $scope.currentUser.Username;
         vm.activeTabIndex = 0;
 
         getProfile();

@@ -36,35 +36,40 @@
                        ng-model="courtCtrl.tempCourt.address" />
             </div>
         </div>
-        <div ng-if="courtCtrl.court.contactNo" class="detail-group">
+        <div class="detail-group">
             <label>Contact #</label>
             <div class="value-field">
-                <span class="display-field">{{courtCtrl.court.contactNo}}</span>
+                <span class="display-field">{{courtCtrl.court.contactNo?courtCtrl.court.contactNo:'(Not Provided)'}}</span>
                 <input name="contactNo" type="text" class="edit-field input-field" ng-model="courtCtrl.tempCourt.contactNo" />
             </div>
         </div>
-        <div ng-if="courtCtrl.court.email" class="detail-group">
+        <div class="detail-group">
             <label>Email</label>
             <div class="value-field">
-                <span class="display-field">{{courtCtrl.court.email}}</span>
+                <span class="display-field">{{courtCtrl.court.email?courtCtrl.court.email:'(Not provided)'}}</span>
                 <input name="email" type="email" class="edit-field input-field" ng-model="courtCtrl.tempCourt.email" />
             </div>
         </div>
-        <div class="detail-group">
+        <div class="detail-group rate">
             <label>Rate</label>
             <div class="value-field">
-                <span class="display-field">₱{{courtCtrl.court.rate}}/hour</span>
-                <input name="rate" type="number" class="edit-field input-field" ng-model="courtCtrl.tempCourt.rate" />
+                <span class="display-field">₱ {{courtCtrl.court.rate}}/hour</span>
+                <div class="edit-field">
+                    <span>₱ </span>
+                    <input id="rate" name="rate" type="number" class="input-field" ng-model="courtCtrl.tempCourt.rate" />
+                    <span> / hour</span>
+                </div>
+                
             </div>
         </div>
-        <div ng-if="courtCtrl.court.description" class="detail-group">
+        <div class="detail-group">
             <label>Description</label>
             <div class="value-field full-width">
-                <span class="display-field">{{courtCtrl.court.description}}</span>
+                <span class="display-field">{{courtCtrl.court.description?courtCtrl.court.description:'(Not Provided)'}}</span>
                 <textarea name="description" type="text" class="edit-field input-field" ng-model="courtCtrl.tempCourt.description" ></textarea>
             </div>
         </div>
-        <div class="action-buttons">
+        <div class="action-buttons" ng-if="courtCtrl.owned">
             <button class="btn btn-primary edit" ng-click="courtCtrl.edit()">Edit</button>
             <button class="btn btn-warning cancel" ng-click="courtCtrl.cancel()" ng-disabled="courtCtrl.detailsUpdating">Cancel</button>
             <button class="btn btn-primary save" ng-click="courtCtrl.save(profileDetailsForm)" ng-disabled="courtCtrl.detailsUpdating">Save</button>

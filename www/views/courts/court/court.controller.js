@@ -60,6 +60,16 @@
             ]
         }//dummy court
 
+        this.setPrimaryByFileName = function (fileName) {
+            var done = false;
+            for (var x = 0; (x < vm.court.photos.length && !done) ; x++) {
+                if (vm.court.photos[x].fileName == fileName) {
+                    vm.court.photos[x].isPrimary = (vm.court.imagePath == fileName ? true : false);
+                    done = true;
+                }
+            }
+        }
+
         if (settings.useLocalData) {
             vm.court = tempCourt;
             vm.setPrimaryByFileName(vm.court.imagePath);
@@ -120,16 +130,6 @@
                 }, function (error) {
                     commonServices.handleError(error);
                 });
-        }
-
-        this.setPrimaryByFileName = function (fileName) {
-            var done = false;
-            for (var x = 0; (x < vm.court.photos.length && !done) ; x++) {
-                if (vm.court.photos[x].fileName == fileName) {
-                    vm.court.photos[x].isPrimary = (vm.court.imagePath == fileName ? true : false);
-                    done = true;
-                }
-            }
         }
 
         this.removePhoto = function (index) {

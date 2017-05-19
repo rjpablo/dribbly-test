@@ -59,7 +59,7 @@
             </div>-->
         </div>
     </div>
-    <div class="action-buttons">
+    <div class="action-buttons" ng-if="isOwned">
         <button class="btn btn-primary edit" ng-click="aboutCtrl.edit()">Edit</button>
         <button class="btn btn-warning cancel" ng-click="aboutCtrl.cancel()" ng-disabled="aboutCtrl.saving">Cancel</button>
         <button class="btn btn-primary save" ng-click="aboutCtrl.save(profileDetailsForm)" ng-disabled="aboutCtrl.saving">Save</button>
