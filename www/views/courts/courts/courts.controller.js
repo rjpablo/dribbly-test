@@ -12,7 +12,8 @@
         var vm = this;
 
         this.activeTabIndex = 0;
-		this.imageUploadPath = settings.imageUploadPath;
+        this.imageUploadPath = settings.imageUploadPath;
+        this.courtImgSrcPrefix = settings.fileUploadBasePath;
 
         $scope.setActiveTab = function (index) {
             vm.activeTabIndex = index;

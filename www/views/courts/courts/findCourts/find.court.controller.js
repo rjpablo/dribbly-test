@@ -45,10 +45,11 @@
         vm.sortObject = vm.sortObjects[0]
         vm.searchCriteriaStr = '';
         vm.filtered = false; //whether or not the list is filtered
+        vm.loading = false;
 
         this.courtsSearched = [];
-
         this.imageUploadPath = settings.imageUploadPath;
+        this.courtImgSrcPrefix = settings.fileUploadBasePath;
 
         var setCourtsSearched = function (courts) {
             return courts;
@@ -67,12 +68,15 @@
         if (settings.useLocalData) {
             this.courtsSearched = courtContext.getTestCourts();
         } else {
+            vm.loading = true;
             courtContext.getCourts(null).then(
             function (result) {
                 vm.courtsSearched = result.data
+                vm.loading = false
             }, function (error) {
                 commonServices.handleError(error);
                 vm.courtsSearched = null;
+                vm.loading = false
             });
         }
 

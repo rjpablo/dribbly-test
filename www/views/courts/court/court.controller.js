@@ -16,8 +16,13 @@
 		this.courtId = $stateParams.id;
 		this.imageDir = settings.imageUploadPath;
 		this.activeTabIndex = 0;
+		this.tempCourt = {}
+		this.onEditMode = false;
+		this.detailsUpdating = false;
+		this.location = {}
 
 		this.imageUploadPath = settings.imageUploadPath;
+		this.courtImgSrcPrefix = settings.fileUploadBasePath;
 
 		$scope.setActiveTab = function (index) {
 		    vm.activeTabIndex = index;
@@ -55,6 +60,54 @@
             ]
         }//dummy court
 
+        if (settings.useLocalData) {
+            vm.court = tempCourt;
+            vm.setPrimaryByFileName(vm.court.imagePath);
+        } else {
+            courtContext.getCourtDetails(vm.courtId).then(
+            function (result) {
+                vm.court = result.data
+                if (vm.court) {
+                    vm.setPrimaryByFileName(vm.court.imagePath);
+                    if ($scope.currentUser) {
+                        vm.owned = ($scope.currentUser.UserId == vm.court.userId)
+                    }
+                }
+            }, function (error) {
+                commonServices.handleError(error);
+                vm.court = null;
+            });
+        }
+
+        vm.edit = function () {
+            vm.tempCourt = angular.copy(vm.court)
+            vm.onEditMode = true;
+        }
+
+        vm.cancel = function () {
+            vm.onEditMode = false;
+        }
+
+        vm.save = function () {
+            vm.detailsUpdating = true;
+            courtContext.updateCourt(vm.tempCourt).then(
+                function (res) {
+                    vm.onEditMode = false;
+                    vm.detailsUpdating = false;
+                    vm.court = vm.tempCourt;
+                    commonServices.toast.success('Changes saved!')
+                },
+                function (err) {
+                    vm.detailsUpdating = false;
+                    commonServices.handleError(err);
+                }
+            )
+        }
+
+        vm.updateAddress = function (loc) {
+            vm.tempCourt.address = loc.formatted_address;
+        }
+
         this.setPrimary = function (index) {
             courtContext.updatePrimaryPhoto(vm.court.id, vm.court.photos[index].fileName).then(
                 function (result) {
@@ -73,29 +126,10 @@
             var done = false;
             for (var x = 0; (x < vm.court.photos.length && !done) ; x++) {
                 if (vm.court.photos[x].fileName == fileName) {
-                    vm.court.photos[x].isPrimary = (vm.court.imagePath = fileName ? true : false);
+                    vm.court.photos[x].isPrimary = (vm.court.imagePath == fileName ? true : false);
                     done = true;
                 }
             }
-        }
-
-        if (settings.useLocalData) {
-            vm.court = tempCourt;
-            vm.setPrimaryByFileName(vm.court.imagePath);
-        } else {
-            courtContext.getCourtDetails(vm.courtId).then(
-            function (result) {
-                vm.court = result.data
-                if (vm.court) {
-                    vm.setPrimaryByFileName(vm.court.imagePath);
-                    if ($scope.currentUser) {
-                        vm.owned = ($scope.currentUser.UserId == vm.court.userId)
-                    }
-                }
-            }, function (error) {
-                commonServices.handleError(error);
-                vm.court = null;
-            });
         }
 
         this.removePhoto = function (index) {

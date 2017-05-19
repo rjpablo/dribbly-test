@@ -4,7 +4,7 @@
                           methods="courtCtrl.methods"
                           thumbnails="true"
                           inline="true"
-                          url-prefix="courtCtrl.imageDir + courtCtrl.court.userId + '/'"
+                          url-prefix="courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/'"
                           img-bubbles="true"
                           bubbles="false"
                           img-anim="pop"
@@ -14,27 +14,60 @@
                           set-primary="courtCtrl.setPrimary(index)"
                           show-controls="courtCtrl.owned"></ng-image-gallery>
     </div>
-    <div class="col-lg-12 details-block">
-        <h3 class="header">{{courtCtrl.court.name}}</h3>
+    <div ng-form="editCourtForm" class="col-lg-12 details-block" ng-class="{'on-edit-mode':courtCtrl.onEditMode}"> 
+        <h3 class="header">Court Details</h3>
         <div class="detail-group">
-            <label>Address:</label>
-            <span>{{courtCtrl.court.address}}</span>
+            <label>Court Name</label>
+            <div class="value-field full-width">
+                <span class="display-field">{{courtCtrl.court.name}}</span>
+                <input name="contactNo" type="text" class="edit-field input-field" ng-model="courtCtrl.tempCourt.name" />
+            </div>
+        </div>
+        <div class="detail-group">
+            <label >Address</label>
+            <div class="value-field full-width">
+                <span class="display-field">{{courtCtrl.court.address}}</span>
+                <input class="edit-field input-field"
+                       type="text"
+                       name="address"
+                       location-picker="courtCtrl.location"
+                       on-location-select="courtCtrl.updateAddress(loc)"
+                       placeholder="Click to select a location"
+                       ng-model="courtCtrl.tempCourt.address" />
+            </div>
         </div>
         <div ng-if="courtCtrl.court.contactNo" class="detail-group">
-            <label>Contact #:</label>
-            <span>{{courtCtrl.court.contactNo}}</span>
+            <label>Contact #</label>
+            <div class="value-field">
+                <span class="display-field">{{courtCtrl.court.contactNo}}</span>
+                <input name="contactNo" type="text" class="edit-field input-field" ng-model="courtCtrl.tempCourt.contactNo" />
+            </div>
         </div>
         <div ng-if="courtCtrl.court.email" class="detail-group">
-            <label>Email:</label>
-            <span>{{courtCtrl.court.email}}</span>
+            <label>Email</label>
+            <div class="value-field">
+                <span class="display-field">{{courtCtrl.court.email}}</span>
+                <input name="email" type="email" class="edit-field input-field" ng-model="courtCtrl.tempCourt.email" />
+            </div>
         </div>
         <div class="detail-group">
-            <label>Rate:</label>
-            <span>₱{{courtCtrl.court.rate}}/hour</span>
+            <label>Rate</label>
+            <div class="value-field">
+                <span class="display-field">₱{{courtCtrl.court.rate}}/hour</span>
+                <input name="rate" type="number" class="edit-field input-field" ng-model="courtCtrl.tempCourt.rate" />
+            </div>
         </div>
         <div ng-if="courtCtrl.court.description" class="detail-group">
-            <label>Description:</label>
-            <span>{{courtCtrl.court.description}}</span>
+            <label>Description</label>
+            <div class="value-field full-width">
+                <span class="display-field">{{courtCtrl.court.description}}</span>
+                <textarea name="description" type="text" class="edit-field input-field" ng-model="courtCtrl.tempCourt.description" ></textarea>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="btn btn-primary edit" ng-click="courtCtrl.edit()">Edit</button>
+            <button class="btn btn-warning cancel" ng-click="courtCtrl.cancel()" ng-disabled="courtCtrl.detailsUpdating">Cancel</button>
+            <button class="btn btn-primary save" ng-click="courtCtrl.save(profileDetailsForm)" ng-disabled="courtCtrl.detailsUpdating">Save</button>
         </div>
     </div>
 </div>

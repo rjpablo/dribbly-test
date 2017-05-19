@@ -1,11 +1,5 @@
 ﻿<div ng-form="profileDetailsForm" ng-controller="mainProfileAboutController as aboutCtrl" class="details-block" ng-class="{'on-edit-mode':aboutCtrl.onEditMode}">
-    <!--<div class="detail-group">
-        <label>Username</label>
-        <div class="value-field">
-            <span class="display-field">{{profile.details.userName}}</span>
-            <input name="userName" type="text" class="input-field edit-field" ng-model="aboutCtrl.tempProfile.userName" required/>
-        </div>
-    </div>-->
+    <h3 class="header">Profile Details</h3>
     <div class="detail-group">
         <label>Height</label>
         <div class="value-field">
@@ -51,9 +45,9 @@
     </div>
     <div class="detail-group">
         <label>Address</label>
-        <div class="value-field">
-            <span class="display-field full-width">{{profile.details.address?profile.details.address:'(Not Specified)'}}</span>
-            <input class="full-width edit-field input-field"
+        <div class="value-field full-width">
+            <span class="display-field">{{profile.details.address?profile.details.address:'(Not Specified)'}}</span>
+            <input class="edit-field input-field"
                    type="text"
                    name="address"
                    location-picker="aboutCtrl.location"
@@ -67,7 +61,7 @@
     </div>
     <div class="action-buttons">
         <button class="btn btn-primary edit" ng-click="aboutCtrl.edit()">Edit</button>
-        <button class="btn btn-primary save" ng-click="aboutCtrl.save(profileDetailsForm)" ng-disabled="aboutCtrl.saving">Save</button>
         <button class="btn btn-warning cancel" ng-click="aboutCtrl.cancel()" ng-disabled="aboutCtrl.saving">Cancel</button>
+        <button class="btn btn-primary save" ng-click="aboutCtrl.save(profileDetailsForm)" ng-disabled="aboutCtrl.saving">Save</button>
     </div>
 </div>

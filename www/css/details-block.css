@@ -1,29 +1,45 @@
 ﻿.details-block > .header{
     font-weight: bold;
     color: #2dc5c3;
+    border-bottom: 1px solid #eee;
 }
 
 .details-block .detail-group{
-    display: block;
-    overflow: auto;
+    border-bottom: 1px solid #eee;
+}
+
+.details-block .detail-group:first-child{
+    border-top: 1px solid #eee;
+}
+
+.details-block .detail-group,
+.details-block .action-buttons{
+    display: inline-block;
+    padding: 5px 0;
+    width: 100%;
 }
 
 .details-block .detail-group > *{
     display: block;
 }
 
-.details-block .edit-field{
-    display: none;
+.details-block .detail-group .value-field.full-width > * {
+    width: 100%;
 }
 
-.details-block .full-width{
-    width: 100%;
+.details-block .edit-field{
+    display: none;
 } 
 
 .details-block .edit-field .input-field,
 .details-block .edit-field.input-field {
     height: 22px;
     margin-bottom: 5px;
+}
+
+.details-block textarea.input-field.edit-field,
+.details-block .edit-field textarea.input-field{
+    height: 150px;
 }
 
 .details-block .action-buttons .btn.save,
@@ -33,6 +49,8 @@
 
 .details-block .action-buttons .btn{
     margin-bottom: 5px;
+    float: right;
+    margin-left: 5px;
 }
 
 .details-block.on-edit-mode .edit-field{
@@ -53,18 +71,24 @@
 }
 
 
-@media(min-width: 414px) {
+@media(min-width: 514px) {
 
     .details-block .detail-group > * {
         display: inline-block;
         float: left;
     }
 
-    .details-block .detail-group > label {
-        width: 20%;
+    .details-block .action-buttons,
+    .details-block .detail-group{
+        clear:both;
     }
 
-    .details-block .detail-group > .value {
-        width: 80%;
+
+    .details-block .detail-group > label {
+        width: 25%;
+    }
+
+    .details-block .detail-group > .value-field {
+        width: 75%;
     }
 }

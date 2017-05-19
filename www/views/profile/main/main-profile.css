@@ -46,11 +46,11 @@
     }
 }
 
-@media (min-width: 992px) and (max-width:1199px) {
+/*@media (min-width: 992px) and (max-width:1199px) {
     .profile .bottom .details-block .value-field{
         width: 335px;
     }
-}
+}*/
 
 .profile .main-profile .profile-photo-container:hover .change-profile-photo{
     display: block;
