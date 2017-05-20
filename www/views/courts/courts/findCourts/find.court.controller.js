@@ -9,8 +9,6 @@
 
         var vm = this;
 
-        $scope.setActiveTab(0);
-
         vm.searchCriteria = {
             courtName: '',
             address: '',

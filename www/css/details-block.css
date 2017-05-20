@@ -71,7 +71,7 @@
     display:block;
 }
 
-.details-block.on-edit-mode .display-field{
+.details-block.on-edit-mode .detail-group:not(.read-only) .display-field{
     display:none;
 }
 

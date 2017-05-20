@@ -64,6 +64,12 @@
             </div>-->
         </div>
     </div>
+    <div class="detail-group read-only">
+        <label>Date Joined</label>
+        <div class="value-field">
+            <span class="display-field">{{profile.details.dateJoined | date}}</span>
+        </div>
+    </div>
     <div class="action-buttons" ng-if="isOwned">
         <button class="btn btn-primary edit" ng-click="aboutCtrl.edit()">Edit</button>
         <button class="btn btn-warning cancel" ng-click="aboutCtrl.cancel()" ng-disabled="aboutCtrl.saving">Cancel</button>

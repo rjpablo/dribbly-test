@@ -9,15 +9,12 @@
     function courtDetailsCtrl($scope, settings, httpService, commonServices, $stateParams,
         courtContext, NgMap, mapService, $timeout) {
 
-        $scope.setActiveNavIndex(-1);
-
         var vm = this;
         this.owned; //whether or not the viewer owns the court being viewed
 	    
 		this.court = {}
 		this.courtId = $stateParams.id;
 		this.imageDir = settings.imageUploadPath;
-		this.activeTabIndex = 0;
 		this.tempCourt = {}
 		this.onEditMode = false;
 		this.detailsUpdating = false;
@@ -25,10 +22,6 @@
 
 		this.imageUploadPath = settings.imageUploadPath;
 		this.courtImgSrcPrefix = settings.fileUploadBasePath;
-
-		$scope.setActiveTab = function (index) {
-		    vm.activeTabIndex = index;
-		}
 
         var setCourtsSearched = function(courts){
             return courts;

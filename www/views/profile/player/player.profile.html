@@ -1,3 +1,12 @@
-﻿<div class="tab-pane col-md-12" id="court-schedule-tab">
-    <h3 class="tab-content-header">Player Profile</h3>
+﻿<div class="main-profile profile-sub-content" ng-controller="playerProfileController as playerProfCtrl">
+    <div class="top tab-pane col-md-12">
+        <h5>Player Profile</h5>
+        <ul class="tab-headers">
+            <li ng-class="{'active': $state.current.name == 'profile.main.activities'}"><a ui-sref="profile.main.activities({userName:profile.details.userName})" ng-click="">Details</a></li>
+            <li ng-class="{'active': $state.current.name == 'profile.main.photos'}"><a ui-sref="profile.main.photos({userName:profile.details.userName})" ng-click="">Games</a></li>
+        </ul>
+    </div>
+    <div class="bottom tab-pane col-md-12">
+        <ui-view></ui-view>
+    </div>
 </div>

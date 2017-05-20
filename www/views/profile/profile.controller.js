@@ -9,7 +9,6 @@
     function controllerFn($scope, settings, httpService, commonServices, authentication,
         $location, $state, $stateParams, profileContext, $timeout) {
 
-        $scope.setActiveNavIndex(0);
         $scope.profile = {};
         $scope.$state = $state;
 

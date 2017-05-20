@@ -8,8 +8,6 @@
     function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, courtContext) {
 
         var vm = this;
-
-        $scope.setActiveTab(2);
 	
 		this.courtsSearched = {};
 

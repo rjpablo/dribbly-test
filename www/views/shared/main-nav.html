@@ -13,9 +13,9 @@
         <!--<div class="collapse navbar-collapse" uib-collapse="indexCtrl.isNavCollapsed">-->
         <div class="menu-container" >
             <ul id="categories-menu" class="nav navbar-nav">
-                <li class="menu-item" ng-class="{'active':indexCtrl.activeNavIndex == 0}"><a ui-sref="courts"><span class="menu-icon dr-font court-inclined"></span><span class="menu-text">Courts</span></a></li>
-                <li class="menu-item" ng-class="{'active':indexCtrl.activeNavIndex == 1}"><a ui-sref="games"><span class="menu-icon  dr-font games"></span><span class="menu-text">Games</span></a></li>
-                <li class="menu-item" ng-class="{'active':indexCtrl.activeNavIndex == 2}"><a ui-sref="players"><span class="menu-icon dr-font players"></span><span class="menu-text">Players</span></a></li>
+                <li class="menu-item" ng-class="{'active':$state.current.name.startsWith('courts')}"><a ui-sref="courts"><span class="menu-icon dr-font court-inclined"></span><span class="menu-text">Courts</span></a></li>
+                <li class="menu-item" ng-class="{'active':$state.current.name.startsWith('games')}"><a ui-sref="games"><span class="menu-icon  dr-font games"></span><span class="menu-text">Games</span></a></li>
+                <li class="menu-item" ng-class="{'active':$state.current.name.startsWith('players')}"><a ui-sref="players"><span class="menu-icon dr-font players"></span><span class="menu-text">Players</span></a></li>
                 <li id="user-menu-mob" class="dropdown menu-item">
                     <a ng-show="!currentUser" ng-click="indexCtrl.showLoginModal()" >Login</a>
                     <a ng-show="currentUser" class="dropdown-toggle" data-toggle="dropdown">

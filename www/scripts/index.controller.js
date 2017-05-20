@@ -12,6 +12,7 @@
         this.state = $state;
         this.toastSettings = toastService.settings;
         this.isNavCollapsed = true;
+        $scope.$state = $state;
 
         $scope.showLoginModal = function (message) {
             authentication.showLoginModal(message).then(function (res) {
@@ -19,10 +20,6 @@
             },function(err){
                 
             });
-        }
-
-        $scope.setActiveNavIndex = function (index) {
-            vm.activeNavIndex = index;
         }
 
         $scope.setCurrentUser = function (user) {
