@@ -1,9 +1,27 @@
-﻿<div class="main-profile profile-sub-content" ng-controller="playerProfileController as playerProfCtrl">
+﻿<div class="player-profile profile-sub-content" ng-controller="playerProfileController as playerProfCtrl">
     <div class="top tab-pane col-md-12">
-        <h5>Player Profile</h5>
+        <div class="highlights">
+            <ul class="highlight-items">
+                <li class="highlight-item mvp">
+                    <span class="value">5</span>
+                    <img class="icon" ng-src="images/icons/icon-mvp.png" />
+                    <div class="description">MVPs</div>
+                </li>
+                <li class="highlight-item mvp">
+                    <span class="value">75%</span>
+                    <img class="icon" ng-src="images/icons/icon-trophy.png" />
+                    <div class="description">Win Rate</div>
+                </li>
+                <li class="highlight-item mvp">
+                    <span class="value">65%</span>
+                    <img class="icon" ng-src="images/icons/icon-star.png" />
+                    <div class="description">Rating</div>
+                </li>
+            </ul>
+        </div>
         <ul class="tab-headers">
-            <li ng-class="{'active': $state.current.name == 'profile.main.activities'}"><a ui-sref="profile.main.activities({userName:profile.details.userName})" ng-click="">Details</a></li>
-            <li ng-class="{'active': $state.current.name == 'profile.main.photos'}"><a ui-sref="profile.main.photos({userName:profile.details.userName})" ng-click="">Games</a></li>
+            <li ng-class="{'active': $state.current.name == 'profile.playerProfile.details'}"><a ui-sref="profile.playerProfile.details({userName:profile.details.userName})" ng-click="">Details</a></li>
+            <li ng-class="{'active': $state.current.name == 'profile.playerProfile.games'}"><a ui-sref="profile.playerProfile.games({userName:profile.details.userName})" ng-click="">Games</a></li>
         </ul>
     </div>
     <div class="bottom tab-pane col-md-12">

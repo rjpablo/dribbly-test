@@ -57,9 +57,22 @@
         })
 
         .state('profile.playerProfile', {
-            params: { userName: null },
-            url: '/playerProfile/{userName}',
+            abstract: true,
+            default: '.details',
+            url: '/playerProfile',
             templateUrl: 'views/profile/player/player.profile.html'
+        })
+
+        .state('profile.playerProfile.details', {
+            params: { userName: null },
+            url: '/details/{userName}',
+            templateUrl: 'views/profile/player/details/player.profile.details.html'
+        })
+
+        .state('profile.playerProfile.games', {
+            params: { userName: null },
+            url: '/games/{userName}',
+            templateUrl: 'views/profile/player/games/player.profile.games.html'
         })
 
          /* Courts */

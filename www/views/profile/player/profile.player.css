@@ -1,0 +1,35 @@
+﻿.profile .player-profile .top .highlights{
+    display: block;
+    margin: 30px auto 10px;
+    text-align: center;
+}
+
+.profile .player-profile .top .highlights .highlight-items{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.profile .player-profile .top .highlights .highlight-item{
+    display: inline-block;
+    text-align: center;
+    margin-left: 15px;
+    max-width: 50px;
+    vertical-align: top;
+}
+
+.profile .player-profile .top .highlight-item .value {
+    font-size: 16px;
+}
+
+.profile .player-profile .top .highlights .highlight-item .icon{
+    display: block;
+    height: 35px;
+    margin: 2px auto;
+}
+
+.profile .player-profile .top .highlight-item .description {
+    font-size: 12px;
+    line-height: 16px;
+}
+
