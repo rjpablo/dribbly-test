@@ -3,9 +3,11 @@
 
     angular
         .module('mainApp')
-        .controller('courtCtrl', ['$scope', 'settings', 'httpService', 'commonServices', '$stateParams', 'courtContext', courtDetailsCtrl]);
+        .controller('courtCtrl', ['$scope', 'settings', 'httpService', 'commonServices', '$stateParams',
+            'courtContext', 'NgMap', 'mapService', '$timeout', courtDetailsCtrl]);
 
-    function courtDetailsCtrl($scope, settings, httpService, commonServices, $stateParams, courtContext) {
+    function courtDetailsCtrl($scope, settings, httpService, commonServices, $stateParams,
+        courtContext, NgMap, mapService, $timeout) {
 
         $scope.setActiveNavIndex(-1);
 
@@ -105,6 +107,7 @@
                     vm.onEditMode = false;
                     vm.detailsUpdating = false;
                     vm.court = vm.tempCourt;
+                    vm.showOnMap();
                     commonServices.toast.success('Changes saved!')
                 },
                 function (err) {
@@ -116,6 +119,8 @@
 
         vm.updateAddress = function (loc) {
             vm.tempCourt.address = loc.formatted_address;
+            vm.tempCourt.latitude = mapService.getLatFromLocation(loc)
+            vm.tempCourt.longitude = mapService.getLngFromLocation(loc)
         }
 
         this.setPrimary = function (index) {
@@ -152,7 +157,30 @@
             }
         }
 
+        vm.showOnMap = function () {
 
+            if (vm.mapMarker) { //delete marker if existing
+                vm.mapMarker.setMap(null);
+                vm.mapMarker = null;
+            }
+
+            if (vm.court.latitude && vm.court.longitude) {
+                var latLng = {
+                    lat: vm.court.latitude,
+                    lng: vm.court.longitude
+                }
+                vm.mapMarker = mapService.addMarker((latLng), vm.map, true);
+            }
+        }
+
+        $timeout(function () {
+            NgMap.getMap({ id: 'courtLocationMap' }).then(function (map) {
+                vm.map = map;
+                vm.showOnMap();
+            });
+        })
+
+        
 
     };
 

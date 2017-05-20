@@ -26,7 +26,12 @@
         <div class="detail-group">
             <label >Address</label>
             <div class="value-field full-width">
-                <span class="display-field">{{courtCtrl.court.address}}</span>
+                <div class="display-field">
+                    <span class="display-field">{{courtCtrl.court.address}}</span>
+                    <div class="map-container" map-lazy-load="https://maps.google.com/maps/api/js">
+                        <ng-map id="courtLocationMap" center="{{center}}" zoom="{{zoom}}" on-click="mapClicked()"></ng-map>
+                    </div>
+                </div>                
                 <input class="edit-field input-field"
                        type="text"
                        name="address"

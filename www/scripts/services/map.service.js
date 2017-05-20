@@ -25,10 +25,20 @@
             navigator.geolocation.getCurrentPosition(cbSuccess,cbError);
         }
 
+        var _getLatFromLocation = function (loc) {
+            return angular.isFunction(loc.geometry.location.lat) ? loc.geometry.location.lat() : loc.geometry.location.lat
+        }
+
+        var _getLngFromLocation = function (loc) {
+            return angular.isFunction(loc.geometry.location.lng) ? loc.geometry.location.lng() : loc.geometry.location.lng
+        }
+
         this.getAddressCoordinates = _getAddressCoordinates;
         this.addMarker = _addMarker;
         this.getAddress = _getAddress;
-        this.getCurrentPosition =_getCurrentPosition
+        this.getCurrentPosition = _getCurrentPosition
+        this.getLatFromLocation = _getLatFromLocation;
+        this.getLngFromLocation = _getLngFromLocation;
         return this;
     }
 

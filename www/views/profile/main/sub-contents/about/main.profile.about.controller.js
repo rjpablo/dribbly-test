@@ -4,10 +4,10 @@
     angular
         .module('mainApp')
         .controller('mainProfileAboutController', ['$scope', 'settings', 'httpService', 'commonServices',
-            'authentication', '$location', '$state', '$timeout', 'profileContext', controllerFn]);
+            'authentication', '$location', '$state', '$timeout', 'profileContext', 'mapService', 'NgMap', controllerFn]);
 
     function controllerFn($scope, settings, httpService, commonServices, authentication,
-        $location, $state, $timeout, profileContext) {
+        $location, $state, $timeout, profileContext, mapService, NgMap) {
 
         var vm = this;
         vm.tempProfile = {}
@@ -22,8 +22,8 @@
 
         vm.updateAddress = function (loc) {
             vm.tempProfile.address = loc.formatted_address
-            vm.tempProfile.addressLat = loc.geometry.location.lat
-            vm.tempProfile.addressLng = loc.geometry.location.lng
+            vm.tempProfile.addressLat = mapService.getLatFromLocation(loc)
+            vm.tempProfile.addressLng = mapService.getLngFromLocation(loc)
         }
 
         vm.edit = function () {
@@ -48,6 +48,32 @@
         vm.cancel = function () {
             vm.onEditMode = false
         }
+
+        vm.showOnMap = function () {
+
+            if (vm.mapMarker) { //delete marker if existing
+                vm.mapMarker.setMap(null);
+                vm.mapMarker = null;
+            }
+
+            if ($scope.profile.details.addressLat && $scope.profile.details.addressLng) {
+                var latLng = {
+                    lat: $scope.profile.details.addressLat,
+                    lng: $scope.profile.details.addressLng
+                }
+
+                vm.mapMarker = mapService.addMarker((latLng), vm.map, true);
+
+            }
+
+        }
+
+        $timeout(function () {
+            NgMap.getMap({ id: 'addressMap' }).then(function (map) {
+                vm.map = map;
+                vm.showOnMap();
+            });
+        })
 
     };
 
