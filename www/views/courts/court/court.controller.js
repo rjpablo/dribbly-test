@@ -77,6 +77,7 @@
                     if ($scope.currentUser) {
                         vm.owned = ($scope.currentUser.UserId == vm.court.userId)
                     }
+                    initializeMap()
                 }
             }, function (error) {
                 commonServices.handleError(error);
@@ -166,14 +167,12 @@
             }
         }
 
-        $timeout(function () {
+        function initializeMap() {
             NgMap.getMap({ id: 'courtLocationMap' }).then(function (map) {
                 vm.map = map;
                 vm.showOnMap();
             });
-        })
-
-        
+        }        
 
     };
 

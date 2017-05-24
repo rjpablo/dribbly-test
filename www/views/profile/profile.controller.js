@@ -31,11 +31,20 @@
                 function (res) {
                     $scope.profile.details = res.data;
                     $scope.profile.details.userName = userName;
+                    setProfPicUrlPrefix()
                 },
                 function (err) {
                     commonServices.handleError(err);
                 })
             }            
+        }
+
+        function setProfPicUrlPrefix() {
+            if ($scope.profile.details.profilePic) {
+                $scope.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/profilePic/'
+            } else {
+                $scope.profilePicUrlPrefix = settings.defaultProfilePicDirectory
+            }
         }
 
     };

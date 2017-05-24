@@ -12,6 +12,11 @@ body{
     min-width: 320px;
 }
 
+.std-container{
+    padding: 15px;
+    background-color: #fff;
+}
+
 p{
     /*background-color: #fff;*/
 }

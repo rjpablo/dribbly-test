@@ -38,12 +38,12 @@
     border-bottom: 3px solid #fff;
 }
 
-.profile .bottom{
+.profile .bottom.tab-pane{
     display: inline-block;
     width: 100%;
 }
 
-.profile .bottom .details-block{
+.profile .bottom.tab-pane .details-block{
     margin-top: 15px;
     margin-bottom: 15px;
 }

@@ -1,4 +1,19 @@
-﻿.profile .player-profile .top .highlights{
+﻿
+
+.profile .player-profile .top .profile-pic{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+.profile .player-profile .top .username{
+    display: inline-block;
+    color: #fff;
+}
+
+.profile .player-profile .top .highlights{
     display: block;
     margin: 30px auto 10px;
     text-align: center;

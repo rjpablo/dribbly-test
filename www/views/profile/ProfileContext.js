@@ -11,6 +11,10 @@
             return httpService.get(settings.apiBaseURL + 'UserProfiles/' + encodeURIComponent(userName))
         }
 
+        var _getPlayerProfile = function (userId) {
+            return httpService.get(settings.apiBaseURL + 'Players/' + encodeURIComponent(userId))
+        }
+
         var _getTestProfiles = function () {
             return [
                 {
@@ -32,6 +36,7 @@
         this.getTestProfiles = _getTestProfiles;
         this.getProfileByName = _getProfileByName;
         this.updateProfile = _updateProfile;
+        this.getPlayerProfile = _getPlayerProfile;
 
         return this;
 

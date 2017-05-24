@@ -36,5 +36,5 @@
 ehthumbs.db
 Thumbs.db
 
-www/files/uploads/**
-www/images/uploads/**
+www/images/uploads/*
+www/files/uploads/*

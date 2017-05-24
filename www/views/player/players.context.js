@@ -7,6 +7,10 @@
 
     function serviceFn(httpService, settings, fileService, $q) {
 
+        var _addPlayer = function (playerDetails) {
+            return httpService.post(settings.apiBaseURL + 'Players/Add',playerDetails)
+        }
+
         var _getProfileByName = function (userName) {
             return httpService.get(settings.apiBaseURL + 'UserProfiles/' + encodeURIComponent(userName))
         }
@@ -32,6 +36,7 @@
         this.getTestProfiles = _getTestProfiles;
         this.getProfileByName = _getProfileByName;
         this.updateProfile = _updateProfile;
+        this.addPlayer = _addPlayer;
 
         return this;
 
