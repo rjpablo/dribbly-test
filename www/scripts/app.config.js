@@ -122,14 +122,14 @@
 
         .state('games', {
             url: '/games',
-            templateUrl: 'views/game/games.html'
+            templateUrl: 'views/games/games.html'
         })
 
          /* Players */
 
         .state('players', {
             url: '/players',
-            templateUrl: 'views/player/players.html'
+            templateUrl: 'views/players/players.html'
         })
 
         //.state('court', {
