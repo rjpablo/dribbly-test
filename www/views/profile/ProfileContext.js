@@ -12,7 +12,7 @@
         }
 
         var _getPlayerProfile = function (userId) {
-            return httpService.get(settings.apiBaseURL + 'Players/' + encodeURIComponent(userId))
+            return httpService.get(settings.apiBaseURL + 'Players/GetProfile/' + encodeURIComponent(userId))
         }
 
         var _getTestProfiles = function () {
