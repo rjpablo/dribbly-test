@@ -45,27 +45,27 @@
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-mvp.png'}}" />
                             <span class="value"> MVPs - {{player.mvps}}</span>
                         </li>
-                        <li class="skill" uib-tooltip="Win Rate" >
+                        <li class="skill" uib-tooltip="Win Rate - {{player.winRate?player.winRate + '%':'?'}}" >
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />
                             <span class="value"> Win Rate - {{player.winRate?player.winRate + '%':'?'}}</span>
                         </li>
-                        <li class="skill" uib-tooltip="Dribbling Skills" >
+                        <li class="skill" uib-tooltip="Dribbling Skills - {{player.dribblingSkill}}" >
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
-                            <span class="value stars"> Dribbling Skills - <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
+                            <span class="value stars"> Dribbling Skills - <rating value="player.dribblingSkill"></rating></span>
                         </li>
                     </ul>
                     <ul class="skill-set">
-                        <li class="skill" uib-tooltip="Passing Skills">
+                        <li class="skill" uib-tooltip="Passing Skills - {{player.passingSkill}}">
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
-                            <span class="value stars"> Passing Skills - <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
+                            <span class="value stars"> Passing Skills - <rating value="player.passingSkill"></rating></span>
                         </li>
-                        <li class="skill" uib-tooltip="3-pts Skills">
+                        <li class="skill" uib-tooltip="3-pts Skills - {{player.threePointSkill}}">
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
-                            <span class="value stars"> 3-pts Skills - <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></span>
+                            <span class="value stars"> 3-pts Skills - <rating value="player.threePointSkill"></rating></span>
                         </li>
-                        <li class="skill" uib-tooltip="Blocking Skills">
+                        <li class="skill" uib-tooltip="Blocking Skills - {{player.blockingSkill}}">
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
-                            <span class="value stars"> Blocking Skills - <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
+                            <span class="value stars"> Blocking Skills - <rating value="player.blockingSkill"></rating></span>
                         </li>
                     </ul>
                 </div>

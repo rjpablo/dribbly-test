@@ -173,6 +173,10 @@ div.image-with-bg{
     display:block;
 }
 
+rating{
+    color: #e8e812;
+}
+
 @media(max-width:991px){
     
     * > .show-on-hover{
