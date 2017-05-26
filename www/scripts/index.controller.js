@@ -13,6 +13,7 @@
         this.toastSettings = toastService.settings;
         this.isNavCollapsed = true;
         $scope.$state = $state;
+        $scope.$settings = settings;
 
         $scope.showLoginModal = function (message) {
             authentication.showLoginModal(message).then(function (res) {

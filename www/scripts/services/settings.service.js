@@ -16,8 +16,9 @@
         var _imageUploadPath = _serverRoot + "files/uploads/images/";
         var _fileUploadBasePath = _serverRoot + "files/uploads/"
         var _defaultProfilePicFileName = 'default-user-image.png'
+        var _defaultImagesDirectory = _serverRoot + 'files/images/defaults/'
         var _defaultProfilePicDirectory = _serverRoot + 'files/images/defaults/'
-        var _defaultProfilePicUrl = _serverRoot + _defaultProfilePicDirectory + _defaultProfilePicFileName
+        var _defaultProfilePicUrl = _defaultProfilePicDirectory + _defaultProfilePicFileName
 
 
         //Use this when no backend server is running
@@ -43,6 +44,7 @@
         this.defaultProfilePicFileName = _defaultProfilePicFileName;
         this.defaultProfilePicUrl = _defaultProfilePicUrl;
         this.defaultProfilePicDirectory = _defaultProfilePicDirectory;
+        this.defaultImagesDirectory = _defaultImagesDirectory;
  
         return this;
     }

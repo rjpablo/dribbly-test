@@ -128,8 +128,15 @@
          /* Players */
 
         .state('players', {
+            abstract: true,
+            default: '.all',
             url: '/players',
             templateUrl: 'views/players/players.html'
+        })
+
+        .state('players.all', {
+            url: '',
+            templateUrl: 'views/players/all/all.players.html'
         })
 
         //.state('court', {

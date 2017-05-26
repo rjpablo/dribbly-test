@@ -1,0 +1,105 @@
+﻿/** Player List Item **/
+
+.player-list-item{
+    padding: 0 15px;
+    display:inline-block;
+    width: 100%;
+}
+
+.player-list-item:first-child > div {
+    border-top: 1px solid #ccc;
+}
+
+.player-list-item > div{
+    border-bottom: 1px solid #ccc;
+    display:inline-block;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.player-list-item .profile-details,
+.player-list-item .details-section{
+    display: inline-block;
+    width: 100%;
+}
+
+.player-list-item .profile-details{
+    /*padding: 5px;
+    background: #777;*/
+}
+
+.player-list-item .skills{
+    display: inline-block;
+    padding: 5px;
+    background: #777;
+    color: #fff;
+    width: 100%;
+}
+
+.player-list-item .player-name{
+    font-weight: bold;
+}
+
+.player-list-item .profile-pic{
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    float: left;
+    border: 1px solid #eee;
+}
+
+.player-list-item .details{
+    display:inline-block;
+    float: left;
+    padding-left: 15px;
+}
+
+.player-list-item .profile-details .details > li,
+.player-list-item .profile-details .details > li .value{
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.player-list-item .profile-details .options{
+    float:right;
+}
+
+.player-list-item .profile-details .options .dropdown-menu{
+    color: #333;
+    right: 0;
+    left: initial;
+    min-width: 0px;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+.player-list-item .profile-details .options .dropdown-toggle{
+    background: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    line-height: 16px;
+    padding: 0 5px;
+    float: right;
+    display: inline-block;
+}
+
+.player-list-item .skill-set{
+    display: inline-block;
+    float: left;
+    padding-right: 10px;
+}
+
+.player-list-item .skill{
+    font-size: 12px;
+}
+
+.player-list-item .skill .icon{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.player-list-item .skill .value.stars > i{
+    color: #f7941d;
+}

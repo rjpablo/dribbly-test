@@ -7,12 +7,14 @@
 
     function serviceFn(httpService, settings, fileService, $q) {
 
-        var _addPlayer = function (playerDetails) {
-            return httpService.post(settings.apiBaseURL + 'Players/Add',playerDetails)
+        var apiControllerBaseURL = settings.apiBaseURL + 'Players/';
+
+        var _searchPlayers = function (criteria) {
+            return httpService.post(apiControllerBaseURL + 'Search', criteria)
         }
 
-        var _getProfileByName = function (userName) {
-            return httpService.get(settings.apiBaseURL + 'UserProfiles/' + encodeURIComponent(userName))
+        var _addPlayer = function (playerDetails) {
+            return httpService.post(apiControllerBaseURL + 'Add', playerDetails)
         }
 
         var _getTestProfiles = function () {
@@ -29,14 +31,9 @@
             ]
         }
 
-        var _updateProfile = function (profile) {
-            return httpService.put(settings.apiBaseURL + 'UserProfiles/Update', profile)
-        }
-
         this.getTestProfiles = _getTestProfiles;
-        this.getProfileByName = _getProfileByName;
-        this.updateProfile = _updateProfile;
         this.addPlayer = _addPlayer;
+        this.searchPlayers = _searchPlayers;
 
         return this;
 

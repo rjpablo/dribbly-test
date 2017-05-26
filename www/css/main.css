@@ -17,8 +17,18 @@ body{
     background-color: #fff;
 }
 
+.color-primary{
+    color:#2dc5c3 !important;
+}
+
 p{
     /*background-color: #fff;*/
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .float-right{
