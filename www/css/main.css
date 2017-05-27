@@ -10,6 +10,8 @@
 
 body{
     min-width: 320px;
+    font-size: 12px;
+    line-height: 22px;
 }
 
 .std-container{
@@ -80,7 +82,7 @@ ul{
 .button-link{
     color: #666;
     cursor: pointer;
-    line-height: 30px;
+    line-height: 20px;
     text-decoration:underline;
 }
 

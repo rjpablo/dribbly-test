@@ -24,6 +24,16 @@
         vm.sortIndex = 0;
         vm.sortObjects = [
             {
+                description: 'Date Joined (Ascending)',
+                field: 'dateJoined',
+                reversed: false
+            },
+            {
+                description: 'Date Joined (Descending)',
+                field: 'dateJoined',
+                reversed: true
+            },
+            {
                 description: 'Player Name (Ascending)',
                 field: 'userName',
                 reversed: false

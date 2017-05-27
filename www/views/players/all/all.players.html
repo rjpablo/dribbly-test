@@ -14,21 +14,22 @@
             <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
         </div>
         <div ng-cloak class="list-summary">
-            <p ng-if="allPlayers.players"><span><strong>{{allPlayers.players.length + ' court' + (allPlayers.players.length > 1?'s':'') + ' found'}}</strong></span> <span class="small">{{allPlayers.searchCriteriaStr}} <i ng-show="allPlayers.filtered" class="clickable text-danger fa fa-times" ng-click="allPlayers.resetFilters()" ></i></span></p>
+            <p ng-if="allPlayers.players"><span><strong>{{allPlayers.players.length + ' player' + (allPlayers.players.length > 1?'s':'') + ' found'}}</strong></span> <span class="small">{{allPlayers.searchCriteriaStr}} <i ng-show="allPlayers.filtered" class="clickable text-danger fa fa-times" ng-click="allPlayers.resetFilters()" ></i></span></p>
             <div ng-if="!allPlayers.loading && allPlayers.players && allPlayers.players.length > 1"><span>Sort By:</span> <select ng-model="allPlayers.sortObject" ng-options="obj.description for obj in allPlayers.sortObjects" ng-change="allPlayers.sort()"></select></div>
-            <p ng-show="!allPlayers.loading && !allPlayers.players">No courts were found.</p>
+            <p ng-show="!allPlayers.loading && !allPlayers.players">No players were found.</p>
         </div>
     </div>
     <div class="items">
-        <div class="player-list-item" ng-repeat="player in allPlayers.players">
+        <div class="player-list-item" ng-repeat="player in allPlayers.players | orderBy:allPlayers.sortObject.field:allPlayers.sortObject.reversed">
             <div>
                 <div class="profile-details">
                     <img class="profile-pic" ng-src="{{player.profilePic?(allPlayers.playerImgSrcPrefix + player.userId + '/profilePic/' + player.profilePic):$settings.defaultProfilePicUrl}}" />
                     <ul class="details">
                         <li><a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile.details({userName:player.userName})">{{player.userName}}</a></li>
-                        <li>Location: <span class="value button-link">{{player.address}}</span></li>
-                        <li>Height: <span class="value button-link">{{player.heightFt + '\' ' + player.heightIn + '"'}}</span></li>
-                        <li>Sex: <span class="value button-link">{{player.sex?(player.sex=='M'?'Male':'Female'):'?'}}</span></li>
+                        <li><span class="label">Location: </span><span class="value button-link">{{player.address}}</span></li>
+                        <li><span class="label">Height: </span><span class="value button-link">{{player.heightFt + '\' ' + player.heightIn + '"'}}</span></li>
+                        <li><span class="label">Sex: </span><span class="value button-link">{{player.sex?(player.sex=='M'?'Male':'Female'):'?'}}</span></li>
+                        <li><span class="label">Date Joined: </span><span class="value">{{player.dateJoined | date}}</span></li>
                     </ul>
                     <div class="options" uib-dropdown>
                         <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
@@ -66,6 +67,16 @@
                         <li class="skill" uib-tooltip="Blocking Skills - {{player.blockingSkill}}">
                             <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
                             <span class="value stars"> Blocking Skills - <rating value="player.blockingSkill"></rating></span>
+                        </li>
+                    </ul>
+                    <ul class="skill-set">
+                        <li class="skill" uib-tooltip="Shooting Skills - {{player.shootingSkill}}">
+                            <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                            <span class="value stars"> Shooting Skills - <rating value="player.shootingSkill"></rating></span>
+                        </li>
+                        <li class="skill" uib-tooltip="Defensive Skills - {{player.defensiveSkill}}">
+                            <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                            <span class="value stars"> Defensive Skills - <rating value="player.defensiveSkill"></rating></span>
                         </li>
                     </ul>
                 </div>

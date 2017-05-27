@@ -56,8 +56,14 @@
 
 .player-list-item .profile-details .details > li,
 .player-list-item .profile-details .details > li .value{
-    font-size: 12px;
     line-height: 16px;
+}
+
+.player-list-item .profile-details .details > li .label{
+    font-size: 85%;
+    font-weight: normal;
+    color: inherit;
+    padding: 0;
 }
 
 .player-list-item .profile-details .options{
