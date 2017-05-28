@@ -1,0 +1,235 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Enter Search Criteria</h3>
+</div>
+<div class="modal-body " id="modal-body">
+    <form name="searchForm" class="form form-inline" data-toggle="validator">
+        <div class="form-group">
+            <label class="control-label" for="fullAddress">Player Name:</label>
+            <input name="playerName" class="form-control" ng-model="searchCriteria.playerName" placeholder="Enter part of player name" />
+        </div>   
+        <div class="form-group">
+            <label class="control-label" >Sex:</label>
+            <div class="radio-group">
+                <label class="radio-inline"><input name="sex" type="radio" ng-model="searchCriteria.sex" value="" />Any</label>
+                <label class="radio-inline"><input name="sex" type="radio" ng-model="searchCriteria.sex" value="M" />Male</label>
+                <label class="radio-inline"><input name="sex" type="radio" ng-model="searchCriteria.sex" value="F" />Female</label>
+            </div>
+        </div>
+        <div class="form-group block height">
+            <label class="control-label">Height:</label>
+            <div class="form-sub-group">
+                <label class="control-label">(min)</label>
+                <select class="form-control" ng-model="searchCriteria.heightFtMin">
+                    <option value="">-</option>
+                    <option value="3">3 ft.</option>
+                    <option value="4">4 ft.</option>
+                    <option value="5">5 ft.</option>
+                </select>
+                <select class="form-control" ng-model="searchCriteria.heightInMin">
+                    <option value="">-</option>
+                    <option value="0">0 in.</option>
+                    <option value="1">1 in.</option>
+                    <option value="2">2 in.</option>
+                    <option value="3">3 in.</option>
+                    <option value="4">4 in.</option>
+                    <option value="5">5 in.</option>
+                    <option value="6">6 in.</option>
+                    <option value="7">7 in.</option>
+                    <option value="8">8 in.</option>
+                    <option value="9">9 in.</option>
+                    <option value="10">10 in.</option>
+                    <option value="11">11 in.</option>
+                </select>
+            </div>       
+            <a class="clear-filter" ng-click="searchCriteria.heightFtMin = null; searchCriteria.heightInMin = null;"><i class="fa fa-times"></i></a>     
+        </div>
+
+        <div class="form-group block height">
+            <label class="control-label height-max-label"></label>
+            <div class="form-sub-group">
+                <label class="control-label">(max)</label>
+                <select class="form-control" ng-model="searchCriteria.heightFtMax">
+                    <option value="">-</option>
+                    <option value="3">3 ft.</option>
+                    <option value="4">4 ft.</option>
+                    <option value="5">5 ft.</option>
+                </select>
+                <select class="form-control" ng-model="searchCriteria.heightInMax">
+                    <option value="">-</option>
+                    <option value="0">0 in.</option>
+                    <option value="1">1 in.</option>
+                    <option value="2">2 in.</option>
+                    <option value="3">3 in.</option>
+                    <option value="4">4 in.</option>
+                    <option value="5">5 in.</option>
+                    <option value="6">6 in.</option>
+                    <option value="7">7 in.</option>
+                    <option value="8">8 in.</option>
+                    <option value="9">9 in.</option>
+                    <option value="10">10 in.</option>
+                    <option value="11">11 in.</option>
+                </select>
+            </div>
+            <a class="clear-filter" ng-click="searchCriteria.heightFtMax = null; searchCriteria.heightInMax = null;"><i class="fa fa-times"></i></a>
+        </div>
+
+        <div class="form-group block full-width mvps">
+            <label class="control-label">MVPs:</label>
+            <div class="form-sub-groups">
+                <div class="form-sub-group">
+                    <label class="control-label">(min)</label>
+                    <input name="mvps" type="number" class="form-control" ng-model="searchCriteria.mvpsMin" />
+                </div> to
+                <div class="form-sub-group">
+                    <label class="control-label">(max)</label>
+                    <input name="mvps" type="number" class="form-control" ng-model="searchCriteria.mvpsMax" />
+                </div>
+                <a class="clear-filter" ng-click="searchCriteria.mvpsMin = null; searchCriteria.mvpsMax = null;"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="form-group block full-width">
+            <label class="control-label" for="rangeSelector">Dribbling Skills:</label>
+            <div class="form-sub-groups">
+                <div class="form-sub-group">
+                    <label class="control-label">(min)</label>
+                    <select class="form-control" ng-model="searchCriteria.dribblingMin">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>sd
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div> to
+                <div class="form-sub-group">
+                    <label class="control-label">(max)</label>
+                    <select class="form-control" ng-model="searchCriteria.dribblingMax">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div>
+            </div>
+            <a class="clear-filter" ng-click="searchCriteria.dribblingMin = null; searchCriteria.dribblingMax = null;"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="form-group block full-width">
+            <label class="control-label" for="rangeSelector">Shooting Skills:</label>
+            <div class="form-sub-groups">
+                <div class="form-sub-group">
+                    <label class="control-label">(min)</label>
+                    <select class="form-control" ng-model="searchCriteria.shootingMin">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div> to
+                <div class="form-sub-group">
+                    <label class="control-label">(max)</label>
+                    <select class="form-control" ng-model="searchCriteria.shootingMax">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div>
+                <a class="clear-filter" ng-click="searchCriteria.shootingMax = null; searchCriteria.shootingMin = null;"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="form-group block full-width">
+            <label class="control-label" for="rangeSelector">3-Pts Skills:</label>
+            <div class="form-sub-groups">
+                <div class="form-sub-group">
+                    <label class="control-label">(min)</label>
+                    <select class="form-control" ng-model="searchCriteria.threePtsMin">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div> to
+                <div class="form-sub-group">
+                    <label class="control-label">(max)</label>
+                    <select class="form-control" ng-model="searchCriteria.threePtsMax">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div>
+                <a class="clear-filter" ng-click="searchCriteria.threePtsMax = null; searchCriteria.threePtsMin = null;"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="form-group block full-width">
+            <label class="control-label" for="rangeSelector">Passing Skills:</label>
+            <div class="form-sub-groups">
+                <div class="form-sub-group">
+                    <label class="control-label">(min)</label>
+                    <select class="form-control" ng-model="searchCriteria.passingMin">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div> to
+                <div class="form-sub-group">
+                    <label class="control-label">(max)</label>
+                    <select class="form-control" ng-model="searchCriteria.passingMax">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div>
+                <a class="clear-filter" ng-click="searchCriteria.passingMin = null; searchCriteria.passingMax = null;"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="form-group block full-width">
+            <label class="control-label" for="rangeSelector">Defensive Skills:</label>
+            <div class="form-sub-groups">
+                <div class="form-sub-group">
+                    <label class="control-label">(min)</label>
+                    <select class="form-control" ng-model="searchCriteria.defenceMin">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div> to
+                <div class="form-sub-group">
+                    <label class="control-label">(max)</label>
+                    <select class="form-control" ng-model="searchCriteria.defenceMax">
+                        <option value="">none</option>
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                </div>
+                <a class="clear-filter" ng-click="searchCriteria.defenceMin = null; searchCriteria.defenceMax = null;"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+</form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Search</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

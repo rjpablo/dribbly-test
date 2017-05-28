@@ -65,6 +65,14 @@ ul{
     display: block !important;
 }
 
+.inline-block{
+    display: inline-block;
+}
+
+.full-width{
+    /*width: 100% !important;*/
+}
+
 .sm-form-group{
     display:inline-block;
     width: 250px;
@@ -98,6 +106,18 @@ ul{
 .form-control{
     height: 28px;
     padding: 4px 12px;
+}
+
+.form-inline .form-group{
+    margin-bottom: 15px;
+}
+
+.form-sub-group{
+    display: inline-block;
+}
+
+.radio-group{
+    display: inline-block;
 }
 
 .btn {
@@ -186,6 +206,15 @@ rating{
     }
     
 }
+
+/*****************
+    Dropdowns
+*****************/
+.dropdown-menu > li > a {
+    padding: 5px;
+    display: block;
+}
+
 
 /*****************
     Modals

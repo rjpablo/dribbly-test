@@ -1,0 +1,70 @@
+﻿.player-search-modal .modal-dialog{
+    width: 400px;
+    margin: 10px auto;
+}
+
+.player-search-modal .form .form-group{
+    display:block;
+}
+
+.player-search-modal .form-control{
+    display: inline-block;
+    width: initial;
+}
+
+.player-search-modal .form .form-group > .control-label{
+    display:inline-block;
+    min-width: 150px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.player-search-modal .form .form-sub-groups{
+    display: inline-block;
+}
+
+.player-search-modal .form .form-sub-group > .control-label{
+    display:block;
+    font-weight: normal;
+    margin: 0;
+    line-height: 16px;
+}
+
+.player-search-modal .form .mvps input{
+    width: 80px;
+}
+
+.player-search-modal .clear-filter{
+    color: #777;
+    cursor: pointer;
+}
+
+.player-search-modal .clear-filter:hover{
+    color: red;
+}
+
+@media(max-width:429px){
+
+    .player-search-modal .form .form-group > .control-label{
+        text-align: left;
+        padding-right: 0px;
+    }
+
+    .player-search-modal .modal-dialog{
+        width: 100%;
+    }
+
+    .player-search-modal .control-label,
+    .player-search-modal .form .form-group{
+        display: block;
+        width: 100%;
+    }
+
+    .player-search-modal .height-max-label{
+        display: none !important;
+    }
+}
+
+@media(max-width: 767px){
+    
+}

@@ -1,29 +1,22 @@
 ﻿<div ng-controller="allPlayersCtrl as allPlayers" class="tab-pane active transparent-bg" id="find-courts-tab">
     <div ng-hide="allPlayers.loading" class="col-lg-12 control-panel-container">
         <div class="control-panel">
-            <!--<form class="form-inline">-->
-                <!--<div class="form-group">-->
-                    <!--<span uib-tooltip="More options"><i class="fa fa-caret-down"></i></span>
-                    <input class="form-control" placeholder="enter court name..." type="text" ng-model="searchKey" />-->
-                    <button class="btn btn-primary"  court-search-modal search-criteria="allPlayers.searchCriteria" on-submit="allPlayers.search(criteria)" ><i class="fa fa-search"></i></button>
-                    <button class="btn btn-primary" ng-click="allPlayers.openAddModal('md')" ><i class="fa fa-plus"></i></button>
-                    <!--<a class="button-link" uib-tooltip="Show more search options"><i class="fa fa-caret-down"></i>&nbsp;More&nbsp;Options</a>-->
-                <!--</div>-->
-            <!--</form>-->
-            <!--<a uib-tooltip="Register a new court." class="button-link right-item" ng-click="allPlayers.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>-->
-            <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
+            <button class="btn btn-primary" player-search-modal search-criteria="allPlayers.searchCriteria" on-submit="allPlayers.search(criteria)"><i class="fa fa-search"></i></button>
+            <button class="btn btn-primary" ng-click="allPlayers.openAddModal('md')"><i class="fa fa-plus"></i></button>
         </div>
         <div ng-cloak class="list-summary">
-            <p ng-if="allPlayers.players"><span><strong>{{allPlayers.players.length + ' player' + (allPlayers.players.length > 1?'s':'') + ' found'}}</strong></span> <span class="small">{{allPlayers.searchCriteriaStr}} <i ng-show="allPlayers.filtered" class="clickable text-danger fa fa-times" ng-click="allPlayers.resetFilters()" ></i></span></p>
-            <div ng-if="!allPlayers.loading && allPlayers.players && allPlayers.players.length > 1"><span>Sort By:</span> <select ng-model="allPlayers.sortObject" ng-options="obj.description for obj in allPlayers.sortObjects" ng-change="allPlayers.sort()"></select></div>
-            <p ng-show="!allPlayers.loading && !allPlayers.players">No players were found.</p>
+            <span class="summary" ng-if="allPlayers.players"><span>{{allPlayers.players.length + ' player' + (allPlayers.players.length > 1?'s':'') + ' found'}}</span> <span class="small">{{allPlayers.searchCriteriaStr}} <i ng-show="allPlayers.filtered" class="clickable text-danger fa fa-times" ng-click="allPlayers.resetFilters()" ></i></span></span>
+            <div class="sorter" ng-if="!allPlayers.loading && allPlayers.players && allPlayers.players.length > 1"><span>Sort By:</span> <select ng-model="allPlayers.sortObject" ng-options="obj.description for obj in allPlayers.sortObjects" ng-change="allPlayers.sort()"></select></div>
+            <p class="empty-message" ng-show="!allPlayers.loading && !allPlayers.players">No players were found.</p>
         </div>
     </div>
     <div class="items">
         <div class="player-list-item" ng-repeat="player in allPlayers.players | orderBy:allPlayers.sortObject.field:allPlayers.sortObject.reversed">
             <div>
                 <div class="profile-details">
-                    <img class="profile-pic" ng-src="{{player.profilePic?(allPlayers.playerImgSrcPrefix + player.userId + '/profilePic/' + player.profilePic):$settings.defaultProfilePicUrl}}" />
+                    <a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile.details({userName:player.userName})">
+                        <img class="profile-pic" ng-src="{{player.profilePic?(allPlayers.playerImgSrcPrefix + player.userId + '/profilePic/' + player.profilePic):$settings.defaultProfilePicUrl}}" />
+                    </a>
                     <ul class="details">
                         <li><a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile.details({userName:player.userName})">{{player.userName}}</a></li>
                         <li><span class="label">Location: </span><span class="value button-link">{{player.address}}</span></li>
@@ -33,10 +26,10 @@
                     </ul>
                     <div class="options" uib-dropdown>
                         <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
-                        <ul class="dropdown-menu" uib-dropdown-menu >
-                            <li role="menu-item">Message</li>
-                            <li role="menu-item">Follow</li>
-                            <li role="menu-item">Report</li>
+                        <ul class="dropdown-menu" uib-dropdown-menu>
+                            <li role="menu-item"><a ng-click="">Message</a></li>
+                            <li role="menu-item"><a ng-click="">Add To Favorites</a></li>
+                            <li role="menu-item"><a ng-click="">Report</a></li>
                         </ul>
                     </div>
                 </div>

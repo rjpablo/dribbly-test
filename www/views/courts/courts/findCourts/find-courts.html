@@ -14,8 +14,8 @@
             <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
         </div>
         <div ng-cloak class="list-summary">
-            <p ng-if="findCourt.courtsSearched"><span><strong>{{findCourt.courtsSearched.length + ' court' + (findCourt.courtsSearched.length > 1?'s':'') + ' found'}}</strong></span> <span class="small">{{findCourt.searchCriteriaStr}} <i ng-show="findCourt.filtered" class="clickable text-danger fa fa-times" ng-click="findCourt.resetFilters()" ></i></span></p>
-            <div ng-if="!findCourt.loading && findCourt.courtsSearched && findCourt.courtsSearched.length > 1"><span>Sort By:</span> <select ng-model="findCourt.sortObject" ng-options="obj.description for obj in findCourt.sortObjects" ng-change="findCourt.sort()"></select></div>
+            <p ng-if="findCourt.courtsSearched"><span>{{findCourt.courtsSearched.length + ' court' + (findCourt.courtsSearched.length > 1?'s':'') + ' found'}}</span> <span class="small">{{findCourt.searchCriteriaStr}} <i ng-show="findCourt.filtered" class="clickable text-danger fa fa-times" ng-click="findCourt.resetFilters()" ></i></span></p>
+            <div class="sorter" ng-if="!findCourt.loading && findCourt.courtsSearched && findCourt.courtsSearched.length > 1"><span>Sort By:</span> <select ng-model="findCourt.sortObject" ng-options="obj.description for obj in findCourt.sortObjects" ng-change="findCourt.sort()"></select></div>
             <p ng-show="!findCourt.loading && !findCourt.courtsSearched">No courts were found.</p>
         </div>
     </div>

@@ -104,7 +104,17 @@
 }
 
 .tab-wrap .list-summary{
-    margin-bottom: 15px;
+    display: inline-block;
+    width: 100%;
+}
+
+.tab-wrap .list-summary > *{
+    display: inline-block;
+    float: left;
+}
+
+.tab-wrap .list-summary > .sorter{
+    float: right;
 }
 
 .tab-wrap .control-panel .right-item{
