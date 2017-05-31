@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body" id="modal-body">
     <form name="locationPickerForm" class="" data-toggle="validator">
-        <div class="form-group" ng-class="{'has-error':locationPickerForm.fullAddress.$invalid && locationPickerForm.fullAddress.$touched}">
+        <div class="form-group" ng-if="requireCompleteAddress" ng-class="{'has-error':locationPickerForm.fullAddress.$invalid && locationPickerForm.fullAddress.$touched}">
             <label class="control-label" for="fullAddress">Complete Address:*</label>
             <input name="fullAddress" class="form-control" ng-model="completeAddress" required ng-minlength="15" placeholder="Enter complete address" />
             <div class="help-block" ng-messages="locationPickerForm.fullAddress.$error" role="alert">
@@ -31,7 +31,10 @@
                 <ng-map id="locationPickerMap" center="{{center}}" zoom="{{zoom}}" on-click="mapClicked()"></ng-map>
                 <p ng-show="selectedLocation.formatted_address" ><b>Current Selection:</b> <a class="button-link" ng-click="focusCurrentSelection()">{{selectedLocation.formatted_address}}</a></p>
             </div>
-        </div>        
+        </div>
+        <div class="form-group">
+            <label class="control-label">City:</label><span ng-if="selectedLocation.city.longName && selectedLocation.city.country">  {{selectedLocation.city.longName + ', ' + selectedLocation.city.country.longName}}</span>
+        </div>       
     </form>
 </div>
 <div class="modal-footer">

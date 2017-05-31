@@ -9,7 +9,8 @@
             restrict: "EA",
             scope: {
                 startPosition: '=?',
-                onLocationSelect: '&?'
+                onLocationSelect: '&?',
+                requireCompleteAddress: '=?'
             },
             link: function (scope, element, attrs) {
 
@@ -30,7 +31,10 @@
 
                             $scope.selectedLocation = {
                                 formatted_address: "",
-                                latLng: {}
+                                latLng: {},
+                                city: {
+                                    contry: {}
+                                }
                             }
 
                             NgMap.getMap({ id: 'locationPickerMap' }).then(function (map) {
@@ -98,9 +102,9 @@
                                 mapService.getAddress(e.latLng).then(function (res) {
                                     if (res.data.results.length > 0) {
 
-                                        $scope.address = res.data.results[0].formatted_address;
-                                        $scope.selectedLocation = res.data.results[0];
-                                        resetMark(e);
+                                        var place = res.data.results[0]
+
+                                        validatePlace(place)
 
                                     } else {
                                         commonServices.toast.error('No address was retrieved.' +
@@ -129,18 +133,18 @@
                                 if ($scope.map) {
                                     var place = this.getPlace();
                                     if (place.geometry) {
-                                        $scope.selectedLocation = place
-                                        $scope.address = place.formatted_address;
-                                        $scope.map.setCenter(place.geometry.location || place.geometry.latLng);
-                                        resetMark(place.geometry);
+
+                                        validatePlace(place)
+
                                     } else {
                                         mapService.getAddressCoordinates($scope.address, function (res, t) {
                                             if (res.length > 0) {
-                                                $scope.map.setCenter(res[0].geometry.location)
-                                                $scope.selectedLocation = res[0];
-                                                $scope.selectedLocation.formatted_address = $scope.address; //override address
-                                                resetMark(res[0].geometry)
-                                                $scope.$apply();
+                                                place = res[0]
+
+                                                if (validatePlace(place)) {
+                                                    $scope.$apply();
+                                                }
+                                                
                                             } else {
                                                 commonServices.toast.error('Unable to find entered location.')
                                             }
@@ -148,6 +152,19 @@
                                     }
                                 } else {
                                     commonServices.toast.error('The map has not been initialized. Please wait until it is initialized.')
+                                }
+                            }
+
+                            var validatePlace = function (place) {
+                                var city = mapService.getCityFromLocation(place)
+
+                                if (mapService.validateCity(city)) {
+                                    $scope.address = place.formatted_address;
+                                    $scope.selectedLocation = place;
+                                    $scope.selectedLocation.city = city;
+                                    resetMark(place.geometry);
+                                    $scope.map.setCenter(place.geometry.location || place.geometry.latLng);
+                                    return true
                                 }
                             }
 

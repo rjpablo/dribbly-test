@@ -24,6 +24,7 @@
             vm.tempProfile.address = loc.formatted_address
             vm.tempProfile.addressLat = mapService.getLatFromLocation(loc)
             vm.tempProfile.addressLng = mapService.getLngFromLocation(loc)
+            vm.tempProfile.city = loc.city
         }
 
         vm.edit = function () {
@@ -49,31 +50,31 @@
             vm.onEditMode = false
         }
 
-        vm.showOnMap = function () {
+        //vm.showOnMap = function () {
 
-            if (vm.mapMarker) { //delete marker if existing
-                vm.mapMarker.setMap(null);
-                vm.mapMarker = null;
-            }
+        //    if (vm.mapMarker) { //delete marker if existing
+        //        vm.mapMarker.setMap(null);
+        //        vm.mapMarker = null;
+        //    }
 
-            if ($scope.profile.details.addressLat && $scope.profile.details.addressLng) {
-                var latLng = {
-                    lat: $scope.profile.details.addressLat,
-                    lng: $scope.profile.details.addressLng
-                }
+        //    if ($scope.profile.details.addressLat && $scope.profile.details.addressLng) {
+        //        var latLng = {
+        //            lat: $scope.profile.details.addressLat,
+        //            lng: $scope.profile.details.addressLng
+        //        }
 
-                vm.mapMarker = mapService.addMarker((latLng), vm.map, true);
+        //        vm.mapMarker = mapService.addMarker((latLng), vm.map, true);
 
-            }
+        //    }
 
-        }
+        //}
 
-        $timeout(function () {
-            NgMap.getMap({ id: 'addressMap' }).then(function (map) {
-                vm.map = map;
-                vm.showOnMap();
-            });
-        })
+        //$timeout(function () {
+        //    NgMap.getMap({ id: 'addressMap' }).then(function (map) {
+        //        vm.map = map;
+        //        vm.showOnMap();
+        //    });
+        //})
 
     };
 

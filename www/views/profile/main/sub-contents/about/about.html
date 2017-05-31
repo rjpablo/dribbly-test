@@ -43,7 +43,23 @@
             </select>
         </div>
     </div>
-    <div class="detail-group">
+    <div class="detail-group read-only">
+        <label>City</label>
+        <div class="value-field">
+            <span ng-show="!aboutCtrl.onEditMode" class="display-field">{{profile.details.city?(profile.details.city.longName + ', ' + profile.details.city.country.longName):'(Not Specified)'}}</span>
+            <span ng-show="aboutCtrl.onEditMode" class="display-field">{{aboutCtrl.tempProfile.city?(aboutCtrl.tempProfile.city.longName + ', ' + aboutCtrl.tempProfile.city.country.longName):'(Not Specified)'}}</span>
+            <span class="button-link" ng-if="aboutCtrl.onEditMode" location-picker="aboutCtrl.location" on-location-select="aboutCtrl.updateAddress(loc)"> (Pick a location)</span>
+        </div>
+        
+    </div>
+    <!--<div class="detail-group read-only">
+        <label>Country</label>
+        <div class="value-field">
+            <span ng-show="!aboutCtrl.onEditMode" class="display-field">{{profile.details.city.country?(profile.details.city.country.longName):'(Not Specified)'}}</span>
+            <span ng-show="aboutCtrl.onEditMode" class="display-field">{{aboutCtrl.tempProfile.city?(aboutCtrl.tempProfile.city.country.longName):'(Not Specified)'}}</span>
+        </div>
+    </div>-->
+    <!--<div class="detail-group">
         <label>Address</label>
         <div class="value-field full-width">
             <div class="display-field">
@@ -59,11 +75,8 @@
                    on-location-select="aboutCtrl.updateAddress(loc)"
                    placeholder="Click to select a location"
                    ng-model="aboutCtrl.tempProfile.address" />
-            <!--<div class="edit-field">
-                <input name="address" type="text" class="full-width edit-field input-field" ng-model="aboutCtrl.tempProfile.address" />
-            </div>-->
         </div>
-    </div>
+    </div>-->
     <div class="detail-group read-only">
         <label>Date Joined</label>
         <div class="value-field">
