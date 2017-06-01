@@ -28,6 +28,7 @@
                             $scope.completeAddress;
                             $scope.types = ['geocode']
                             $scope.center = '15,121';
+                            $scope.requireCompleteAddress = scope.requireCompleteAddress;
 
                             $scope.selectedLocation = {
                                 formatted_address: "",
@@ -159,7 +160,7 @@
                                 var city = mapService.getCityFromLocation(place)
 
                                 if (mapService.validateCity(city)) {
-                                    $scope.address = place.formatted_address;
+                                    $scope.completeAddress = place.formatted_address;
                                     $scope.selectedLocation = place;
                                     $scope.selectedLocation.city = city;
                                     resetMark(place.geometry);
@@ -168,9 +169,15 @@
                                 }
                             }
 
-                            $scope.ok = function (e) {
-                                $scope.selectedLocation.formatted_address = $scope.completeAddress;
-                                $uibModalInstance.close($scope.selectedLocation);
+                            $scope.ok = function (theForm) {
+                                theForm.$submitted = true;
+                                if (!($scope.requireCompleteAddress && theForm.fullAddress.$invalid) && $scope.selectedLocation.geometry) {
+                                    $scope.selectedLocation.formatted_address = theForm.fullAddress.$modelValue;
+                                    $uibModalInstance.close($scope.selectedLocation);
+                                } else {
+                                    commonServices.toast.error('Please fix error(s).')
+                                }
+                                
                             };
 
                             $scope.cancel = function (e) {
