@@ -27,6 +27,7 @@
                    location-picker="addCourtCtrl.court.location"
                    on-location-select="addCourtCtrl.updateLocation(loc)"
                    placeholder="Click to select a location"
+                   require-complete-address="true"
                    ng-model="addCourtCtrl.court.address" />
             <div class="help-block" ng-messages="addCourtForm.address.$error" role="alert">
                 <div ng-message="required">The court's address is required.</div>
