@@ -106,6 +106,7 @@
 .tab-wrap .list-summary{
     display: inline-block;
     width: 100%;
+    border-bottom: 1px solid #eee;
 }
 
 .tab-wrap .list-summary > *{

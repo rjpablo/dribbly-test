@@ -46,9 +46,9 @@
                 courtId: 1,
                 teamAId: 1,
                 teamBId: 2,
-                winningTeamId: 1,
+                winningTeamId: null,
                 court: {
-                    id: 1,
+                    id: 18,
                     name: 'Ballers Court',
                     address: '#123 Paraiso St., Makati City, Manila',
                     rate: '400',
@@ -64,6 +64,76 @@
                 teamB: {
                     teamId: 2,
                     teamName: 'Test Team 2',
+                    isTemporary: false
+                },
+                winningTeam: {
+                    teamId: 1,
+                    teamName: 'Test Team 1',
+                    isTemporary: false
+                }
+            },
+            {
+                gameId: 0,
+                title: 'Test Game 002',
+                schedule: new Date(),
+                teamAScore: 0,
+                teamBScore: 0,
+                courtId: 1,
+                teamAId: 1,
+                teamBId: 2,
+                winningTeamId: 1,
+                court: {
+                    id: 18,
+                    name: 'Ballers Court',
+                    address: '#123 Paraiso St., Makati City, Manila',
+                    rate: '400',
+                    contactNo: '+63 932 987 7865',
+                    imagePath: '1.jpg',
+                    userId: 'test-user'
+                },
+                teamA: {
+                    teamId: 1,
+                    teamName: 'Team with long Name',
+                    isTemporary: false
+                },
+                teamB: {
+                    teamId: 2,
+                    teamName: 'Test Team 2',
+                    isTemporary: false
+                },
+                winningTeam: {
+                    teamId: 1,
+                    teamName: 'Test Team 1',
+                    isTemporary: false
+                }
+            },
+            {
+                gameId: 0,
+                title: 'Test Game 003',
+                schedule: new Date(),
+                teamAScore: 0,
+                teamBScore: 0,
+                courtId: 1,
+                teamAId: 1,
+                teamBId: 2,
+                winningTeamId: 2,
+                court: {
+                    id: 18,
+                    name: 'Kamakawili Habululu Basketball Court',
+                    address: '#123 Paraiso St., Makati City, Manila',
+                    rate: '400',
+                    contactNo: '+63 932 987 7865',
+                    imagePath: '1.jpg',
+                    userId: 'test-user'
+                },
+                teamA: {
+                    teamId: 1,
+                    teamName: 'Test Team 1',
+                    isTemporary: false
+                },
+                teamB: {
+                    teamId: 2,
+                    teamName: 'Team with long Name',
                     isTemporary: false
                 },
                 winningTeam: {

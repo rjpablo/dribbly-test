@@ -66,6 +66,10 @@
         if (settings.useLocalData) {
             vm.games = gameContext.getTestGames();
         } else {
+
+            vm.games = gameContext.getTestGames();
+            return;
+
             vm.loading = true;
             courtContext.getGames(null).then(
             function (result) {

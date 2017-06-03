@@ -1,7 +1,55 @@
 ﻿.game-list-item{
     display: inline-block;
+    width: 50%;
     text-align: center;
-    padding: 10px;
+    padding: 10px 15px;
+}
+
+.game-list-item .wrapper{
+    display: inline-block;
     width: 100%;
     border: 1px solid #eee;
+}
+
+.game-list-item .title {
+    color: #2dc5c3;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.game-list-item p{
+    margin: 0;
+}
+
+.game-list-item .teams{
+    margin: 0 0 10px;
+    line-height: 16px;
+}
+
+.game-list-item .team {
+    line-height: inherit;
+    display: block;
+    font-weight: bold;
+}
+
+.game-list-item .schedule, .game-list-item .court {
+    line-height: 16px;
+    color: #999;
+}
+
+.game-list-item .court:hover{
+    text-decoration: underline;
+}
+
+.game-list-item .icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+@media(max-width: 568px){
+    .game-list-item{
+        width: 100%;
+    }
 }

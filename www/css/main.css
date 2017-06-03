@@ -289,10 +289,22 @@ body{
     width: 300px;
 }
 
+@media (max-width: 1199px) and (min-width: 992px) {
+    .tab-wrap .media .parrent.media-body {
+        clear:none;
+    }
+}
+
 @media(max-width: 1199px) {
-    .center-content{
+    /*.center-content{
         width: 480px;
         clear: none !important;
+    }*/
+}
+
+@media(min-width: 992px) {
+    #content {
+        width: 1170px;
     }
 }
 
