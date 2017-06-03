@@ -6,8 +6,8 @@
 
     function settings(httpService) {
         var _useLocalServer = true;
-        var _doNotUseBackend = false;
-        var _useLocalData = false;
+        var _doNotUseBackend = true;
+        var _useLocalData = true;
         var _serverRoot = _useLocalServer ? 'http://localhost:58266/' : 'http://drbly-test.somee.com/';
         _serverRoot = _doNotUseBackend ? 'http://localhost:8888/' : _serverRoot
         

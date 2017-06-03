@@ -1,0 +1,7 @@
+﻿.game-list-item{
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #eee;
+}

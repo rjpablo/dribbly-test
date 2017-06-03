@@ -121,8 +121,25 @@
          /* Games */
 
         .state('games', {
-            url: '/games',
-            templateUrl: 'views/games/games.html'
+            abstract: true,
+            default: '.all',
+            url: '/Games',
+            templateUrl: 'views/games/games/games.html'
+        })
+
+        .state('games.all', {
+            url: '',
+            templateUrl: 'views/games/games/all/all-games.html'
+        })
+
+        .state('games.myGames', {
+            url: '/my-games',
+            templateUrl: 'views/games/games/my-games/my-games.html'
+        })
+
+        .state('games.followed', {
+            url: '/followed',
+            templateUrl: 'views/games/games/followed/followed-games.html'
         })
 
          /* Players */

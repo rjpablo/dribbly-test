@@ -1,0 +1,31 @@
+﻿<div ng-controller="allGamesCtrl as allGamesCtrl" class="tab-pane active transparent-bg" id="find-courts-tab">
+    <div ng-hide="allGamesCtrl.loading" class="col-lg-12 control-panel-container">
+        <div class="control-panel">
+            <!--<form class="form-inline">-->
+                <!--<div class="form-group">-->
+                    <!--<span uib-tooltip="More options"><i class="fa fa-caret-down"></i></span>
+                    <input class="form-control" placeholder="enter court name..." type="text" ng-model="searchKey" />-->
+                    <button class="btn btn-primary"  court-search-modal search-criteria="allGamesCtrl.searchCriteria" on-submit="allGamesCtrl.search(criteria)" ><i class="fa fa-search"></i></button>
+                    <button class="btn btn-primary" ng-click="allGamesCtrl.openAddModal('md')" ><i class="fa fa-plus"></i></button>
+                    <!--<a class="button-link" uib-tooltip="Show more search options"><i class="fa fa-caret-down"></i>&nbsp;More&nbsp;Options</a>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!--<a uib-tooltip="Register a new court." class="button-link right-item" ng-click="allGamesCtrl.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>-->
+            <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
+        </div>
+        <div ng-cloak class="list-summary">
+            <p ng-if="allGamesCtrl.games"><span>{{allGamesCtrl.games.length + ' court' + (allGamesCtrl.games.length > 1?'s':'') + ' found'}}</span> <span class="small">{{allGamesCtrl.searchCriteriaStr}} <i ng-show="allGamesCtrl.filtered" class="clickable text-danger fa fa-times" ng-click="allGamesCtrl.resetFilters()" ></i></span></p>
+            <div class="sorter" ng-if="!allGamesCtrl.loading && allGamesCtrl.games && allGamesCtrl.games.length > 1"><span>Sort By:</span> <select ng-model="allGamesCtrl.sortObject" ng-options="obj.description for obj in allGamesCtrl.sortObjects" ng-change="allGamesCtrl.sort()"></select></div>
+            <p ng-show="!allGamesCtrl.loading && !allGamesCtrl.games">No courts were found.</p>
+        </div>
+    </div>
+    <div class="game-list-item" ng-repeat="game in allGamesCtrl.games">
+        <p class="title">{{game.title}}</p>
+        <p class="schedule">{{game.schedule | date}}</p>
+        <p class="court">{{game.court.name}}</p>
+        <div class="teams">
+            <div class="team teamA">{{game.teamA.teamName}}</div>
+            <div class="team teamB">{{game.teamB.teamName}}</div>
+        </div>
+    </div>
+</div>
