@@ -1,0 +1,58 @@
+﻿<div ng-controller="teamsCtrl as teamsCtrl">
+    <div class="tab-wrap">
+        <div class="media">
+            <div class="left-side-bar">
+                <!--<div class="tab-headers pull-left">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li ng-class="{'active':$state.current.name.startsWith('courts.find')}" class=""><a ui-sref="courts.find" class="analistic-01">All&nbsp;Courts</a></li>
+                        <li ng-class="{'active':$state.current.name.startsWith('courts.myCourts')}" class=""><a ui-sref="courts.myCourts" class="analistic-02">My&nbsp;Courts</a></li>
+                        <li ng-class="{'active':$state.current.name.startsWith('courts.followed')}" class=""><a ui-sref="courts.followed" class="tehnical">Followed&nbsp;Courts</a></li>
+                    </ul>
+                </div>-->
+                <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
+            </div>
+            <div class="center-content parrent media-body">
+                <div class="tab-content">
+                    
+                    <div class="teams-list">
+                        <div class="teams-list-item" ui-sref="teams" ng-repeat="team in teamsCtrl.teams">
+                            <div class="team-logo-container">
+                                <img class="team-logo" ng-src="{{$settings.defaultTeamLogoUrl}}" />
+                            </div>
+                            <ul class="team-details">
+                                <li><span class="team-name">{{team.teamName}}</span></li>
+                                <li class="city">
+                                    <span class="value">{{team.city.longName + ', ' + team.city.country.shortName}}</span>
+                                </li>
+                                <li class="coach">
+                                    <span class="label">Coached by</span>
+                                    <span class="value">{{team.manager.userName}}</span>
+                                </li>
+                                <li class="coach">
+                                    <span class="label">Home Court</span>
+                                    <span class="value">{{team.homeCourt.name}}</span>
+                                </li>
+                                <li class="coach">
+                                    <span class="label">Win Rate</span>
+                                    <span class="value"><rating value="team.winningRate * 5"></rating> ({{team.winCount + '/' + (team.lossCount + team.winCount)}})</span>
+                                </li>
+                            </ul>
+                            <div class="list-item-options" uib-dropdown>
+                                <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li role="menu-item"><a ng-click="">Message</a></li>
+                                    <li role="menu-item"><a ng-click="">Add To Favorites</a></li>
+                                    <li role="menu-item"><a ng-click="">Report</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> <!--/.tab-content-->
+            </div> <!--/.media-body-->
+            <div class="right-side-bar">
+                <ng-include src="'views/shared/side-contents/featured-courts.html'"></ng-include>
+            </div>
+        </div> <!--/.media-->
+    </div><!--/.tab-wrap-->
+</div>

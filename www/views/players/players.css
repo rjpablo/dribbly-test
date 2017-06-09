@@ -31,7 +31,7 @@
 .player-list-item .skills{
     display: inline-block;
     padding: 5px;
-    background: #777;
+    background: #666;
     color: #fff;
     width: 100%;
 }
@@ -64,30 +64,6 @@
     font-weight: normal;
     color: inherit;
     padding: 0;
-}
-
-.player-list-item .profile-details .options{
-    float:right;
-}
-
-.player-list-item .profile-details .options .dropdown-menu{
-    color: #333;
-    right: 0;
-    left: initial;
-    min-width: 0px;
-    line-height: 16px;
-    font-size: 12px;
-}
-
-.player-list-item .profile-details .options .dropdown-toggle{
-    background: transparent;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 0;
-    line-height: 16px;
-    padding: 0 5px;
-    float: right;
-    display: inline-block;
 }
 
 .player-list-item .skill-set{

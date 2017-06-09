@@ -99,6 +99,13 @@
             templateUrl: 'views/courts/courts/myCourts/my-courts.html'
         })
 
+         /* Teams */
+
+        .state('teams', {
+            url: '/teams',
+            templateUrl: 'views/teams/teams/teams.html'
+        })
+
         /* Court */
 
         .state('court', {
