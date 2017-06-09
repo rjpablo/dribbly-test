@@ -7,11 +7,11 @@
 }
 
 .player-list-item:first-child > div {
-    border-top: 1px solid #ccc;
+    /*border-top: 1px solid #ccc;*/
 }
 
 .player-list-item > div{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #666;
     display:inline-block;
     width: 100%;
     padding: 10px 0;
@@ -31,8 +31,8 @@
 .player-list-item .skills{
     display: inline-block;
     padding: 5px;
-    background: #666;
-    color: #fff;
+    background: #444;
+    color: #eee;
     width: 100%;
 }
 
@@ -43,9 +43,10 @@
 .player-list-item .profile-pic{
     height: 100px;
     width: 100px;
-    display:inline-block;
+    display: inline-block;
     float: left;
-    border: 1px solid #eee;
+    border: 1px solid #999;
+    background: #fff;
 }
 
 .player-list-item .details{
@@ -57,12 +58,13 @@
 .player-list-item .profile-details .details > li,
 .player-list-item .profile-details .details > li .value{
     line-height: 16px;
+    color: #eee;
 }
 
 .player-list-item .profile-details .details > li .label{
     font-size: 85%;
     font-weight: normal;
-    color: inherit;
+    color: #999;
     padding: 0;
 }
 

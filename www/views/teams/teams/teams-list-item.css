@@ -2,7 +2,7 @@
     display: inline-block;
     width: 100%;
     padding: 8px 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #666
 }
 
 .teams-list-item:hover {
@@ -38,14 +38,14 @@
 }
 
 .teams-list-item .team-details .label {
-    color: #777;
+    color: #999;
     font-weight: normal;
     padding-left: 0;
     padding-right: 0;
 }
 
 .teams-list-item .team-details .value{
-    color: #333;
+    color: #ccc;
 }
 
 .teams-list-item .team-details > li.with-icon-label .label{

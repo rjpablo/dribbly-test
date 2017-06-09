@@ -12,6 +12,7 @@ body{
     min-width: 320px;
     font-size: 12px;
     line-height: 22px;
+    background-color: #333;
 }
 
 .std-container{
@@ -122,6 +123,7 @@ ul{
 
 .btn {
     padding: 4px 8px;
+    border-radius: 0;
 }
 
 div.image-with-bg{
@@ -247,8 +249,8 @@ rating{
 
 .list-item-options .dropdown-toggle{
     background: transparent;
-    color: #333;
-    border: 1px solid #ccc;
+    color: #999;
+    border: 1px solid #999;
     border-radius: 0;
     line-height: 16px;
     padding: 0 5px;

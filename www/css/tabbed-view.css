@@ -74,7 +74,7 @@
 
 .tab-wrap .tab-content{
     min-height: 300px;
-    background-color: #fff;
+    /*background-color: #fff;*/
     display: inline-block;
     width: 100%;
 }
@@ -96,17 +96,18 @@
 }
 
 .tab-wrap .control-panel{
-    overflow: auto;
+    /*overflow: auto;
     border-radius: 4px;
     padding: 15px 0 0;
+    background-color: #fff;*/
     margin-bottom: 15px;
-    background-color: #fff;
 }
 
 .tab-wrap .list-summary{
     display: inline-block;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #666;
+    color: #eee;
 }
 
 .tab-wrap .list-summary > *{
@@ -122,4 +123,8 @@
     display: inline-block;
     float: right;
     vertical-align: middle;
+}
+
+.tab-wrap .sorter select {
+    color: #000;
 }
