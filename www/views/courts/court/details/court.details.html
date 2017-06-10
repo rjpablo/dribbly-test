@@ -77,7 +77,7 @@
         <div class="detail-group read-only" ng-if="!courtCtrl.owned">
             <label>Added By</label>
             <div class="value-field full-width">
-                <a class="display-field button-link" ui-sref="profile.main.activities({userName: courtCtrl.court.owner.userName})">{{courtCtrl.court.owner.userName}}</a>   
+                <a class="display-field button-link" ui-sref="profile.main({userName: courtCtrl.court.owner.userName})">{{courtCtrl.court.owner.userName}}</a>   
             </div>
         </div>
         <div class="action-buttons" ng-if="courtCtrl.owned">

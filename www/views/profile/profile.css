@@ -8,17 +8,55 @@
 
 .profile .main-profile .top,
 .profile .player-profile .top {
-    background-color: #197574;
+    background-color: #3c3c3c;
     display: inline-block;
     width: 100%;
     color: #fff;
+    padding: 10px;
 }
 
+.profile .main-profile .top .detail-group{
+    padding: 0;
+    border: none;
+}
+
+.profile .main-profile .top .fields{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.profile .main-profile .top .action-buttons{
+    clear:none;
+    display: inline-block;
+    width: auto;
+    float: right;
+}
+
+.profile .main-profile .top .details-block .detail-group label {
+    width: 80px;
+    padding-right: 10px;
+}
+.profile .main-profile .top .details-block .detail-group > .value-field{
+    width: initial;
+}
+
+.profile .main-profile .top .details-block .action-buttons .btn{
+    clear:both;
+    width:60px;
+}
+
+
 .profile .top .tab-headers{
+    float: left;
     padding-left: 0;
-    margin-bottom: 0;
+    margin-top: 10px;
     list-style: none;
-    display: block;
+    display: inline-block;
+    clear: both;
+    width: 100%;
+    padding: 0 10px;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
 }
 
 .profile .top .tab-headers > li{
@@ -46,4 +84,10 @@
 .profile .bottom.tab-pane .details-block{
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+@media(max-width: 991px) and (min-width: 768px) {
+    .profile .main-profile .top .fields {
+        max-width: 260px;
+    }
 }

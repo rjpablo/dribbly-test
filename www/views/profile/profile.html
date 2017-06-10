@@ -2,18 +2,116 @@
     <div class="tab-wrap">
         <div class="media">
             <div class="left-side-bar">
-                <div class="tab-headers pull-left">
+                <!--<div class="tab-headers pull-left">
                     <ul class="nav nav-tabs nav-stacked">
                         <li ng-class="{'active':$state.current.name.startsWith('profile.main')}" class=""><a ui-sref="profile.main.about({userName:profile.details.userName})" >Main Profile</a></li>
                         <li ng-class="{'active':$state.current.name.startsWith('profile.playerProfile')}" class=""><a  ui-sref="profile.playerProfile.details({userName:profile.details.userName})" >Player Profile</a></li>
                     </ul>
-                </div>
+                </div>-->
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
             </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    <ui-view ng-if="profile.details" ></ui-view>
+                    <div class="main-profile profile-sub-content" >
+                        <div class="top tab-pane col-md-12">
+                            <div class="profile-photo">
+                                <div class="profile-photo-container">
+                                    <span class="change-profile-photo show-on-hover" ng-if="isOwned" ngf-select="profCtrl.replaceProfilePhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-pencil"></i></span>
+                                    <!--<img class="profile-photo" ng-src="images/default-user-image.png" />-->
+                                    <ng-image-gallery images="profCtrl.profilePic"
+                                                      methods="addCourtCtrl.methods"
+                                                      thumbnails="true"
+                                                      inline="false"
+                                                      url-prefix="profCtrl.profilePicUrlPrefix"
+                                                      img-bubbles="false"
+                                                      bg-close="true"
+                                                      bubbles="false"
+                                                      img-anim="pop"
+                                                      show-controls="false"></ng-image-gallery>
+                                </div>
+                            </div>
+                            <h5 class="username">{{profile.details.userName}}</h5><br />
+                            <div class="basic-info">
+                                <div ng-form="profileDetailsForm" ng-controller="mainProfileAboutController as aboutCtrl" class="details-block" ng-class="{'on-edit-mode':aboutCtrl.onEditMode}">
+                                    <div class="fields">
+                                        <div class="detail-group">
+                                            <label>Height</label>
+                                            <div class="value-field">
+                                                <span class="display-field">{{(!profile.details.heightFt || !profile.details.heightIn)?'(Not Specified)':profile.details.heightFt + '\' ' + profile.details.heightIn + '"'}}</span>
+                                                <div class="edit-field">
+                                                    <select name="heightFt" class="input-field" ng-model="aboutCtrl.tempProfile.heightFt">
+                                                        <option ng-value="">--</option>
+                                                        <option ng-value="4">4</option>
+                                                        <option ng-value="5">5</option>
+                                                        <option ng-value="6">6</option>
+                                                        <option ng-value="7">7</option>
+                                                    </select>
+                                                    <span>ft. </span>
+                                                    <select name="heightIn" class="input-field" ng-model="aboutCtrl.tempProfile.heightIn">
+                                                        <option ng-value="">--</option>
+                                                        <option ng-value="0">0</option>
+                                                        <option ng-value="1">1</option>
+                                                        <option ng-value="2">2</option>
+                                                        <option ng-value="3">3</option>
+                                                        <option ng-value="4">4</option>
+                                                        <option ng-value="5">5</option>
+                                                        <option ng-value="6">6</option>
+                                                        <option ng-value="7">7</option>
+                                                        <option ng-value="8">8</option>
+                                                        <option ng-value="9">9</option>
+                                                        <option ng-value="10">10</option>
+                                                        <option ng-value="11">11</option>
+                                                    </select>
+                                                    <span>in. </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail-group">
+                                            <label>Sex</label>
+                                            <div class="value-field">
+                                                <span class="display-field">{{profile.details.sex?(profile.details.sex == 'M'?'Male':'Female'):'(Not Specified)'}}</span>
+                                                <select name="sex" class="edit-field input-field" ng-model="aboutCtrl.tempProfile.sex">
+                                                    <option ng-value="''">--</option>
+                                                    <option ng-value="'M'">Male</option>
+                                                    <option ng-value="'F'">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="detail-group read-only">
+                                            <label>City</label>
+                                            <div class="value-field">
+                                                <span ng-show="!aboutCtrl.onEditMode" class="display-field">{{profile.details.city?(profile.details.city.longName + ', ' + profile.details.city.country.longName):'(Not Specified)'}}</span>
+                                                <!--<span ng-show="aboutCtrl.onEditMode" class="display-field">{{aboutCtrl.tempProfile.city?(aboutCtrl.tempProfile.city.longName + ', ' + aboutCtrl.tempProfile.city.country.longName):'(Not Specified)'}}</span>-->
+                                                <span class="button-link" ng-if="aboutCtrl.onEditMode" location-picker="aboutCtrl.location" on-location-select="aboutCtrl.updateAddress(loc)">{{aboutCtrl.tempProfile.city?(aboutCtrl.tempProfile.city.longName + ', ' + aboutCtrl.tempProfile.city.country.longName):'(Pick Location)'}}</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="detail-group read-only">
+                                            <label>Date Joined</label>
+                                            <div class="value-field">
+                                                <span class="display-field">{{profile.details.dateJoined | date}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="action-buttons" ng-if="isOwned">
+                                        <button class="btn btn-primary edit" ng-click="aboutCtrl.edit()">Edit</button>
+                                        <button class="btn btn-warning cancel" ng-click="aboutCtrl.cancel()" ng-disabled="aboutCtrl.saving">Cancel</button>
+                                        <button class="btn btn-primary save" ng-click="aboutCtrl.save(profileDetailsForm)" ng-disabled="aboutCtrl.saving">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="tab-headers">
+                                <li ng-class="{'active': $state.current.name == 'profile.main'}"><a ui-sref="profile.main({userName:profile.details.userName})" ng-click="">Main Profile</a></li>
+                                <li ng-class="{'active': $state.current.name == 'profile.playerProfile'}"><a ui-sref="profile.playerProfile({userName:profile.details.userName})" ng-click="">Player Profile</a></li>
+                                <!--<li ng-class="{'active': $state.current.name == 'profile.main.videos'}"><a ui-sref="profile.main.videos({userName:profile.details.userName})" ng-click="">Videos</a></li>
+                                <li ng-class="{'active': $state.current.name == 'profile.main.about'}"><a ui-sref="profile.main.about({userName:profile.details.userName})" ng-click="">About</a></li>-->
+                            </ul>
+                        </div>
+                        <div class="bottom tab-pane col-md-12">
+                            <ui-view></ui-view>
+                        </div>
+                    </div>
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">

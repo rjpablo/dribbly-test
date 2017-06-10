@@ -14,11 +14,11 @@
         <div class="player-list-item" ng-repeat="player in allPlayers.players | orderBy:allPlayers.sortObject.field:allPlayers.sortObject.reversed">
             <div>
                 <div class="profile-details">
-                    <a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile.details({userName:player.userName})">
+                    <a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile({userName:player.userName})">
                         <img class="profile-pic" ng-src="{{player.profilePic?(allPlayers.playerImgSrcPrefix + player.userId + '/profilePic/' + player.profilePic):$settings.defaultProfilePicUrl}}" />
                     </a>
                     <ul class="details">
-                        <li><a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile.details({userName:player.userName})">{{player.userName}}</a></li>
+                        <li><a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile({userName:player.userName})">{{player.userName}}</a></li>
                         <li><span class="label">Location: </span><span class="value button-link">{{player.address}}</span></li>
                         <li><span class="label">Height: </span><span class="value button-link">{{player.heightFt + '\' ' + player.heightIn + '"'}}</span></li>
                         <li><span class="label">Sex: </span><span class="value button-link">{{player.sex?(player.sex=='M'?'Male':'Female'):'?'}}</span></li>

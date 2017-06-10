@@ -26,54 +26,52 @@
         })
 
         .state('profile.main', {
-            abstract: true,
-            default: '.photos',
-            url: '/main',
+            params: { userName: null },
+            url: '/main/{userName}',
             templateUrl: 'views/profile/main/main.profile.html'
         })
 
-        .state('profile.main.photos', {
-            params: { userName: null },
-            url: '/photos/{userName}',
-            templateUrl: 'views/profile/main/sub-contents/photos.html'
-        })
+        //.state('profile.main.photos', {
+        //    params: { userName: null },
+        //    url: '/photos/{userName}',
+        //    templateUrl: 'views/profile/main/sub-contents/photos.html'
+        //})
 
-        .state('profile.main.about', {
-            params: { userName: null },
-            url: '/about/{userName}',
-            templateUrl: 'views/profile/main/sub-contents/about/about.html'
-        })
+        //.state('profile.main.about', {
+        //    params: { userName: null },
+        //    url: '/about/{userName}',
+        //    templateUrl: 'views/profile/main/sub-contents/about/about.html'
+        //})
 
-        .state('profile.main.videos', {
-            params: { userName: null },
-            url: '/videos/{userName}',
-            templateUrl: 'views/profile/main/sub-contents/videos.html'
-        })
+        //.state('profile.main.videos', {
+        //    params: { userName: null },
+        //    url: '/videos/{userName}',
+        //    templateUrl: 'views/profile/main/sub-contents/videos.html'
+        //})
 
-        .state('profile.main.activities', {
-            params: { userName: null },
-            url: '/activities/{userName}',
-            templateUrl: 'views/profile/main/sub-contents/activities.html'
-        })
+        //.state('profile.main.activities', {
+        //    params: { userName: null },
+        //    url: '/activities/{userName}',
+        //    templateUrl: 'views/profile/main/sub-contents/activities.html'
+        //})
 
         .state('profile.playerProfile', {
-            abstract: true,
-            default: '.details',
-            url: '/playerProfile',
+            params: { userName: null },
+            url: '/playerProfile/{userName}',
             templateUrl: 'views/profile/player/player.profile.html'
         })
 
-        .state('profile.playerProfile.details', {
-            params: { userName: null },
-            url: '/details/{userName}',
-            templateUrl: 'views/profile/player/details/player.profile.details.html'
-        })
+        //.state('profile.playerProfile.details', {
+        //    params: { userName: null },
+        //    url: '/details/{userName}',
+        //    templateUrl: 'views/profile/player/details/player.profile.details.html'
+        //})
 
-        .state('profile.playerProfile.games', {
-            params: { userName: null },
-            url: '/games/{userName}',
-            templateUrl: 'views/profile/player/games/player.profile.games.html'
-        })
+        //.state('profile.playerProfile.games', {
+        //    params: { userName: null },
+        //    url: '/games/{userName}',
+        //    templateUrl: 'views/profile/player/games/player.profile.games.html'
+        //})
 
          /* Courts */
 

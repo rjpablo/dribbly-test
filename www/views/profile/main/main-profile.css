@@ -1,12 +1,15 @@
-﻿
+﻿.profile .main-profile .top{
+    padding-top: 10px;
+}
 
 .profile .main-profile .profile-photo-container{
-    display: block;
-    margin: 10px auto;
-    margin-top: 50px;
-    width: 120px;
-    height: 120px;
+    display: inline-block;
+    /*margin: 10px auto;*/
+    /*margin-top: 30px;*/
+    width: 150px;
+    height: 150px;
     position:relative;
+    float:left;
 }
 
 .profile .main-profile .top .ng-image-gallery,
@@ -20,6 +23,21 @@
 
 .profile .main-profile .top .ng-image-gallery .thumb{
     background-color: #fff;
+}
+
+.profile .main-profile .profile-photo,
+.profile .main-profile .basic-info{
+    display:inline-block;
+    float:left;
+}
+
+.profile .main-profile .profile-photo{
+    /*padding: 0 15px;*/
+}
+.profile .main-profile .basic-info {
+    background: #3c3c3c;
+    padding: 0px 10px;
+    border-radius: 4px;
 }
 
 .profile .main-profile .profile-photo-container .change-profile-photo{
@@ -42,8 +60,15 @@
 
 
 .profile .main-profile .username{
-    color: #fff;
-    text-align: center;
-    display: block;
-    margin: 5px auto;
+    color: #2dc5c3;
+    display: inline-block;
+    margin: 0px auto 5px;
+    padding-left: 10px;
+    float: left;
+}
+
+@media(max-width: 991px){
+    .profile .main-profile .basic-info {
+        /*max-width: 370px;*/
+    }
 }

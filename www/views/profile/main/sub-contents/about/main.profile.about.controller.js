@@ -50,32 +50,6 @@
             vm.onEditMode = false
         }
 
-        //vm.showOnMap = function () {
-
-        //    if (vm.mapMarker) { //delete marker if existing
-        //        vm.mapMarker.setMap(null);
-        //        vm.mapMarker = null;
-        //    }
-
-        //    if ($scope.profile.details.addressLat && $scope.profile.details.addressLng) {
-        //        var latLng = {
-        //            lat: $scope.profile.details.addressLat,
-        //            lng: $scope.profile.details.addressLng
-        //        }
-
-        //        vm.mapMarker = mapService.addMarker((latLng), vm.map, true);
-
-        //    }
-
-        //}
-
-        //$timeout(function () {
-        //    NgMap.getMap({ id: 'addressMap' }).then(function (map) {
-        //        vm.map = map;
-        //        vm.showOnMap();
-        //    });
-        //})
-
     };
 
 })();
