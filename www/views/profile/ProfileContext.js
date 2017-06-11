@@ -37,6 +37,10 @@
             return httpService.put(settings.apiBaseURL + 'UserProfiles/Update', profile)
         }
 
+        var _updateProfilePic = function (userId, photoId) {
+            return httpService.put(settings.apiBaseURL + 'UserProfiles/UpdateProfilePic/' + userId + '/' + photoId);
+        }
+
         var _deletePhoto = function (fileName, userId) {
             return httpService.delete(settings.apiBaseURL + 'UserProfiles/DeletePhoto/' + encodeURIComponent(fileName) + '/' + userId)
         }
@@ -47,6 +51,7 @@
         this.getPlayerProfile = _getPlayerProfile;
         this.getMainProfile = _getMainProfile;
         this.deletePhoto = _deletePhoto
+        this.updateProfilePic = _updateProfilePic
 
         return this;
 

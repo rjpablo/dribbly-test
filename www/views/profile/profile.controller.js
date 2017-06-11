@@ -15,7 +15,7 @@
         var vm = this;
         var userName = $stateParams.userName || $scope.currentUser.Username;
         vm.activeTabIndex = 0;
-        vm.profilePic = [];
+        $scope.profilePic = [];
         vm.uploading = false;
 
         if ($scope.currentUser) {
@@ -48,17 +48,22 @@
         function setProfPicUrlPrefix() {
             if ($scope.profile.details.profilePic) {
                 vm.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/photos/'
-                vm.profilePic.push({
+                $scope.profilePic.push({
                     fileName: $scope.profile.details.profilePic.fileName,
                     url: vm.profilePicUrlPrefix + $scope.profile.details.profilePic.fileName
                 })
             } else {
                 vm.profilePicUrlPrefix = settings.defaultProfilePicDirectory
-                vm.profilePic.push({
+                $scope.profilePic.push({
                     fileName: settings.defaultProfilePicFileName,
                     url: settings.defaultProfilePicUrl
                 })
             }
+        }
+
+        $scope.updateProfilePicArray = function(fileName){
+            $scope.profilePic = [];
+            $scope.profilePic.push({ url: vm.profilePicUrlPrefix + fileName, fileName: fileName });
         }
 
         this.replaceProfilePhoto = function (file) {
@@ -75,9 +80,9 @@
                     vm.tempProfile.profilePic = response.data;
                     fileName = response.data.fileName;                    
                     //vm.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/photos/'
-                    vm.profilePic = [];
-                    vm.profilePic.push({ url: vm.profilePicUrlPrefix + fileName, fileName: fileName });
+                    $scope.updateProfilePicArray(fileName)
                     $scope.profile.details = angular.copy(vm.tempProfile)
+                    $scope.$broadcast('primary-photo-uploaded', vm.tempProfile.profilePic)
 
                 }, function (response) {
                     vm.uploading = false

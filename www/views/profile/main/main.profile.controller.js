@@ -16,7 +16,7 @@
         profileContext.getMainProfile($scope.profile.details.userId).then(
             function (res) {
                 vm.mainProfile = res.data
-                setPrimaryPhoto($scope.profile.details.profilePic)
+                markPrimaryPhoto($scope.profile.details.profilePicId)
             },
             function(err){
                 commonServices.handleError(err);
@@ -43,15 +43,29 @@
             }
         }
 
-        var setPrimaryPhoto = function (fileName) {
-            var done = false;
-            for (var x = 0; (x < vm.mainProfile.photos.length && !done) ; x++) {
-                if (vm.mainProfile.photos[x].fileName == fileName) {
-                    vm.mainProfile.photos[x].isPrimary = (vm.mainProfile.imagePath == fileName ? true : false);
-                    done = true;
-                }
+        this.setPhotoAsPrimary = function (index) {
+            var photo = vm.mainProfile.photos[index]
+            profileContext.updateProfilePic($scope.profile.details.userId, photo.id).then(
+                function (res) {
+                    $scope.updateProfilePicArray(photo.fileName)
+                    $scope.profile.details.profilePicId = photo.id
+                    $scope.profile.details.profilePic = photo
+                    markPrimaryPhoto(photo.id)
+                }, function(err){
+                    commonServices.handleError(err);
+                })            
+        }
+
+        var markPrimaryPhoto = function (photoId) {
+            for (var x = 0; (x < vm.mainProfile.photos.length) ; x++) {
+                vm.mainProfile.photos[x].isPrimary = (vm.mainProfile.photos[x].id == photoId);
             }
         }
+
+        $scope.$on('primary-photo-uploaded',function(evt, photo){
+            vm.mainProfile.photos.push(photo);
+            markPrimaryPhoto(photo.id);
+        })
 
     };
 
