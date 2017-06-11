@@ -74,7 +74,7 @@
                 var fileName;
                 currFile.progress = 0;
 
-                fileService.uploadProfilePhoto(currFile, $scope.profile.details.userId).then(function (response) {
+                profileContext.uploadPhoto(currFile, $scope.profile.details.userId, true).then(function (response) {
                     vm.uploading = false
                     vm.tempProfile = angular.copy($scope.profile.details);
                     vm.tempProfile.profilePic = response.data;

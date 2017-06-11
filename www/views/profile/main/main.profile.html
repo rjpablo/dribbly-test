@@ -1,22 +1,38 @@
 ﻿<div class="main-profile" ng-if="profile.details" ng-controller="mainProfileController as mainProfCtrl">
-    <div class="photos">
-        <h5>Photos</h5>
-        <ng-image-gallery images="mainProfCtrl.mainProfile.photos"
-                          methods="mainProfCtrl.methods"
-                          thumbnails="true"
-                          inline="false"
-                          url-prefix="mainProfCtrl.photosUrlPrefix"
-                          img-bubbles="false"
-                          bg-close="true"
-                          bubbles="false"
-                          img-anim="pop"
-                          show-add-button="true"
-                          add-file="mainProfCtrl.addPhotos"
-                          remove-function="mainProfCtrl.removePhoto(index)"
-                          set-primary ="mainProfCtrl.setPhotoAsPrimary(index)"
-                          show-controls="isOwned"></ng-image-gallery>
+    <div class="titled-container photos">
+        <div class="header">
+            <h5 class="title">Photos({{mainProfCtrl.mainProfile.photos.length}})</h5>
+            <div class="action-buttons">
+                <a class="button-link" ng-click="alert('Add')" ng-if="isOwned" ngf-select="mainProfCtrl.uploadPhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-plus"></i> Upload Photo</a>
+            </div>
+        </div>
+        <div class="content">
+            <ng-image-gallery images="mainProfCtrl.mainProfile.photos"
+                              methods="mainProfCtrl.methods"
+                              thumbnails="true"
+                              inline="false"
+                              url-prefix="mainProfCtrl.photosUrlPrefix"
+                              img-bubbles="false"
+                              bg-close="true"
+                              bubbles="false"
+                              img-anim="pop"
+                              show-add-button="true"
+                              add-file="mainProfCtrl.addPhotos"
+                              remove-function="mainProfCtrl.removePhoto(index)"
+                              set-primary="mainProfCtrl.setPhotoAsPrimary(index)"
+                              show-controls="isOwned"></ng-image-gallery>
+        </div>
+        <div class="footer"></div>
     </div>
-    <div class="videos">
+    <div class="titled-container videos">
+        <div class="header">
+            <h5 class="title">Videos</h5>
+        </div>
+        <div class="content">
 
+        </div>
+        <div class="footer">
+
+        </div>
     </div>
 </div>

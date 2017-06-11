@@ -67,6 +67,15 @@
             markPrimaryPhoto(photo.id);
         })
 
+        this.uploadPhoto = function (file) {
+            profileContext.uploadPhoto(file, $scope.profile.details.userId).then(
+                function(res){
+                    vm.mainProfile.photos.push(res.data);
+                },function(err){
+                    commonServices.handleError(err);
+                })
+        }
+
     };
 
 })();

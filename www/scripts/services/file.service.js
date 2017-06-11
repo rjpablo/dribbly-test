@@ -8,7 +8,7 @@
 
         var uploadCourtPhotoUrl = settings.apiBaseURL + 'file/UploadCourtPhoto/';
         var deleteCourtPhotoUrl = settings.apiBaseURL + 'file/deleteCourtPhoto/';
-        var uploadProfilePhotoUrl = settings.apiBaseURL + 'UserProfiles/UploadProfilePic/';
+        var uploadUserPhotoUrl = settings.apiBaseURL + 'UserProfiles/UploadPhoto/';
         var deleteUserPhotoUrl = settings.apiBaseURL + 'file/deleteUserPhoto/';
         var maxSizeKB = 2000000; //1M = 1G, 0 = no limit
 
@@ -19,9 +19,9 @@
             });
         }
 
-        this.uploadProfilePhoto = function (file, userId) {
+        this.uploadUserPhoto = function (file, userId, setAsPrimary) {
             return Upload.upload({
-                url: uploadProfilePhotoUrl + userId,
+                url: uploadUserPhotoUrl + userId + (setAsPrimary?'/true':''),
                 file: file
             });
         }

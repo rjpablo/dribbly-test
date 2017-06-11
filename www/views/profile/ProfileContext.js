@@ -45,6 +45,10 @@
             return httpService.delete(settings.apiBaseURL + 'UserProfiles/DeletePhoto/' + encodeURIComponent(fileName) + '/' + userId)
         }
 
+        var _uploadPhoto = function (file, userId, setAsPrimary) {
+            return fileService.uploadUserPhoto(file, userId, setAsPrimary);
+        }
+
         this.getTestProfiles = _getTestProfiles;
         this.getProfileByName = _getProfileByName;
         this.updateProfile = _updateProfile;
@@ -52,6 +56,7 @@
         this.getMainProfile = _getMainProfile;
         this.deletePhoto = _deletePhoto
         this.updateProfilePic = _updateProfilePic
+        this.uploadPhoto = _uploadPhoto;
 
         return this;
 

@@ -258,8 +258,22 @@ rating{
     display: inline-block;
 }
 
+/*********************
+    Titled Container    
+**********************/
 
+.titled-container .header{
+    margin: 10px 0;
+}
 
+.titled-container .header .title{
+    display: inline-block;
+    margin:0;
+}
+
+.titled-container .header .action-buttons{
+    float: right;
+}
 
 /*************************
       Body
