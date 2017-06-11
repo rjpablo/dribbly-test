@@ -262,6 +262,13 @@ rating{
     Titled Container    
 **********************/
 
+.titled-container{
+    display:inline-block;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
 .titled-container .header{
     margin: 10px 0;
 }

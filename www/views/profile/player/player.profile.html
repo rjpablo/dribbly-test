@@ -1,48 +1,60 @@
-﻿<p>Player Profile</p>
-<!--<div class="player-profile profile-sub-content" ng-controller="playerProfileController as playerProfCtrl">
-    <div ng-if="!profile.player" class="std-container col-md-12">
-        <div ng-if="isOwned">
-            <p>You have not set a player profile.</p>
-            <input type="button" ng-click="playerProfCtrl.setPlayerProfile()" class="btn btn-primary" value="Set Player Profile" />
+﻿<div class="player-profile" ng-if="profile.details" ng-controller="playerProfileController as playerProfCtrl">
+    <div class="titled-container stats col-md-12">
+        <div class="header">
+            <h5 class="title">Stats &amp; Skills</h5>
         </div>
-        <div ng-if="!isOwned">
-            <p>{{profile.details.userName + ' has not set a player profile.'}}</p>
-        </div>
-    </div>
-    <div ng-if="profile.player">
-        <div class="top tab-pane col-md-12">
-            <div class="profile-pic-container">
-                <a ui-sref="profile.main.about({userName:profile.details.userName})" class="profile-pic-container" >
-                    <img class="profile-pic" ng-src="{{profile.details.profilePic?profilePicUrlPrefix + profile.details.profilePic:profilePicUrlPrefix + 'default-user-image.png'}}" />
-                    <h5 class="username">{{profile.details.userName + ' - Player Profile'}}</h5>
-                </a>
-            </div>            
-            <div class="highlights">
-                <ul class="highlight-items">
-                    <li class="highlight-item mvp">
-                        <span class="value">{{profile.player.mvps?profile.player.mvps:0}}</span>
-                        <img class="icon" ng-src="images/icons/icon-mvp.png" />
-                        <div class="description">MVPs</div>
+        <div class="content">
+            <div class="skills">
+                <ul class="skill-set">
+                    <li class="skill">
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-mvp.png'}}" />
+                        <span class="value"> MVPs - {{profile.player.mvps}}</span>
                     </li>
-                    <li class="highlight-item mvp">
-                        <span class="value" uib-tooltip="{{profile.player.winRate?'':'Not enough data to display value'}}">{{profile.player.winRate?profile.player.winRate + '%':'?'}}</span>
-                        <img class="icon" ng-src="images/icons/icon-trophy.png" />
-                        <div class="description">Win Rate</div>
+                    <li class="skill">
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />
+                        <span class="value"> Win Rate - {{profile.player.winRate?profile.player.winRate + '%':'?'}}</span>
                     </li>
-                    <li class="highlight-item mvp">
-                        <span class="value" uib-tooltip="{{profile.player.winRate?'':'Not enough data to display value'}}">{{profile.player.rating?profile.player.rating + '%':'?'}}</span>
-                        <img class="icon" ng-src="images/icons/icon-star.png" />
-                        <div class="description">Rating</div>
+                    <li class="skill">
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                        <span class="value stars"> Dribbling Skills - <rating value="profile.player.dribblingSkill"></rating></span>
+                    </li>
+                </ul>
+                <ul class="skill-set">
+                    <li class="skill" >
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                        <span class="value stars"> Passing Skills - <rating value="profile.player.passingSkill"></rating></span>
+                    </li>
+                    <li class="skill">
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                        <span class="value stars"> 3-pts Skills - <rating value="profile.player.threePointSkill"></rating></span>
+                    </li>
+                    <li class="skill">
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                        <span class="value stars"> Blocking Skills - <rating value="profile.player.blockingSkill"></rating></span>
+                    </li>
+                </ul>
+                <ul class="skill-set">
+                    <li class="skill" >
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                        <span class="value stars"> Shooting Skills - <rating value="profile.player.shootingSkill"></rating></span>
+                    </li>
+                    <li class="skill" >
+                        <img class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-dribbling.png'}}" />
+                        <span class="value stars"> Defensive Skills - <rating value="profile.player.defensiveSkill"></rating></span>
                     </li>
                 </ul>
             </div>
-            <ul class="tab-headers">
-                <li ng-class="{'active': $state.current.name == 'profile.playerProfile.details'}"><a ui-sref="profile.playerProfile.details({userName:profile.details.userName})" ng-click="">Details</a></li>
-                <li ng-class="{'active': $state.current.name == 'profile.playerProfile.games'}"><a ui-sref="profile.playerProfile.games({userName:profile.details.userName})" ng-click="">Games</a></li>
-            </ul>
-        </div>
-        <div class="bottom tab-pane col-md-12">
-            <ui-view></ui-view>
         </div>
     </div>
-</div>-->
+    <div class="titled-container games col-md-12">
+        <div class="header">
+            <h5 class="title">Games</h5>
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</div>

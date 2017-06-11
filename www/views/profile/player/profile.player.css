@@ -1,50 +1,34 @@
-﻿
+﻿.player-profile{
+}
 
-.profile .player-profile .top .profile-pic{
-    height: 30px;
-    width: 30px;
+.player-profile .titled-container.stats{
+    background: #3f7373;
+    color: #eee;
+    display:inline-block;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.player-profile .titled-container.stats .header .title{
+    color: #eee;
+}
+
+.player-profile .skill-set{
     display: inline-block;
-    border-radius: 2px;
-    border: 1px solid #ccc;
+    float: left;
+    padding-right: 10px;
 }
 
-.profile .player-profile .top .username{
-    display: inline-block;
-    color: #fff;
-}
-
-.profile .player-profile .top .highlights{
-    display: block;
-    margin: 30px auto 10px;
-    text-align: center;
-}
-
-.profile .player-profile .top .highlights .highlight-items{
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-.profile .player-profile .top .highlights .highlight-item{
-    display: inline-block;
-    text-align: center;
-    margin-left: 15px;
-    max-width: 50px;
-    vertical-align: top;
-}
-
-.profile .player-profile .top .highlight-item .value {
-    font-size: 16px;
-}
-
-.profile .player-profile .top .highlights .highlight-item .icon{
-    display: block;
-    height: 35px;
-    margin: 2px auto;
-}
-
-.profile .player-profile .top .highlight-item .description {
+.player-profile .skill{
     font-size: 12px;
-    line-height: 16px;
 }
 
+.player-profile .skill .icon{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.player-profile .skill .value.stars > i{
+    color: #f7941d;
+}
