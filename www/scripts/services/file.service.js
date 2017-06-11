@@ -8,7 +8,8 @@
 
         var uploadCourtPhotoUrl = settings.apiBaseURL + 'file/UploadCourtPhoto/';
         var deleteCourtPhotoUrl = settings.apiBaseURL + 'file/deleteCourtPhoto/';
-        var uploadProfilePhotoUrl = settings.apiBaseURL + 'file/UploadProfilePic/';
+        var uploadProfilePhotoUrl = settings.apiBaseURL + 'UserProfiles/UploadProfilePic/';
+        var deleteUserPhotoUrl = settings.apiBaseURL + 'file/deleteUserPhoto/';
         var maxSizeKB = 2000000; //1M = 1G, 0 = no limit
 
         this.uploadCourtPhoto = function (file, userId) {
@@ -27,6 +28,10 @@
 
         this.deleteCourtPhoto = function (fileName, userId) {
             return httpService.delete(deleteCourtPhotoUrl + fileName + '/' + userId)
+        }
+
+        this.deleteUserPhoto = function (fileName, userId) {
+            return httpService.delete(deleteUserPhotoUrl + fileName + '/' + userId)
         }
 
         this.validateFiles = function (file) {

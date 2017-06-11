@@ -3,10 +3,10 @@
 
     angular
         .module('mainApp')
-        .controller('profileController', ['$scope', 'settings', 'httpService', 'commonServices',
+        .controller('profileController', ['$scope', 'settings', 'httpService', 'commonServices', 'fileService',
             'authentication', '$location', '$state', '$stateParams', 'profileContext', '$timeout', controllerFn]);
 
-    function controllerFn($scope, settings, httpService, commonServices, authentication,
+    function controllerFn($scope, settings, httpService, commonServices, fileService, authentication,
         $location, $state, $stateParams, profileContext, $timeout) {
 
         $scope.profile = {};
@@ -19,7 +19,7 @@
         vm.uploading = false;
 
         if ($scope.currentUser) {
-            $scope.isOwned = userName == $scope.currentUser.Username;
+            $scope.isOwned = userName.toLowerCase() == $scope.currentUser.Username;
         }
         
 
@@ -47,10 +47,10 @@
 
         function setProfPicUrlPrefix() {
             if ($scope.profile.details.profilePic) {
-                vm.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/profilePic/'
+                vm.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/photos/'
                 vm.profilePic.push({
-                    fileName: $scope.profile.details.profilePic,
-                    url: vm.profilePicUrlPrefix + $scope.profile.details.profilePic
+                    fileName: $scope.profile.details.profilePic.fileName,
+                    url: vm.profilePicUrlPrefix + $scope.profile.details.profilePic.fileName
                 })
             } else {
                 vm.profilePicUrlPrefix = settings.defaultProfilePicDirectory
@@ -70,20 +70,15 @@
                 currFile.progress = 0;
 
                 fileService.uploadProfilePhoto(currFile, $scope.profile.details.userId).then(function (response) {
-                    fileName = response.data;
+                    vm.uploading = false
                     vm.tempProfile = angular.copy($scope.profile.details);
-                    vm.tempProfile.profilePic = fileName;
-                    profileContext.updateProfile(vm.tempProfile).then(
-                        function (res) {
-                            vm.uploading = false
-                            vm.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/profilePic/'
-                            vm.profilePic = [];
-                            vm.profilePic.push({ url: settings.fileUploadBasePath + $scope.profile.details.userId + '/profilePic/' + fileName, fileName: fileName });
-                            $scope.profile.details = angular.copy(vm.tempProfile)
-                        }, function (err) {
-                            vm.uploading = false
-                            commonServices.handleError(err)
-                        })
+                    vm.tempProfile.profilePic = response.data;
+                    fileName = response.data.fileName;                    
+                    //vm.profilePicUrlPrefix = settings.fileUploadBasePath + $scope.profile.details.userId + '/photos/'
+                    vm.profilePic = [];
+                    vm.profilePic.push({ url: vm.profilePicUrlPrefix + fileName, fileName: fileName });
+                    $scope.profile.details = angular.copy(vm.tempProfile)
+
                 }, function (response) {
                     vm.uploading = false
                     commonServices.toast.error('Upload failed for \'' + currFile.name + '\'');

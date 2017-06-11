@@ -15,6 +15,10 @@
             return httpService.get(settings.apiBaseURL + 'Players/GetProfile/' + encodeURIComponent(userId))
         }
 
+        var _getMainProfile = function (userId) {
+            return httpService.get(settings.apiBaseURL + 'UserProfiles/GetMainProfile/' + encodeURIComponent(userId))
+        }
+
         var _getTestProfiles = function () {
             return [
                 {
@@ -33,10 +37,16 @@
             return httpService.put(settings.apiBaseURL + 'UserProfiles/Update', profile)
         }
 
+        var _deletePhoto = function (fileName, userId) {
+            return httpService.delete(settings.apiBaseURL + 'UserProfiles/DeletePhoto/' + encodeURIComponent(fileName) + '/' + userId)
+        }
+
         this.getTestProfiles = _getTestProfiles;
         this.getProfileByName = _getProfileByName;
         this.updateProfile = _updateProfile;
         this.getPlayerProfile = _getPlayerProfile;
+        this.getMainProfile = _getMainProfile;
+        this.deletePhoto = _deletePhoto
 
         return this;
 

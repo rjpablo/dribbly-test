@@ -15,7 +15,7 @@
             <div>
                 <div class="profile-details">
                     <a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile({userName:player.userName})">
-                        <img class="profile-pic" ng-src="{{player.profilePic?(allPlayers.playerImgSrcPrefix + player.userId + '/profilePic/' + player.profilePic):$settings.defaultProfilePicUrl}}" />
+                        <img class="profile-pic" ng-src="{{player.profilePic?(allPlayers.playerImgSrcPrefix + player.userId + '/photos/' + player.profilePic.fileName):$settings.defaultProfilePicUrl}}" />
                     </a>
                     <ul class="details">
                         <li><a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile({userName:player.userName})">{{player.userName}}</a></li>
