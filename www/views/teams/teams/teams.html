@@ -15,7 +15,7 @@
                 <div class="tab-content">
                     
                     <div class="teams-list">
-                        <div class="teams-list-item" ui-sref="teams" ng-repeat="team in teamsCtrl.teams">
+                        <!--<div class="teams-list-item" ui-sref="teams" ng-repeat="team in teamsCtrl.teams">
                             <div class="team-logo-container">
                                 <img class="team-logo" ng-src="{{$settings.defaultTeamLogoUrl}}" />
                             </div>
@@ -45,7 +45,8 @@
                                     <li role="menu-item"><a ng-click="">Report</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>-->
+                        <teams-list-item ng-repeat="team in teamsCtrl.teams" team="team"></teams-list-item>
                     </div>
                     
                 </div> <!--/.tab-content-->

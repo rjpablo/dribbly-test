@@ -1,0 +1,31 @@
+﻿<div class="teams-list-item" ui-sref="teams">
+    <div class="team-logo-container">
+        <img class="team-logo" ng-src="{{$settings.defaultTeamLogoUrl}}" />
+    </div>
+    <ul class="team-details">
+        <li><span class="team-name">{{team.teamName}}</span></li>
+        <li class="city">
+            <span class="value">{{team.city.longName + ', ' + team.city.country.shortName}}</span>
+        </li>
+        <li class="coach">
+            <span class="label">Coached by</span>
+            <span class="value">{{team.manager.userName}}</span>
+        </li>
+        <li class="coach">
+            <span class="label">Home Court</span>
+            <span class="value">{{team.homeCourt.name}}</span>
+        </li>
+        <li class="coach">
+            <span class="label">Win Rate</span>
+            <span class="value"><rating value="team.winningRate * 5"></rating> ({{team.winCount + '/' + (team.lossCount + team.winCount)}})</span>
+        </li>
+    </ul>
+    <div class="list-item-options" uib-dropdown>
+        <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
+        <ul class="dropdown-menu" uib-dropdown-menu>
+            <li role="menu-item"><a ng-click="">Message</a></li>
+            <li role="menu-item"><a ng-click="">Add To Favorites</a></li>
+            <li role="menu-item"><a ng-click="">Report</a></li>
+        </ul>
+    </div>
+</div>
