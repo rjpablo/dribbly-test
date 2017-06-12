@@ -267,6 +267,7 @@ rating{
     width: 100%;
     background: #fff;
     margin-bottom: 10px;
+    background: #3c3c3c;
 }
 
 .titled-container .header{
@@ -276,6 +277,7 @@ rating{
 .titled-container .header .title{
     display: inline-block;
     margin:0;
+    color: #999;
 }
 
 .titled-container .header .action-buttons{

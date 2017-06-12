@@ -1,0 +1,12 @@
+﻿<div class="game-list-item">
+    <div class="wrapper">
+        <p class="title">{{game.title}}</p>
+        <div class="teams">
+            <div class="team teamA"><img ng-if="game.winningTeamId && game.winningTeamId == game.teamAId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />{{game.teamA.teamName}}</div>
+            <span>VS</span>
+            <div class="team teamB"><img ng-if="game.winningTeamId && game.winningTeamId == game.teamBId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />{{game.teamB.teamName}}</div>
+        </div>
+        <p class="schedule">{{game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p>
+        <a ui-sref="court.details({id:{{game.court.id}}})" class="court">{{game.court.name}}</a>
+    </div>
+</div>

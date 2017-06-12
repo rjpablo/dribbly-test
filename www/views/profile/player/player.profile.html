@@ -1,9 +1,9 @@
 ﻿<div class="player-profile" ng-if="profile.details" ng-controller="playerProfileController as playerProfCtrl">
-    <div class="titled-container stats col-md-12">
-        <div class="header">
+    <div class="titled-container stats">
+        <div class="header col-md-12">
             <h5 class="title">Stats &amp; Skills</h5>
         </div>
-        <div class="content">
+        <div class="content col-md-12">
             <div class="skills">
                 <ul class="skill-set">
                     <li class="skill">
@@ -46,14 +46,14 @@
             </div>
         </div>
     </div>
-    <div class="titled-container games col-md-12">
-        <div class="header">
-            <h5 class="title">Games</h5>
+    <div class="titled-container games">
+        <div class="header col-md-12">
+            <h5 class="title">Games({{profile.player.games.length}})</h5>
         </div>
         <div class="content">
-
+            <games-list-item ng-repeat="game in profile.player.games" game="game"></games-list-item>
         </div>
-        <div class="footer">
+        <div class="footer col-md-12">
 
         </div>
     </div>

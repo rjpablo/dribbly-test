@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="games-list">
-        <div class="game-list-item" ng-repeat="game in allGamesCtrl.games">
+        <!--<div class="game-list-item" ng-repeat="game in allGamesCtrl.games">
             <div class="wrapper">
                 <p class="title">{{game.title}}</p>
                 <div class="teams">
@@ -31,7 +31,8 @@
                 <p class="schedule">{{game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p>
                 <a ui-sref="court.details({id:{{game.court.id}}})" class="court">{{game.court.name}}</a>
             </div>
-        </div>
+        </div>-->
+        <games-list-item ng-repeat="game in allGamesCtrl.games" game="game"></games-list-item>
     </div>
 
 </div>

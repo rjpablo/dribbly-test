@@ -101,7 +101,7 @@
     }
 
     #main-logo-icon {
-        display:block;
+        /*display:block;*/
     }
 }
 
@@ -311,7 +311,7 @@ input.search-form {
 
 }
 
-@media(max-width:374px){
+@media(max-width: 467px){
     #main-nav .navbar-header{
         display:none;
     }
