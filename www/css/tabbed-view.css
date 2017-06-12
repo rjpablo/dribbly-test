@@ -50,8 +50,8 @@
     /*background-color: #2dc5c3;*/
 }
 
-.tab-wrap .tab-pane{
-    /*background-color: #fff;*/
+.tab-wrap .tab-pane.bottom{
+    color: #eee;
 }
 
 .tab-wrap .nav-tabs li a{

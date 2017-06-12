@@ -106,7 +106,7 @@
                 };
 
                 _currentUser = {
-                    Username: loginData.Username,
+                    Username: response.data.userName,
                     UserId: response.data.userId
                 }
 

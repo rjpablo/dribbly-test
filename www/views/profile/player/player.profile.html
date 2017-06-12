@@ -1,5 +1,7 @@
 ﻿<div class="player-profile" ng-if="profile.details" ng-controller="playerProfileController as playerProfCtrl">
-    <div class="titled-container stats">
+    <p class="com-md-12" ng-show="!profile.player && !isOwned">{{profile.details.userName + ' does not play.'}}</p>
+    <p class="com-md-12" ng-show="!profile.player && isOwned">{{'You have not set up your player profile.'}} <a class="button-link" ng-click="playerProfCtrl.setPlayerProfile()">Set Up Now</a></p>
+    <div class="titled-container stats" ng-show="profile.player">
         <div class="header col-md-12">
             <h5 class="title">Stats &amp; Skills</h5>
         </div>
@@ -46,11 +48,12 @@
             </div>
         </div>
     </div>
-    <div class="titled-container games">
+    <div class="titled-container games" ng-show="profile.player">
         <div class="header col-md-12">
             <h5 class="title">Games({{profile.player.games.length}})</h5>
         </div>
         <div class="content">
+            <p class="col-md-12" ng-if="profile.player.games .length == 0">{{(isOwned?'You haven\'t':profile.details.userName + ' hasn\'t') + ' joined any games yet.'}}</p>
             <games-list-item ng-repeat="game in profile.player.games" game="game"></games-list-item>
         </div>
         <div class="footer col-md-12">

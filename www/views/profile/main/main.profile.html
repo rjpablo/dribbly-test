@@ -3,7 +3,7 @@
         <div class="header col-md-12">
             <h5 class="title">Photos({{mainProfCtrl.mainProfile.photos.length}})</h5>
             <div class="action-buttons">
-                <a class="button-link" ng-click="alert('Add')" ng-if="isOwned" ngf-select="mainProfCtrl.uploadPhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-plus"></i> Upload Photo</a>
+                <a class="button-link" ng-if="isOwned" ngf-select="mainProfCtrl.uploadPhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-plus"></i> Upload Photo</a>
             </div>
         </div>
         <div class="content col-md-12">

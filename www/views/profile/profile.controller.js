@@ -19,7 +19,7 @@
         vm.uploading = false;
 
         if ($scope.currentUser) {
-            $scope.isOwned = userName.toLowerCase() == $scope.currentUser.Username;
+            $scope.isOwned = userName.toLowerCase() == $scope.currentUser.Username.toLowerCase()
         }
         
 
