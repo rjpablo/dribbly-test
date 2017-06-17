@@ -4,7 +4,7 @@ var gulp = require('gulp');
 gulp.task('watch',['browserSync'], function () {
     gulp.watch('www/**/*.css', browserSync.reload);
     gulp.watch('www/**/*.html', browserSync.reload);
-    gulp.watch('www/js/**/*.js', browserSync.reload);
+    gulp.watch('www/**/*.js', browserSync.reload);
     // Other watchers
 })
 

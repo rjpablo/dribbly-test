@@ -178,7 +178,7 @@
 
 
     $locationProvider.hashPrefix('');
-      //$locationProvider.html5Mode(true);
+     $locationProvider.html5Mode(true);
 
     $uibTooltipProvider.options({
         placement: "bottom",
