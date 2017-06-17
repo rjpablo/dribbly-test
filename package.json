@@ -9,7 +9,10 @@
   "devDependencies": {
     "browser-sync": "^2.18.8",
     "connect-modrewrite": "^0.10.1",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8"
   },
   "scripts": {
     "test": "\u001b[A\u001b[B"
