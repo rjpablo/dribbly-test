@@ -38,3 +38,4 @@ Thumbs.db
 
 www/images/uploads/*
 www/files/uploads/*
+dist/*
