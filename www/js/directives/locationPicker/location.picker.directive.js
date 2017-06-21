@@ -127,7 +127,7 @@
                             }
 
                             $scope.getCoordinates = function (address) {
-                                
+
                             }
 
                             $scope.placeChanged = function (a, b, c, d) {
@@ -145,7 +145,7 @@
                                                 if (validatePlace(place)) {
                                                     $scope.$apply();
                                                 }
-                                                
+
                                             } else {
                                                 commonServices.toast.error('Unable to find entered location.')
                                             }
@@ -177,7 +177,7 @@
                                 } else {
                                     commonServices.toast.error('Please fix error(s).')
                                 }
-                                
+
                             };
 
                             $scope.cancel = function (e) {
@@ -188,7 +188,7 @@
                         size: 'md'
                     });
                     locationPickerModal.result.then(function (loc) {
-                        scope.onLocationSelect({ loc:loc })
+                        scope.onLocationSelect({ loc: loc })
                     }, function (reason) {
                         //commonServices.toast.info('No new court was added.')
                     });
@@ -197,4 +197,4 @@
             }
         }
     }
-})()
+})();

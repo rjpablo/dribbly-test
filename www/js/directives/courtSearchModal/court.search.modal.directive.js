@@ -26,7 +26,7 @@
                             searchCriteria: scope.searchCriteria
                         },
                         controller: function ($scope, commonServices, $uibModalInstance, $timeout, searchCriteria, courtContext) {
-                            
+
                             $scope.searchCriteria = angular.copy(searchCriteria);
                             $scope.cities = ['--Any City--', 'Makati', 'Ortigas', 'Mandaluyong', 'Manila', 'Sampaloc', 'Pasig']
 
@@ -65,7 +65,7 @@
                                     $scope.$broadcast('rzSliderForceRender');
                                 });
                             };
-                            
+
                             $scope.ok = function (e) {
                                 searchCriteria = angular.copy($scope.searchCriteria)
                                 $uibModalInstance.close($scope.searchCriteria);
@@ -90,4 +90,4 @@
             }
         }
     }
-})()
+})();

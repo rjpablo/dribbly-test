@@ -27,7 +27,7 @@
                             searchCriteria: scope.searchCriteria
                         },
                         controller: function ($scope, commonServices, $uibModalInstance, $timeout, searchCriteria) {
-                            
+
                             $scope.searchCriteria = angular.copy(searchCriteria);
 
                             $scope.ok = function (e) {
@@ -52,4 +52,4 @@
             }
         }
     }
-})()
+})();
