@@ -1,5 +1,5 @@
 ﻿(function () {
-    'user strict';
+    'use strict';
 
     angular.module('mainApp')
         .service('teamContext', ['httpService', 'settings', 'fileService', '$q', teamContext]);

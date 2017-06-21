@@ -1,5 +1,5 @@
 ﻿(function () {
-    'user strict';
+    'use strict';
 
     angular.module('mainApp')
         .service('gameContext', ['httpService', 'settings', 'fileService', '$q', ctxFn]);

@@ -1,5 +1,5 @@
 ﻿(function () {
-    'user strict';
+    'use strict';
 
     angular.module('mainApp')
         .controller('indexCtrl',['$scope', 'toastService', '$state', 'authentication', '$rootScope', 'settings', indexCtrl]);

@@ -1,6 +1,6 @@
 ﻿(function()
 {
-    'user strict';
+    'use strict';
 
     angular.module('mainApp')
         .service('profileContext', ['httpService', 'settings', 'fileService', '$q', serviceFn]);
