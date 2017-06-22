@@ -24,8 +24,7 @@
 }
 
 .player-list-item .profile-details{
-    /*padding: 5px;
-    background: #777;*/
+    position: relative;
 }
 
 .player-list-item .skills{
@@ -38,21 +37,27 @@
 
 .player-list-item .player-name{
     font-weight: bold;
+    line-height: 18px;
+    font-size: 14px;
 }
 
 .player-list-item .profile-pic{
     height: 100px;
     width: 100px;
     display: inline-block;
-    float: left;
     border: 1px solid #999;
     background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .player-list-item .details{
     display:inline-block;
     float: left;
-    padding-left: 15px;
+    padding-left: 105px;
+    min-height: 100px;
+    width: 100%;
 }
 
 .player-list-item .profile-details .details > li,
@@ -86,4 +91,11 @@
 
 .player-list-item .skill .value.stars > i{
     color: #f7941d;
+}
+
+@media(max-width:320px){
+    .player-list-item .profile-details .details > li .label,
+    .player-list-item .profile-details .details > li.date-joined{
+        display: none;
+    }
 }

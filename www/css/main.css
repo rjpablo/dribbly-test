@@ -253,7 +253,10 @@ rating{
 **********************/
 
 .list-item-options{
-    float:right;
+    /*float:right;*/
+    position: absolute;
+    top: 0px;
+    right: 0;
 }
 
 .list-item-options .dropdown-menu{

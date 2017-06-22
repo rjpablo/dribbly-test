@@ -19,10 +19,10 @@
                     </a>
                     <ul class="details">
                         <li><a class="player-name color-primary ellipsis" ui-sref="profile.playerProfile({userName:player.userName})">{{player.userName}}</a></li>
-                        <li><span class="label">Location: </span><span class="value button-link">{{player.address}}</span></li>
+                        <li><span class="label">City: </span><span class="value button-link" ng-show="player.cityId">{{player.city.longName + ', ' + player.city.country.shortName}}</span><span ng-show="!player.cityId">--</span></li>
                         <li><span class="label">Height: </span><span class="value button-link">{{player.heightFt + '\' ' + player.heightIn + '"'}}</span></li>
-                        <li><span class="label">Sex: </span><span class="value button-link">{{player.sex?(player.sex=='M'?'Male':'Female'):'?'}}</span></li>
-                        <li><span class="label">Date Joined: </span><span class="value">{{player.dateJoined | date}}</span></li>
+                        <li><span class="label">Sex: </span><span ng-show="player.sex" class="value button-link">{{player.sex=='M'?'Male':'Female'}}</span><span ng-show="!player.sex">--</span></li>
+                        <li class="date-joined"><span class="label">Date Joined: </span><span class="value">{{player.dateJoined | date}}</span></li>
                     </ul>
                     <div class="list-item-options" uib-dropdown>
                         <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
