@@ -9,7 +9,6 @@
 **************************/
 
 body{
-    min-width: 320px;
     font-size: 12px;
     line-height: 22px;
     background-color: #333;
@@ -207,6 +206,25 @@ rating{
         display:block;
     }
     
+}
+
+.loader{
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin-cc 2s linear infinite;
+}
+
+/*****************
+    Animations
+*****************/
+
+@-webkit-keyframes spin-cc {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin-cc {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /*****************
