@@ -1,23 +1,17 @@
 ﻿<div ng-controller="findCourtCtrl as findCourt" class="tab-pane active transparent-bg" id="find-courts-tab">
-    <div ng-hide="findCourt.loading" class="col-lg-12 control-panel-container">
+    <div class="col-lg-12 control-panel-container">
         <div class="control-panel">
-            <!--<form class="form-inline">-->
-                <!--<div class="form-group">-->
-                    <!--<span uib-tooltip="More options"><i class="fa fa-caret-down"></i></span>
-                    <input class="form-control" placeholder="enter court name..." type="text" ng-model="searchKey" />-->
-                    <button class="btn btn-primary"  court-search-modal search-criteria="findCourt.searchCriteria" on-submit="findCourt.search(criteria)" ><i class="fa fa-search"></i></button>
-                    <button class="btn btn-primary" ng-click="findCourt.openAddModal('md')" ><i class="fa fa-plus"></i></button>
-                    <!--<a class="button-link" uib-tooltip="Show more search options"><i class="fa fa-caret-down"></i>&nbsp;More&nbsp;Options</a>-->
-                <!--</div>-->
-            <!--</form>-->
-            <!--<a uib-tooltip="Register a new court." class="button-link right-item" ng-click="findCourt.openAddModal('md')"><i class="fa fa-plus"></i>&nbsp;Register&nbsp;a&nbsp;Court</a>-->
-            <!--<button class="float-right btn btn-primary" ng-click="vm.openAddModal('md')">Register a Court</button>-->
+            <button class="btn btn-primary" court-search-modal search-criteria="findCourt.searchCriteria" on-submit="findCourt.search(criteria)"><i class="fa fa-search"></i></button>
+            <button class="btn btn-primary" ng-click="findCourt.openAddModal('md')"><i class="fa fa-plus"></i></button>
         </div>
-        <div ng-cloak class="list-summary">
+        <div ng-cloak class="list-summary" ng-hide="findCourt.loading" >
             <p ng-if="findCourt.courtsSearched"><span>{{findCourt.courtsSearched.length + ' court' + (findCourt.courtsSearched.length > 1?'s':'') + ' found'}}</span> <span class="small">{{findCourt.searchCriteriaStr}} <i ng-show="findCourt.filtered" class="clickable text-danger fa fa-times" ng-click="findCourt.resetFilters()" ></i></span></p>
             <div class="sorter" ng-if="!findCourt.loading && findCourt.courtsSearched && findCourt.courtsSearched.length > 1"><span>Sort By:</span> <select ng-model="findCourt.sortObject" ng-options="obj.description for obj in findCourt.sortObjects" ng-change="findCourt.sort()"></select></div>
             <p ng-show="!findCourt.loading && !findCourt.courtsSearched">No courts were found.</p>
         </div>
+    </div>
+    <div ng-show="findCourt.loading" class="col-lg-12">
+        <p class="center"><i class="fa fa-spinner loader"></i> Loading courts list...</p>
     </div>
     <courts-list-item court="court" ng-src-prefix="courts.courtImgSrcPrefix" ng-repeat="court in findCourt.courtsSearched | orderBy:findCourt.sortObject.field:findCourt.sortObject.reversed"></courts-list-item>
 </div>
