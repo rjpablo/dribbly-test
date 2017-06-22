@@ -7,6 +7,8 @@
     <meta name="author" content="">
     <title>dribbly</title>
     <base href="/">
+
+    <!-- build:css css/styles.css -->
 	
 	<!-- core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -45,6 +47,8 @@
     <link href="js/directives/gamesListItem/game-list-item.css" rel="stylesheet" />
     <link href="js/directives/teamsListItem/teams-list-item.css" rel="stylesheet" />
 
+    <!-- endbuild -->
+
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     
     
@@ -73,6 +77,8 @@
     <div id="content" ui-view class="container"></div>
 
     <ng-include src="'views/shared/footer.html'"></ng-include>
+
+    <!-- build:js js/bundle.js -->
 
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -157,6 +163,9 @@
 
     <script src="js/directives/courtsListItem/courts.listItem.directive.js"></script>
     <script src="views/courts/court/court.controller.js"></script>
+
+    <!-- endbuild -->
+
     <!--<script src="../bower_components/angular-ui/build/angular-ui.js"></script>--> 
     
     <!--<script src="../bower_components/jquery-prettyPhoto/js/jquery.prettyPhoto.js"></script>
