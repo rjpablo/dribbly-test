@@ -21,7 +21,7 @@
         }
 
         var _register = function (team) {
-            return httpService.post(_apiControllerBaseUrl + 'register/', team);
+            return httpService.post(_apiControllerBaseUrl + 'Register/', team);
         }
 
         var _deletePhoto = function(fileName, userId) {

@@ -2,26 +2,19 @@
     <div class="tab-wrap">
         <div class="media">
             <div class="left-side-bar">
-                <!--<div class="tab-headers pull-left">
-                    <ul class="nav nav-tabs nav-stacked">
-                        <li ng-class="{'active':$state.current.name.startsWith('courts.find')}" class=""><a ui-sref="courts.find" class="analistic-01">All&nbsp;Courts</a></li>
-                        <li ng-class="{'active':$state.current.name.startsWith('courts.myCourts')}" class=""><a ui-sref="courts.myCourts" class="analistic-02">My&nbsp;Courts</a></li>
-                        <li ng-class="{'active':$state.current.name.startsWith('courts.followed')}" class=""><a ui-sref="courts.followed" class="tehnical">Followed&nbsp;Courts</a></li>
-                    </ul>
-                </div>-->
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
             </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    <div ng-hide="allPlayers.loading" class="col-lg-12 control-panel-container">
+                    <div ng-hide="teamsCtrl.loading" class="col-lg-12 control-panel-container">
                         <div class="control-panel">
-                            <button class="btn btn-primary" player-search-modal search-criteria="allPlayers.searchCriteria" on-submit="allPlayers.search(criteria)"><i class="fa fa-search"></i></button>
-                            <button class="btn btn-primary" ng-click="allPlayers.openAddModal('md')"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-primary" player-search-modal search-criteria="teamsCtrl.searchCriteria" on-submit="teamsCtrl.search(criteria)"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-primary" ng-click="teamsCtrl.openAddModal('sm')"><i class="fa fa-plus"></i></button>
                         </div>
                         <div ng-cloak class="list-summary">
-                            <span class="summary" ng-if="teamsCtrl.teams"><span>{{teamsCtrl.teams.length + ' team' + (teamsCtrl.teams.length > 1?'s':'') + ' found'}}</span> <span class="small">{{allPlayers.searchCriteriaStr}} <i ng-show="allPlayers.filtered" class="clickable text-danger fa fa-times" ng-click="allPlayers.resetFilters()"></i></span></span>
-                            <div class="sorter" ng-if="!allPlayers.loading && teamsCtrl.teams && teamsCtrl.teams.length > 1"><span>Sort By:</span> <select ng-model="allPlayers.sortObject" ng-options="obj.description for obj in allPlayers.sortObjects" ng-change="allPlayers.sort()"></select></div>
-                            <p class="empty-message" ng-show="!allPlayers.loading && !teamsCtrl.teams">No teams were found.</p>
+                            <span class="summary" ng-if="teamsCtrl.teams"><span>{{teamsCtrl.teams.length + ' team' + (teamsCtrl.teams.length > 1?'s':'') + ' found'}}</span> <span class="small">{{teamsCtrl.searchCriteriaStr}} <i ng-show="teamsCtrl.filtered" class="clickable text-danger fa fa-times" ng-click="teamsCtrl.resetFilters()"></i></span></span>
+                            <div class="sorter" ng-if="!teamsCtrl.loading && teamsCtrl.teams && teamsCtrl.teams.length > 1"><span>Sort By:</span> <select ng-model="teamsCtrl.sortObject" ng-options="obj.description for obj in teamsCtrl.sortObjects" ng-change="teamsCtrl.sort()"></select></div>
+                            <p class="empty-message" ng-show="!teamsCtrl.loading && !teamsCtrl.teams">No teams were found.</p>
                         </div>
                     </div>
                     <div class="teams-list">

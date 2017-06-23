@@ -120,9 +120,9 @@
                     backdrop: 'static',
                     ariaLabelledBy: 'modal-title',
                     ariaDescribedBy: 'modal-body',
-                    templateUrl: '/views/courts/courts/add-modal-template.html',
-                    controller: 'addCourtCtrl',
-                    controllerAs: 'addCourtCtrl',
+                    templateUrl: '/views/teams/add-team-modal/add-team-modal-template.html',
+                    controller: 'addTeamCtrl',
+                    controllerAs: 'addTeamCtrl',
                     resolve: {
                         currentUser: function () {
                             return $scope.currentUser
