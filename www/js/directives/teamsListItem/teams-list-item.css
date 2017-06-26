@@ -5,6 +5,11 @@
     border-top: 1px solid #666
 }
 
+.teams-list-item > div {
+    position: relative;
+    min-height: 100px;
+}
+
 .teams-list-item:hover {
     /*background-color: #eee;*/
 }
@@ -13,6 +18,7 @@
     display: inline-block;
     float: left;
     padding-left: 3px;
+    position: absolute;
 }
 
 .teams-list-item .team-logo{
@@ -31,6 +37,7 @@
 .teams-list-item .team-details {
     display: inline-block;
     padding: 0 5px;
+    margin-left: 103px;
 }
 
 .teams-list-item .team-details > li {
