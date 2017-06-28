@@ -13,6 +13,7 @@
                 'ngMap',
                 'ui.router.default',
                 'ngStorage',
-                'rzModule'
+                'rzModule',
+                'angucomplete-alt'
             ]);
 })();

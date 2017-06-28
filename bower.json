@@ -31,6 +31,7 @@
     "ng-image-gallery": "^2.0.9",
     "ngmap": "^1.18.4",
     "wow": "^1.1.2",
-    "angularjs-slider": "^6.1.1"
+    "angularjs-slider": "^6.1.1",
+    "angucomplete-alt": "^3.0.0"
   }
 }
