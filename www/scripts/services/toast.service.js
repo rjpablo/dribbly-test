@@ -16,7 +16,7 @@
         }
 
         var _error = function (message, title) {
-            toaster.pop({ type: 'error', title: (title || 'Error!'), body: message, showCloseButton: true, 'timeout': timeout });
+            toaster.pop({ type: 'error', title: (title || 'We missed :('), body: message, showCloseButton: true, 'timeout': timeout });
         }
 
         var _success = function (message, title) {
