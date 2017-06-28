@@ -1,0 +1,38 @@
+﻿<div class="main-profile" ng-if="profile.details" ng-controller="mainProfileController as mainProfCtrl">
+    <div class="titled-container photos">
+        <div class="header col-md-12">
+            <h5 class="title">Photos({{mainProfCtrl.mainProfile.photos.length}})</h5>
+            <div class="action-buttons">
+                <a class="button-link" ng-if="isOwned" ngf-select="mainProfCtrl.uploadPhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-plus"></i> Upload Photo</a>
+            </div>
+        </div>
+        <div class="content col-md-12">
+            <ng-image-gallery images="mainProfCtrl.mainProfile.photos"
+                              methods="mainProfCtrl.methods"
+                              thumbnails="true"
+                              inline="false"
+                              url-prefix="mainProfCtrl.photosUrlPrefix"
+                              img-bubbles="false"
+                              bg-close="true"
+                              bubbles="false"
+                              img-anim="pop"
+                              show-add-button="true"
+                              add-file="mainProfCtrl.addPhotos"
+                              remove-function="mainProfCtrl.removePhoto(index)"
+                              set-primary="mainProfCtrl.setPhotoAsPrimary(index)"
+                              show-controls="isOwned"></ng-image-gallery>
+        </div>
+        <div class="footer col-md-12"></div>
+    </div>
+    <div class="titled-container videos">
+        <div class="header col-md-12">
+            <h5 class="title">Videos</h5>
+        </div>
+        <div class="content col-md-12">
+
+        </div>
+        <div class="footer col-md-12">
+
+        </div>
+    </div>
+</div>

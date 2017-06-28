@@ -69,7 +69,7 @@
 
 .details-block.on-edit-mode .edit-field{
     display:block;
-    color: #333;
+    color: #fff;
 }
 
 .details-block.on-edit-mode .detail-group:not(.read-only) .display-field{

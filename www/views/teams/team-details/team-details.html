@@ -1,0 +1,98 @@
+﻿<div class="team-details" ng-controller="teamDetailsController as teamCtrl">
+    <div class="tab-wrap">
+        <div class="media">
+            <div class="left-side-bar">
+                <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
+                <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
+            </div>
+            <div class="center-content parrent media-body">
+                <div class="tab-content">
+                    <div class="main-profile" >
+                        <div class="top tab-pane col-md-12">
+                            <div class="team-logo">
+                                <div class="team-logo-container">
+                                    <span class="change-team-logo show-on-hover" ng-if="isOwned" ngf-select="teamCtrl.replaceProfilePhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-pencil"></i></span>
+                                    <!--<img class="profile-photo" ng-src="images/default-user-image.png" />-->
+                                    <ng-image-gallery images="teamLogo"
+                                                      methods="addCourtCtrl.methods"
+                                                      thumbnails="true"
+                                                      inline="false"
+                                                      url-prefix="teamCtrl.teamLogoSrcPrefix"
+                                                      img-bubbles="false"
+                                                      bg-close="true"
+                                                      bubbles="false"
+                                                      img-anim="pop"
+                                                      show-controls="false"></ng-image-gallery>
+                                </div>
+                            </div>
+                            <div class="details-container">
+                                <h5 class="team-name">{{team.details.teamName}}</h5><br />
+                                <div class="basic-info">
+                                    <div ng-form="teamDetailsForm" class="details-block" ng-class="{'on-edit-mode':teamCtrl.onEditMode}">
+                                        <div class="fields">
+                                            <div class="detail-group">
+                                                <div class="detail-group">
+                                                    <label>Home Town</label>
+                                                    <div class="value-field">
+                                                        <span ng-show="!teamCtrl.onEditMode" class="display-field">{{team.details.city?(team.details.city.longName + ', ' + team.details.city.country.shortName):'--'}}</span>
+                                                        <span class="edit-field button-link" ng-if="teamCtrl.onEditMode" location-picker="teamCtrl.location" on-location-select="teamCtrl.setHomeTown(loc)">{{teamCtrl.tempTeamDetails.city?(teamCtrl.tempTeamDetails.city.longName + ', ' + teamCtrl.tempTeamDetails.city.country.shortName):'(Pick Location)'}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail-group read-only">
+                                                <label>Home Court</label>
+                                                <div class="value-field">
+                                                    <span class="display-field">{{team.details.homeCourt?(team.details.homeCourt.name):'--'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="detail-group read-only">
+                                                <label>Managed by</label>
+                                                <div class="value-field read-only">
+                                                    <span ng-show="!teamCtrl.onEditMode" class="display-field">{{team.details.manager.userName}}</span>
+                                                    <span ng-show="teamCtrl.onEditMode" class="edit-field button-link">{{team.details.manager.userName}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="detail-group read-only">
+                                                <label>Added by</label>
+                                                <div class="value-field">
+                                                    <span class="display-field">{{team.details.creator.userName}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="detail-group read-only">
+                                                <label>Date added</label>
+                                                <div class="value-field">
+                                                    <span class="display-field">{{team.details.dateCreated | date}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="action-buttons" ng-if="isOwned">
+                                            <button class="btn btn-primary edit" ng-click="teamCtrl.edit()">Edit</button>
+                                            <button class="btn btn-warning cancel" ng-click="teamCtrl.cancel()" ng-disabled="teamCtrl.saving">Cancel</button>
+                                            <button class="btn btn-primary save" ng-click="teamCtrl.save(teamDetailsForm)" ng-disabled="teamCtrl.saving">Save</button>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>                            
+                            <ul class="tab-headers">
+                                <li ng-class="{'active': $state.current.name == 'team.members'}"><a ui-sref="team.members({teamName:team.details.teamName})" ng-click="">Members</a></li>
+                                <li ng-class="{'active': $state.current.name == 'team.games'}"><a ui-sref="team.games({userName:team.details.userName})" ng-click="">Games</a></li>
+                                <!--<li ng-class="{'active': $state.current.name == 'team.main.videos'}"><a ui-sref="team.main.videos({userName:team.details.userName})" ng-click="">Videos</a></li>
+        <li ng-class="{'active': $state.current.name == 'team.main.about'}"><a ui-sref="team.main.about({userName:team.details.userName})" ng-click="">About</a></li>-->
+                            </ul>
+                        </div>
+                        <div class="bottom tab-pane">
+
+                            <!-- Sub-content will be inserted here -->
+                            <ui-view></ui-view>
+
+                        </div>
+                    </div>
+                </div> <!--/.tab-content-->
+            </div> <!--/.media-body-->
+            <div class="right-side-bar">
+                <ng-include src="'views/shared/side-contents/featured-courts.html'"></ng-include>
+                <ng-include src="'views/shared/side-contents/featured-courts.html'"></ng-include>
+            </div>
+        </div> <!--/.media-->
+    </div><!--/.tab-wrap-->
+</div>

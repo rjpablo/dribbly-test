@@ -10,14 +10,14 @@
 
         var _getTeams = function (filters) {
             if (filters) {
-                return httpService.get(_apiControllerBaseUrl, filters)
+                return httpService.get(_apiControllerBaseUrl + "All", filters)
             } else {
-                return httpService.get(_apiControllerBaseUrl)
+                return httpService.get(_apiControllerBaseUrl + "All")
             }
         }
 
-        var _getTeamDetails = function (teamId) {
-            return httpService.get(_apiControllerBaseUrl, { teamId: teamId })
+        var _getTeamDetails = function (teamName) {
+            return httpService.get(_apiControllerBaseUrl + 'GetTeam?teamName=' + encodeURIComponent(teamName))
         }
 
         var _register = function (team) {
@@ -29,7 +29,7 @@
         }
 
         var _updateTeam = function (team) {
-            return httpService.put(_apiControllerBaseUrl + 'update/', team);
+            return httpService.put(_apiControllerBaseUrl + 'Update/', team);
         }
 
         var _updatePrimaryPhoto = function (teamId, fileName) {

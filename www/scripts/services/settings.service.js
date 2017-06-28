@@ -5,7 +5,7 @@
         .service('settings', ['httpService', settings]);
 
     function settings(httpService) {
-        var _useLocalServer = false;
+        var _useLocalServer = true;
         var _doNotUseBackend = false;
         var _useLocalData = false;
         var _serverRoot = _useLocalServer ? 'http://localhost:58266/' : 'http://www.drbly-test.somee.com/';
@@ -47,6 +47,7 @@
         this.defaultProfilePicUrl = _defaultProfilePicUrl;
         this.defaultProfilePicDirectory = _defaultProfilePicDirectory;
         this.defaultTeamLogoUrl = _defaultTeamLogoUrl
+        this.defaultTeamLogoFileName = _defaultTeamLogoFileName;
         this.defaultImagesDirectory = _defaultImagesDirectory;
  
         return this;

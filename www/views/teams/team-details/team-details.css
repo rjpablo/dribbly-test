@@ -1,0 +1,159 @@
+﻿.team-details .tab-wrap .tab-content {
+    background-color: transparent;
+}
+
+.team-details .top{
+    margin-bottom: 15px;
+}
+
+.team-details .top {
+    background-color: #3c3c3c;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+}
+
+.team-details .top .details-container {
+    padding-left: 150px;
+    min-height: 150px;
+}
+
+.team-details .top .detail-group{
+    padding: 0;
+    border: none;
+}
+
+.team-details .top .fields{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.team-details .top .action-buttons{
+    clear:none;
+    display: inline-block;
+    width: auto;
+    float: right;
+}
+
+.team-details .top .details-block .detail-group label {
+    width: 85px;
+    padding-right: 10px;
+}
+.team-details .top .details-block .detail-group > .value-field{
+    width: initial;
+}
+
+.team-details .top .details-block .action-buttons .btn{
+    clear:both;
+    width:60px;
+}
+
+
+.team-details .top .tab-headers{
+    float: left;
+    padding-left: 0;
+    margin-top: 10px;
+    list-style: none;
+    display: inline-block;
+    clear: both;
+    width: 100%;
+    padding: 0 10px;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+}
+
+.team-details .top .tab-headers > li{
+    display:inline-block;
+    float: left;
+    padding-right: 15px;
+    line-height: 30px;
+}
+
+.team-details .top .tab-headers li.active > a{
+    color: #2dc5c3;
+    border-bottom: 3px solid;
+}
+
+.team-details .top .tab-headers li:not(.active) > a:hover{
+    color: #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.team-details .bottom.tab-pane{
+    display: inline-block;
+    width: 100%;
+}
+
+.team-details .bottom.tab-pane .details-block{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.team-details .top{
+    padding-top: 10px;
+}
+
+.team-details .top .team-logo-container{
+    display: inline-block;
+    /*margin: 10px auto;*/
+    /*margin-top: 30px;*/
+    width: 150px;
+    height: 150px;
+    position:relative;
+    float:left;
+}
+
+.team-details .top .ng-image-gallery,
+.team-details .top .ng-image-gallery .ng-image-gallery-thumbnails,
+.team-details .top .ng-image-gallery .thumb
+{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.team-details .top .ng-image-gallery .thumb{
+    background-color: #fff;
+}
+
+.team-details .top .team-logo,
+.team-details .top .basic-info{
+    display:inline-block;
+    float:left;
+}
+
+.team-details .top .team-logo{
+    position: absolute;
+}
+.team-details .top .basic-info {
+    background: #3c3c3c;
+    padding: 0px 10px;
+    border-radius: 4px;
+}
+
+.team-details .top .team-logo-container .change-team-logo{
+    position:absolute;
+    top: 3px;
+    right: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 22px;
+    height: 22px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.team-details .top .team-name{
+    color: #2dc5c3;
+    display: inline-block;
+    margin: 0px auto 5px;
+    padding-left: 10px;
+    float: left;
+}
+
+@media(max-width: 991px) and (min-width: 768px) {
+    .team-details .top .fields {
+        max-width: 260px;
+    }
+}

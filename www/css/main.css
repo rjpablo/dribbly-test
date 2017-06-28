@@ -33,6 +33,10 @@ ul{
     margin: 0;
 }
 
+select, option{
+    color: #333;
+}
+
 .float-right{
     float:right;
 }

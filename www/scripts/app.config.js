@@ -104,6 +104,20 @@
               templateUrl: 'views/teams/teams/teams.html'
           })
 
+           /* Team */
+
+          .state('team', {
+              abstract: true,
+              default: '.members',
+              url: '/team',
+              templateUrl: 'views/teams/team-details/team-details.html'
+          })
+
+          .state('team.members', {
+              url: '/members/{teamName}',
+              templateUrl: 'views/teams/team-details/members/team-members.html'
+          })
+
           /* Court */
 
           .state('court', {
@@ -178,7 +192,7 @@
 
 
         $locationProvider.hashPrefix('');
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
 
         $uibTooltipProvider.options({
             placement: "bottom",
