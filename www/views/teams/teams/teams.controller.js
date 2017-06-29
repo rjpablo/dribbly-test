@@ -3,9 +3,9 @@
 
     angular
         .module('mainApp')
-        .controller('teamsCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'teamContext', 'authentication', teamsCtrl]);
+        .controller('teamsCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'teamContext', 'authentication', '$state', teamsCtrl]);
 
-    function teamsCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, teamContext, authentication) {
+    function teamsCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, teamContext, authentication, $state) {
 
         var vm = this;
 
@@ -132,9 +132,9 @@
                     appendTo: parentElem
                 });
 
-                addCourtModal.result.then(function (court) {
+                addCourtModal.result.then(function (team) {
                     commonServices.toast.success('New court has been added successfully.')
-                    vm.updateList();
+                    $state.go('team.members', { teamName: team.teamName })
                 }, function (reason) {
                     //commonServices.toast.info('No new court was added.')
                 });

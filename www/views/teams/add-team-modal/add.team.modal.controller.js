@@ -38,7 +38,7 @@
                 teamContext.register(__this.team).then(
                     function (res) {
                         __this.saving = false;
-                        $uibModalInstance.close(res);
+                        $uibModalInstance.close(res.data);
                     }, function (err) {
                         commonServices.handleError(err);
                         __this.saving = false;
