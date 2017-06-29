@@ -22,7 +22,7 @@
                         backdrop: 'static',
                         ariaLabelledBy: 'modal-title',
                         ariaDescribedBy: 'modal-body',
-                        templateUrl: '/js/directives/locationPicker/location.picker.template.html',
+                        templateUrl: '/scripts/directives/locationPicker/location.picker.template.html',
                         controller: function ($scope, NgMap, mapService, commonServices, $uibModalInstance, $timeout) {
                             $scope.address;
                             $scope.completeAddress;

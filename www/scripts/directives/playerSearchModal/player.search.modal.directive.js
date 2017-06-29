@@ -22,7 +22,7 @@
                         windowClass: 'player-search-modal',
                         ariaLabelledBy: 'modal-title',
                         ariaDescribedBy: 'modal-body',
-                        templateUrl: '/js/directives/playerSearchModal/player.search.modal.template.html',
+                        templateUrl: '/scripts/directives/playerSearchModal/player.search.modal.template.html',
                         resolve: {
                             searchCriteria: scope.searchCriteria
                         },

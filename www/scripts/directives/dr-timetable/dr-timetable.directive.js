@@ -12,7 +12,7 @@
                 'drTimetable': '=?',
                 'drTimetableOptions': '=?'
             },
-            templateUrl: '/js/directives/dr-timetable/dr-timetable.template.html',
+            templateUrl: '/scripts/directives/dr-timetable/dr-timetable.template.html',
             link: function (scope, element, attrs) {
                 scope.startDate = new Date();
 

@@ -7,7 +7,7 @@
     function courtListItemDirective() {
         return {
             restrict: 'AE',
-            templateUrl: '/js/directives/rating/rating.directive.template.html',
+            templateUrl: '/scripts/directives/rating/rating.directive.template.html',
             scope: {
                 value: '=value'
             }

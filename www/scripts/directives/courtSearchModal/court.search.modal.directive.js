@@ -21,7 +21,7 @@
                         backdrop: 'static',
                         ariaLabelledBy: 'modal-title',
                         ariaDescribedBy: 'modal-body',
-                        templateUrl: '/js/directives/courtSearchModal/court.search.modal.template.html',
+                        templateUrl: '/scripts/directives/courtSearchModal/court.search.modal.template.html',
                         resolve: {
                             searchCriteria: scope.searchCriteria
                         },

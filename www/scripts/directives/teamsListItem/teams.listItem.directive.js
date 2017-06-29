@@ -12,7 +12,7 @@
                 'team': '=',
             },
             replace: true,
-            templateUrl: '/js/directives/teamsListItem/teams.listItem.template.html',
+            templateUrl: '/scripts/directives/teamsListItem/teams.listItem.template.html',
             link: function (scope, element, attrs) {
                 scope.$settings = settings
             }

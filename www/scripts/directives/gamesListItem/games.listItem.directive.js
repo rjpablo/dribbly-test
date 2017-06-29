@@ -13,7 +13,7 @@
                 'iconUrlPrefix': '='
             },
             replace: true,
-            templateUrl: '/js/directives/gamesListItem/games.listItem.template.html',
+            templateUrl: '/scripts/directives/gamesListItem/games.listItem.template.html',
             link: function (scope, element, attrs) {
                 scope.$settings = settings
             }
