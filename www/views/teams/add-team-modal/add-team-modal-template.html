@@ -14,6 +14,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" disabled="{{addTeamCtrl.saving}}" type="button" ng-click="addTeamCtrl.ok(addTeamForm)">{{addTeamCtrl.saving?'Creating...':'Create'}}</button>
+    <button class="btn btn-primary" ng-disabled="{{addTeamCtrl.saving}}" type="button" ng-click="addTeamCtrl.ok(addTeamForm)">{{addTeamCtrl.saving?'Creating...':'Create'}}</button>
     <button class="btn btn-warning" type="button" ng-click="addTeamCtrl.cancel()">Cancel</button>
 </div>
