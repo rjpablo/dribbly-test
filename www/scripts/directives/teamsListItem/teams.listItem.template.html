@@ -8,10 +8,11 @@
             <li class="city">
                 <span class="value">{{team.city.longName + ', ' + team.city.country.shortName}}</span>
             </li>
-            <li class="coach">
+            <!--<li class="coach">
                 <span class="label">Coached by</span>
                 <span class="value">{{team.manager.userName}}</span>
-            </li>
+                <user-stub class="value display-field" ng-if="team.manager" user="team.manager"></user-stub>
+            </li>-->
             <li class="coach">
                 <span class="label">Home Court</span>
                 <span class="value">{{team.homeCourt.name}}</span>
