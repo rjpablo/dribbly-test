@@ -4,10 +4,10 @@
     angular
         .module('mainApp')
         .controller('teamDetailsController', ['$scope', 'settings', 'httpService', 'commonServices', 'fileService',
-            'authentication', '$location', '$state', '$stateParams', 'teamContext', '$timeout', controllerFn]);
+            'authentication', '$location', '$state', '$stateParams', 'teamContext', 'profileContext', '$timeout', controllerFn]);
 
     function controllerFn($scope, settings, httpService, commonServices, fileService, authentication,
-        $location, $state, $stateParams, teamContext, $timeout) {
+        $location, $state, $stateParams, teamContext, profileContext, $timeout) {
 
         $scope.team = {};
         $scope.$state = $state;
@@ -19,6 +19,10 @@
         vm.onEditMode = false;
         vm.tempTeamDetails = {};
         this.teamLogoSrcPrefix = '';
+        vm.user_autoComplete = [];
+        vm.userSearchRemoteUrl = settings.apiBaseURL + 'UserProfiles/UserViews/';
+        vm.managerInitialValue = "";
+        vm.selectedManager = {};
 
         getTeamDetails();
 
@@ -53,11 +57,38 @@
             }            
         }
 
-
+        vm.managerSelected = function (value) {
+            if (value) {
+                vm.tempTeamDetails.manager = value.originalObject;
+                vm.tempTeamDetails.managerId = vm.tempTeamDetails.manager.userId;
+            } else {
+                vm.tempTeamDetails.manager = undefined;
+                vm.tempTeamDetails.managerId = undefined;
+            }
+            
+        }
 
         vm.edit = function () {
             vm.tempTeamDetails = angular.copy($scope.team.details)
+            vm.tempTeamDetails.manager.title = vm.tempTeamDetails.manager.userName
+            //vm.selectedManager = {
+            //    title: vm.tempTeamDetails.manager.userName,
+            //    originalObject: vm.tempTeamDetails.manager
+            //}
+            //vm.selectedManager.title = vm.tempTeamDetails.manager.userName;
+            //vm.selectedManager.originalObject = vm.tempTeamDetails.manager;
+            //vm.managerInitialValue = vm.tempTeamDetails.manager.userName;
+            $scope.$broadcast('angucomplete-alt:changeInput', 'manager-autocomplete', vm.tempTeamDetails.manager);
+
             vm.onEditMode = true
+        }
+
+        vm.saveCheck = function (theForm) {
+            if (vm.tempTeamDetails.manager && vm.tempTeamDetails.manager.userId) {
+                vm.save(theForm);
+            } else {
+                commonServices.toast.error('Team manager is required.')
+            }
         }
 
         vm.save = function (theForm) {
@@ -80,6 +111,16 @@
 
         vm.setHomeTown = function (location) {
             vm.tempTeamDetails.city = location.city;
+        }
+
+        vm.getUserAutoCompleteItems = function (userName) {
+            vm.user_autoComplete.length = 0;
+            profileContext.searchUsersByName(userName).then(
+                function (res) {
+                    vm.user_autoComplete = res.data;
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
         }
 
         function setProfPicUrlPrefix() {

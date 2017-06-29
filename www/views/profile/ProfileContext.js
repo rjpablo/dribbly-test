@@ -49,6 +49,10 @@
             return fileService.uploadUserPhoto(file, userId, setAsPrimary);
         }
 
+        var _searchUsersByName = function (userName) {
+            return httpService.get(settings.apiBaseURL + 'UserProfiles/UserViews/' + encodeURIComponent(userName))
+        }
+
         this.getTestProfiles = _getTestProfiles;
         this.getProfileByName = _getProfileByName;
         this.updateProfile = _updateProfile;
@@ -57,6 +61,7 @@
         this.deletePhoto = _deletePhoto
         this.updateProfilePic = _updateProfilePic
         this.uploadPhoto = _uploadPhoto;
+        this.searchUsersByName = _searchUsersByName;
 
         return this;
 

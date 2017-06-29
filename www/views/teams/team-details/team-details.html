@@ -45,11 +45,39 @@
                                                     <span class="display-field">{{team.details.homeCourt?(team.details.homeCourt.name):'--'}}</span>
                                                 </div>
                                             </div>
-                                            <div class="detail-group read-only">
+                                            <!--<div class="detail-group read-only">
                                                 <label>Managed by</label>
                                                 <div class="value-field read-only">
                                                     <span ng-show="!teamCtrl.onEditMode" class="display-field">{{team.details.manager.userName}}</span>
                                                     <span ng-show="teamCtrl.onEditMode" class="edit-field button-link">{{team.details.manager.userName}}</span>
+                                                </div>
+                                            </div>-->
+                                            <div class="detail-group">
+                                                <label>Managed by</label>
+                                                <div class="value-field">
+                                                    <span class="display-field">{{team.details.manager.userName}}</span>
+                                                    <!--<div angucomplete-alt id="ex1"
+                                                         placeholder="Enter manager's username'"
+                                                         maxlength="50"
+                                                         pause="100"
+                                                         selected-object="teamCtrl.tempTeamDetails.manager"
+                                                         local-data="teamCtrl.user_autoComplete"
+                                                         search-fields="userName"
+                                                         title-field="userName"
+                                                         minlength="1"
+                                                         input-class="edit-field input-field"
+                                                         match-class="highlight"></div>-->
+                                                    <div angucomplete-alt id="manager-autocomplete"
+                                                         placeholder="Enter username'"
+                                                         maxlength="50"
+                                                         pause="100"
+                                                         selected-object="teamCtrl.managerSelected"
+                                                         remote-url="{{teamCtrl.userSearchRemoteUrl}}"
+                                                         title-field="userName"
+                                                         minlength="1"
+                                                         input-class="edit-field input-field"
+                                                         match-class="highlight"
+                                                         focus-first="true"></div>
                                                 </div>
                                             </div>
                                             <div class="detail-group read-only">
@@ -68,7 +96,7 @@
                                         <div class="action-buttons" ng-if="isOwned">
                                             <button class="btn btn-primary edit" ng-click="teamCtrl.edit()">Edit</button>
                                             <button class="btn btn-warning cancel" ng-click="teamCtrl.cancel()" ng-disabled="teamCtrl.saving">Cancel</button>
-                                            <button class="btn btn-primary save" ng-click="teamCtrl.save(teamDetailsForm)" ng-disabled="teamCtrl.saving">Save</button>
+                                            <button class="btn btn-primary save" ng-click="teamCtrl.saveCheck(teamDetailsForm)" ng-disabled="teamCtrl.saving">Save</button>
                                         </div>
                                     </div>
                                 </div>                            
