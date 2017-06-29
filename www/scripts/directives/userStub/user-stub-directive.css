@@ -1,0 +1,60 @@
+﻿.user-stub{
+    /*background: #fff;
+    color: #333;*/
+    display:block;
+    /*border: 1px solid #999;
+    border-radius: 4px;*/
+}
+
+.user-stub .user-info, .user-stub .action-buttons {
+    display: inline-block;
+    float: left;
+}
+
+.user-stub .profile-pic {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-block;
+    float: left;
+    margin: 1px 0;
+}
+
+.user-stub .user-name{
+    padding: 0 5px;
+    /* border: 1px solid #999; */
+    border-left: none;
+    display: inline-block;
+    height: 22px;
+    font-weight: bold;
+    float: left;
+}
+
+.user-stub .action-buttons {
+    padding: 0;
+    /*border-left: 1px solid #ccc;*/
+}
+
+.user-stub .action-button {
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    padding: 1px;
+    cursor: pointer;
+    color:#999;
+}
+
+.user-stub .action-button:hover{
+    /*border: 1px solid #ccc;
+    border-radius: 50%;*/
+    color: #cc5656;
+}
+
+.user-stub .action-buttons .delete{
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.user-stub .action-buttons .delete:hover{
+    color: #cc5656;
+}

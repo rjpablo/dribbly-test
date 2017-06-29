@@ -37,6 +37,10 @@ select, option{
     color: #333;
 }
 
+a:hover, a:focus{
+    color: inherit;
+}
+
 .float-right{
     float:right;
 }
@@ -92,15 +96,15 @@ select, option{
 }
 
 .button-link{
-    color: #666;
+    /*color: #666;*/
     cursor: pointer;
-    line-height: 20px;
+    /*line-height: 20px;*/
     text-decoration:underline;
 }
 
 .button-link:hover{
     text-decoration:none;
-    color: #666;
+    /*color: #666;*/
 }
 
 .form-group .map-container{

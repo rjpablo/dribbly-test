@@ -55,7 +55,9 @@
                                             <div class="detail-group">
                                                 <label>Managed by</label>
                                                 <div class="value-field">
-                                                    <span class="display-field">{{team.details.manager.userName}}</span>
+                                                    <user-stub class="display-field" ng-if="team.details.manager" user="team.details.manager"></user-stub>
+                                                    <user-stub ng-if="teamCtrl.onEditMode && teamCtrl.tempTeamDetails.manager" user="teamCtrl.tempTeamDetails.manager" delete-function="teamCtrl.managerDeleted(user)" show-controls="true"></user-stub>
+                                                    <!--<span class="display-field">{{team.details.manager.userName}}</span>-->
                                                     <!--<div angucomplete-alt id="ex1"
                                                          placeholder="Enter manager's username'"
                                                          maxlength="50"
@@ -67,8 +69,9 @@
                                                          minlength="1"
                                                          input-class="edit-field input-field"
                                                          match-class="highlight"></div>-->
-                                                    <div angucomplete-alt id="manager-autocomplete"
-                                                         placeholder="Enter username'"
+                                                    <div class="edit-field"
+                                                         angucomplete-alt id="manager-autocomplete"
+                                                         placeholder="Search by username"
                                                          maxlength="50"
                                                          pause="100"
                                                          selected-object="teamCtrl.managerSelected"
@@ -77,13 +80,14 @@
                                                          minlength="1"
                                                          input-class="edit-field input-field"
                                                          match-class="highlight"
-                                                         focus-first="true"></div>
+                                                         focus-first="true"
+                                                         ng-if="!teamCtrl.tempTeamDetails.manager"></div>
                                                 </div>
                                             </div>
                                             <div class="detail-group read-only">
                                                 <label>Added by</label>
                                                 <div class="value-field">
-                                                    <span class="display-field">{{team.details.creator.userName}}</span>
+                                                    <user-stub class="display-field" ng-if="team.details.creator" user="team.details.creator"></user-stub>
                                                 </div>
                                             </div>
                                             <div class="detail-group read-only">

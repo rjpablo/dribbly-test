@@ -1,0 +1,12 @@
+﻿<div class="user-stub">
+    <div class="user-info">
+        <img class="profile-pic" ng-src="{{profilePicUrl}}" />
+        <span class="user-name button-link">
+            <a class="button-link" ng-if="role=='user'" ui-sref="profile.main({userName: user.userName})">{{user.userName}}</a>
+            <a class="button-link" ng-if="role=='player'" ui-sref="profile.playerProfile({userName: user.userName})">{{user.userName}}</a>
+        </span>
+    </div>
+    <div ng-if="showControls" class="action-buttons">
+        <span class="fa fa-times danger delete action-button" ng-click="deleteFunction({user:user})"></span>
+    </div>
+</div>

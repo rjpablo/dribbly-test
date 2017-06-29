@@ -54,18 +54,29 @@
                 function (err) {
                     commonServices.handleError(err);
                 })
-            }            
+            }
         }
 
         vm.managerSelected = function (value) {
             if (value) {
-                vm.tempTeamDetails.manager = value.originalObject;
-                vm.tempTeamDetails.managerId = vm.tempTeamDetails.manager.userId;
+                setManager(value.originalObject);
+            } else {
+                setManager(null);
+            }
+        }
+
+        vm.managerDeleted = function (user) {
+            setManager(null);
+        }
+
+        function setManager(user) {
+            if (user) {
+                vm.tempTeamDetails.manager = user;
+                vm.tempTeamDetails.managerId = user.userId;
             } else {
                 vm.tempTeamDetails.manager = undefined;
                 vm.tempTeamDetails.managerId = undefined;
             }
-            
         }
 
         vm.edit = function () {
