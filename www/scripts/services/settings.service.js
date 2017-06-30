@@ -6,9 +6,10 @@
 
     function settings(httpService) {
         var _useLocalServer = true;
+        var _useIISServer = true;
         var _doNotUseBackend = false;
         var _useLocalData = false;
-        var _serverRoot = _useLocalServer ? 'http://localhost:58266/' : 'http://www.drbly-test.somee.com/';
+        var _serverRoot = _useLocalServer ? (_useIISServer ? 'http://localhost/DribblyAPI/' : 'http://localhost:58266/') : 'http://www.drbly-test.somee.com/';
         _serverRoot = _doNotUseBackend ? 'http://localhost:8888/' : _serverRoot
         
         //_serverRoot = 'http://localhost:58266/' //AngularJS Authentiation Project URl
