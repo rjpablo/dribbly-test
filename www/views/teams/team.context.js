@@ -16,6 +16,10 @@
             }
         }
 
+        var _getMembers = function (teamId) {
+            return httpService.get(_apiControllerBaseUrl + 'Members/' + teamId)
+        }
+
         var _getTeamDetails = function (teamName) {
             return httpService.get(_apiControllerBaseUrl + 'GetTeam?teamName=' + encodeURIComponent(teamName))
         }
@@ -56,6 +60,7 @@
         this.updatePrimaryPhoto = _updatePrimaryPhoto;
         this.searchTeams = _searchTeams;
         this.getTestTeams = _getTestTeams;
+        this.getMembers = _getMembers;
 
         return this;
 
