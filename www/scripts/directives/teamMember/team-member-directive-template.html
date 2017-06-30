@@ -1,0 +1,33 @@
+﻿<div class="team-member wrapper">
+    <div class="content">
+        <a class="profile-pic-container" ui-sref="profile.playerProfile({userName:player.userName})">
+            <img class="profile-pic" ng-src="{{profilePicUrl}}" />
+        </a>
+        <ul class="details">
+            <li class="user-name-container">
+                <a class="button-link user-name" ui-sref="profile.playerProfile({userName:player.userName})">{{player.userName}}</a>
+            </li>
+            <li>
+                <label>Position:</label>
+                <span>Point Guard</span>
+            </li>
+            <li>
+                <label>Joined:</label>
+                <span>{{player.dateJoined | date : 'MMM/dd/yyyy'}}</span>
+            </li>
+            <li ng-if="player.hasLeft">
+                <label>Left:</label>
+                <span>{{player.dateLeft | date : 'MMM/dd/yyyy'}}</span>
+            </li>
+        </ul>
+        <div class="list-item-options" uib-dropdown>
+            <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+                <li ng-if="!player.hasLeft" role="menu-item"><a ng-click="">Suspend</a></li>
+                <li ng-if="!player.hasLeft" role="menu-item"><a ng-click="">Remove suspension</a></li>
+                <li ng-if="!player.hasLeft" role="menu-item"><a ng-click="">End Membership</a></li>
+                <li ng-if="player.hasLeft" role="menu-item"><a ng-click="">Re-invite</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

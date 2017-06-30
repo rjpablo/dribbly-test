@@ -1,0 +1,76 @@
+﻿.team-member{
+    display: inline-block;
+    float: left;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    width: 33.3333%;
+}
+
+.team-member .content{
+    background: #fff;
+    color: #333;
+    padding: 5px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.team-member .list-item-options{
+    top: 5px;
+    right: 5px;
+}
+
+.team-member .list-item-options .dropdown-toggle {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.team-member .profile-pic-container {
+    display: block;
+    background: #999;
+}
+
+.team-member .profile-pic{
+    /*position: absolute;*/
+    display: block;
+    /* float: left; */
+    width: 100px;
+    height: 100px;
+    /* border-radius: 4px; */
+    margin: 0 auto;
+}
+
+.team-member .details {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    /*padding-left: 65px;*/
+}
+
+.team-member .user-name-container{
+    position: relative;
+
+}
+
+.team-member .user-name {
+    color: #2dc5c3;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.team-member .details label {
+    font-size: 85%;
+    color: #666;
+    margin: 0;
+}
+
+@media(max-width: 600px){
+    .team-member{
+        width: 50%;
+    }
+}
+
+@media(max-width: 400px){
+    .team-member{
+        width: 100%;
+    }
+}
