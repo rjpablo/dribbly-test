@@ -44,6 +44,14 @@
             return httpService.get(_apiControllerBaseUrl + '/search', { searchCriteria: criteria })
         }
 
+        var _invite = function (invitation) {
+            return httpService.post(_apiControllerBaseUrl + 'Invite/', invitation);
+        }
+
+        var _respondToInvitation = function (invitationId, accept) {
+            return httpService.post(_apiControllerBaseUrl + 'RespondToInvitation/' + invitationId + '/' + accept);
+        }
+
         var _getTestTeams = function () {
             return [
             {
@@ -61,6 +69,8 @@
         this.searchTeams = _searchTeams;
         this.getTestTeams = _getTestTeams;
         this.getMembers = _getMembers;
+        this.invite = _invite;
+        this.respondToInvitation = _respondToInvitation;
 
         return this;
 
