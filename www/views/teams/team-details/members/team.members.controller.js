@@ -25,6 +25,12 @@
             }
         })
 
+        $scope.$on('reload-team-members', function () {
+            if ($scope.team.details) {
+                loadMembers($scope.team.details.teamId);
+            }
+        })
+
         vm.addMember = function () {
             authentication.checkAuthentication('Please log in to proceed.').then(function (res) {
 

@@ -48,8 +48,8 @@
             return httpService.post(_apiControllerBaseUrl + 'Invite/', invitation);
         }
 
-        var _respondToInvitation = function (invitationId, accept) {
-            return httpService.post(_apiControllerBaseUrl + 'RespondToInvitation/' + invitationId + '/' + accept);
+        var _respondToInvitation = function (teamId, userId, accept) {
+            return httpService.post(_apiControllerBaseUrl + 'RespondToInvitation/' + teamId + '/' + userId + '/' + accept);
         }
 
         var _getUserToTeamRelation = function (teamId, userId) {

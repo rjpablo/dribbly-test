@@ -111,7 +111,7 @@
                                         </button>
                                         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
                                             <li ng-show="teamCtrl.loadingTeamOptions" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
-                                            <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isInvited" role="menuitem"><a ng-click="vm.respondToInvitation(true)">Respond to Invitation</a></li>
+                                            <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isInvited" role="menuitem"><a ng-click="teamCtrl.respondToInvitation(true)">Respond to Invitation</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions && !teamCtrl.userToTeamRelation.isMember && !teamCtrl.userToTeamRelation.hasRequested && !teamCtrl.userToTeamRelation.isInvited" role="menuitem"><a href="#">Join</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isMember && teamCtrl.userToTeamRelation.isCurrentMember" role="menuitem"><a href="#">Leave</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions" class="divider"></li>

@@ -78,6 +78,20 @@
             }
         }
 
+        vm.respondToInvitation = function (accept) {
+            if($scope.currentUser){
+                teamContext.respondToInvitation($scope.team.details.teamId, $scope.currentUser.UserId, accept).then(
+                function () {
+                    commonServices.toast.success('Invitation accepted!')
+                    $scope.$broadcast('reload-team-members');
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+            } else {
+
+            }            
+        }
+
         vm.managerSelected = function (value) {
             if (value) {
                 setManager(value.originalObject);
