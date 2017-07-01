@@ -1,0 +1,31 @@
+﻿.add-team-member-modal .player-autocomplete{
+    display: inline-block;
+}
+
+.add-team-member-modal form{
+    display: inline-block;
+    margin-bottom: -5px;
+}
+
+.add-team-member-modal form label{
+    float: left;
+    width: 70px;
+}
+
+.add-team-member-modal form .form-group{
+    width: 100%;
+}
+
+.add-team-member-modal form .form-group.player{
+    float: left;
+    margin-bottom: 0;
+}
+
+.add-team-member-modal .user-stub{
+    display:inline-block;
+    float:left;
+}
+
+.add-team-member-modal .user-stub .user-name > a {
+    color: #666;
+}

@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Team Registration</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="addForm" class="" data-toggle="validator">
+        <div class="inline-block form-group player" ng-class="{'has-error':addForm.name.$invalid && addForm.name.$touched}">
+            <label class="control-label" for="name">Player:</label>
+            <user-stub ng-if="ctrl.selectedUser" user="ctrl.selectedUser" delete-function="ctrl.deleteSelected(user)" show-controls="true"></user-stub>
+            <div class="player-autocomplete"
+                 angucomplete-alt id="team-player-autocomplete"
+                 placeholder="Enter player name"
+                 maxlength="50"
+                 pause="100"
+                 selected-object="ctrl.userSelected"
+                 remote-url="{{ctrl.userSearchRemoteUrl}}"
+                 title-field="userName"
+                 minlength="1"
+                 input-class="edit-field input-field"
+                 match-class="highlight"
+                 focus-first="true"
+                 ng-if="!ctrl.selectedUser"></div>
+        </div>
+        <!--<div class="inline-block form-group player" ng-class="{'has-error':addForm.name.$invalid && addForm.name.$touched}">
+            <label class="control-label" for="name">Position:</label>
+            
+        </div>-->
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-disabled="{{ctrl.saving}}" type="button" ng-click="ctrl.ok(addForm)">{{ctrl.saving?'Sending...':'Send Invitation'}}</button>
+    <button class="btn btn-warning" type="button" ng-click="ctrl.cancel()">Cancel</button>
+</div>
