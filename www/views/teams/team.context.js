@@ -52,6 +52,10 @@
             return httpService.post(_apiControllerBaseUrl + 'RespondToInvitation/' + invitationId + '/' + accept);
         }
 
+        var _getUserToTeamRelation = function (teamId, userId) {
+            return httpService.get(_apiControllerBaseUrl + 'GetUserToTeamRelation/' + teamId + '/' + userId);
+        }
+
         var _getTestTeams = function () {
             return [
             {
@@ -71,6 +75,7 @@
         this.getMembers = _getMembers;
         this.invite = _invite;
         this.respondToInvitation = _respondToInvitation;
+        this.getUserToTeamRelation = _getUserToTeamRelation;
 
         return this;
 

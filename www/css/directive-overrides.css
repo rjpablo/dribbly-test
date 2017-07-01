@@ -125,3 +125,13 @@
 .pac-container {
     z-index: 1100;
 }
+
+
+/* bootrap */
+.dropdown:not(.open):hover .dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu{
+    font-size: 12px;
+}

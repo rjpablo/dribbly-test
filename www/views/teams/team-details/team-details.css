@@ -19,6 +19,13 @@
     min-height: 150px;
 }
 
+.team-details .top .team-actions
+{
+    display: inline-block;
+    width: 100%;
+    padding: 0 10px;
+}
+
 .team-details .top .detail-group{
     padding: 0;
     border: none;

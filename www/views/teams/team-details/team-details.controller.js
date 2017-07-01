@@ -23,6 +23,8 @@
         vm.userSearchRemoteUrl = settings.apiBaseURL + 'UserProfiles/UserViews/';
         vm.managerInitialValue = "";
         vm.selectedManager = {};
+        vm.loadingTeamOptions = false;
+        vm.userToTeamRelation = {};
 
         getTeamDetails();
 
@@ -54,6 +56,25 @@
                 function (err) {
                     commonServices.handleError(err);
                 })
+            }
+        }
+
+        vm.optionsDropdownToggled = function (isOpen) {
+            if (isOpen) {                
+                if ($scope.currentUser) {
+                    vm.loadingTeamOptions = true;
+                    teamContext.getUserToTeamRelation($scope.team.details.teamId, $scope.currentUser.UserId).then(
+                        function (res) {
+                            vm.loadingTeamOptions = false;
+                            vm.userToTeamRelation = res.data;
+                        }, function (err) {
+                            vm.loadingTeamOptions = false;
+                            commonServices.handleError(err);
+                        }
+                    )
+                }else{
+                    vm.userToTeamRelation = null;
+                }
             }
         }
 
