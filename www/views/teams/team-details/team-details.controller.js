@@ -159,6 +159,20 @@
             vm.tempTeamDetails.city = location.city;
         }
 
+        vm.join = function () {
+            authentication.checkAuthentication("Please log in to join this team.").then(
+                function (res) {
+                    teamContext.join($scope.currentUser.UserId, $scope.team.details.teamId).then(
+                        function (res) {
+                            commonServices.toast.success("Request sent!");
+                        }, function (err) {
+                            commonServices.handleError(err)
+                        })
+                }, function (err) {
+                    //login failed or was cancelled
+                })
+        }
+
         vm.getUserAutoCompleteItems = function (userName) {
             vm.user_autoComplete.length = 0;
             profileContext.searchUsersByName(userName).then(

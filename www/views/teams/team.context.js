@@ -48,6 +48,10 @@
             return httpService.post(_apiControllerBaseUrl + 'Invite/', invitation);
         }
 
+        var _join = function (userId, teamId) {
+            return httpService.post(_apiControllerBaseUrl + 'JoinTeam/' + userId + '/' + teamId);
+        }
+
         var _respondToInvitation = function (teamId, userId, accept) {
             return httpService.post(_apiControllerBaseUrl + 'RespondToInvitation/' + teamId + '/' + userId + '/' + accept);
         }
@@ -76,6 +80,7 @@
         this.invite = _invite;
         this.respondToInvitation = _respondToInvitation;
         this.getUserToTeamRelation = _getUserToTeamRelation;
+        this.join = _join;
 
         return this;
 
