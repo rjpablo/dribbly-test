@@ -92,6 +92,20 @@
             }            
         }
 
+        vm.cancelRequest = function () {
+            authentication.checkAuthentication("Please log in to proceed.").then(
+                function (res) {
+                    teamContext.cancelRequest($scope.currentUser.UserId, $scope.team.details.teamId).then(
+                        function (res) {
+                            commonServices.toast.success("Request Cancelled!");
+                        }, function (err) {
+                            commonServices.handleError(err)
+                        })
+                }, function (err) {
+                    //login failed or was cancelled
+                })
+        }
+
         vm.managerSelected = function (value) {
             if (value) {
                 setManager(value.originalObject);
