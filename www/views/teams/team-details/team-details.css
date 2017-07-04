@@ -3,15 +3,17 @@
 }
 
 .team-details .top{
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
 }
 
 .team-details .top {
-    background-color: #3c3c3c;
     display: inline-block;
     width: 100%;
     color: #fff;
     padding: 10px;
+    padding-bottom: 0;
+    border: 1px solid #444;
+    background: #262626;
 }
 
 .team-details .top .details-container {
@@ -60,31 +62,36 @@
 .team-details .top .tab-headers{
     float: left;
     padding-left: 0;
-    margin-top: 10px;
+    margin-top: 15px;
     list-style: none;
     display: inline-block;
     clear: both;
     width: 100%;
-    padding: 0 10px;
-    border-top: 1px solid #666;
-    border-bottom: 1px solid #666;
 }
 
 .team-details .top .tab-headers > li{
-    display:inline-block;
-    float: left;
-    padding-right: 15px;
-    line-height: 30px;
+    display: inline-block;
+    line-height: 12px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.team-details .top .tab-headers > li.active {
+    background: #444;
+}
+
+.team-details .top .tab-headers li > a {
+    padding: 5px 15px;
+    display: block;
 }
 
 .team-details .top .tab-headers li.active > a{
-    color: #2dc5c3;
-    border-bottom: 3px solid;
+    /*display:block;*/
+    /*text-decoration: underline;*/
 }
 
-.team-details .top .tab-headers li:not(.active) > a:hover{
-    color: #fff;
-    border-bottom: 3px solid #fff;
+.team-details .top .tab-headers li:not(.active) > a{
+    cursor: pointer;
 }
 
 .team-details .bottom.tab-pane{
@@ -99,6 +106,7 @@
 
 .team-details .top{
     padding-top: 10px;
+    margin-bottom: 15px;
 }
 
 .team-details .top .team-logo-container{
@@ -134,7 +142,6 @@
     position: absolute;
 }
 .team-details .top .basic-info {
-    background: #3c3c3c;
     padding: 0px 10px;
     border-radius: 4px;
 }

@@ -112,9 +112,9 @@
                                         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
                                             <li ng-show="teamCtrl.loadingTeamOptions" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isInvited" role="menuitem"><a ng-click="teamCtrl.respondToInvitation(true)">Respond to Invitation</a></li>
-                                            <li ng-show="!teamCtrl.loadingTeamOptions && !teamCtrl.userToTeamRelation.isMember && !teamCtrl.userToTeamRelation.hasRequested && !teamCtrl.userToTeamRelation.isInvited" role="menuitem"><a ng-click="teamCtrl.join()">Join</a></li>
+                                            <li ng-show="!teamCtrl.loadingTeamOptions && !teamCtrl.userToTeamRelation.isCurrentMember && !teamCtrl.userToTeamRelation.hasRequested && !teamCtrl.userToTeamRelation.isInvited" role="menuitem"><a ng-click="teamCtrl.join()">Join</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.hasRequested" role="menuitem"><a ng-click="teamCtrl.cancelRequest(true)">Cancel Request</a></li>
-                                            <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isMember && teamCtrl.userToTeamRelation.isCurrentMember" role="menuitem"><a href="#">Leave</a></li>
+                                            <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isCurrentMember" role="menuitem"><a ng-click="teamCtrl.leave()">Leave</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions" class="divider"></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions && !teamCtrl.userToTeamRelation.isOwner" role="menuitem"><a href="#">Report</a></li>
                                             <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isOwner" role="menuitem"><a href="#">Deactivate</a></li>
@@ -123,10 +123,8 @@
                                 </div>                    
                             </div>                            
                             <ul class="tab-headers">
-                                <li ng-class="{'active': $state.current.name == 'team.members'}"><a ui-sref="team.members({teamName:team.details.teamName})" ng-click="">Members</a></li>
-                                <li ng-class="{'active': $state.current.name == 'team.games'}"><a ui-sref="team.games({userName:team.details.userName})" ng-click="">Games</a></li>
-                                <!--<li ng-class="{'active': $state.current.name == 'team.main.videos'}"><a ui-sref="team.main.videos({userName:team.details.userName})" ng-click="">Videos</a></li>
-        <li ng-class="{'active': $state.current.name == 'team.main.about'}"><a ui-sref="team.main.about({userName:team.details.userName})" ng-click="">About</a></li>-->
+                                <li ng-class="{'active': $state.current.name.startsWith('team.members')}"><a ui-sref="team.members.current({teamName:team.details.teamName})" ng-click="">Members</a></li>
+                                <li ng-class="{'active': $state.current.name.startsWith('team.games')}"><a ui-sref="team.games({userName:team.details.userName})" ng-click="">Games</a></li>
                             </ul>
                         </div>
                         <div class="bottom tab-pane">

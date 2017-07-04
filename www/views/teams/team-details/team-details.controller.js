@@ -187,6 +187,34 @@
                 })
         }
 
+        vm.leave = function () {
+            authentication.checkAuthentication("Please log in to proceed.").then(
+                function (res) {
+                    teamContext.leave($scope.currentUser.UserId, $scope.team.details.teamId).then(
+                        function (res) {
+                            commonServices.toast.info("You are no longer a current member of this team.");
+                        }, function (err) {
+                            commonServices.handleError(err)
+                        })
+                }, function (err) {
+                    //login failed or was cancelled
+                })
+        }
+
+        vm.dismissPlayer = function () {
+            authentication.checkAuthentication("Please log in to proceed.").then(
+                function (res) {
+                    teamContext.dismiss($scope.currentUser.UserId, $scope.team.details.teamId).then(
+                        function (res) {
+                            commonServices.toast.info("Player is no longer a current member of this team.");
+                        }, function (err) {
+                            commonServices.handleError(err)
+                        })
+                }, function (err) {
+                    //login failed or was cancelled
+                })
+        }
+
         vm.getUserAutoCompleteItems = function (userName) {
             vm.user_autoComplete.length = 0;
             profileContext.searchUsersByName(userName).then(

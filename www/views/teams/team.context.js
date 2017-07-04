@@ -52,6 +52,14 @@
             return httpService.post(_apiControllerBaseUrl + 'JoinTeam/' + userId + '/' + teamId);
         }
 
+        var _leave = function (userId, teamId) {
+            return httpService.post(_apiControllerBaseUrl + 'LeaveTeam/' + userId + '/' + teamId);
+        }
+
+        var _dismiss = function (userId, teamId) {
+            return httpService.post(_apiControllerBaseUrl + 'DismissPlayer/' + userId + '/' + teamId);
+        }
+
         var _cancelRequest = function (userId, teamId) {
             return httpService.post(_apiControllerBaseUrl + 'cancelRequest/' + userId + '/' + teamId);
         }
@@ -85,7 +93,9 @@
         this.respondToInvitation = _respondToInvitation;
         this.getUserToTeamRelation = _getUserToTeamRelation;
         this.join = _join;
+        this.leave = _leave;
         this.cancelRequest = _cancelRequest;
+        this.dismiss = _dismiss;
 
         return this;
 

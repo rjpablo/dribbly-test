@@ -1,0 +1,9 @@
+﻿<div class="former-members titled-container">
+    <div class="header col-md-12">
+        <h5 class="title">Former Members</h5>
+        <div class="action-buttons"></div>
+    </div>
+    <div class="content col-md-12">
+        <team-member ng-repeat="player in team.members | filter:{ isCurrentMember : false }" player="player" class="team-member"></team-member>
+    </div>
+</div>

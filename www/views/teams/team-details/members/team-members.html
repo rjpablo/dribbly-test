@@ -1,22 +1,11 @@
 ﻿<div class="team-members" ng-controller="teamMembersController as tmCtrl">
-    <div class="current-members titled-container">
-        <div class="header col-md-12">
-            <h5 class="title">Current Members</h5>
-            <div class="action-buttons">
-                <a class="button-link" ng-if="isOwned" ng-click="tmCtrl.addMember()"><i class="fa fa-plus"></i> Add A Member</a>
-            </div>
-        </div>
-        <div class="content col-md-12">
-            <team-member ng-repeat="player in team.members | filter:{ hasLeft : false }" player="player" class="team-member"></team-member>
-        </div>
+    <div class="tab-headers-container">
+        <ul class="tab-headers">
+            <li ng-class="{'active': $state.current.name == 'team.members.current'}"><a ui-sref="team.members.current({teamName:team.details.teamName})">Current Members</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.former'}"><a ui-sref="team.members.former({teamName:team.details.teamName})">Former Members</a></li>
+            <li><a href="#">Requests</a></li>
+            <li><a href="#">Invitations</a></li>
+        </ul>
     </div>
-    <div class="former-members titled-container">
-        <div class="header col-md-12">
-            <h5 class="title">Former Members</h5>
-            <div class="action-buttons"></div>
-        </div>
-        <div class="content col-md-12">
-            <team-member ng-repeat="player in team.members | filter:{ hasLeft : true }" player="player" class="team-member"></team-member>
-        </div>
-    </div>
+    <ui-view></ui-view>    
 </div>
