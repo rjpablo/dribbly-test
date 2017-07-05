@@ -1,14 +1,15 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('mainApp').directive('teamMember', ['settings',directiveFn]);
+    angular.module('mainApp').directive('teamMember', ['settings', 'teamContext', 'commonServices', '$rootScope',directiveFn]);
 
-    function directiveFn(settings) {
+    function directiveFn(settings, teamContext, commonServices, $rootScope) {
         return {
             restrict: 'E',
             scope: {
                 'player': '=',
-                'removeFunction': '&?'
+                'removeFunction': '&?',
+                'type': '='
             },
             replace: true,
             templateUrl: '/scripts/directives/teamMember/team-member-directive-template.html',
@@ -27,6 +28,15 @@
                 scope.$watch('player', function (player) {
                     setPicUrl(player);
                 })
+
+                scope.respondToRequest = function (request, approve) {
+                    teamContext.respondToRequest(request.teamId, request.playerId, approve).then(
+                        function (res) {
+                            $rootScope.$broadcast('update-team-requests');
+                        }, function (err) {
+                            commonServices.handleError(err);
+                        })
+                }
             }
         }
     }

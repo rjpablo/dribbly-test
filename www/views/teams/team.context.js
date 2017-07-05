@@ -68,8 +68,16 @@
             return httpService.post(_apiControllerBaseUrl + 'CancelRequest/' + teamId + '/' + userId + '/' + accept);
         }
 
+        var _respondToRequest = function (teamId, userId, approve) {
+            return httpService.post(_apiControllerBaseUrl + 'RespondToRequest/' + teamId + '/' + userId + '/' + approve);
+        }
+
         var _getUserToTeamRelation = function (teamId, userId) {
             return httpService.get(_apiControllerBaseUrl + 'GetUserToTeamRelation/' + teamId + '/' + userId);
+        }
+
+        var _getMemberRequests = function (teamId) {
+            return httpService.get(_apiControllerBaseUrl + 'GetMemberRequests/' + teamId);
         }
 
         var _getTestTeams = function () {
@@ -96,6 +104,8 @@
         this.leave = _leave;
         this.cancelRequest = _cancelRequest;
         this.dismiss = _dismiss;
+        this.getMemberRequests = _getMemberRequests;
+        this.respondToRequest = _respondToRequest;
 
         return this;
 

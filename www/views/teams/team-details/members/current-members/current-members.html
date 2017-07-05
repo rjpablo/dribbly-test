@@ -6,6 +6,6 @@
         </div>
     </div>
     <div class="content col-md-12">
-        <team-member ng-repeat="player in team.members | filter:{ isCurrentMember : true }" player="player" class="team-member"></team-member>
+        <team-member ng-repeat="player in team.members | filter:{ isCurrentMember : true }" player="player" type="'member'" class="team-member"></team-member>
     </div>
 </div>

@@ -3,7 +3,7 @@
         <ul class="tab-headers">
             <li ng-class="{'active': $state.current.name == 'team.members.current'}"><a ui-sref="team.members.current({teamName:team.details.teamName})">Current Members</a></li>
             <li ng-class="{'active': $state.current.name == 'team.members.former'}"><a ui-sref="team.members.former({teamName:team.details.teamName})">Former Members</a></li>
-            <li><a href="#">Requests</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.requests'}"><a ui-sref="team.members.requests({teamName:team.details.teamName})">Requests</a></li>
             <li><a href="#">Invitations</a></li>
         </ul>
     </div>

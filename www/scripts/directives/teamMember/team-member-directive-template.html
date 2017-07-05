@@ -11,22 +11,35 @@
                 <label>Position:</label>
                 <span>Point Guard</span>
             </li>
-            <li>
+            <li ng-if="type == 'member'">
                 <label>Joined:</label>
                 <span>{{player.dateJoined | date : 'MMM/dd/yyyy'}}</span>
             </li>
-            <li ng-if="player.hasLeft">
+            <li ng-if="type == 'member' && !player.isCurrentMember">
                 <label>Left:</label>
                 <span>{{player.dateLeft | date : 'MMM/dd/yyyy'}}</span>
+            </li>
+            <li ng-if="type == 'request' && !player.isCurrentMember">
+                <label>Date Requested:</label>
+                <span>{{player.dateRequested | date : 'MMM/dd/yyyy'}}</span>
+            </li>
+            <li ng-if="type == 'invite' && !player.isCurrentMember">
+                <label>Date Requested:</label>
+                <span>{{player.dateInvited | date : 'MMM/dd/yyyy'}}</span>
             </li>
         </ul>
         <div class="list-item-options" uib-dropdown>
             <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
-            <ul class="dropdown-menu" uib-dropdown-menu>
+            <ul ng-if="type == 'member'" class="dropdown-menu" uib-dropdown-menu>
                 <li ng-if="player.isCurrentMember" role="menu-item"><a ng-click="">Suspend</a></li>
                 <li ng-if="player.isCurrentMember" role="menu-item"><a ng-click="">Remove suspension</a></li>
                 <li ng-if="player.isCurrentMember" role="menu-item"><a ng-click="">Dismiss</a></li>
                 <li ng-if="!player.isCurrentMember" role="menu-item"><a ng-click="">Re-invite</a></li>
+            </ul>
+            <ul ng-if="type != 'member'" class="dropdown-menu" uib-dropdown-menu>
+                <li ng-if="type == 'request'" role="menu-item"><a ng-click="respondToRequest(player, true)">Approve Request</a></li>
+                <li ng-if="type == 'request'" role="menu-item"><a ng-click="respondToRequest(player, false)">Deny Request</a></li>
+                <li ng-if="type == 'invite'" role="menu-item"><a ng-click="">Cancel Invitation</a></li>
             </ul>
         </div>
     </div>

@@ -114,8 +114,25 @@
           })
 
           .state('team.members', {
-              url: '/members/{teamName}',
+              abstract: true,
+              default: '.members',
+              url: '/members',
               templateUrl: 'views/teams/team-details/members/team-members.html'
+          })
+
+          .state('team.members.current', {
+              url: '/current/{teamName}',
+              templateUrl: 'views/teams/team-details/members/current-members/current-members.html'
+          })
+
+          .state('team.members.former', {
+              url: '/former/{teamName}',
+              templateUrl: 'views/teams/team-details/members/former-members/former-members.html'
+          })
+
+          .state('team.members.requests', {
+              url: '/requests/{teamName}',
+              templateUrl: 'views/teams/team-details/members/requests/member-requests.html'
           })
 
           /* Court */

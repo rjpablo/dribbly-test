@@ -19,7 +19,6 @@
 }
 
 .team-members .tab-headers li.active > a {
-    font-weight: bold;
     text-decoration: underline;
     color: #fff;
 }
