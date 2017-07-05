@@ -178,7 +178,14 @@
                 function (res) {
                     teamContext.join($scope.currentUser.UserId, $scope.team.details.teamId).then(
                         function (res) {
-                            commonServices.toast.success("Request sent!");
+                            if (vm.userToTeamRelation.isOwner) {
+                                commonServices.toast.success("You are now a current member of this team.");
+                                $scope.$broadcast('reload-team-members');
+
+                            } else {
+                                commonServices.toast.success("Request sent!");
+                                $scope.$broadcast('update-team-requests');
+                            }
                         }, function (err) {
                             commonServices.handleError(err)
                         })
@@ -193,6 +200,7 @@
                     teamContext.leave($scope.currentUser.UserId, $scope.team.details.teamId).then(
                         function (res) {
                             commonServices.toast.info("You are no longer a current member of this team.");
+                            $scope.$broadcast('reload-team-members');
                         }, function (err) {
                             commonServices.handleError(err)
                         })

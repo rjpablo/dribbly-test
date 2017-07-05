@@ -4,9 +4,9 @@
     angular
         .module('mainApp')
         .controller('teamMembersController', ['$scope', 'settings', 'commonServices',
-            'authentication', 'teamContext', '$uibModal', controllerFn]);
+            'authentication', 'teamContext', '$uibModal', '$rootScope', controllerFn]);
 
-    function controllerFn($scope, settings, commonServices, authentication, teamContext, $uibModal) {
+    function controllerFn($scope, settings, commonServices, authentication, teamContext, $uibModal, $rootScope) {
 
         var vm = this;
 
@@ -25,10 +25,14 @@
             }
         })
 
-        $scope.$on('reload-team-members', function () {
+        var removeListerReloadTeamMembers = $scope.$on('reload-team-members', function () {
             if ($scope.team.details) {
                 loadMembers($scope.team.details.teamId);
             }
+        })
+
+        $scope.$on('destroy', function () {
+            removeListerReloadTeamMembers()
         })
 
         vm.addMember = function () {

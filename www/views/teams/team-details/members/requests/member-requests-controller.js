@@ -29,9 +29,13 @@
             }
         })
 
-        $rootScope.$on('update-team-requests', function () {
+        var removeListerUpdateTeamRequests = $scope.$on('update-team-requests', function () {
             loadRequests($scope.team.details.teamId);
-            $scope.$broadcast('reload-team-members');
+            $rootScope.$broadcast('reload-team-members');
+        })
+
+        $scope.$on('destroy', function () {
+            removeListerUpdateTeamRequests()
         })
 
 
