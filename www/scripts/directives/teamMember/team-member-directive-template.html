@@ -19,12 +19,12 @@
                 <label>Left:</label>
                 <span>{{player.dateLeft | date : 'MMM/dd/yyyy'}}</span>
             </li>
-            <li ng-if="type == 'request' && !player.isCurrentMember">
+            <li ng-if="type == 'request'">
                 <label>Date Requested:</label>
                 <span>{{player.dateRequested | date : 'MMM/dd/yyyy'}}</span>
             </li>
-            <li ng-if="type == 'invite' && !player.isCurrentMember">
-                <label>Date Requested:</label>
+            <li ng-if="type == 'invite'">
+                <label>Date Invited:</label>
                 <span>{{player.dateInvited | date : 'MMM/dd/yyyy'}}</span>
             </li>
         </ul>
@@ -39,7 +39,7 @@
             <ul ng-if="type != 'member'" class="dropdown-menu" uib-dropdown-menu>
                 <li ng-if="type == 'request'" role="menu-item"><a ng-click="respondToRequest(player, true)">Approve Request</a></li>
                 <li ng-if="type == 'request'" role="menu-item"><a ng-click="respondToRequest(player, false)">Deny Request</a></li>
-                <li ng-if="type == 'invite'" role="menu-item"><a ng-click="">Cancel Invitation</a></li>
+                <li ng-if="type == 'invite'" role="menu-item"><a ng-click="cancelInvitation(player)">Cancel Invitation</a></li>
             </ul>
         </div>
     </div>

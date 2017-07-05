@@ -31,7 +31,7 @@
             }
         })
 
-        $scope.$on('destroy', function () {
+        $scope.$on('$destroy', function () {
             removeListerReloadTeamMembers()
         })
 
@@ -55,6 +55,7 @@
 
                 addModal.result.then(function (invitation) {
                     commonServices.toast.success('Invitation sent!')
+                    $rootScope.$broadcast('reload-team-invitations');
                 }, function (reason) {
                     //commonServices.toast.info('No new court was added.')
                 });

@@ -64,6 +64,10 @@
             return httpService.post(_apiControllerBaseUrl + 'cancelRequest/' + userId + '/' + teamId);
         }
 
+        var _cancelInvitation = function (teamId, userId) {
+            return httpService.post(_apiControllerBaseUrl + 'cancelInvitation/' + teamId + '/' + userId);
+        }
+
         var _respondToInvitation = function (teamId, userId, accept) {
             return httpService.post(_apiControllerBaseUrl + 'CancelRequest/' + teamId + '/' + userId + '/' + accept);
         }
@@ -78,6 +82,10 @@
 
         var _getMemberRequests = function (teamId) {
             return httpService.get(_apiControllerBaseUrl + 'GetMemberRequests/' + teamId);
+        }
+
+        var _getMemberInvitations = function (teamId) {
+            return httpService.get(_apiControllerBaseUrl + 'GetMemberInvitations/' + teamId);
         }
 
         var _getTestTeams = function () {
@@ -106,6 +114,8 @@
         this.dismiss = _dismiss;
         this.getMemberRequests = _getMemberRequests;
         this.respondToRequest = _respondToRequest;
+        this.getMemberInvitations = _getMemberInvitations;
+        this.cancelInvitation = _cancelInvitation;
 
         return this;
 

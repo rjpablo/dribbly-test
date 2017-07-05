@@ -4,7 +4,7 @@
             <li ng-class="{'active': $state.current.name == 'team.members.current'}"><a ui-sref="team.members.current({teamName:team.details.teamName})">Current Members</a></li>
             <li ng-class="{'active': $state.current.name == 'team.members.former'}"><a ui-sref="team.members.former({teamName:team.details.teamName})">Former Members</a></li>
             <li ng-class="{'active': $state.current.name == 'team.members.requests'}"><a ui-sref="team.members.requests({teamName:team.details.teamName})">Requests</a></li>
-            <li><a href="#">Invitations</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.invitations'}"><a ui-sref="team.members.invitations({teamName:team.details.teamName})">Invitations</a></li>
         </ul>
     </div>
     <ui-view></ui-view>    

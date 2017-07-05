@@ -135,6 +135,11 @@
               templateUrl: 'views/teams/team-details/members/requests/member-requests.html'
           })
 
+          .state('team.members.invitations', {
+              url: '/invitations/{teamName}',
+              templateUrl: 'views/teams/team-details/members/invitations/member-invitations.html'
+          })
+
           /* Court */
 
           .state('court', {

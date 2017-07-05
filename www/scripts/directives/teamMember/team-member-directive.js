@@ -37,6 +37,15 @@
                             commonServices.handleError(err);
                         })
                 }
+
+                scope.cancelInvitation = function (invitation) {
+                    teamContext.cancelInvitation(invitation.teamId, invitation.playerId).then(
+                        function (res) {
+                            $rootScope.$broadcast('reload-team-invitations');
+                        }, function (err) {
+                            commonServices.handleError(err);
+                        })
+                }
             }
         }
     }
