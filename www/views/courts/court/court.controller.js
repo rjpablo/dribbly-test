@@ -136,7 +136,7 @@
             var isPrimary = (vm.court.photos[index].isPrimary);
 
             if (!isPrimary) {
-                if (commonServices.confirm('Delete photo?')) {
+                commonServices.confirm('Delete photo?', function() {
                     courtContext.deletePhoto(fileName).then(
                         function () {
                             //commonServices.toast.info('Photo deleted')
@@ -145,7 +145,7 @@
                         }
                     );
                     vm.methods.delete(index);
-                }
+                })
             } else {
                 commonServices.alert('Cannot delete primary photo!');
             }

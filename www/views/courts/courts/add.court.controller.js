@@ -43,10 +43,10 @@
                 deleteCourtPhoto(fileName, index);                    
                 //}
             } else {
-                if (confirm('Delete primary photo?')) {
+                commonServices.confirm('Delete primary photo?',function(){
                     deleteCourtPhoto(fileName, index);
                     __this.court.imagePath = ""
-                }
+                })
             }
         }
 

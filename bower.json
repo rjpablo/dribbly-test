@@ -32,6 +32,7 @@
     "ngmap": "^1.18.4",
     "wow": "^1.1.2",
     "angularjs-slider": "^6.1.1",
-    "angucomplete-alt": "^3.0.0"
+    "angucomplete-alt": "^3.0.0",
+    "angular-confirm": "angular1-confirm#^1.1.0"
   }
 }

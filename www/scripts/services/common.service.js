@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('mainApp')
-        .service('commonServices', ['toastService','$log', commonServices]);
+        .service('commonServices', ['toastService','$log', '$ngConfirm', commonServices]);
 
-    function commonServices(toastService, $log) {
+    function commonServices(toastService, $log, $ngConfirm) {
 
         var _handleError = function (error) {
             switch (error.status) {
@@ -44,12 +44,20 @@
             }
         }
 
-        function _alert(message,title) {
-            alert(message)
+        function _alert(message, title) {
+            $ngConfirm(message, title);
         }
 
-        function _confirm(message, title) {
-            return confirm(message)
+        function _confirm(message, okCallback, title) {
+            $ngConfirm({
+                content: message,
+                title: title,
+                backgroundDismiss: true,
+                buttons: {
+                    Ok: okCallback,
+                    Cancel: {}
+                },
+            })
         }
 
         this.toast = toastService;

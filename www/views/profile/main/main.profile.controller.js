@@ -28,7 +28,17 @@
             var isPrimary = (vm.mainProfile.photos[index].isPrimary);
 
             if (!isPrimary) {
-                if (commonServices.confirm('Delete photo?')) {
+                //if (commonServices.confirm('Delete photo?')) {
+                //    profileContext.deletePhoto(fileName, vm.mainProfile.userId).then(
+                //        function () {
+                //            //commonServices.toast.info('Photo deleted')
+                //        }, function () {
+                //            commonServices.log.error('Failed to delete photo: ' + fileName);
+                //        }
+                //    );
+                //    vm.methods.delete(index);
+                //}
+                commonServices.confirm('Delete photo?', function () {
                     profileContext.deletePhoto(fileName, vm.mainProfile.userId).then(
                         function () {
                             //commonServices.toast.info('Photo deleted')
@@ -37,7 +47,7 @@
                         }
                     );
                     vm.methods.delete(index);
-                }
+                })
             } else {
                 commonServices.alert('Cannot delete primary photo!');
             }

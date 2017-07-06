@@ -14,6 +14,7 @@
                 'ui.router.default',
                 'ngStorage',
                 'rzModule',
-                'angucomplete-alt'
+                'angucomplete-alt',
+                'cp.ngConfirm'
             ]);
 })();
