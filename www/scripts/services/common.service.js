@@ -48,14 +48,14 @@
             $ngConfirm(message, title);
         }
 
-        function _confirm(message, okCallback, title) {
+        function _confirm(message, okCallback, title, cancelCallback) {
             $ngConfirm({
                 content: message,
                 title: title,
                 backgroundDismiss: true,
                 buttons: {
-                    Ok: okCallback,
-                    Cancel: {}
+                    Ok: okCallback || function () { },
+                    Cancel: cancelCallback || function(){}
                 },
             })
         }

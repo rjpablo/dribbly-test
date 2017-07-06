@@ -3,7 +3,8 @@
 }
 
 .team-members .tab-headers li {
-    padding: 5px 15px;
+    margin: 5px 15px;
+    margin-left: 0;
     display: inline-block;
 }
 

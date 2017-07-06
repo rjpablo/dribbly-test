@@ -6,17 +6,18 @@
 
     function toastService(toaster) {
 
-        var timeout = 3000;
+        var timeout = 2000;
 
         var _settings = {
             'position-class': 'toast-top-center',
             'limit': 3,
             'time-out': timeout,
-            'showCloseButton': true
+            'showCloseButton': true,
+            'tapToDismiss': true
         }
 
         var _error = function (message, title) {
-            toaster.pop({ type: 'error', title: (title || 'We missed :('), body: message, showCloseButton: true, 'timeout': timeout });
+            toaster.pop({ type: 'error', title: (title || 'Error :('), body: message, showCloseButton: true, 'timeout': timeout });
         }
 
         var _success = function (message, title) {

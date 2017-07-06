@@ -44,8 +44,8 @@
             return httpService.get(_apiControllerBaseUrl + '/search', { searchCriteria: criteria })
         }
 
-        var _invite = function (invitation) {
-            return httpService.post(_apiControllerBaseUrl + 'Invite/', invitation);
+        var _invite = function (playerId, teamId) {
+            return httpService.post(_apiControllerBaseUrl + 'InvitePlayer/' + playerId + '/' + teamId);
         }
 
         var _join = function (userId, teamId) {
@@ -56,7 +56,7 @@
             return httpService.post(_apiControllerBaseUrl + 'LeaveTeam/' + userId + '/' + teamId);
         }
 
-        var _dismiss = function (userId, teamId) {
+        var _dismissPlayer = function (userId, teamId) {
             return httpService.post(_apiControllerBaseUrl + 'DismissPlayer/' + userId + '/' + teamId);
         }
 
@@ -69,7 +69,7 @@
         }
 
         var _respondToInvitation = function (teamId, userId, accept) {
-            return httpService.post(_apiControllerBaseUrl + 'CancelRequest/' + teamId + '/' + userId + '/' + accept);
+            return httpService.post(_apiControllerBaseUrl + 'RespondToInvitation/' + teamId + '/' + userId + '/' + accept);
         }
 
         var _respondToRequest = function (teamId, userId, approve) {
@@ -105,13 +105,13 @@
         this.searchTeams = _searchTeams;
         this.getTestTeams = _getTestTeams;
         this.getMembers = _getMembers;
-        this.invite = _invite;
+        this.invitePlayer = _invite;
         this.respondToInvitation = _respondToInvitation;
         this.getUserToTeamRelation = _getUserToTeamRelation;
         this.join = _join;
         this.leave = _leave;
         this.cancelRequest = _cancelRequest;
-        this.dismiss = _dismiss;
+        this.dismissPlayer = _dismissPlayer;
         this.getMemberRequests = _getMemberRequests;
         this.respondToRequest = _respondToRequest;
         this.getMemberInvitations = _getMemberInvitations;

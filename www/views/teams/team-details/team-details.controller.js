@@ -4,10 +4,11 @@
     angular
         .module('mainApp')
         .controller('teamDetailsController', ['$scope', 'settings', 'httpService', 'commonServices', 'fileService',
-            'authentication', '$location', '$state', '$stateParams', 'teamContext', 'profileContext', '$timeout', controllerFn]);
+            'authentication', '$location', '$state', '$stateParams', 'teamContext', 'profileContext', '$timeout',
+            '$ngConfirm', '$rootScope', controllerFn]);
 
     function controllerFn($scope, settings, httpService, commonServices, fileService, authentication,
-        $location, $state, $stateParams, teamContext, profileContext, $timeout) {
+        $location, $state, $stateParams, teamContext, profileContext, $timeout, $ngConfirm, $rootScope) {
 
         $scope.team = {};
         $scope.$state = $state;
@@ -82,8 +83,9 @@
             if($scope.currentUser){
                 teamContext.respondToInvitation($scope.team.details.teamId, $scope.currentUser.UserId, accept).then(
                 function () {
-                    commonServices.toast.success('Invitation accepted!')
-                    $scope.$broadcast('reload-team-members');
+                    commonServices.toast.success('You are now a member of this team!')
+                    $rootScope.$broadcast('reload-team-members');
+                    $rootScope.$broadcast('reload-team-invitations');
                 }, function (err) {
                     commonServices.handleError(err);
                 })
@@ -180,11 +182,11 @@
                         function (res) {
                             if (vm.userToTeamRelation.isOwner) {
                                 commonServices.toast.success("You are now a current member of this team.");
-                                $scope.$broadcast('reload-team-members');
+                                $rootScope.$broadcast('reload-team-members');
 
                             } else {
                                 commonServices.toast.success("Request sent!");
-                                $scope.$broadcast('update-team-requests');
+                                $rootScope.$broadcast('update-team-requests');
                             }
                         }, function (err) {
                             commonServices.handleError(err)
@@ -197,13 +199,15 @@
         vm.leave = function () {
             authentication.checkAuthentication("Please log in to proceed.").then(
                 function (res) {
-                    teamContext.leave($scope.currentUser.UserId, $scope.team.details.teamId).then(
+                    commonServices.confirm('Are you sure you want to leave this team?', function () {
+                        teamContext.leave($scope.currentUser.UserId, $scope.team.details.teamId).then(
                         function (res) {
                             commonServices.toast.info("You are no longer a current member of this team.");
                             $scope.$broadcast('reload-team-members');
                         }, function (err) {
                             commonServices.handleError(err)
                         })
+                    }, 'Leave Team')
                 }, function (err) {
                     //login failed or was cancelled
                 })

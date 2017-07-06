@@ -23,11 +23,8 @@
         this.ok = function (theForm) {
             if (vm.selectedUser) {
                 vm.saving = true;
-                vm.invite = {
-                    playerId: vm.selectedUser.userId,
-                    teamId: team.teamId
-                }
-                teamContext.invite(vm.invite).then(
+
+                teamContext.invitePlayer(vm.selectedUser.userId, team.teamId).then(
                     function (res) {
                         vm.saving = false;
                         $uibModalInstance.close(res.data);
