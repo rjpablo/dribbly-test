@@ -1,11 +1,14 @@
 ﻿<div class="current-members titled-container">
     <div class="header col-md-12">
-        <h5 class="title">Current Members</h5>
+        <h5 class="title">Current Members({{(team.members | filter:{ isCurrentMember : true }).length}})</h5>
         <div class="action-buttons">
             <a class="button-link" ng-if="isOwned" ng-click="tmCtrl.addMember()"><i class="fa fa-plus"></i> Add A Member</a>
         </div>
     </div>
-    <div class="content col-md-12">
+    <div ng-if="!tmrCtrl.loadingMembers && (!team.members || (team.members | filter:{ isCurrentMember : true }).length == 0) " class="content col-md-12">
+        <span>No current members.</span>
+    </div>
+    <div ng-show="team.members && team.members.length > 0" class="content col-md-12">
         <team-member ng-repeat="player in team.members | filter:{ isCurrentMember : true }" player="player" type="'member'" class="team-member"></team-member>
     </div>
 </div>

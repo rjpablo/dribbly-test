@@ -9,15 +9,18 @@
     function controllerFn($scope, settings, commonServices, authentication, teamContext, $uibModal, $rootScope) {
 
         var vm = this;
+        vm.loadingMembers = true;
 
         function loadMembers(teamId) {
             teamContext.getMembers(teamId).then(
             function (res) {
+                vm.loadingMembers = false;
                 $scope.team.members = res.data
             }, function (err) {
+                vm.loadingMembers = false;
                 commonServices.handleError(err)
             })
-        }        
+        }
 
         $scope.$watch('team.details', function (teamDetails) {
             if (teamDetails) {
