@@ -124,7 +124,7 @@
                             </div>                            
                             <ul class="tab-headers">
                                 <li ng-class="{'active': $state.current.name.startsWith('team.members')}"><a ui-sref="team.members.current({teamName:team.details.teamName})" ng-click="">Members</a></li>
-                                <li ng-class="{'active': $state.current.name.startsWith('team.games')}"><a ui-sref="team.games({userName:team.details.userName})" ng-click="">Games</a></li>
+                                <li ng-class="{'active': $state.current.name.startsWith('team.games')}"><a ui-sref="team.games({teamName:team.details.teamName})" ng-click="">Games</a></li>
                             </ul>
                         </div>
                         <div class="bottom tab-pane">

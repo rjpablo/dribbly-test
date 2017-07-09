@@ -20,6 +20,13 @@
             return httpService.get(_apiControllerBaseUrl + 'Members/' + teamId)
         }
 
+        /**
+            Possible values for filter: 'upcoming', 'won', 'lost', 'all'
+        **/
+        var _getTeamGames = function (teamId, filter) {
+            return httpService.get(_apiControllerBaseUrl + 'GetTeamGames/' + teamId + '/' + filter)
+        }
+
         var _getTeamDetails = function (teamName) {
             return httpService.get(_apiControllerBaseUrl + 'GetTeam?teamName=' + encodeURIComponent(teamName))
         }
@@ -116,6 +123,7 @@
         this.respondToRequest = _respondToRequest;
         this.getMemberInvitations = _getMemberInvitations;
         this.cancelInvitation = _cancelInvitation;
+        this.getTeamGames = _getTeamGames;
 
         return this;
 

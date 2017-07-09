@@ -113,6 +113,11 @@
               templateUrl: 'views/teams/team-details/team-details.html'
           })
 
+          .state('team.games', {
+              url: '/games/{teamName}',
+              templateUrl: 'views/teams/team-details/games/team-games.html'
+          })
+
           .state('team.members', {
               abstract: true,
               default: '.members',

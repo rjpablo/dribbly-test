@@ -1,0 +1,20 @@
+﻿<div class="team-game">
+    <div class="wrapper">
+        <div class="header">
+            <p class="title">{{game.title + (game.isWon!=null?' - ' + (game.isWon?'W':'L'):'')}}</p>
+            <div ng-if="type=='upcoming'" class="list-item-options" uib-dropdown>
+                <button uib-dropdown-toggle class="btn btn-primary"><i class="fa fa-caret-down"></i></button>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                    <li role="menu-item"><a ng-click="">Withdraw</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="teams">
+            <div class="team teamA">{{game.teamName}}</div>
+            <span>VS</span>
+            <div class="team teamB">{{game.opponentTeamName}}</div>
+        </div>
+        <p class="schedule">{{game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p>
+        <a ui-sref="court.details({id:{{game.courtId}}})" class="court">{{game.courtName}}</a>
+    </div>
+</div>

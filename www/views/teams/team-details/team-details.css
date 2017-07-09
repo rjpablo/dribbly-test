@@ -166,6 +166,37 @@
     float: left;
 }
 
+.team-details .bottom .filter ul>li{
+    display: inline-block;
+    border-right: 1px solid #999;
+    line-height: 14px;
+    margin: 4px 0;
+    float:left;
+}
+
+.team-details .bottom .filter ul > li:last-child{
+    border-right: none;
+}
+
+.team-details .bottom .filter ul > li > a{
+    margin: 0 5px;
+    color: #999;
+    cursor: pointer;
+    transition: color linear 200ms;
+    -webkit-transition: color linear 300ms;
+}
+
+.team-details .bottom .filter ul > li:not(.active) > a:hover{
+    color: #fff;
+}
+
+.team-details .bottom .filter ul > li.active > a{
+    color: #fff;
+    cursor: default;
+    text-decoration: underline;
+}
+
+
 @media(max-width: 991px) and (min-width: 768px) {
     .team-details .top .fields {
         max-width: 260px;

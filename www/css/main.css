@@ -303,12 +303,16 @@ rating{
 
 .titled-container .header{
     margin: 10px 0;
+    overflow: auto;
 }
 
 .titled-container .header .title{
     display: inline-block;
     margin:0;
     color: #999;
+    line-height: 1.3em;
+    max-height: 3.9em;
+    overflow: hidden;
 }
 
 .titled-container .header .action-buttons{

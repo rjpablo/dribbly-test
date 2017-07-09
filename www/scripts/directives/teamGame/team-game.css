@@ -1,0 +1,78 @@
+﻿.team-game{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    padding: 0 0 15px;
+    float: left;
+}
+
+.team-game:nth-child(odd){
+    padding-right: 7.5px;
+}
+
+.team-game:nth-child(even){
+    padding-left: 7.5px;
+}
+
+.team-game .wrapper{
+    display: inline-block;
+    width: 100%;
+    border-top: 2px solid #eee;
+    height: 190px;
+}
+
+.team-game .header{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    overflow: visible;
+}
+
+.team-game .title {
+    color: #2dc5c3 !important;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.team-game p{
+    margin: 0;
+}
+
+.team-game .teams{
+    margin: 0 0 10px;
+    line-height: 16px;
+}
+
+.team-game .team {
+    line-height: inherit;
+    display: block;
+    font-weight: bold;
+    color: #999;
+}
+
+.team-game .schedule, .team-game .court {
+    line-height: 16px;
+    color: #aaa;
+}
+
+.team-game .court:hover{
+    text-decoration: underline;
+}
+
+.team-game .icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+@media(max-width: 568px){
+    .team-game{
+        width: 100%;
+        padding: 0 0 15px !important;
+    }
+
+    .team-game .wrapper{
+        height: auto;
+    }
+}

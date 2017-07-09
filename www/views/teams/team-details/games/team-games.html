@@ -1,0 +1,24 @@
+﻿<div class="team-games" ng-controller="teamGamesController as vm">
+    <div class="team-members titled-container">
+        <div class="header col-md-12">
+            <!--<h5 class="title">Games</h5>-->
+            <div class="filter">
+                <ul>
+                    <li ng-class="[{active: vm.filter == 'upcoming'}]"><a ng-click="vm.loadGames('upcoming')">Upcoming</a></li>
+                    <li ng-class="[{active: vm.filter == 'won'}]" ><a ng-click="vm.loadGames('won')">Won</a></li>
+                    <li ng-class="[{active: vm.filter == 'lost'}]"><a ng-click="vm.loadGames('lost')">Lost</a></li>
+                    <li ng-class="[{active: vm.filter == 'all'}]"><a ng-click="vm.loadGames('all')">All</a></li>
+                </ul>
+            </div>
+            <div class="action-buttons">
+                <a class="button-link" ng-if="isOwned" ng-click="vm.addMember()"><i class="fa fa-plus"></i> Add A Member</a>
+            </div>
+        </div>
+        <div ng-if="!vm.loadingGames && (!team.games || team.games.length == 0) " class="content col-md-12">
+            <span>No games found.</span>
+        </div>
+        <div ng-show="team.games && team.games.length > 0" class="content col-md-12">
+            <team-game ng-repeat="game in team.games" type="vm.filter" game="game"></team-game>
+        </div>
+    </div>
+</div>
