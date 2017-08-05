@@ -10,14 +10,14 @@
 
         var _getGames = function (filters) {
             if (filters) {
-                return httpService.post(_apiCtrlBaseUrl, filters)
+                return httpService.get(_apiCtrlBaseUrl, filters)
             } else {
-                return httpService.post(_apiCtrlBaseUrl)
+                return httpService.get(_apiCtrlBaseUrl)
             }
         }
 
-        var _getGameDetails = function (courtId) {
-            return httpService.get(_apiCtrlBaseUrl, { courtId: courtId })
+        var _getGameDetails = function (gameId) {
+            return httpService.get(_apiCtrlBaseUrl + 'GetGameDetails/' + gameId)
         }
 
         var _create = function (court) {

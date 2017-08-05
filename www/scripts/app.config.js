@@ -183,10 +183,20 @@
               templateUrl: 'views/games/games/my-games/my-games.html'
           })
 
-          .state('games.followed', {
-              url: '/followed',
-              templateUrl: 'views/games/games/followed/followed-games.html'
+          /* Game */
+          .state('gameDetails', {
+              abstract: true,
+              default: '.players',
+              url: '/gameDetails',
+              templateUrl: 'views/games/gameDetails/gameDetails.html'
           })
+
+          .state('gameDetails.players', {
+              url: '/players/{gameId}',
+              templateUrl: 'views/games/gameDetails/players/gamePlayers.html'
+          })
+
+          /* Add Photos/Videos, Invites, Requests */
 
            /* Players */
 

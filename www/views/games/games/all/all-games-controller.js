@@ -54,7 +54,7 @@
         }
 
         this.updateList = function () {
-            courtContext.getCourts(vm.filtered?vm.searchCriteria:undefined).then(
+            gameContext.getCourts(vm.filtered ? vm.searchCriteria : undefined).then(
             function (result) {
                 vm.games = result.data
             }, function (error) {
@@ -67,11 +67,8 @@
             vm.games = gameContext.getTestGames();
         } else {
 
-            vm.games = gameContext.getTestGames();
-            return;
-
             vm.loading = true;
-            courtContext.getGames(null).then(
+            gameContext.getGames(null).then(
             function (result) {
                 vm.games = result.data
                 vm.loading = false
