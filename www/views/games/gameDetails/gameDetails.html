@@ -5,45 +5,32 @@
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
             </div>
             <div class="center-content parrent media-body">
-                <div class="tab-content game-details" ng-class="[{'done' : gameDetVCtrl.game.winningTeamId != null}]">
+                <div class="tab-content game-details" ng-class="[{'done' : game.winningTeamId != null}]">
                     <div class="top">
                         <div class="details col-md-12">
-                            <h3 class="game-title">{{gameDetVCtrl.game.title}}</h3>
-                            <!--<div class="teams">
-                                <div class="team teamA">
-                                    <a class="team-name" ui-sref="team.members.current({teamName: (gameDetVCtrl.game.teamA.teamName|uriEncode)})">-->
-<!--<img ng-if="gameDetVCtrl.game.winningTeamId && gameDetVCtrl.game.winningTeamId == gameDetVCtrl.game.teamAId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />--><!--Team A - {{gameDetVCtrl.game.teamA.teamName}}</a>
-                                    <p class="score">{{gameDetVCtrl.game.teamAScore}}</p>
-                                </div>                                
-                                <div class="vs">VS</div>
-                                <div class="team teamB">
-                                    <a class="team-name" ui-sref="team.members.current({teamName: (gameDetVCtrl.game.teamB.teamName|uriEncode)})">-->
-<!--<img ng-if="gameDetVCtrl.game.winningTeamId && gameDetVCtrl.game.winningTeamId == gameDetVCtrl.game.teamBId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />--><!--Team B - {{gameDetVCtrl.game.teamB.teamName}}</a>
-                                    <p class="score">{{gameDetVCtrl.game.teamBScore}}</p>
-                                </div>         
-                            </div>-->     
+                            <h3 class="game-title">{{game.title}}</h3>
                             <table class="teams">
                                 <tr>
-                                    <td class="team teamA"><a class="team-name" ui-sref="team.members.current({teamName: (gameDetVCtrl.game.teamA.teamName|uriEncode)})">Team A - {{gameDetVCtrl.game.teamA.teamName}}</a></td>
+                                    <td class="team teamA"><a class="team-name" ui-sref="team.members.current({teamName: (game.teamA.teamName|uriEncode)})">Team A - {{game.teamA.teamName}}</a></td>
                                     <td class="vs" rowspan="3">VS</td>
-                                    <td class="team teamB"><a class="team-name" ui-sref="team.members.current({teamName: (gameDetVCtrl.game.teamB.teamName|uriEncode)})">Team B - {{gameDetVCtrl.game.teamB.teamName}}</a></td>
+                                    <td class="team teamB"><a class="team-name" ui-sref="team.members.current({teamName: (game.teamB.teamName|uriEncode)})">Team B - {{game.teamB.teamName}}</a></td>
                                 </tr>
                                 <tr class="scores">
-                                    <td class="teamA"><p class="score">{{gameDetVCtrl.game.teamAScore}}</p></td>
-                                    <td class="teamB"><p class="score">{{gameDetVCtrl.game.teamBScore}}</p></td>
+                                    <td class="teamA"><p class="score">{{game.teamAScore}}</p></td>
+                                    <td class="teamB"><p class="score">{{game.teamBScore}}</p></td>
                                 </tr>
                             </table>   
-                            <a ui-sref="court.details({id: gameDetVCtrl.game.court.id })" class="court">{{gameDetVCtrl.game.court.name}}</a>
-                            <p class="schedule">{{gameDetVCtrl.game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p> 
+                            <a ui-sref="court.details({id: game.court.id })" class="court">{{game.court.name}}</a>
+                            <p class="schedule">{{game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p> 
                             <div class="game-options">
                                 <div class="btn-group options-dropdown" on-toggle="teamCtrl.optionsDropdownToggled(open)" is-open="teamCtrl.dropDownIsOpen" uib-dropdown>
                                     <button type="button" class="btn btn-primary" uib-dropdown-toggle>
                                         Options <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                                        <li ng-show="teamCtrl.loadingTeamOptions" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
+                                        <li ng-show="gameDetVCtrl.loadingGameOptions" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
                                         <li ng-show="true" role="menuitem"><a ng-click="">Follow</a></li>
-                                        <li ng-show="!teamCtrl.loadingTeamOptions" class="divider"></li>
+                                        <li ng-show="!gameDetVCtrl.loadingGameOptions" class="divider"></li>
                                         <li ng-show="true" role="menuitem"><a ng-click="">Edit Details</a></li>
                                         <li ng-show="true" role="menuitem"><a ng-click="">Cancel Game</a></li>
                                     </ul>
@@ -61,19 +48,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{gameDetVCtrl.game.teamAScore}}</td>
-                                        <td>{{gameDetVCtrl.game.teamBScore}}</td>
-                                        <td>{{gameDetVCtrl.game.winningTeamId==gameDetVCtrl.game.teamAId?'Team A':'Team B'}}</td>
+                                        <td>{{game.teamAScore}}</td>
+                                        <td>{{game.teamBScore}}</td>
+                                        <td>{{game.winningTeamId==game.teamAId?'Team A':'Team B'}}</td>
                                     </tr>
                                     <tr>
-                                        <td>{{gameDetVCtrl.game.teamAScore + 5}}</td>
-                                        <td>{{gameDetVCtrl.game.teamBScore +2 }}</td>
-                                        <td>{{gameDetVCtrl.game.winningTeamId==gameDetVCtrl.game.teamAId?'Team A':'Team B'}}</td>
+                                        <td>{{game.teamAScore + 5}}</td>
+                                        <td>{{game.teamBScore +2 }}</td>
+                                        <td>{{game.winningTeamId==game.teamAId?'Team A':'Team B'}}</td>
                                     </tr>
                                     <tr>
-                                        <td>{{gameDetVCtrl.game.teamAScore - 10}}</td>
-                                        <td>{{gameDetVCtrl.game.teamBScore - 14}}</td>
-                                        <td>{{gameDetVCtrl.game.winningTeamId==gameDetVCtrl.game.teamAId?'Team A':'Team B'}}</td>
+                                        <td>{{game.teamAScore - 10}}</td>
+                                        <td>{{game.teamBScore - 14}}</td>
+                                        <td>{{game.winningTeamId==game.teamAId?'Team A':'Team B'}}</td>
                                     </tr>
                                 </tbody>
                             </table>

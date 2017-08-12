@@ -3,22 +3,27 @@
 
     angular
         .module('mainApp')
-        .controller('gamesCtrl', ['$scope', '$uibModal', '$document', 'settings',
-            'httpService', 'commonServices', '$timeout', '$log', 'gameContext', CtrlFn]);
+        .controller('gamePlayersCtrl', ['$scope', '$uibModal', '$document', 'settings',
+            'commonServices', '$timeout', '$log', 'gameContext', 'teamContext', CtrlFn]);
 
-    function CtrlFn($scope, $uibModal, $document, settings, httpService,
-        commonServices, $timeout, $log, gameContext) {
+    function CtrlFn($scope, $uibModal, $document, settings,
+        commonServices, $timeout, $log, gameContext, teamContext) {
 
         var vm = this;
 
-        this.imageUploadPath = settings.imageUploadPath;
+        vm.teamA = $scope.game.teamA
+        vm.teamB = $scope.game.teamB
 
-        vm.game = {};
+        getTeamPlayers(vm.teamA);
+        getTeamPlayers(vm.teamB);
 
-        if (settings.useLocalData) {
-            
-        } else {
-
+        function getTeamPlayers(team) {
+            teamContext.getMembers(team.teamId).then(
+                function (res) {
+                    team.members = res.data
+                }, function (err) {
+                    commonServices.handleError(err)
+                })
         }
 
     };

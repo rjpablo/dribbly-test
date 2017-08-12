@@ -1,1 +1,25 @@
-﻿<div>Game Players</div>
+﻿<div ng-if="game" class="game-players" ng-controller="gamePlayersCtrl as vm">
+    <div class="team teamA">
+        <div class="header">
+            <a class="team-name" ui-sref="team.members.current({teamName: (game.teamA.teamName|uriEncode)})">Team A - {{game.teamA.teamName + ' (' + game.teamA.members.length + ')'}}</a>
+            <div class="action-buttons">
+                <button class="btn btn-primary">Join</button>
+            </div>
+        </div>
+        <div class="player-list">
+            <team-member ng-repeat="player in vm.teamA.members | filter:{ isCurrentMember : true }" player="player" type="'member'" class="team-member"></team-member>
+        </div>
+    </div>
+    <hr />
+    <div class="team teamB">
+        <div class="header">
+            <a class="team-name" ui-sref="team.members.current({teamName: (game.teamB.teamName|uriEncode)})">Team B - {{game.teamB.teamName + ' (' + game.teamB.members.length + ')'}}</a>
+            <div class="action-buttons">
+                <button class="btn btn-primary">Join</button>
+            </div>
+        </div>
+        <div class="player-list">
+            <team-member ng-repeat="player in vm.teamB.members | filter:{ isCurrentMember : true }" player="player" type="'member'" class="team-member"></team-member>
+        </div>
+    </div>
+</div>

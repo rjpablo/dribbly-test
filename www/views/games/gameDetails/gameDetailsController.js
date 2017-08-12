@@ -21,7 +21,7 @@
         } else {
             gameContext.getGameDetails(vm.gameId).then(
                 function (res) {
-                    vm.game = res.data;
+                    $scope.game = res.data;
                 }, function (err) {
                     commonServices.handleError(err);
                 })

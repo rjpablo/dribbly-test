@@ -1,4 +1,35 @@
-﻿.games-list{
+﻿.games-players{
+
+}
+
+.game-players .team{
+    margin-bottom: 15px;
+}
+
+.game-players .team .header{
+    margin-bottom: 10px;
     display: inline-block;
     width: 100%;
+}
+
+.game-players .team-name{
+    display: inline-block;
+    font-size: 16px;
+}
+
+.game-players .action-buttons{
+    display: inline-block;
+    float: right;
+}
+
+.game-players .player-list{
+    overflow-x: scroll;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.game-players .team-member{
+    width: 200px;
+    display: inline-block;
+    float: none;
 }
