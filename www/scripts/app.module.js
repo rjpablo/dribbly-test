@@ -15,6 +15,7 @@
                 'ngStorage',
                 'rzModule',
                 'angucomplete-alt',
-                'cp.ngConfirm'
+                'cp.ngConfirm',
+                'ui.bootstrap.datetimepicker'
             ]);
 })();

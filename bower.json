@@ -34,5 +34,18 @@
     "angularjs-slider": "^6.1.1",
     "angucomplete-alt": "^3.0.0",
     "angular-confirm": "angular1-confirm#^1.1.0"
+  },
+  "overrides": {
+    "angular-bootstrap-datetimepicker": {
+      "main": [
+        "src/js/datetimepicker.js",
+        "src/js/datetimepicker.templates.js",
+        "src/css/datetimepicker.css"
+      ],
+      "dependencies": {
+        "angular": "^1.x",
+        "moment": "^2.x"
+      }
+    }
   }
 }
