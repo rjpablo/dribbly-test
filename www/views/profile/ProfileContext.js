@@ -7,6 +7,8 @@
 
     function serviceFn(httpService, settings, fileService, $q) {
 
+        var _remoteUserSearchURL = settings.apiBaseURL + 'UserProfiles/UserViews/';
+
         var _getProfileByName = function (userName) {
             return httpService.get(settings.apiBaseURL + 'UserProfiles/' + encodeURIComponent(userName))
         }
@@ -62,6 +64,7 @@
         this.updateProfilePic = _updateProfilePic
         this.uploadPhoto = _uploadPhoto;
         this.searchUsersByName = _searchUsersByName;
+        this.userSearchRemoteUrl = _remoteUserSearchURL;
 
         return this;
 

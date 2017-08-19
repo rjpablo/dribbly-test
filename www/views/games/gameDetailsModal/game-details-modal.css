@@ -1,0 +1,12 @@
+﻿.game-details-modal-body .form-group.court .court-stub .court-name a.button-link{
+    color: #666;
+}
+
+.game-details-modal-body .court-stub{
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 2px 6px;
+    height: 28px;
+}

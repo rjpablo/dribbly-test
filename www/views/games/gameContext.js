@@ -21,7 +21,7 @@
         }
 
         var _create = function (court) {
-            return httpService.post(_apiCtrlBaseUrl + 'register/', court);
+            return httpService.post(_apiCtrlBaseUrl + 'Create/', court);
         }
 
         var _deletePhoto = function (fileName, userId) {

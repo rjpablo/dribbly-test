@@ -1,0 +1,11 @@
+﻿<div class="court-stub">
+    <div class="court-info">
+        <!--<img class="profile-pic" ng-src="{{profilePicUrl}}" />-->
+        <span class="court-name button-link">
+            <a class="button-link" ui-sref="court.details({courId: court.id})">{{court.name}}</a>
+        </span>
+    </div>
+    <div ng-if="showControls" class="action-buttons">
+        <span class="fa fa-times danger delete action-button" ng-click="deleteFunction({court:court})"></span>
+    </div>
+</div>

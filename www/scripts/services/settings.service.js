@@ -5,7 +5,7 @@
         .service('settings', ['httpService', settings]);
 
     function settings(httpService) {
-        var _useLocalServer = true;
+        var _useLocalServer = true; 
         var _useIISServer = false;
         var _doNotUseBackend = false;
         var _useLocalData = false;

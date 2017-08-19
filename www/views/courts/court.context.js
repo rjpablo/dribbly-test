@@ -5,6 +5,9 @@
         .service('courtContext', ['httpService', 'settings', 'fileService', '$q', courtContext]);
 
     function courtContext(httpService, settings, fileService, $q) {
+
+        var _courtSearchRemoteUrl = settings.apiBaseURL + 'court/FindCourtsByName/';
+
         var _getCourts = function (filters) {
             if (filters) {
                 return httpService.post(settings.apiBaseURL + 'courts', filters)
@@ -167,6 +170,7 @@
         this.searchCourts = _searchCourts;
         this.getTestCourts = _getTestCourts;
         this.getMaxRate = _getMaxRate;
+        this.courtSearchRemoteUrl = _courtSearchRemoteUrl;
 
         return this;
 

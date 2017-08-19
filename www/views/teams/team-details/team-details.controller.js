@@ -21,7 +21,7 @@
         vm.tempTeamDetails = {};
         this.teamLogoSrcPrefix = '';
         vm.user_autoComplete = [];
-        vm.userSearchRemoteUrl = settings.apiBaseURL + 'UserProfiles/UserViews/';
+        vm.userSearchRemoteUrl = profileContext.userSearchRemoteUrl;
         vm.managerInitialValue = "";
         vm.selectedManager = {};
         vm.loadingTeamOptions = false;

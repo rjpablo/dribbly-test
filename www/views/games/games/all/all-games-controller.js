@@ -121,21 +121,23 @@
                     backdrop: 'static',
                     ariaLabelledBy: 'modal-title',
                     ariaDescribedBy: 'modal-body',
-                    templateUrl: '/views/courts/courts/add-modal-template.html',
-                    controller: 'addCourtCtrl',
-                    controllerAs: 'addCourtCtrl',
+                    templateUrl: '/views/games/gameDetailsModal/game-details-modal-template.html',
+                    controller: 'gameDetailsModalCtrl',
+                    controllerAs: 'gameDetailsModalCtrl',
                     resolve: {
                         currentUser: function () {
                             return $scope.currentUser
+                        },
+                        gameDetails: function () {
+                            return {}
                         }
                     },
                     size: size,
                     appendTo: parentElem
                 });
 
-                addCourtModal.result.then(function (court) {
-                    commonServices.toast.success('New court has been added successfully.')
-                    vm.updateList();
+                addCourtModal.result.then(function (game) {
+                    commonServices.toast.success('New game created successfully.')
                 }, function (reason) {
                     //commonServices.toast.info('No new court was added.')
                 });
