@@ -10,3 +10,20 @@
     padding: 2px 6px;
     height: 28px;
 }
+
+.game-details-modal-body .form-group.court.hasValue .edit-field{
+    display:none;
+}
+
+.game-details-modal-body .form-group.court:not(.hasValue) .court-stub{
+    display:none;
+}
+
+.game-details-modal-body .error-msg{
+    display:none;
+}
+
+.game-details-modal-body .court.has-error .error-msg.required,
+.game-details-modal-body .error-msg.active{
+    display: block;
+}

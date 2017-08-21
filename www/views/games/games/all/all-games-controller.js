@@ -3,9 +3,9 @@
 
     angular
         .module('mainApp')
-        .controller('allGamesCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'gameContext', 'authentication', CtrlFn]);
+        .controller('allGamesCtrl', ['$scope', '$uibModal', '$document', 'settings', 'httpService', 'commonServices', '$timeout', 'gameContext', 'authentication', '$state', CtrlFn]);
 
-    function CtrlFn($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, gameContext, authentication) {
+    function CtrlFn($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, gameContext, authentication, $state) {
 
         var vm = this;
 
@@ -137,7 +137,8 @@
                 });
 
                 addCourtModal.result.then(function (game) {
-                    commonServices.toast.success('New game created successfully.')
+                    //$state.go('gameDetails.players', { gameId: game.id });
+                    //commonServices.toast.success('New game created successfully.')
                 }, function (reason) {
                     //commonServices.toast.info('No new court was added.')
                 });

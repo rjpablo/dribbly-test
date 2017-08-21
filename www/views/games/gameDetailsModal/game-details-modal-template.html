@@ -11,31 +11,48 @@
                 <div ng-message="minlength">Game Title must be at least 5 characters long.</div>
             </div>
         </div>
-        <div class="form-group court">
-            <label class="control-label" for="court">Court:</label>
-            <court-stub ng-if="gameDetailsModalCtrl.game.court" show-controls="true" court="gameDetailsModalCtrl.game.court" delete-function="gameDetailsModalCtrl.removeCourt(court)" ></court-stub>
+        <div class="form-group court" ng-class="[{hasValue:gameDetailsModalCtrl.game.court}, {'has-error':gameDetailsModalCtrl.validation.court.$invalid}]">
+            <label class="control-label" for="court">Court:*</label>
+            <court-stub show-controls="true" court="gameDetailsModalCtrl.game.court" delete-function="gameDetailsModalCtrl.removeCourt(court)" ></court-stub>
             <!--<span ng-if="gameDetailsModalCtrl.game.court">{{gameDetailsModalCtrl.game.court.name}}</span>-->
             <div class="edit-field"
                  angucomplete-alt id="court-autocomplete"
-                 placeholder="Search by court name"
+                 placeholder="Type to search by court name"
                  maxlength="50"
+                 field-required="true"
+                 field-required-class="missing"
                  pause="100"
                  selected-object="gameDetailsModalCtrl.courtSelected"
                  remote-url="{{gameDetailsModalCtrl.courtSearchRemoteUrl}}"
                  title-field="name"
                  minlength="1"
                  input-class="edit-field input-field form-control"
+                 input-name="court"
                  match-class="highlight"
-                 focus-first="true"
-                 ng-if="!gameDetailsModalCtrl.game.court"></div>
+                 focus-first="true"></div>
+            <div class="help-block" ng-messages="gameDetailsForm.name.$error" role="alert">
+                <div class="error-msg required" ng-class="[{'active':gameDetailsModalCtrl.validation.court.required}]" >Court is required.</div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" for="court">Schedule:</label>
-            <input type="text" name="court" ng-model="gameDetailsModalCtrl.schedule" />
+        <div class="form-group schedule" ng-class="[{'has-error':gameDetailsModalCtrl.validation.schedule.$invalid}]" >
+            <label class="control-label" for="court">Schedule:*</label><!--<span>{{gameDetailsModalCtrl.game.schedule | date : 'EEE, MMM d, y h:mm:ss a'}}</span>-->
+            <!--<input type="text" name="court" ng-model="gameDetailsModalCtrl.game.schedule" />-->
+            <div class="dropdown">
+                <p ng-if="!gameDetailsModalCtrl.game.schedule" class="sched-dd-toggle dropdown-toggle button-link" role="button" data-toggle="dropdown">Select schedule</p>
+                <p ng-if="gameDetailsModalCtrl.game.schedule" class="sched-dd-toggle dropdown-toggle button-link" role="button" data-toggle="dropdown">{{gameDetailsModalCtrl.game.schedule | date : 'EEE, MMM d, y h:mm:ss a'}}</p>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker data-ng-model="gameDetailsModalCtrl.game.schedule" on-set-time="gameDetailsModalCtrl.schedSelected(newDate, oldDate)" data-datetimepicker-config="{ dropdownSelector: '.sched-dd-toggle', minuteStep: 30 }" />
+                </ul>
+            </div>
+            <div class="help-block" role="alert">
+                <div class="error-msg" ng-class="[{'active':gameDetailsModalCtrl.validation.schedule.required}]">Court is required.</div>
+                <div class="error-msg" ng-class="[{'active':gameDetailsModalCtrl.validation.schedule.invalid}]">Invalid date. Please select a future date.</div>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="court">Password(optional):</label>
-            <input type="password" name="court" ng-model="gameDetailsModalCtrl.game.password" />
+            <input type="text" style="height: 0; width: 0; border:none; display:inline;" /> <!--workaround to avoid autofill on court name field--> 
+            <input type="password" name="court" class="form-control" ng-model="gameDetailsModalCtrl.game.password" />
         </div>
     </form>
 </div>

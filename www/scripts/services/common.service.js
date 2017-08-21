@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('mainApp')
-        .service('commonServices', ['toastService','$log', '$ngConfirm', commonServices]);
+        .service('commonServices', ['toastService','$log', '$ngConfirm', '$location', commonServices]);
 
-    function commonServices(toastService, $log, $ngConfirm) {
+    function commonServices(toastService, $log, $ngConfirm, $location) {
 
         var _handleError = function (error) {
             switch (error.status) {
@@ -60,11 +60,16 @@
             })
         }
 
+        var _redirectToUrl = function (url) {
+            $location.path(url);
+        }
+
         this.toast = toastService;
         this.handleError = _handleError;
         this.log = $log;
         this.alert = _alert;
         this.confirm = _confirm;
+        this.redirectToUrl = _redirectToUrl;
 
     }
 

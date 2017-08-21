@@ -18,12 +18,14 @@
         getTeamPlayers(vm.teamB);
 
         function getTeamPlayers(team) {
-            teamContext.getMembers(team.teamId).then(
-                function (res) {
-                    team.members = res.data
-                }, function (err) {
-                    commonServices.handleError(err)
-                })
+            if (team) {
+                teamContext.getMembers(team.teamId).then(
+                    function (res) {
+                        team.members = res.data
+                    }, function (err) {
+                        commonServices.handleError(err)
+                    })
+            }
         }
 
     };
