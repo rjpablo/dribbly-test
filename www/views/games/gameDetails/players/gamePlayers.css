@@ -13,13 +13,12 @@
 }
 
 .game-players .team-name{
-    display: inline-block;
+    display: block;
     font-size: 16px;
 }
 
 .game-players .action-buttons{
     display: inline-block;
-    float: right;
 }
 
 .game-players .player-list{

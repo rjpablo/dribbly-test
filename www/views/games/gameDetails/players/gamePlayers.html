@@ -3,7 +3,20 @@
         <div class="header">
             <a class="team-name" ui-sref="team.members.current({teamName: (game.teamA.teamName|uriEncode)})">Team A - {{game.teamA.teamName + ' (' + game.teamA.members.length + ')'}}</a>
             <div class="action-buttons">
-                <button class="btn btn-primary">Join</button>
+                <!--<button class="btn btn-primary" ng-click="vm.joinTeam(game.teamA.teamId)">Join</button>-->
+                <div class="btn-group options-dropdown" on-toggle="vm.onTeamOptionsToggle('A', vm.teamAOptionsIsOpen)" is-open="vm.teamAOptionsIsOpen" uib-dropdown  ng-class="[{'loading': vm.teamAOptionsLoading}]">
+                    <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+                        Options <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                        <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner fa-pulse"></i> loading options...</a></li>
+                        <li ng-show="!vm.userTeamARel.isPlaying && !vm.userTeamARel.hasRequested" role="menuitem"><a ng-click="vm.joinTeam('A')">Join Team</a></li>
+                        <li ng-show="vm.userTeamARel.hasRequested" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamA.teamId)">Cancel Request</a></li>
+                        <li ng-show="vm.userTeamARel.isPlaying" role="menuitem"><a ng-click="">Cancel Regisration</a></li>
+                        <li ng-show="vm.userTeamARel.isManager" role="menuitem"><a ng-click="">Cancel Team Registration</a></li>
+                        <li ng-show="vm.userTeamARel.isGameCreator" role="menuitem"><a ng-click="">Kick Team</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="player-list">
@@ -15,7 +28,18 @@
         <div class="header">
             <a class="team-name" ui-sref="team.members.current({teamName: (game.teamB.teamName|uriEncode)})">Team B - {{game.teamB.teamName + ' (' + game.teamB.members.length + ')'}}</a>
             <div class="action-buttons">
-                <button class="btn btn-primary">Join</button>
+                <!--<button class="btn btn-primary" ng-click="vm.joinTeam(game.teamB.teamId)">Join</button>-->
+                <div class="btn-group options-dropdown" on-toggle="vm.onTeamOptionsToggle('B', vm.teamBOptionsIsOpen)" is-open="vm.teamBOptionsIsOpen" uib-dropdown>
+                    <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+                        Options <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                        <li ng-show="false" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
+                        <li ng-show="true" role="menuitem"><a ng-click="vm.joinTeam(game.teamB.teamId)">Join</a></li>
+                        <li ng-show="true" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamB.teamId)">Cancel Request</a></li>
+                        <li ng-show="true" role="menuitem"><a ng-click="">Leave</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="player-list">

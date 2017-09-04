@@ -60,6 +60,10 @@
             })
         }
 
+        function _prompt(prompt, title) {
+            return window.prompt(prompt);
+        }
+
         var _redirectToUrl = function (url) {
             $location.path(url);
         }
@@ -69,6 +73,7 @@
         this.log = $log;
         this.alert = _alert;
         this.confirm = _confirm;
+        this.prompt = _prompt;
         this.redirectToUrl = _redirectToUrl;
 
     }

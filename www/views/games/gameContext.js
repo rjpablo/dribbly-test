@@ -144,6 +144,18 @@
             }]
         }
 
+        var _cancelJoinGameAsPlayer = function (userId, teamId, gameId) {
+            return httpService.post(_apiCtrlBaseUrl + 'CancelJoinGameAsPlayer/' + userId + '/' + teamId + '/' + gameId)
+        }
+
+        var _joinGameAsPlayer = function (credentials) {
+            return httpService.post(_apiCtrlBaseUrl + 'JoinGameAsPlayer', credentials)
+        }
+
+        var _getUserToGameTeamRelation = function (userId, teamId, gameId) {
+            return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameTeamRelation/' + userId + '/' + teamId + '/' + gameId)
+        }
+
         this.create = _create;
         this.getGames = _getGames;
         this.getGameDetails = _getGameDetails;
@@ -151,6 +163,9 @@
         this.updateGame = _updateGame;
         this.searchGames = _searchGames;
         this.getTestGames = _getTestGames;
+        this.joinGameAsPlayer = _joinGameAsPlayer;
+        this.cancelJoinGameAsPlayer = _cancelJoinGameAsPlayer;
+        this.getUserToGameTeamRelation = _getUserToGameTeamRelation;
 
         return this;
 

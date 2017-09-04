@@ -320,6 +320,22 @@ rating{
 }
 
 /*************************
+      Dropdown Menus
+**************************/
+.options-dropdown.loading .dropdown-menu li{
+    display: none;
+}
+
+.options-dropdown.loading .dropdown-menu li.loading-indicator{
+    display: list-item;
+}
+
+.options-dropdown .dropdown-menu li.loading-indicator{
+    display: none;
+}
+
+
+/*************************
       Body
 **************************/
 
