@@ -72,21 +72,44 @@
                 })
         }
 
-        vm.cancelJoinTeam = function (teamId) {
+        //vm.cancelJoinTeam = function (teamId) {
+        //    if (whichTeam.toUpperCase() == 'A') {
+        //        vm.teamAOptionsLoading = true;
+        //        _teamId = vm.teamA.teamId;
+        //        vm.userTeamARel = null;
+        //    } else {
+        //        vm.teamBOptionsLoading = true;
+        //        _teamId = vm.teamB.teamId;
+        //        vm.userTeamBRel = null;
+        //    }
+        //    commonServices.confirm('Your request will be deleted. Do you wish to proceed?',
+        //        function () {
+        //            gameContext.cancelJoinGameAsPlayer($scope.currentUser.UserId, teamId, $scope.game.gameId).then(
+        //            function (res) {
+        //                commonServices.toast.success('Request Cancelled!');
+        //            }, function (err) {
+        //                commonServices.handleError(err);
+        //            })
+        //        })
+        //}
+
+        vm.leaveGame = function (whichTeam) {
+            var _teamId
             if (whichTeam.toUpperCase() == 'A') {
-                vm.teamAOptionsLoading = true;
                 _teamId = vm.teamA.teamId;
-                vm.userTeamARel = null;
             } else {
-                vm.teamBOptionsLoading = true;
                 _teamId = vm.teamB.teamId;
-                vm.userTeamBRel = null;
             }
-            commonServices.confirm('Your request will be deleted. Do you wish to proceed?',
+            commonServices.confirm('You are about to leave this game. Do you wish to proceed?',
                 function () {
-                    gameContext.cancelJoinGameAsPlayer($scope.currentUser.UserId, teamId, $scope.game.gameId).then(
+                    gameContext.leaveGameAsPlayer($scope.currentUser.UserId, _teamId, $scope.game.gameId).then(
                     function (res) {
-                        commonServices.toast.success('Request Cancelled!');
+                        commonServices.toast.success('You have left this game');
+                        if (whichTeam.toUpperCase() == 'A') {
+                            getTeamPlayers(vm.teamA)
+                        } else {
+                            getTeamPlayers(vm.teamB)
+                        }
                     }, function (err) {
                         commonServices.handleError(err);
                     })

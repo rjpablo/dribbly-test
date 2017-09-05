@@ -12,8 +12,8 @@
                         <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner fa-pulse"></i> loading options...</a></li>
                         <li ng-show="!vm.userTeamARel.isPlaying && !vm.userTeamARel.hasRequested" role="menuitem"><a ng-click="vm.joinTeam('A')">Join Team</a></li>
                         <li ng-show="vm.userTeamARel.hasRequested" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamA.teamId)">Cancel Request</a></li>
-                        <li ng-show="vm.userTeamARel.isPlaying" role="menuitem"><a ng-click="">Cancel Regisration</a></li>
-                        <li ng-show="vm.userTeamARel.isManager" role="menuitem"><a ng-click="">Cancel Team Registration</a></li>
+                        <li ng-show="vm.userTeamARel.isPlaying" role="menuitem"><a ng-click="vm.leaveGame('A')">Leave Game</a></li>
+                        <li ng-show="vm.userTeamARel.isManager" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
                         <li ng-show="vm.userTeamARel.isGameCreator" role="menuitem"><a ng-click="">Kick Team</a></li>
                     </ul>
                 </div>

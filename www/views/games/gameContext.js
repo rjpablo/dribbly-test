@@ -148,6 +148,10 @@
             return httpService.post(_apiCtrlBaseUrl + 'CancelJoinGameAsPlayer/' + userId + '/' + teamId + '/' + gameId)
         }
 
+        var _leaveGameAsPlayer = function (userId, teamId, gameId) {
+            return httpService.post(_apiCtrlBaseUrl + 'leaveGameAsPlayer/' + userId + '/' + teamId + '/' + gameId)
+        }
+
         var _joinGameAsPlayer = function (credentials) {
             return httpService.post(_apiCtrlBaseUrl + 'JoinGameAsPlayer', credentials)
         }
@@ -166,6 +170,7 @@
         this.joinGameAsPlayer = _joinGameAsPlayer;
         this.cancelJoinGameAsPlayer = _cancelJoinGameAsPlayer;
         this.getUserToGameTeamRelation = _getUserToGameTeamRelation;
+        this.leaveGameAsPlayer = _leaveGameAsPlayer;
 
         return this;
 
