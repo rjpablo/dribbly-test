@@ -34,10 +34,12 @@
                         Options <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                        <li ng-show="false" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
-                        <li ng-show="true" role="menuitem"><a ng-click="vm.joinTeam(game.teamB.teamId)">Join</a></li>
-                        <li ng-show="true" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamB.teamId)">Cancel Request</a></li>
-                        <li ng-show="true" role="menuitem"><a ng-click="">Leave</a></li>
+                        <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner fa-pulse"></i> loading options...</a></li>
+                        <li ng-show="!vm.userTeamBRel.isPlaying && !vm.userTeamBRel.hasRequested" role="menuitem"><a ng-click="vm.joinTeam('B')">Join Team</a></li>
+                        <li ng-show="vm.userTeamBRel.hasRequested" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamB.teamId)">Cancel Request</a></li>
+                        <li ng-show="vm.userTeamBRel.isPlaying" role="menuitem"><a ng-click="vm.leaveGame('B')">Leave Game</a></li>
+                        <li ng-show="vm.userTeamBRel.isManager" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
+                        <li ng-show="vm.userTeamBRel.isGameCreator" role="menuitem"><a ng-click="">Kick Team</a></li>
                     </ul>
                 </div>
             </div>
