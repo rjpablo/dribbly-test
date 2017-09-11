@@ -54,7 +54,61 @@
             <input type="text" style="height: 0; width: 0; border:none; display:inline;" /> <!--workaround to avoid autofill on court name field--> 
             <input type="password" name="court" class="form-control" ng-model="gameDetailsModalCtrl.game.password" />
         </div>
-    </form>
+        <div id="team-options">
+            <div id="teamA-options">
+                <div class="hr-sect">Team A Options</div>
+                <table>
+                    <tr class="form-group">
+                        <td>
+                            <label class="control-label" for="court">Who can join:</label>
+                        </td>
+                        <td>
+                            <label class="radio-inline">
+                                <input type="radio" ng-checked="gameDetailsModalCtrl.game.allowedToJoinTeamA == 0" ng-model="gameDetailsModalCtrl.game.allowedToJoinTeamA" value="0" /> Individual Players Only
+                            </label>                            
+                            <label class="radio-inline">
+                                <input type="radio" ng-checked="gameDetailsModalCtrl.game.allowedToJoinTeamA == 1" ng-model="gameDetailsModalCtrl.game.allowedToJoinTeamA" value="1" /> Teams Only
+                            </label>                            
+                        </td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>
+                            <label class="control-label" for="court">Password(optional):</label>
+                        </td>
+                        <td>
+                            <input type="password" name="court" class="form-control" ng-disabled="gameDetailsModalCtrl.game.allowedToJoinTeamA == 1" ng-model="gameDetailsModalCtrl.game.teamAPassword" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="teamB-options">
+                <div class="hr-sect">Team B Options</div>
+                <table>
+                    <tr class="form-group">
+                        <td>
+                            <label class="control-label" for="court">Who can join:</label>
+                        </td>
+                        <td>
+                            <label class="radio-inline">
+                                <input type="radio" ng-checked="gameDetailsModalCtrl.allowIndPlayerToJoinTeamB" ng-model="gameDetailsModalCtrl.game.allowedToJoinTeamB" value="0" /> Individual Players Only
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="gameDetailsModalCtrl.game.allowedToJoinTeamB" value="1" /> Teams Only
+                            </label>
+                        </td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>
+                            <label class="control-label" for="court">Password(optional):</label>
+                        </td>
+                        <td>
+                            <input type="password" name="court" class="form-control" ng-disabled="gameDetailsModalCtrl.game.allowedToJoinTeamB == 1" ng-model="gameDetailsModalCtrl.game.teamBPassword" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</form>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-disabled="{{gameDetailsModalCtrl.saving}}" type="button" ng-click="gameDetailsModalCtrl.ok(gameDetailsForm)">{{gameDetailsModalCtrl.saving?'Creating...':'Create'}}</button>

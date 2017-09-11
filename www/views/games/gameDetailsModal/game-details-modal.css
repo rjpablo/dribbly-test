@@ -27,3 +27,18 @@
 .game-details-modal-body .error-msg.active{
     display: block;
 }
+
+.game-details-modal-body #team-options input[type="password"]{
+    display: inline-block;
+    width: 100%;
+}
+
+.game-details-modal-body table tr td:first-child{
+        padding-right: 10px;
+}
+
+@media(max-width: 480px){
+    .game-details-modal-body table tr td{
+        display:block;
+    }
+}

@@ -129,7 +129,7 @@
                             return $scope.currentUser
                         },
                         gameDetails: function () {
-                            return {}
+                            return null //pass null if adding a new game (not editing one)
                         }
                     },
                     size: size,

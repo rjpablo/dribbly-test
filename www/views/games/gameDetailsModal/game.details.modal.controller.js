@@ -8,7 +8,18 @@
     function CtrlFn($uibModalInstance, Upload, $timeout, $scope, fileService, settings, commonServices, gameContext, gameDetails, currentUser, courtContext, $rootScope) {
 
         var vm = this;
-        this.game = gameDetails;
+        if (gameDetails) {
+            //TODO: validate game details and throw an error if validation fails
+            vm.mode = 'edit'
+            vm.game = gameDetails;
+        } else {
+            vm.mode = 'add'
+            vm.game = {
+                allowedToJoinTeamA : 0,
+                allowedToJoinTeamB : 0
+            }
+        }
+
         vm.saving = false;
         vm.courtSearchRemoteUrl = courtContext.courtSearchRemoteUrl;
         vm.validation = {};
