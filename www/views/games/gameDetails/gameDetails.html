@@ -1,4 +1,4 @@
-﻿<div ng-controller="gameDetailsCtrl as gameDetVCtrl">
+﻿<div ng-controller="gameDetailsCtrl as gameDetCtrl">
     <div class="tab-wrap">
         <div class="media">
             <div class="left-side-bar">
@@ -22,17 +22,24 @@
                             </table>   
                             <a ui-sref="court.details({id: game.court.id })" class="court">{{game.court.name}}</a>
                             <p class="schedule">{{game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p> 
+                            <div class="creator">
+                                <span>Created by: </span><user-stub user="game.creator"></user-stub>
+                            </div>
                             <div class="game-options">
-                                <div class="btn-group options-dropdown" on-toggle="teamCtrl.optionsDropdownToggled(open)" is-open="teamCtrl.dropDownIsOpen" uib-dropdown>
+                                <div class="btn-group options-dropdown" on-toggle="gameDetCtrl.gameOptionsToggled()" is-open="gameDetCtrl.dropDownIsOpen" uib-dropdown  ng-class="[{'loading': gameDetCtrl.gameOptionsLoading}]">
                                     <button type="button" class="btn btn-primary" uib-dropdown-toggle>
                                         Options <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                                        <li ng-show="gameDetVCtrl.loadingGameOptions" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
-                                        <li ng-show="true" role="menuitem"><a ng-click="">Follow</a></li>
-                                        <li ng-show="!gameDetVCtrl.loadingGameOptions" class="divider"></li>
-                                        <li ng-show="true" role="menuitem"><a ng-click="">Edit Details</a></li>
-                                        <li ng-show="true" role="menuitem"><a ng-click="">Cancel Game</a></li>
+                                        <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
+                                        <li ng-show="!gameDetCtrl.userGameRelation.isFollowing" role="menuitem"><a ng-click="">Follow</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isFollowing" role="menuitem"><a ng-click="">Unfollow</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.hasRequestedAsTeam" role="menuitem"><a ng-click="">Cancel Request</a></li>
+                                        <li ng-show="!gameDetCtrl.userGameRelation.managedTeamIsPlaying && gameDetCtrl.userGameRelation.managesTeam && !gameDetCtrl.userGameRelation.hasRequestedAsTeam && gameDetCtrl.userGameRelation.teamCount < 2 && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.joinAsTeam()">Join As Team</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.managedTeamIsPlaying && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator" class="divider"></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Edit Details</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Cancel Game</a></li>
                                     </ul>
                                 </div>
                             </div>                 
@@ -66,8 +73,8 @@
                             </table>
                         </div>--> <!-- Results Table -->
                         <ul class="tab-headers">
-                            <li ng-class="{'active': $state.current.name.startsWith('gameDetails.players')}"><a ui-sref="gameDetails.players({gameId:gameDetVCtrl.gameId})" ng-click="">Players</a></li>
-                            <li ng-class="{'active': $state.current.name.startsWith('gameDetails.photos')}"><a ui-sref="gameDetails.photos({gameId:gameDetVCtrl.gameId})" ng-click="">Photos/Videos</a></li>
+                            <li ng-class="{'active': $state.current.name.startsWith('gameDetails.players')}"><a ui-sref="gameDetails.players({gameId:gameDetCtrl.gameId})" ng-click="">Players</a></li>
+                            <li ng-class="{'active': $state.current.name.startsWith('gameDetails.photos')}"><a ui-sref="gameDetails.photos({gameId:gameDetCtrl.gameId})" ng-click="">Photos/Videos</a></li>
                         </ul>              
                     </div>
                     <div class="bottom">

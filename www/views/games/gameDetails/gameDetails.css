@@ -10,6 +10,7 @@
     padding: 10px;
     /* margin: 15px 0; */
     border: 1px solid #333;
+    text-align: center;
 }
 
 .game-details .top .details .game-title {
@@ -112,13 +113,26 @@
     color: #666;
 }
 
+.game-details .top .creator{
+    text-align:center;
+    display: inline-block;
+}
+
+.game-details .top .creator > span{
+    float: left;
+    margin-right: 5px;
+}
+
+.game-details .top .creator .user-stub{
+    display: inline-block;
+}
+
 .game-details .top .court:hover{
     color: #eee;
 }
 
 /* Options Dropdown */
 .game-details .top .game-options{
-    margin-top: 15px;
     display: inline-block;
     width: 100%;
 }

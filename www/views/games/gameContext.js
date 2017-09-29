@@ -156,8 +156,16 @@
             return httpService.post(_apiCtrlBaseUrl + 'JoinGameAsPlayer', credentials)
         }
 
+        var _joinGameAsTeam = function (credentials) {
+            return httpService.post(_apiCtrlBaseUrl + 'JoinGameAsTeam', credentials)
+        }
+
         var _getUserToGameTeamRelation = function (userId, teamId, gameId) {
             return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameTeamRelation/' + userId + '/' + teamId + '/' + gameId)
+        }
+
+        var _getUserToGameRelation = function (userId, gameId) {
+            return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameRelation/' + userId + '/' + gameId)
         }
 
         this.create = _create;
@@ -168,8 +176,10 @@
         this.searchGames = _searchGames;
         this.getTestGames = _getTestGames;
         this.joinGameAsPlayer = _joinGameAsPlayer;
+        this.joinGameAsTeam = _joinGameAsTeam;
         this.cancelJoinGameAsPlayer = _cancelJoinGameAsPlayer;
         this.getUserToGameTeamRelation = _getUserToGameTeamRelation;
+        this.getUserToGameRelation = _getUserToGameRelation;
         this.leaveGameAsPlayer = _leaveGameAsPlayer;
 
         return this;

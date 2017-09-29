@@ -21,6 +21,10 @@
             return httpService.get(settings.apiBaseURL + 'UserProfiles/GetMainProfile/' + encodeURIComponent(userId))
         }
 
+        var _getManagedTeams = function (userId) {
+            return httpService.get(settings.apiBaseURL + 'UserProfiles/GetManagedTeams/' + encodeURIComponent(userId))
+        }
+
         var _getTestProfiles = function () {
             return [
                 {
@@ -65,6 +69,7 @@
         this.uploadPhoto = _uploadPhoto;
         this.searchUsersByName = _searchUsersByName;
         this.userSearchRemoteUrl = _remoteUserSearchURL;
+        this.getManagedTeams = _getManagedTeams;
 
         return this;
 

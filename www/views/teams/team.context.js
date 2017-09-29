@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('mainApp')
-        .service('teamContext', ['httpService', 'settings', 'fileService', '$q', teamContext]);
+        .service('teamContext', ['httpService', 'settings', 'fileService', '$q', '$uibModal', teamContext]);
 
-    function teamContext(httpService, settings, fileService, $q) {
+    function teamContext(httpService, settings, fileService, $q, $uibModal) {
 
         var _apiControllerBaseUrl = settings.apiBaseURL + 'Teams/'
 
@@ -103,6 +103,48 @@
             ];
         }
 
+        var _showTeamSelectorModal = function (teams, modalTitle) {
+            var deferred = $q.defer()
+            var courtSearchModal = $uibModal.open({
+                animation: true,
+                backdrop: 'static',
+                windowClass: 'team-selector-modal',
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'views/teams/shared/team-selector-modal/team-selector-modal-template.html',
+                resolve: {
+                    teams: function () { return teams; },
+                    modalTitle: function () { return modalTitle; }
+                },
+                controller: function ($scope, commonServices, $uibModalInstance, $timeout, teams, modalTitle) {
+                    $scope.teams = teams;
+                    $scope.modalTitle = modalTitle;
+
+                    if ($scope.teams.length == 1) {
+                        $scope.selectedTeam = $scope.teams[0]
+                    }
+
+                    $scope.ok = function (e) {
+                        $uibModalInstance.close($scope.selectedTeam);
+                    };
+
+                    $scope.cancel = function (e) {
+                        $uibModalInstance.dismiss('cancel');
+                    };
+
+                },
+                size: 'sm'
+            });
+            courtSearchModal.result.then(function (selectedTeam) {
+                deferred.resolve(selectedTeam)
+            }, function (reason) {
+                deferred.reject()
+            });
+
+            return deferred.promise;
+
+        }
+
         this.register = _register;
         this.getTeams = _getTeams;
         this.getTeamDetails = _getTeamDetails;
@@ -124,6 +166,7 @@
         this.getMemberInvitations = _getMemberInvitations;
         this.cancelInvitation = _cancelInvitation;
         this.getTeamGames = _getTeamGames;
+        this.showTeamSelectorModal = _showTeamSelectorModal;
 
         return this;
 
