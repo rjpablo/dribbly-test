@@ -27,8 +27,8 @@
             return httpService.get(_apiControllerBaseUrl + 'GetTeamGames/' + teamId + '/' + filter)
         }
 
-        var _getTeamDetails = function (teamName) {
-            return httpService.get(_apiControllerBaseUrl + 'GetTeam?teamName=' + encodeURIComponent(teamName))
+        var _getTeamDetails = function (teamId) {
+            return httpService.get(_apiControllerBaseUrl + 'GetTeam/' + teamId)
         }
 
         var _register = function (team) {

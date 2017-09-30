@@ -114,7 +114,7 @@
           })
 
           .state('team.games', {
-              url: '/games/{teamName}',
+              url: '/games/{teamId}',
               templateUrl: 'views/teams/team-details/games/team-games.html'
           })
 
@@ -126,22 +126,22 @@
           })
 
           .state('team.members.current', {
-              url: '/current/{teamName}',
+              url: '/current/{teamId}',
               templateUrl: 'views/teams/team-details/members/current-members/current-members.html'
           })
 
           .state('team.members.former', {
-              url: '/former/{teamName}',
+              url: '/former/{teamId}',
               templateUrl: 'views/teams/team-details/members/former-members/former-members.html'
           })
 
           .state('team.members.requests', {
-              url: '/requests/{teamName}',
+              url: '/requests/{teamId}',
               templateUrl: 'views/teams/team-details/members/requests/member-requests.html'
           })
 
           .state('team.members.invitations', {
-              url: '/invitations/{teamName}',
+              url: '/invitations/{teamId}',
               templateUrl: 'views/teams/team-details/members/invitations/member-invitations.html'
           })
 

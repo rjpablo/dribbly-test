@@ -11,9 +11,9 @@
                             <h3 class="game-title">{{game.title}}</h3>
                             <table class="teams">
                                 <tr>
-                                    <td class="team teamA"><a class="team-name" ui-sref="team.members.current({teamName: (game.teamA.teamName|uriEncode)})">Team A - {{game.teamA.teamName}}</a></td>
+                                    <td class="team teamA"><a class="team-name" ui-sref="team.members.current({teamId: (game.teamA.teamId)})">Team A - {{game.teamA.teamName}}</a></td>
                                     <td class="vs" rowspan="3">VS</td>
-                                    <td class="team teamB"><a class="team-name" ui-sref="team.members.current({teamName: (game.teamB.teamName|uriEncode)})">Team B - {{game.teamB.teamName}}</a></td>
+                                    <td class="team teamB"><a class="team-name" ui-sref="team.members.current({teamId: (game.teamB.teamId)})">Team B - {{game.teamB.teamName}}</a></td>
                                 </tr>
                                 <tr class="scores">
                                     <td class="teamA"><p class="score">{{game.teamAScore}}</p></td>

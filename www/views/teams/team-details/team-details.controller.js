@@ -14,7 +14,7 @@
         $scope.$state = $state;
 
         var vm = this;
-        var teamName = decodeURIComponent($stateParams.teamName)
+        var teamId = $stateParams.teamId
         $scope.teamLogo = []; //array is required by the image gallery but this will contain only the logo
         vm.uploading = false;
         vm.onEditMode = false;
@@ -33,7 +33,7 @@
             if (settings.useLocalData) {
                 $scope.team.details = teamContext.getTestProfiles()[0]
             } else {
-                teamContext.getTeamDetails(teamName).then(
+                teamContext.getTeamDetails(teamId).then(
                 function (res) {
                     $scope.team.details = res.data;
                     if ($scope.currentUser) {

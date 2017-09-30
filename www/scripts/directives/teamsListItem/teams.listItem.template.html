@@ -4,7 +4,7 @@
             <img class="team-logo" ng-src="{{$settings.defaultTeamLogoUrl}}" />
         </div>
         <ul class="team-details">
-            <li><a ui-sref="team.members.current({teamName: (team.teamName|uriEncode)})" class="team-name">{{team.teamName}}</a></li>
+            <li><a ui-sref="team.members.current({teamId: (team.teamId)})" class="team-name">{{team.teamName}}</a></li>
             <li class="city">
                 <span class="value">{{team.city.longName + ', ' + team.city.country.shortName}}</span>
             </li>
