@@ -45,6 +45,15 @@
             
         }
 
+        this.cancelRequestAsTeam = function () {
+            gameContext.cancelRequestToJoinAsTeam(vm.gameId, $scope.currentUser.UserId).then(
+                function (res) {
+                    commonServices.toast.success('Request cancelled!')
+                }, function (err) {
+                    commonServices.handleError(err)
+                })
+        }
+
         this.joinAsTeam = function () {
             profileContext.getManagedTeams($scope.currentUser.UserId).then(
                 function (res) {

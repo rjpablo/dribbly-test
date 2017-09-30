@@ -34,7 +34,7 @@
                                         <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
                                         <li ng-show="!gameDetCtrl.userGameRelation.isFollowing" role="menuitem"><a ng-click="">Follow</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isFollowing" role="menuitem"><a ng-click="">Unfollow</a></li>
-                                        <li ng-show="gameDetCtrl.userGameRelation.hasRequestedAsTeam" role="menuitem"><a ng-click="">Cancel Request</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.hasRequestedAsTeam" role="menuitem"><a ng-click="gameDetCtrl.cancelRequestAsTeam()">Cancel Request As Team</a></li>
                                         <li ng-show="!gameDetCtrl.userGameRelation.managedTeamIsPlaying && gameDetCtrl.userGameRelation.managesTeam && !gameDetCtrl.userGameRelation.hasRequestedAsTeam && gameDetCtrl.userGameRelation.teamCount < 2 && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.joinAsTeam()">Join As Team</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.managedTeamIsPlaying && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator" class="divider"></li>

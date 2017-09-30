@@ -160,6 +160,10 @@
             return httpService.post(_apiCtrlBaseUrl + 'JoinGameAsTeam', credentials)
         }
 
+        var _cancelRequestToJoinAsTeam = function (gameId, userId) {
+            return httpService.post(_apiCtrlBaseUrl + 'CancelRequestToJoinAsTeam/' + gameId + '/' + userId)
+        }
+
         var _getUserToGameTeamRelation = function (userId, teamId, gameId) {
             return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameTeamRelation/' + userId + '/' + teamId + '/' + gameId)
         }
@@ -181,6 +185,7 @@
         this.getUserToGameTeamRelation = _getUserToGameTeamRelation;
         this.getUserToGameRelation = _getUserToGameRelation;
         this.leaveGameAsPlayer = _leaveGameAsPlayer;
+        this.cancelRequestToJoinAsTeam = _cancelRequestToJoinAsTeam;
 
         return this;
 
