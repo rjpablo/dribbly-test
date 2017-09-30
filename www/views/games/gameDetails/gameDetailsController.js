@@ -13,7 +13,6 @@
 
         this.imageUploadPath = settings.imageUploadPath;
 
-        vm.game = {};
         vm.gameId = $stateParams.gameId;
         vm.gameOptionsLoading = false;
         vm.userGameRelation = null;
@@ -57,13 +56,13 @@
         this.joinAsTeam = function () {
             profileContext.getManagedTeams($scope.currentUser.UserId).then(
                 function (res) {
-                    teamContext.showTeamSelectorModal(res.data, 'Select a team to register').then(
-                        function (selectedTeam) {
+                    gameContext.showJoinAsTeamModal(res.data, $scope.game).then(
+                        function (res) {
                             var creds = {
                                 gameId: vm.gameId,
-                                teamId: selectedTeam.teamId,
+                                teamId: res.selectedTeamId,
                                 userId: $scope.currentUser.UserId,
-                                password: ''
+                                password: res.password
                             }
                             gameContext.joinGameAsTeam(creds).then(
                                 function (joinResult) {
@@ -71,6 +70,8 @@
                                 }, function (err) {
                                     commonServices.handleError(err)
                                 })
+                        }, function(res){
+
                         })
                 }, function (err) {
                     commonServices.handleError(err)

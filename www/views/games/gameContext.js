@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('mainApp')
-        .service('gameContext', ['httpService', 'settings', 'fileService', '$q', ctxFn]);
+        .service('gameContext', ['httpService', 'settings', 'fileService', '$q', '$uibModal', ctxFn]);
 
-    function ctxFn(httpService, settings, fileService, $q) {
+    function ctxFn(httpService, settings, fileService, $q, $uibModal) {
 
         var _apiCtrlBaseUrl = settings.apiBaseURL + 'Games/';
 
@@ -172,6 +172,53 @@
             return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameRelation/' + userId + '/' + gameId)
         }
 
+        var _showJoinAsTeamModal = function (teams, game) {
+            var deferred = $q.defer()
+            var courtSearchModal = $uibModal.open({
+                animation: true,
+                backdrop: 'static',
+                windowClass: 'join-as-team-modal',
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'views/games/shared/join-as-team-modal/join-as-team-modal-template.html',
+                resolve: {
+                    teams: function () { return teams; },
+                    game: function () { return game; }
+                },
+                controller: function ($scope, commonServices, $uibModalInstance, $timeout, teams, game) {
+                    $scope.teams = teams;
+                    $scope.password = ''
+                    $scope.game = game;
+
+                    if ($scope.teams.length == 1) {
+                        $scope.selectedTeam = $scope.teams[0]
+                    }
+
+                    $scope.ok = function (e) {
+                        var result = {
+                            selectedTeamId: $scope.selectedTeam.teamId,
+                            password: $scope.password
+                        }
+                        $uibModalInstance.close(result);
+                    };
+
+                    $scope.cancel = function (e) {
+                        $uibModalInstance.dismiss('cancel');
+                    };
+
+                },
+                size: 'sm'
+            });
+            courtSearchModal.result.then(function (res) {
+                deferred.resolve(res)
+            }, function (reason) {
+                deferred.reject()
+            });
+
+            return deferred.promise;
+
+        }
+
         this.create = _create;
         this.getGames = _getGames;
         this.getGameDetails = _getGameDetails;
@@ -186,6 +233,7 @@
         this.getUserToGameRelation = _getUserToGameRelation;
         this.leaveGameAsPlayer = _leaveGameAsPlayer;
         this.cancelRequestToJoinAsTeam = _cancelRequestToJoinAsTeam;
+        this.showJoinAsTeamModal = _showJoinAsTeamModal;
 
         return this;
 
