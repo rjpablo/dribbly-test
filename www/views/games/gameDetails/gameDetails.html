@@ -35,46 +35,19 @@
                                         <li ng-show="!gameDetCtrl.userGameRelation.isFollowing" role="menuitem"><a ng-click="">Follow</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isFollowing" role="menuitem"><a ng-click="">Unfollow</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.hasRequestedAsTeam" role="menuitem"><a ng-click="gameDetCtrl.cancelRequestAsTeam()">Cancel Request As Team</a></li>
-                                        <li ng-show="!gameDetCtrl.userGameRelation.managedTeamIsPlaying && gameDetCtrl.userGameRelation.managesTeam && !gameDetCtrl.userGameRelation.hasRequestedAsTeam && gameDetCtrl.userGameRelation.teamCount < 2 && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.joinAsTeam()">Join As Team</a></li>
-                                        <li ng-show="gameDetCtrl.userGameRelation.managedTeamIsPlaying && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
+                                        <li ng-show="!gameDetCtrl.userGameRelation.managedTeamIsPlaying && gameDetCtrl.userGameRelation.managesTeam && !gameDetCtrl.userGameRelation.hasRequestedAsTeam && gameDetCtrl.userGameRelation.teamCount < 2 && !gameDetCtrl.userGameRelation.gameIsOver && !gameDetCtrl.userGameRelation.isBanned" role="menuitem"><a ng-click="gameDetCtrl.joinAsTeam()">Join As Team</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.managedTeamIsPlaying && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.leaveGameAsTeam()">Leave Game As Team</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator" class="divider"></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Edit Details</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Cancel Game</a></li>
                                     </ul>
                                 </div>
                             </div>                 
-                        </div>    
-                        <!--<div class="results">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th><span>Team A</span></th>
-                                        <th><span>Team B</span></th>
-                                        <th><span>Winner</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{game.teamAScore}}</td>
-                                        <td>{{game.teamBScore}}</td>
-                                        <td>{{game.winningTeamId==game.teamAId?'Team A':'Team B'}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{game.teamAScore + 5}}</td>
-                                        <td>{{game.teamBScore +2 }}</td>
-                                        <td>{{game.winningTeamId==game.teamAId?'Team A':'Team B'}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{game.teamAScore - 10}}</td>
-                                        <td>{{game.teamBScore - 14}}</td>
-                                        <td>{{game.winningTeamId==game.teamAId?'Team A':'Team B'}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>--> <!-- Results Table -->
+                        </div> 
                         <ul class="tab-headers">
                             <li ng-class="{'active': $state.current.name.startsWith('gameDetails.players')}"><a ui-sref="gameDetails.players({gameId:gameDetCtrl.gameId})" ng-click="">Players</a></li>
                             <li ng-class="{'active': $state.current.name.startsWith('gameDetails.photos')}"><a ui-sref="gameDetails.photos({gameId:gameDetCtrl.gameId})" ng-click="">Photos/Videos</a></li>
+                            <li ng-class="{'active': $state.current.name.startsWith('gameDetails.requestingTeams')}"><a ui-sref="gameDetails.requestingTeams({gameId:gameDetCtrl.gameId})" ng-click="">Requesting Teams</a></li>
                         </ul>              
                     </div>
                     <div class="bottom">

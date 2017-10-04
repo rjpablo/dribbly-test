@@ -1,0 +1,33 @@
+﻿.requesting-teams .teams{
+    width: 100%;
+}
+
+.requesting-team > td{
+    padding: 5px;
+    border-top: 1px solid #666;
+}
+
+.requesting-team:last-child > td{
+    border-bottom: 1px solid #666;
+}
+
+.requesting-team .action-buttons,
+.requesting-team .status{
+    float : right;
+}
+
+.requesting-team .status{
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 93px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.requesting-team .status.ready{
+    color: #86c787;
+}
+
+.requesting-team .status.not-ready{
+    color: #777;
+}

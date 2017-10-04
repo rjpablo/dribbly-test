@@ -20,6 +20,10 @@
             return httpService.get(_apiCtrlBaseUrl + 'GetGameDetails/' + gameId)
         }
 
+        var _getRequestingTeams = function (gameId) {
+            return httpService.get(_apiCtrlBaseUrl + 'GetRequestingTeams/' + gameId)
+        }
+
         var _create = function (court) {
             return httpService.post(_apiCtrlBaseUrl + 'Create/', court);
         }
@@ -160,8 +164,20 @@
             return httpService.post(_apiCtrlBaseUrl + 'JoinGameAsTeam', credentials)
         }
 
+        var _rejectJoinAsTeamRequest = function (requestId, banUser) {
+            return httpService.post(_apiCtrlBaseUrl + 'RejectJoinAsTeamRequest/' + requestId + '/' + banUser);
+        }
+
+        var _approveJoinAsTeamRequest = function (requestId) {
+            return httpService.post(_apiCtrlBaseUrl + 'ApproveJoinAsTeamRequest/' + requestId);
+        }
+
         var _cancelRequestToJoinAsTeam = function (gameId, userId) {
             return httpService.post(_apiCtrlBaseUrl + 'CancelRequestToJoinAsTeam/' + gameId + '/' + userId)
+        }
+
+        var _leaveGameAsTeam = function (gameId, teamId) {
+            return httpService.post(_apiCtrlBaseUrl + 'LeaveGameAsTeam/' + gameId + '/' + teamId)
         }
 
         var _getUserToGameTeamRelation = function (userId, teamId, gameId) {
@@ -234,6 +250,10 @@
         this.leaveGameAsPlayer = _leaveGameAsPlayer;
         this.cancelRequestToJoinAsTeam = _cancelRequestToJoinAsTeam;
         this.showJoinAsTeamModal = _showJoinAsTeamModal;
+        this.getRequestingTeams = _getRequestingTeams;
+        this.rejectJoinAsTeamRequest = _rejectJoinAsTeamRequest;
+        this.approveJoinAsTeamRequest = _approveJoinAsTeamRequest;
+        this.leaveGameAsTeam = _leaveGameAsTeam;
 
         return this;
 

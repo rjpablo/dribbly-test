@@ -196,6 +196,11 @@
               templateUrl: 'views/games/gameDetails/players/gamePlayers.html'
           })
 
+          .state('gameDetails.requestingTeams', {
+              url: '/requesting-teams/{gameId}',
+              templateUrl: 'views/games/gameDetails/requesting-teams/requesting-teams.html'
+          })
+
           /* Add Photos/Videos, Invites, Requests */
 
            /* Players */

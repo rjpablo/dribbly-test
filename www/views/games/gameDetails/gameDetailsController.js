@@ -18,16 +18,16 @@
         vm.userGameRelation = null;
         vm.dropDownIsOpen = false;
 
-        if (settings.useLocalData) {
-            
-        } else {
+        function LoadGameDetails() {
             gameContext.getGameDetails(vm.gameId).then(
-                function (res) {
-                    $scope.game = res.data;
-                }, function (err) {
-                    commonServices.handleError(err);
-                })
+            function (res) {
+                $scope.game = res.data;
+            }, function (err) {
+                commonServices.handleError(err);
+            })
         }
+
+        LoadGameDetails()
 
         this.gameOptionsToggled = function () {
             if (vm.dropDownIsOpen) {
@@ -47,10 +47,36 @@
         this.cancelRequestAsTeam = function () {
             gameContext.cancelRequestToJoinAsTeam(vm.gameId, $scope.currentUser.UserId).then(
                 function (res) {
-                    commonServices.toast.success('Request cancelled!')
+                    $scope.$broadcast('game-team-request-cancelled')
+                    commonServices.toast.success('Request cancelled')
                 }, function (err) {
                     commonServices.handleError(err)
                 })
+        }
+
+        this.leaveGameAsTeam = function () {
+            var managedTeam;
+            if ($scope.game.teamA && $scope.game.teamA.managerId == $scope.currentUser.UserId) {
+                managedTeam = $scope.game.teamA;
+            } else if ($scope.game.teamB && $scope.game.teamB.managerId == $scope.currentUser.UserId) {
+                managedTeam = $scope.game.teamB;
+            }
+
+            if (managedTeam) {
+                commonServices.confirm('Your team, ' + managedTeam.teamName + ' will be removed from the game.',
+                    function () {
+                        gameContext.leaveGameAsTeam(vm.gameId, managedTeam.teamId).then(
+                        function (res) {
+                            LoadGameDetails();
+                            commonServices.toast.success(managedTeam.teamName + ' has been removed from the game')
+                        }, function (err) {
+                            commonServices.handleError(err)
+                        })
+                    })
+                
+            } else {
+                commonServices.toast.error('None of the teams in this is managed by you.');
+            }
         }
 
         this.joinAsTeam = function () {
@@ -67,6 +93,7 @@
                             gameContext.joinGameAsTeam(creds).then(
                                 function (joinResult) {
                                     commonServices.toast.success('Request sent!')
+                                    $scope.$broadcast('game-team-request-added')
                                 }, function (err) {
                                     commonServices.handleError(err)
                                 })
@@ -78,6 +105,13 @@
                 })
         }
 
+        var removeReloadGameDetailsListener = $scope.$on('reload-game-details', function () {
+            LoadGameDetails();
+        })
+
+        $scope.$on('$destroy', function () {
+            removeReloadGameDetailsListener();
+        })
     };
 
 })();
