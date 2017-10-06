@@ -2,9 +2,9 @@
     <div class="wrapper">
         <p class="title"><a ui-sref="gameDetails.players({gameId: game.gameId})">{{game.title}}</a></p>
         <div class="teams">
-            <div class="team teamA"><img ng-if="game.winningTeamId && game.winningTeamId == game.teamAId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />{{game.teamA.teamName}}</div>
+            <div class="team teamA"><img ng-if="game.winningTeamId && game.winningTeamId == game.teamAId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />{{game.teamA.teamName || '(Unoccupied)'}}</div>
             <span>VS</span>
-            <div class="team teamB"><img ng-if="game.winningTeamId && game.winningTeamId == game.teamBId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />{{game.teamB.teamName}}</div>
+            <div class="team teamB"><img ng-if="game.winningTeamId && game.winningTeamId == game.teamBId" class="icon" ng-src="{{$settings.defaultImagesDirectory + 'icon-trophy.png'}}" />{{game.teamB.teamName || '(Unoccupied)'}}</div>
         </div>
         <p class="schedule">{{game.schedule | date : "MMM d',' yyyy '@' h:mma"}}</p>
         <a ui-sref="court.details({id: game.court.id })" class="court">{{game.court.name}}</a>
