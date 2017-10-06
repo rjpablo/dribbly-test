@@ -187,6 +187,10 @@
         var _getUserToGameRelation = function (userId, gameId) {
             return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameRelation/' + userId + '/' + gameId)
         }
+        
+        var _kickGameTeam = function (gameId, teamId) {
+            return httpService.post(_apiCtrlBaseUrl + 'KickGameTeam/' + gameId + '/' + teamId)
+        }
 
         var _showJoinAsTeamModal = function (teams, game) {
             var deferred = $q.defer()
@@ -254,6 +258,7 @@
         this.rejectJoinAsTeamRequest = _rejectJoinAsTeamRequest;
         this.approveJoinAsTeamRequest = _approveJoinAsTeamRequest;
         this.leaveGameAsTeam = _leaveGameAsTeam;
+        this.kickGameTeam = _kickGameTeam;
 
         return this;
 

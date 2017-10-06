@@ -17,6 +17,7 @@
 }
 
 .requesting-team .status{
+    margin: 3px 15px;
     padding-left: 15px;
     padding-right: 15px;
     width: 93px;
@@ -25,9 +26,5 @@
 }
 
 .requesting-team .status.ready{
-    color: #86c787;
-}
-
-.requesting-team .status.not-ready{
-    color: #777;
+    background-color: #72a773;
 }

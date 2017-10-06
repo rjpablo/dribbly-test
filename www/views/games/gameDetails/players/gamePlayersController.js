@@ -4,10 +4,10 @@
     angular
         .module('mainApp')
         .controller('gamePlayersCtrl', ['$scope', '$uibModal', '$document', 'settings',
-            'commonServices', '$timeout', '$log', 'gameContext', 'teamContext', CtrlFn]);
+            'commonServices', '$timeout', '$log', 'gameContext', 'teamContext', '$rootScope', CtrlFn]);
 
     function CtrlFn($scope, $uibModal, $document, settings,
-        commonServices, $timeout, $log, gameContext, teamContext) {
+        commonServices, $timeout, $log, gameContext, teamContext, $rootScope) {
 
         var vm = this;
 
@@ -113,6 +113,16 @@
                     }, function (err) {
                         commonServices.handleError(err);
                     })
+                })
+        }
+
+        this.kickGameTeam = function (team) {
+            gameContext.kickGameTeam(team.teamId, $scope.game.gameId).then(
+                function (res) {
+                    $rootScope.$broadcast('reload-game-details');
+                    commonServices.toast.success(team.teamName + ' has been kicked out of the game');
+                }, function (err) {
+                    commonServices.handleError(err);
                 })
         }
 

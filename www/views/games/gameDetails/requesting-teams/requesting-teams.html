@@ -2,13 +2,13 @@
     <table class="teams">
         <tr class="requesting-team" ng-repeat="request in vm.requestingTeams">
             <td>
-                <span class="team-name">{{request.teamName}}</span>
+                <span class="team-name"><a class="team-name" ui-sref="team.members.current({teamId: request.teamId})">{{request.teamName}}</a></span>
                 <div class="action-buttons">
                     <button class="btn btn-primary" ng-click="vm.approveJoinAsTeamRequest(request)" ><i class="fa fa-check" aria-hidden="true"></i></button>
                     <button class="btn btn-danger" ng-click="vm.rejectJoinAsTeamRequest(request)"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>                
-                <span ng-if="request.isReady" class="status ready">Ready</span>
-                <span ng-if="!request.isReady" class="status not-ready">Not Ready</span>
+                <span ng-if="request.isReady" class="badge status ready">Ready</span>
+                <span ng-if="!request.isReady" class="badge status">Not Ready</span>
             </td>
         </tr>
         <tr ng-if="!vm.requestingTeams.length > 0"><td><p>No items found.</p></td></tr>

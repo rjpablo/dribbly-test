@@ -2,7 +2,7 @@
     <div class="team teamA">
         <div class="header">
             <a class="team-name" ui-sref="team.members.current({teamId: (game.teamA.teamId)})">Team A - {{game.teamA.teamName + ' (' + game.teamA.members.length + ')'}}</a>
-            <div class="action-buttons">
+            <div ng-if="vm.teamA" class="action-buttons">
                 <!--<button class="btn btn-primary" ng-click="vm.joinTeam(game.teamA.teamId)">Join</button>-->
                 <div class="btn-group options-dropdown" on-toggle="vm.onTeamOptionsToggle('A', vm.teamAOptionsIsOpen)" is-open="vm.teamAOptionsIsOpen" uib-dropdown  ng-class="[{'loading': vm.teamAOptionsLoading}]">
                     <button type="button" class="btn btn-primary" uib-dropdown-toggle>
@@ -10,16 +10,16 @@
                     </button>
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
                         <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner fa-pulse"></i> loading options...</a></li>
-                        <li ng-show="!vm.userTeamARel.isPlaying && !vm.userTeamARel.hasRequested" role="menuitem"><a ng-click="vm.joinTeam('A')">Join Team</a></li>
+                        <li ng-show="!vm.userTeamARel.isPlaying && !vm.userTeamARel.hasRequested && vm.teamA" role="menuitem"><a ng-click="vm.joinTeam('A')">Join Team</a></li>
                         <li ng-show="vm.userTeamARel.hasRequested" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamA.teamId)">Cancel Request</a></li>
                         <li ng-show="vm.userTeamARel.isPlaying" role="menuitem"><a ng-click="vm.leaveGame('A')">Leave Game</a></li>
                         <li ng-show="vm.userTeamARel.isManager && !vm.userTeamARel.teamIsTemporary" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
-                        <li ng-show="vm.userTeamARel.isGameCreator" role="menuitem"><a ng-click="">Kick Team</a></li>
+                        <li ng-show="vm.userTeamARel.isGameCreator && game.allowedToJoinTeamA == 1 && vm.teamA" role="menuitem"><a ng-click="vm.kickGameTeam(vm.teamA)">Kick Team</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="player-list">
+        <div class="player-list" ng-show="vm.teamA.members.length > 0">
             <team-member ng-repeat="player in vm.teamA.members | filter:{ isCurrentMember : true }" player="player" type="'member'" class="team-member"></team-member>
         </div>
     </div>
@@ -27,24 +27,24 @@
     <div class="team teamB">
         <div class="header">
             <a class="team-name" ui-sref="team.members.current({teamId: (game.teamB.teamId)})">Team B - {{game.teamB.teamName + ' (' + game.teamB.members.length + ')'}}</a>
-            <div class="action-buttons">
+            <div ng-if="vm.teamB" class="action-buttons">
                 <!--<button class="btn btn-primary" ng-click="vm.joinTeam(game.teamB.teamId)">Join</button>-->
-                <div class="btn-group options-dropdown" on-toggle="vm.onTeamOptionsToggle('B', vm.teamBOptionsIsOpen)" is-open="vm.teamBOptionsIsOpen" uib-dropdown>
+                <div class="btn-group options-dropdown" on-toggle="vm.onTeamOptionsToggle('B', vm.teamBOptionsIsOpen)" is-open="vm.teamBOptionsIsOpen" uib-dropdown  ng-class="[{'loading': vm.teamBOptionsLoading}]">
                     <button type="button" class="btn btn-primary" uib-dropdown-toggle>
                         Options <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
                         <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner fa-pulse"></i> loading options...</a></li>
-                        <li ng-show="!vm.userTeamBRel.isPlaying && !vm.userTeamBRel.hasRequested" role="menuitem"><a ng-click="vm.joinTeam('B')">Join Team</a></li>
+                        <li ng-show="!vm.userTeamBRel.isPlaying && !vm.userTeamBRel.hasRequested && vm.teamB" role="menuitem"><a ng-click="vm.joinTeam('B')">Join Team</a></li>
                         <li ng-show="vm.userTeamBRel.hasRequested" role="menuitem"><a ng-click="vm.cancelJoinTeam(game.teamB.teamId)">Cancel Request</a></li>
                         <li ng-show="vm.userTeamBRel.isPlaying" role="menuitem"><a ng-click="vm.leaveGame('B')">Leave Game</a></li>
                         <li ng-show="vm.userTeamBRel.isManager && !vm.userTeamBRel.teamIsTemporary" role="menuitem"><a ng-click="">Leave Game As Team</a></li>
-                        <li ng-show="vm.userTeamBRel.isGameCreator" role="menuitem"><a ng-click="">Kick Team</a></li>
+                        <li ng-show="vm.userTeamBRel.isGameCreator && game.allowedToJoinTeamB == 1 && vm.teamB" role="menuitem"><a ng-click="vm.kickGameTeam(vm.teamB)">Kick Team</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="player-list">
+        <div class="player-list" ng-show="vm.teamB.members.length > 0">
             <team-member ng-repeat="player in vm.teamB.members | filter:{ isCurrentMember : true }" player="player" type="'member'" class="team-member"></team-member>
         </div>
     </div>
