@@ -60,4 +60,20 @@
 
         </div>
     </div>
+    <div class="titled-container teams" ng-show="profile.player">
+        <div class="header col-md-12">
+            <h5 class="title">Teams({{profile.player.teams.length}})</h5>
+        </div>
+        <div class="content">
+            <p class="col-md-12" ng-if="profile.player.teams.length == 0">{{(isOwned?'You haven\'t':profile.details.userName + ' hasn\'t') + ' joined any teams yet.'}}</p>
+            <div ng-if="profile.player.teams" class="player-teams">
+                <div class="player-team" ng-repeat="team in profile.player.teams">
+                    <a class="team-name" ui-sref="team.members.current({teamId: (team.team.teamId)})">{{team.team.teamName}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer col-md-12">
+
+        </div>
+    </div>
 </div>

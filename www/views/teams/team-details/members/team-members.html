@@ -1,10 +1,10 @@
 ﻿<div class="team-members" ng-controller="teamMembersController as tmCtrl">
     <div class="tab-headers-container">
         <ul class="tab-headers col-lg-12">
-            <li ng-class="{'active': $state.current.name == 'team.members.current'}"><a ui-sref="team.members.current({teamName:team.details.teamName})">Current Members</a></li>
-            <li ng-class="{'active': $state.current.name == 'team.members.former'}"><a ui-sref="team.members.former({teamName:team.details.teamName})">Former Members</a></li>
-            <li ng-class="{'active': $state.current.name == 'team.members.requests'}"><a ui-sref="team.members.requests({teamName:team.details.teamName})">Requests</a></li>
-            <li ng-class="{'active': $state.current.name == 'team.members.invitations'}"><a ui-sref="team.members.invitations({teamName:team.details.teamName})">Invitations</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.current'}"><a ui-sref="team.members.current({teamId:team.details.teamId})">Current Members</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.former'}"><a ui-sref="team.members.former({teamId:team.details.teamId})">Former Members</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.requests'}"><a ui-sref="team.members.requests({teamId:team.details.teamId})">Requests</a></li>
+            <li ng-class="{'active': $state.current.name == 'team.members.invitations'}"><a ui-sref="team.members.invitations({teamId:team.details.teamId})">Invitations</a></li>
         </ul>
     </div>
     <ui-view></ui-view>    

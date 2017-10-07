@@ -327,6 +327,7 @@ rating{
 .titled-container .header{
     margin: 10px 0;
     overflow: auto;
+    float: none;
 }
 
 .titled-container .header .title{

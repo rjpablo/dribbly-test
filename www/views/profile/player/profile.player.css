@@ -32,3 +32,19 @@
 .player-profile .skill .value.stars > i{
     color: #f7941d;
 }
+
+
+/*Teams*/
+
+.player-profile .teams .player-teams{
+    margin: 15px;
+    margin-top: 0;
+}
+
+.player-profile .teams .player-team{
+    border-top: 1px solid #333;
+}
+
+.player-profile .teams .player-team:last-child{
+    border-bottom: 1px solid #333;
+}
