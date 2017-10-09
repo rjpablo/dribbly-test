@@ -5,6 +5,8 @@
         .service('authentication', ['httpService', 'settings', '$uibModal',
             '$document', '$q', '$localStorage', '$http', '$rootScope', 'commonServices', '$location', userService]);
 
+    //refer to http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/
+    //for the implementation of the authentication process
     function userService(httpService, settings, $uibModal,
         $document, $q, $localStorage, $http, $rootScope, commonServices, $location) {
         var authorizationData = $localStorage.authorizationData;
@@ -125,13 +127,13 @@
         var _logout = function () {
             var deferred = $q.defer();
 
-            httpService.post(
-                baseURL + 'Logout'
-            ).then(function (result) {
-                deferred.resolve()
-            }, function () {
-                deferred.reject()
-            })
+            //httpService.post(
+            //    baseURL + 'Logout'
+            //).then(function (result) {
+            //    deferred.resolve(result)
+            //}, function (err) {
+            //    deferred.reject(err)
+            //})
 
             $location.path('courts/')
             _currentUser = null;
