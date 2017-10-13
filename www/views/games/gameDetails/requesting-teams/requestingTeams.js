@@ -27,7 +27,7 @@
         vm.rejectJoinAsTeamRequest = function (request) {
             gameContext.rejectJoinAsTeamRequest(request.id, false).then(
                 function (res) {
-                    vm.requestingTeams.splice(vm.requestingTeams.indexOf(request))
+                    vm.requestingTeams.splice(vm.requestingTeams.indexOf(request), 1)
                 }, function (err) {
                     commonServices.handleError(err);
                 })
@@ -37,7 +37,7 @@
             gameContext.approveJoinAsTeamRequest(request.id).then(
                 function (res) {
                     $rootScope.$broadcast('reload-game-details')
-                    vm.requestingTeams.splice(vm.requestingTeams.indexOf(request))
+                    vm.requestingTeams.splice(vm.requestingTeams.indexOf(request), 1)
                 }, function (err) {
                     commonServices.handleError(err);
                 })
