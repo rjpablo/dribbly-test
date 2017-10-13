@@ -63,11 +63,16 @@
     <div class="titled-container teams" ng-show="profile.player">
         <div class="header col-md-12">
             <h5 class="title">Teams({{profile.player.teams.length}})</h5>
+            <div class="filters">
+                <span class="filter button-link" ng-class="[{active : playerProfCtrl.teamFilter == 'current'}]" ng-click="playerProfCtrl.filterTeams('current')">Current ({{(profile.player.teams | filter : playerProfCtrl.currentTeamFilter).length}})</span>
+                <span class="filter button-link" ng-class="[{active : playerProfCtrl.teamFilter == 'previous'}]" ng-click="playerProfCtrl.filterTeams('previous')">Previous ({{(profile.player.teams | filter : playerProfCtrl.previousTeamFilter).length}})</span>
+                <span class="filter button-link" ng-class="[{active : playerProfCtrl.teamFilter == 'all'}]" ng-click="playerProfCtrl.filterTeams('all')">All ({{profile.player.teams.length}})</span>
+            </div>            
         </div>
         <div class="content">
             <p class="col-md-12" ng-if="profile.player.teams.length == 0">{{(isOwned?'You haven\'t':profile.details.userName + ' hasn\'t') + ' joined any teams yet.'}}</p>
             <div ng-if="profile.player.teams" class="player-teams">
-                <div class="player-team" ng-repeat="team in profile.player.teams">
+                <div class="player-team" ng-repeat="team in playerProfCtrl.filteredTeams">
                     <a class="team-name" ui-sref="team.members.current({teamId: (team.team.teamId)})">{{team.team.teamName}}</a>
                 </div>
             </div>
