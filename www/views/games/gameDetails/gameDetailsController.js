@@ -29,7 +29,7 @@
 
         LoadGameDetails()
 
-        this.gameOptionsToggled = function () {
+        vm.gameOptionsToggled = function () {
             if (vm.dropDownIsOpen) {
                 vm.gameOptionsLoading = true;
                 gameContext.getUserToGameRelation($scope.currentUser.UserId, vm.gameId).then(
@@ -44,7 +44,7 @@
             
         }
 
-        this.cancelRequestAsTeam = function () {
+        vm.cancelRequestAsTeam = function () {
             gameContext.cancelRequestToJoinAsTeam(vm.gameId, $scope.currentUser.UserId).then(
                 function (res) {
                     $scope.$broadcast('game-team-request-cancelled')
@@ -54,7 +54,7 @@
                 })
         }
 
-        this.leaveGameAsTeam = function () {
+        vm.leaveGameAsTeam = function () {
             var managedTeam;
             if ($scope.game.teamA && $scope.game.teamA.managerId == $scope.currentUser.UserId) {
                 managedTeam = $scope.game.teamA;
@@ -79,7 +79,7 @@
             }
         }
 
-        this.joinAsTeam = function () {
+        vm.joinAsTeam = function () {
             profileContext.getManagedTeams($scope.currentUser.UserId).then(
                 function (res) {
                     gameContext.showJoinAsTeamModal(res.data, $scope.game).then(
@@ -102,6 +102,16 @@
                         })
                 }, function (err) {
                     commonServices.handleError(err)
+                })
+        }
+
+        vm.setGameStatus = function (status) {
+            gameContext.setGameStatus($scope.game.gameId, status).then(
+                function (res) {
+                    $scope.game.status = status;
+                    commonServices.toast.success('Game status updated!');
+                }, function (err) {
+                    commonServices.handleError(err);
                 })
         }
 

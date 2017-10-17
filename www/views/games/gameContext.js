@@ -187,9 +187,13 @@
         var _getUserToGameRelation = function (userId, gameId) {
             return httpService.get(_apiCtrlBaseUrl + 'GetUserToGameRelation/' + userId + '/' + gameId)
         }
-        
+
         var _kickGameTeam = function (gameId, teamId) {
             return httpService.post(_apiCtrlBaseUrl + 'KickGameTeam/' + gameId + '/' + teamId)
+        }
+
+        var _setGameStatus = function (gameId, status) {
+            return httpService.post(_apiCtrlBaseUrl + 'SetGameStatus/' + gameId + '/' + status)
         }
 
         var _showJoinAsTeamModal = function (teams, game) {
@@ -259,6 +263,7 @@
         this.approveJoinAsTeamRequest = _approveJoinAsTeamRequest;
         this.leaveGameAsTeam = _leaveGameAsTeam;
         this.kickGameTeam = _kickGameTeam;
+        this.setGameStatus = _setGameStatus;
 
         return this;
 
