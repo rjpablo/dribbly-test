@@ -115,6 +115,37 @@
                 })
         }
 
+        vm.postGameResult = function (isEdit) {
+            gameContext.postGameResult($scope.game, isEdit).then(
+                function (res) {
+                    if (res != null) {
+                        $scope.game.teamAScore = res.teamAScore;
+                        $scope.game.teamBScore = res.teamBScore;
+                        $scope.game.winningTeamId = res.winningTeamId;
+                        $scope.game.isOver = true;
+                    } //else, operation was cancelled             
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+        }
+
+        vm.removeGameResult = function () {
+            commonServices.confirm("Remove game result?",function(){
+                gameContext.removeGameResult($scope.game.gameId).then(
+                function (res) {
+                    if (res != null) {
+                        $scope.game.teamAScore = 0;
+                        $scope.game.teamBScore = 0;
+                        $scope.game.winningTeamId = null;
+                        $scope.game.isOver = false;
+                    } //else, operation was cancelled             
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+            })
+            
+        }
+
         var removeReloadGameDetailsListener = $scope.$on('reload-game-details', function () {
             LoadGameDetails();
         })

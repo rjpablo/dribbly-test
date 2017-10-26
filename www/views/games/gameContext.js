@@ -196,6 +196,10 @@
             return httpService.post(_apiCtrlBaseUrl + 'SetGameStatus/' + gameId + '/' + status)
         }
 
+        var _removeGameResult = function (gameId) {
+            return httpService.post(_apiCtrlBaseUrl + 'RemoveGameResult/' + gameId )
+        }
+
         var _showJoinAsTeamModal = function (teams, game) {
             var deferred = $q.defer()
             var courtSearchModal = $uibModal.open({
@@ -242,6 +246,89 @@
             return deferred.promise;
 
         }
+        
+        var _postGameResult = function (game, isEdit) {
+
+            var deferred = $q.defer()
+            var courtSearchModal = $uibModal.open({
+                animation: true,
+                backdrop: 'static',
+                windowClass: 'game-result-modal',
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'views/games/shared/game-result-modal/game-result-modal-template.html',
+                resolve: {
+                    game: function () { return game; },
+                    isEdit: isEdit
+                },
+                controller: function ($scope, commonServices, $uibModalInstance, $timeout, game, isEdit) {
+                    $scope.password = ''
+                    $scope.game = game;
+                    $scope.teams = [
+                        game.teamA,
+                        game.teamB
+                    ]
+
+                    if (isEdit) {
+                        $scope.gameResult = {
+                            gameId: $scope.game.gameId,
+                            teamAScore: $scope.game.teamAScore,
+                            teamBScore: $scope.game.teamBScore,
+                            winningTeamId: $scope.game.winningTeamId
+                        };
+
+                        if ($scope.game.winningTeamId == $scope.game.teamAId) {
+                            $scope.winningTeam = $scope.game.teamA;
+                        } else {
+                            $scope.winningTeam = $scope.game.teamB;
+                        }
+
+                    } else {
+                        $scope.gameResult = {
+                            gameId: $scope.game.gameId,
+                            teamAScore: 0,
+                            teamBScore: 0,
+                            winningTeamId: null
+                        };
+
+                        $scope.winningTeam = null
+                    }
+
+                    
+
+                    $scope.ok = function (e) {
+                        if (!$scope.winningTeam) {
+                            commonServices.alert('Please select the winner.')
+                            return;
+                        }
+
+                        $scope.gameResult.winningTeamId = $scope.winningTeam.teamId;
+
+                        httpService.post(_apiCtrlBaseUrl + 'PostGameResult/' + isEdit, $scope.gameResult).then(
+                            function (res) {
+                                commonServices.toast.success('Game result updated!');
+                                $uibModalInstance.close($scope.gameResult);
+                            }, function (err) {
+                                commonServices.handleError(err);
+                            }
+                        )                        
+                    };
+
+                    $scope.cancel = function (e) {
+                        $uibModalInstance.close();
+                    };
+
+                },
+                size: 'sm'
+            });
+            courtSearchModal.result.then(function (res) {
+                deferred.resolve(res)
+            }, function (reason) {
+                deferred.reject(reason)
+            });
+
+            return deferred.promise;
+        }
 
         this.create = _create;
         this.getGames = _getGames;
@@ -264,6 +351,8 @@
         this.leaveGameAsTeam = _leaveGameAsTeam;
         this.kickGameTeam = _kickGameTeam;
         this.setGameStatus = _setGameStatus;
+        this.postGameResult = _postGameResult;
+        this.removeGameResult = _removeGameResult;
 
         return this;
 

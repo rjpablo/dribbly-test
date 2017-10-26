@@ -32,8 +32,8 @@
                                 <span>Created by: </span><user-stub user="game.creator"></user-stub>
                             </div>
                             <div class="status">
-                                <span ng-if="game.status == 0">(Closed)</span>
-                                <span ng-if="game.status == 1">(Open)</span>
+                                <span ng-if="game.status == 1">(Closed)</span>
+                                <span ng-if="game.status == 0">(Open)</span>
                             </div>
                             <div class="game-options">
                                 <div class="btn-group options-dropdown" on-toggle="gameDetCtrl.gameOptionsToggled()" is-open="gameDetCtrl.dropDownIsOpen" uib-dropdown  ng-class="[{'loading': gameDetCtrl.gameOptionsLoading}]">
@@ -48,6 +48,9 @@
                                         <li ng-show="!gameDetCtrl.userGameRelation.managedTeamIsPlaying && gameDetCtrl.userGameRelation.managesTeam && !gameDetCtrl.userGameRelation.hasRequestedAsTeam && gameDetCtrl.userGameRelation.teamCount < 2 && !gameDetCtrl.userGameRelation.gameIsOver && !gameDetCtrl.userGameRelation.isBanned" role="menuitem"><a ng-click="gameDetCtrl.joinAsTeam()">Join As Team</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.managedTeamIsPlaying && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.leaveGameAsTeam()">Leave Game As Team</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator" class="divider"></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver && game.status == 1" role="menuitem"><a ng-click="gameDetCtrl.postGameResult()">Post Game Result</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.postGameResult(true)">Edit Game Result</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.removeGameResult()">Remove Game Result</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Edit Details</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver && game.status == 0" role="menuitem"><a ng-click="gameDetCtrl.setGameStatus(1)">Close Game</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver && game.status == 1" role="menuitem"><a ng-click="gameDetCtrl.setGameStatus(0)">Re-Open Game</a></li>
