@@ -102,7 +102,7 @@
                     Token: response.data.access_token,
                     Username: response.data.userName,
                     refreshToken: response.data.refresh_token,
-                    UseRefreshTokens: false,
+                    UseRefreshTokens: true,
                     StaySignedIn: loginData.StaySignedIn,
                     UserId: response.data.userId
                 };
@@ -126,18 +126,9 @@
 
         var _logout = function () {
             var deferred = $q.defer();
-
-            //httpService.post(
-            //    baseURL + 'Logout'
-            //).then(function (result) {
-            //    deferred.resolve(result)
-            //}, function (err) {
-            //    deferred.reject(err)
-            //})
-
+            _clearAuthData()
             $location.path('courts/')
-            _currentUser = null;
-            delete $localStorage.authorizationData
+            $rootScope.$broadcast('LOGGED_OUT');
             commonServices.toast.info('You have been logged out.');
 
             return deferred.promise;
@@ -168,6 +159,49 @@
 
         }
 
+        var _clearAuthData = function () {
+            _currentUser = null;
+            delete $localStorage.authorizationData
+        }
+
+        var _refreshToken = function (config) {
+            var deferred = $q.defer();
+
+            var authData = $localStorage.authorizationData;
+
+            if (authData) {
+
+                if (authData.UseRefreshTokens) {
+
+                    var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=dribbly-web";
+
+                    delete $localStorage.authorizationData;
+
+                    $http.post(settings.serverRootURL + '/Token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
+
+                        $localStorage.authorizationData = {
+                            Token: response.data.access_token,
+                            Username: response.data.userName,
+                            refreshToken: response.data.refresh_token,
+                            UseRefreshTokens: true,
+                            StaySignedIn: false,
+                            UserId: response.data.userId
+                        };
+
+                        deferred.resolve(response);
+
+                    }, function (err, status) {
+                        _logout();
+                        deferred.reject(err);
+                    });
+                }
+            } else {
+                deferred.reject();
+            }
+
+            return deferred.promise;
+        };
+
         //variables
 
         //functions
@@ -178,6 +212,8 @@
         this.showLoginModal = _showLoginModal;
         this.getCurrentUser = _getCurrentUser;
         this.checkAuthentication = _checkAuthentication;
+        this.refreshToken = _refreshToken;
+        this.clearAuthData = _clearAuthData;
 
     }
 

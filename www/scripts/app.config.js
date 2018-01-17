@@ -3,11 +3,12 @@
 
     angular
       .module('mainApp')
-      .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$uibTooltipProvider', config]);
+      .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$uibTooltipProvider', '$httpProvider', config]);
 
-    function config($stateProvider, $urlRouterProvider, $locationProvider, $uibTooltipProvider) {
+    function config($stateProvider, $urlRouterProvider, $locationProvider, $uibTooltipProvider, $httpProvider) {
 
         $urlRouterProvider.otherwise('courts');
+        $httpProvider.interceptors.push('authInterceptorService');
 
         $stateProvider
 

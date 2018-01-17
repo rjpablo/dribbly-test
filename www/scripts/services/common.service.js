@@ -18,15 +18,15 @@
                     break;
                 case 500: //internal server error
                     if (error.data) {
-                        if (error.data.userMessage) {
-                            toastService.error('error.data.userMessage');
+                        if (error.data.exceptionMessage) {
+                            toastService.error(error.data.exceptionMessage);
                         } else {
                             toastService.error('An internal error occured. Please try again.');
                         }
 
                         $log.error(
-                        'Exception Message: ' + error.data.ExceptionMessage + '\n' +
-                        'StackTrace: ' + error.data.StackTrace
+                        'Exception Message: ' + error.data.innerException.exceptionMessage + '\n' +
+                        'StackTrace: ' + error.data.innerException.stackTrace
                         )
 
                     } else {

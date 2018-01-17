@@ -197,7 +197,11 @@
         }
 
         var _removeGameResult = function (gameId) {
-            return httpService.post(_apiCtrlBaseUrl + 'RemoveGameResult/' + gameId )
+            return httpService.post(_apiCtrlBaseUrl + 'RemoveGameResult/' + gameId)
+        }
+
+        var _cancelGame = function (gameId) {
+            return httpService.post(_apiCtrlBaseUrl + 'CancelGame/' + gameId)
         }
 
         var _showJoinAsTeamModal = function (teams, game) {
@@ -353,6 +357,7 @@
         this.setGameStatus = _setGameStatus;
         this.postGameResult = _postGameResult;
         this.removeGameResult = _removeGameResult;
+        this.cancelGame = _cancelGame;
 
         return this;
 

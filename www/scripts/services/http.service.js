@@ -7,12 +7,12 @@
     function genericService($http, $localStorage) {
         var _get = function (url, data, addAuthHeader) {
             var headers = {};
-            if (addAuthHeader !== false) {
-                var userData = $localStorage.authorizationData;
-                if (userData) {
-                    headers = { 'Authorization': 'Bearer ' + userData.Token}
-                }
-            }
+            //if (addAuthHeader !== false) {
+            //    var userData = $localStorage.authorizationData;
+            //    if (userData) {
+            //        headers = { 'Authorization': 'Bearer ' + userData.Token}
+            //    }
+            //}
 
             return $http({
                     method: 'GET',
@@ -23,36 +23,36 @@
         }
         var _post = function (url, data, addAuthHeader) {
             var headers = {};
-            if (addAuthHeader !== false) {
-                var userData = $localStorage.authorizationData;
-                if (userData) {
-                    headers = { 'Authorization': 'Bearer ' + userData.Token }
-                }
-            }
+            //if (addAuthHeader !== false) {
+            //    var userData = $localStorage.authorizationData;
+            //    if (userData) {
+            //        headers = { 'Authorization': 'Bearer ' + userData.Token }
+            //    }
+            //}
 
             return $http.post(url, data, { headers: headers });
         }
 
         var _put = function (url, data, addAuthHeader) {
             var headers = {};
-            if (addAuthHeader !== false) {
-                var userData = $localStorage.authorizationData;
-                if (userData) {
-                    headers = { 'Authorization': 'Bearer ' + userData.Token }
-                }
-            }
+            //if (addAuthHeader !== false) {
+            //    var userData = $localStorage.authorizationData;
+            //    if (userData) {
+            //        headers = { 'Authorization': 'Bearer ' + userData.Token }
+            //    }
+            //}
 
             return $http.put(url, data, { headers: headers });
         }
 
         var _delete = function (url, data, addAuthHeader) {
             var headers = {};
-            if (addAuthHeader !== false) {
-                var userData = $localStorage.authorizationData;
-                if (userData) {
-                    headers = { 'Authorization': 'Bearer ' + userData.Token }
-                }
-            }
+            //if (addAuthHeader !== false) {
+            //    var userData = $localStorage.authorizationData;
+            //    if (userData) {
+            //        headers = { 'Authorization': 'Bearer ' + userData.Token }
+            //    }
+            //}
             return $http.delete(url, data, { headers: headers });
         }
 

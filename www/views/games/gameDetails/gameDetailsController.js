@@ -3,10 +3,10 @@
 
     angular
         .module('mainApp')
-        .controller('gameDetailsCtrl', ['$scope', '$uibModal', '$document', 'settings',
+        .controller('gameDetailsCtrl', ['$scope', '$uibModal', '$document', 'settings', '$state',
             'httpService', 'commonServices', '$timeout', '$log', 'gameContext', '$stateParams', 'profileContext', 'teamContext', CtrlFn]);
 
-    function CtrlFn($scope, $uibModal, $document, settings, httpService,
+    function CtrlFn($scope, $uibModal, $document, settings, $state, httpService,
         commonServices, $timeout, $log, gameContext, $stateParams, profileContext, teamContext) {
 
         var vm = this;
@@ -144,6 +144,19 @@
                 })
             })
             
+        }
+
+        vm.cancelGame = function () {
+            commonServices.confirm("The game will be cancelled.", function () {
+                gameContext.cancelGame($scope.game.gameId).then(
+                function (res) {
+                    commonServices.toast.success('The game has been cancelled.');
+                    $state.go('games.all');
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+            })
+
         }
 
         var removeReloadGameDetailsListener = $scope.$on('reload-game-details', function () {

@@ -54,7 +54,7 @@
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Edit Details</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver && game.status == 0" role="menuitem"><a ng-click="gameDetCtrl.setGameStatus(1)">Close Game</a></li>
                                         <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver && game.status == 1" role="menuitem"><a ng-click="gameDetCtrl.setGameStatus(0)">Re-Open Game</a></li>
-                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="">Cancel Game</a></li>
+                                        <li ng-show="gameDetCtrl.userGameRelation.isCreator && !gameDetCtrl.userGameRelation.gameIsOver" role="menuitem"><a ng-click="gameDetCtrl.cancelGame()">Cancel Game</a></li>
                                     </ul>
                                 </div>
                             </div>                 

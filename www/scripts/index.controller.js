@@ -39,8 +39,11 @@
         }
 
         $rootScope.$on('AUTHORIZATION_SUCCESSFUL', function (evt, user) {
-            console.log('(indexCtrl) Received user: ' + user)
             $scope.setCurrentUser(user);
+        });
+
+        $rootScope.$on('LOGGED_OUT', function (evt, user) {
+            $scope.setCurrentUser(null);
         });
 
         $rootScope.$broadcast('AUTHORIZATION_FAILED', function () {
