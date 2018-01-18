@@ -11,10 +11,11 @@
 
         var vm = this;
 
-        this.message = message;
-        this.validating = false;
+        vm.message = message;
+        vm.validating = false;
+        vm.loginFailed = false;
 
-        this.userData = {
+        vm.userData = {
             Username: '',
             Password: ''
         }
@@ -22,6 +23,7 @@
         this.Login = function (loginForm) {
             if (loginForm.$valid) {
                 vm.validating = true;
+                vm.loginFailed = false;
                 authentication.login(vm.userData).then(
                     function (result) {
                         $location.path('courts/')
@@ -29,7 +31,7 @@
                         $uibModalInstance.close()
                     }, function (err) {
                         vm.validating = false;
-                        commonServices.handleError(err);
+                        vm.loginFailed = true;
                     }
                 )
             }

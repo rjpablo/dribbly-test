@@ -6,7 +6,8 @@
 <div class="modal-body" id="modal-body">
     <div class="left-side">
         <form name="LoginForm" id="loginForm" class="" data-toggle="validator">
-            <h4 style="text-align: center;">Log in using your account</h4>
+            <h4 >Log in using your account</h4>
+            <p ng-show="loginCtrl.loginFailed" class="text-danger">Invalid username or password</p>
             <div class="form-group" ng-class="{'has-error':LoginForm.username.$invalid && LoginForm.username.$touched}">
                 <label class="control-label" for="username">Username:*</label>
                 <input type="text" class="form-control" required minlength="6" name="username" ng-model="loginCtrl.userData.Username">
