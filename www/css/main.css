@@ -280,6 +280,14 @@ rating{
     float:right;
 }
 
+/**********************
+    Social buttons
+**********************/
+
+.btn-social > span:nth-child(2) {
+    margin-left: 32px;
+}
+
 /*********************
     List Item Options    
 **********************/
