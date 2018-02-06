@@ -124,6 +124,39 @@
             return deffered.promise;
         }
 
+        var _registerExternal = function (registerExternalData) {
+
+            var deferred = $q.defer();
+
+            $http.post(baseURL + 'registerexternal', registerExternalData).then(function (response) {
+
+                $localStorage.authorizationData = {
+                    Token: response.access_token,
+                    Username: response.userName,
+                    refreshToken: "",
+                    UseRefreshTokens: true,
+                    StaySignedIn: true,
+                    UserId: ""
+                };
+
+                _currentUser = {
+                    Username: response.data.userName,
+                    UserId: response.data.userId
+                }
+
+                $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
+
+                deferred.resolve(response);
+
+            }, function (err, status) {
+                _clearAuthData()
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+
+        };
+
         var _logout = function () {
             var deferred = $q.defer();
             _clearAuthData()
@@ -142,8 +175,8 @@
                 backdrop: true,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
-                templateUrl: '/views/account/login/login.html',
-                controller: 'loginCtrl',
+                templateUrl: '/views/account/loginDialog/loginDialog.html',
+                controller: 'loginDialogCtrl',
                 controllerAs: 'loginCtrl',
                 resolve: {
                     message: function () {
@@ -158,6 +191,45 @@
             return loginModal.result;
 
         }
+
+        var _obtainAccessToken = function (externalData) {
+
+            var deferred = $q.defer();
+
+            $http.get(baseURL + 'ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).then(function (response) {
+
+                $localStorage.authorizationData = {
+                    Token: response.data.access_token,
+                    Username: response.data.userName,
+                    refreshToken: response.data.refresh_token,
+                    UseRefreshTokens: true,
+                    StaySignedIn: true,
+                    UserId: response.data.userId
+                };
+
+                _currentUser = {
+                    Username: response.data.userName,
+                    UserId: response.data.userId
+                }
+
+                $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
+
+                //localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+
+                //_authentication.isAuth = true;
+                //_authentication.userName = response.userName;
+                //_authentication.useRefreshTokens = false;
+
+                deferred.resolve(response);
+
+            }, function (err, status) {
+                _clearAuthData();
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+
+        };
 
         var _clearAuthData = function () {
             _currentUser = null;
@@ -214,6 +286,8 @@
         this.checkAuthentication = _checkAuthentication;
         this.refreshToken = _refreshToken;
         this.clearAuthData = _clearAuthData;
+        this.registerExternal = _registerExternal;
+        this.obtainAccessToken = _obtainAccessToken;
 
     }
 

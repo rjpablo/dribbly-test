@@ -45,7 +45,10 @@ gulp.task('browserSync-dev', function () {
 gulp.task('js-css', function () {
     return gulp.src('www/*.html')
         .pipe(useref())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 gulp.task('images', function () {

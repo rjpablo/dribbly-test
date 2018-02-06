@@ -4,20 +4,70 @@
     angular
         .module('mainApp')
         .controller('loginCtrl', ['$scope', 'settings', 'httpService', 'commonServices',
-            'authentication', 'message', '$location', '$uibModalInstance', '$state', registerFn]);
+            'authentication', '$location', '$state', registerFn]);
 
     function registerFn($scope, settings, httpService, commonServices, authentication,
-        message, $location, $uibModalInstance, $state) {
+        $location, $state) {
 
         var vm = this;
 
-        vm.message = message;
+        vm.message = "";
         vm.validating = false;
         vm.loginFailed = false;
 
         vm.userData = {
             Username: '',
             Password: ''
+        }
+
+        checkURL();
+
+        function checkURL() {
+            var fragment = getFragment()
+            if (fragment) {
+                authCompletedCB(fragment)
+            }
+        }
+
+        function getFragment() {
+            var queryString = window.location.href.substr(window.location.href.indexOf("?") + 1)
+            if (window.location.href.indexOf("?") != -1) {
+                return commonServices.parseQueryString(queryString);
+            } else {
+                return null;
+            }
+        };
+
+        function authCompletedCB(fragment) {
+
+            if (fragment.haslocalaccount == 'False') {
+
+                authentication.clearAuthData();
+
+                authentication.externalAuthData = {
+                    provider: fragment.provider,
+                    userName: fragment.external_user_name.split(" ")[0],
+                    externalAccessToken: fragment.external_access_token
+                };
+
+                authentication.registerExternal(authentication.externalAuthData).then(function (res) {
+                    $location.path('/courts');
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+
+            }
+            else {
+                var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
+                authentication.obtainAccessToken(externalData).then(function (response) {
+
+                    $location.path('/courts');
+
+                },
+             function (err) {
+                 $scope.message = err.error_description;
+             });
+            }
         }
 
         this.Login = function (loginForm) {
@@ -37,13 +87,14 @@
             }
         }
 
-        this.closeModal = function () {
-            $uibModalInstance.dismiss()
-        }
-
         this.register = function () {
             $state.go('registration')
-            vm.closeModal();
+        }
+
+        this.LoginExternal = function (provider) {
+            var redirectUri = settings.siteRoot + (settings.runLocally ? '#/' : '') + 'login'
+            var externalProviderUrl = settings.apiBaseURL + "Account/ExternalLogin?provider=" + provider + "&response_type=token&client_id=" + settings.clientId + "&redirect_uri=" + redirectUri;
+            window.location.href = externalProviderUrl;
         }
 
     };

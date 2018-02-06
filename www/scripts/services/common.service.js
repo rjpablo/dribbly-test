@@ -68,6 +68,37 @@
             $location.path(url);
         }
 
+        function _parseQueryString(queryString) {
+            var data = {},
+                pairs, pair, separatorIndex, escapedKey, escapedValue, key, value;
+
+            if (queryString === null) {
+                return data;
+            }
+
+            pairs = queryString.split("&");
+
+            for (var i = 0; i < pairs.length; i++) {
+                pair = pairs[i];
+                separatorIndex = pair.indexOf("=");
+
+                if (separatorIndex === -1) {
+                    escapedKey = pair;
+                    escapedValue = null;
+                } else {
+                    escapedKey = pair.substr(0, separatorIndex);
+                    escapedValue = pair.substr(separatorIndex + 1);
+                }
+
+                key = decodeURIComponent(escapedKey);
+                value = decodeURIComponent(escapedValue);
+
+                data[key] = value;
+            }
+
+            return data;
+        }
+
         this.toast = toastService;
         this.handleError = _handleError;
         this.log = $log;
@@ -75,6 +106,7 @@
         this.confirm = _confirm;
         this.prompt = _prompt;
         this.redirectToUrl = _redirectToUrl;
+        this.parseQueryString = _parseQueryString;
 
     }
 

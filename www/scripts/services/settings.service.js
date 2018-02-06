@@ -5,13 +5,20 @@
         .service('settings', ['httpService', settings]);
 
     function settings(httpService) {
-        var _useLocalServer = true; 
+        var _runLocally = false; //run this application on localhost
+        var _useLocalServer = false; //connect to local back-end server?
+        var _webSiteRoot = 'http://dribblytest.x10host.com/'; //web host on which this app running
+        var _localSiteRoot = 'http://localhost:8888/'; //local host on which this app running
+        var _localBackEndServer = 'http://localhost:58266/';
+        var _onlineBackEndServer = 'http://www.dribblytestapi.somee.com/';
+        var _localIISBackEndServer = 'http://localhost/DribblyAPI/'
+        var _useHtml5Mode = true; //must sync with value of $locationProvider.html5Mode() in app.config
         var _useIISServer = false;
         var _doNotUseBackend = false;
         var _useLocalData = false;
-        var _useHtml5Mode = false;
-        var _serverRoot = _useLocalServer ? (_useIISServer ? 'http://localhost/DribblyAPI/' : 'http://localhost:58266/') : 'http://www.drbly-test.somee.com/';
-        _serverRoot = _doNotUseBackend ? 'http://localhost:8888/' : _serverRoot
+        var _siteRoot = (_runLocally?_localSiteRoot:_webSiteRoot);
+        var _serverRoot = _useLocalServer ? (_useIISServer ? _localIISBackEndServer : _localBackEndServer) : _onlineBackEndServer;
+        _serverRoot = _doNotUseBackend ? _siteRoot : _serverRoot
         
         //_serverRoot = 'http://localhost:58266/' //AngularJS Authentiation Project URl
         var _apiBaseUrl = _serverRoot + 'api/';
@@ -23,6 +30,7 @@
         var _defaultProfilePicDirectory = _serverRoot + 'files/images/defaults/'
         var _defaultProfilePicUrl = _defaultProfilePicDirectory + _defaultProfilePicFileName
         var _defaultTeamLogoUrl = _defaultProfilePicDirectory + _defaultTeamLogoFileName
+        var _clientId = 'dribbly-web'
 
 
         //Use this when no backend server is running
@@ -52,6 +60,8 @@
         this.defaultTeamLogoFileName = _defaultTeamLogoFileName;
         this.defaultImagesDirectory = _defaultImagesDirectory;
         this.useHtml5Mode = _useHtml5Mode;
+        this.clientId = _clientId;
+        this.siteRoot = _siteRoot;
  
         return this;
     }

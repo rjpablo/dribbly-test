@@ -12,6 +12,11 @@
 
         $stateProvider
 
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/account/login/login.html'
+            })
+
             .state('registration', {
                 url: '/registration',
                 templateUrl: 'views/account/registration/registration.html'
@@ -235,7 +240,7 @@
 
 
         $locationProvider.hashPrefix('');
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true); //must sync with _useHtml5Mode value in settings.service.js
 
         $uibTooltipProvider.options({
             placement: "bottom",
