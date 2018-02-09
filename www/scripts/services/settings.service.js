@@ -7,12 +7,12 @@
     function settings(httpService) {
         var _runLocally = false; //run this application on localhost
         var _useLocalServer = false; //connect to local back-end server?
+        var _useHtml5Mode = true; //must sync with value of _enableHtml5Mode variable in app.config
         var _webSiteRoot = 'http://dribblytest.x10host.com/'; //web host on which this app running
         var _localSiteRoot = 'http://localhost:8888/'; //local host on which this app running
         var _localBackEndServer = 'http://localhost:58266/';
         var _onlineBackEndServer = 'http://www.dribblytestapi.somee.com/';
         var _localIISBackEndServer = 'http://localhost/DribblyAPI/'
-        var _useHtml5Mode = true; //must sync with value of $locationProvider.html5Mode() in app.config
         var _useIISServer = false;
         var _doNotUseBackend = false;
         var _useLocalData = false;

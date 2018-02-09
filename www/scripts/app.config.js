@@ -7,6 +7,7 @@
 
     function config($stateProvider, $urlRouterProvider, $locationProvider, $uibTooltipProvider, $httpProvider) {
 
+        var _enableHtml5Mode = true; //must sync with _useHtml5Mode variable value in settings.service.js
         $urlRouterProvider.otherwise('courts');
         $httpProvider.interceptors.push('authInterceptorService');
 
@@ -240,7 +241,7 @@
 
 
         $locationProvider.hashPrefix('');
-        $locationProvider.html5Mode(true); //must sync with _useHtml5Mode value in settings.service.js
+        $locationProvider.html5Mode(_enableHtml5Mode);
 
         $uibTooltipProvider.options({
             placement: "bottom",

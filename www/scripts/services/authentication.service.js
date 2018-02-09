@@ -131,12 +131,12 @@
             $http.post(baseURL + 'registerexternal', registerExternalData).then(function (response) {
 
                 $localStorage.authorizationData = {
-                    Token: response.access_token,
-                    Username: response.userName,
+                    Token: response.data.access_token,
+                    Username: response.data.userName,
                     refreshToken: "",
                     UseRefreshTokens: true,
                     StaySignedIn: true,
-                    UserId: ""
+                    UserId: response.data.userId
                 };
 
                 _currentUser = {
