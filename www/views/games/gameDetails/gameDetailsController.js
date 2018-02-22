@@ -22,6 +22,7 @@
             gameContext.getGameDetails(vm.gameId).then(
             function (res) {
                 $scope.game = res.data;
+                commonServices.setPageTitle($scope.game.title + ' - Game Details')
             }, function (err) {
                 commonServices.handleError(err);
             })

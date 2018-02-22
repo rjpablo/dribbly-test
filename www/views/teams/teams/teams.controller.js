@@ -7,6 +7,8 @@
 
     function teamsCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, teamContext, authentication, $state) {
 
+        commonServices.setPageTitle('Browse Teams')
+
         var vm = this;
 
         vm.searchCriteria = {

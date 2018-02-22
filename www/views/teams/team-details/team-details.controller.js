@@ -36,6 +36,7 @@
                 teamContext.getTeamDetails(teamId).then(
                 function (res) {
                     $scope.team.details = res.data;
+                    commonServices.setPageTitle($scope.team.details.teamName + ' - Team Details')
                     if ($scope.currentUser) {
                         $scope.isOwned = $scope.team.details.creatorId == $scope.currentUser.UserId
                     }

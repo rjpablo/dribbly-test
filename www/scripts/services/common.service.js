@@ -68,6 +68,10 @@
             $location.path(url);
         }
 
+        var _setPageTitle = function (title) {
+            window.document.title = title + ' - Dribbly';
+        }
+
         function _parseQueryString(queryString) {
             var data = {},
                 pairs, pair, separatorIndex, escapedKey, escapedValue, key, value;
@@ -107,6 +111,7 @@
         this.prompt = _prompt;
         this.redirectToUrl = _redirectToUrl;
         this.parseQueryString = _parseQueryString;
+        this.setPageTitle = _setPageTitle
 
     }
 

@@ -7,6 +7,8 @@
 
     function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, playersContext, authentication) {
 
+        commonServices.setPageTitle('Browse Players')
+
         var vm = this;
 
         vm.searchCriteria = {

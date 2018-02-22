@@ -9,6 +9,8 @@
     function registerFn($scope, settings, httpService, commonServices, authentication,
         $location, $state) {
 
+        commonServices.setPageTitle('Login')
+
         var vm = this;
 
         vm.message = "";

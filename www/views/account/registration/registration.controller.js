@@ -7,6 +7,8 @@
 
     function registerFn($scope, settings, httpService, commonServices, authentication) {
 
+        commonServices.setPageTitle('Registration')
+
         var vm = this;
 
         this.userData = {

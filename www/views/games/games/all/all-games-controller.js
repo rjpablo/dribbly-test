@@ -7,6 +7,8 @@
 
     function CtrlFn($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, gameContext, authentication, $state) {
 
+        commonServices.setPageTitle('Browse Games')
+
         var vm = this;
 
         vm.searchCriteria = {

@@ -73,6 +73,7 @@
             function (result) {
                 vm.court = result.data
                 if (vm.court) {
+                    commonServices.setPageTitle(vm.court.name + ' - Court Details')
                     vm.setPrimaryByFileName(vm.court.imagePath);
                     if ($scope.currentUser) {
                         vm.owned = ($scope.currentUser.UserId == vm.court.userId)

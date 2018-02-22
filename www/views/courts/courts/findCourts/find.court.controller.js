@@ -7,6 +7,8 @@
 
     function courtCtrl($scope, $uibModal, $document, settings, httpService, commonServices, $timeout, courtContext, authentication) {
 
+        commonServices.setPageTitle('Browse Courts')
+
         var vm = this;
 
         vm.searchCriteria = {

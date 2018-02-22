@@ -37,6 +37,7 @@
                 function (res) {
                     $scope.profile.details = res.data;
                     $scope.profile.details.userName = userName;
+                    commonServices.setPageTitle($scope.profile.details.userName + '\'s Profile ')
                     setProfPicUrlPrefix()
                 },
                 function (err) {
