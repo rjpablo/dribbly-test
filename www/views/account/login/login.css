@@ -1,0 +1,18 @@
+﻿.login-page{
+    overflow: overlay;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-page > div {
+    display: block;
+    float: left;
+    width: 100%;
+    min-width: 250px;
+}
+
+.login-page a.register:not(:hover){
+    color:#4e4e4e;
+    text-decoration: underline;
+}

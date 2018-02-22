@@ -1,42 +1,44 @@
-﻿<div class="left-side" ng-controller="loginCtrl as loginCtrl">
-    <form name="LoginForm" id="loginForm" class="" data-toggle="validator">
-        <h4>Log in using your account</h4>
-        <p ng-show="loginCtrl.loginFailed" class="text-danger">Invalid username or password</p>
-        <div class="form-group" ng-class="{'has-error':LoginForm.username.$invalid && LoginForm.username.$touched}">
-            <label class="control-label" for="username">Username:*</label>
-            <input type="text" class="form-control" required minlength="6" name="username" ng-model="loginCtrl.userData.Username">
-            <div class="help-block" ng-messages="LoginForm.username.$error" role="alert">
-                <div ng-message="required">Username is required.</div>
-                <div ng-message="minlength">Username must be at least 6 characters long.</div>
+﻿<div class="login-page">
+    <div class="left-side" ng-controller="loginCtrl as loginCtrl">
+        <form name="LoginForm" id="loginForm" class="" data-toggle="validator">
+            <h4 class="text-center">Log in using your account</h4>
+            <p ng-show="loginCtrl.loginFailed" class="text-danger">Invalid username or password</p>
+            <div class="form-group has-feedback" ng-class="{'has-error':LoginForm.username.$invalid && LoginForm.username.$touched}">
+                <input type="text" placeholder="Username" class="form-control" required minlength="6" name="username" ng-model="loginCtrl.userData.Username" />
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <div class="help-block" ng-messages="LoginForm.username.$error" role="alert">
+                    <div ng-message="required">Username is required.</div>
+                    <div ng-message="minlength">Username must be at least 6 characters long.</div>
+                </div>
             </div>
-        </div>
-        <div class="form-group" ng-class="{'has-error':LoginForm.password.$invalid && LoginForm.password.$touched}">
-            <label class="control-label" for="password">Password:</label>
-            <input type="password" class="form-control" name="password" required minlength="6" ng-model="loginCtrl.userData.Password">
-            <div class="help-block" ng-messages="LoginForm.password.$error" role="alert">
-                <div ng-message="required">Password is required.</div>
-                <div ng-message="minlength">Password must be at least 6 characters long.</div>
+            <div class="form-group has-feedback" ng-class="{'has-error':LoginForm.password.$invalid && LoginForm.password.$touched}">
+                <input type="password" placeholder="Password" class="form-control" name="password" required minlength="6" ng-model="loginCtrl.userData.Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <div class="help-block" ng-messages="LoginForm.password.$error" role="alert">
+                    <div ng-message="required">Password is required.</div>
+                    <div ng-message="minlength">Password must be at least 6 characters long.</div>
+                </div>
             </div>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
-        </div>
-        <button name="login-button" ng-disabled="loginCtrl.validating" class="btn btn-primary btn-block" type="button" ng-click="loginCtrl.Login(LoginForm)">{{loginCtrl.validating?'Validating...':'Login'}}</button>
-        <p style="text-align:center;">Don't have an account? <a class="button-link" ng-click="loginCtrl.register()">Register</a></p>
-    </form>
-</div>
-<div class="right-side">
-    <h4 style="text-align:center;">or</h4>
-    <a class="btn btn-block btn-social btn-facebook" ng-click="loginCtrl.LoginExternal('Facebook')">
-        <span class="fa fa-facebook"></span>
-        <span>Log in with Facebook</span>
-    </a>
-    <!--<a class="btn btn-block btn-social btn-twitter" ng-click="loginCtrl.LoginWithTwitter()">
-        <span class="fa fa-twitter"></span>
-        <span>Log in with Twitter</span>
-    </a>-->
-    <a class="btn btn-block btn-social btn-google" ng-click="loginCtrl.LoginExternal('Google')">
-        <span class="fa fa-google"></span>
-        <span>Log in with Google</span>
-    </a>
+            <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+            </div>
+            <button name="login-button" ng-disabled="loginCtrl.validating" class="btn btn-primary btn-block" type="button" ng-click="loginCtrl.Login(LoginForm)">{{loginCtrl.validating?'Validating...':'Login'}}</button>
+            <p style="text-align:center;">Don't have an account? <a class="button-link register" ng-click="loginCtrl.register()">Register</a></p>
+        </form>
+    </div>
+    <div class="right-side">
+        <h4 style="text-align:center;">or</h4>
+        <a class="btn btn-block btn-social btn-facebook" ng-click="loginCtrl.LoginExternal('Facebook')">
+            <span class="fa fa-facebook"></span>
+            <span>Log in with Facebook</span>
+        </a>
+        <!--<a class="btn btn-block btn-social btn-twitter" ng-click="loginCtrl.LoginWithTwitter()">
+            <span class="fa fa-twitter"></span>
+            <span>Log in with Twitter</span>
+        </a>-->
+        <a class="btn btn-block btn-social btn-google" ng-click="loginCtrl.LoginExternal('Google')">
+            <span class="fa fa-google"></span>
+            <span>Log in with Google</span>
+        </a>
+    </div>
 </div>

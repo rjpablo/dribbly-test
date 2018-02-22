@@ -16,6 +16,12 @@
     min-width: 250px;
 }
 
+.login-modal a.register:not(:hover){
+    color:#4e4e4e;
+    text-decoration: underline;
+}
+
+
 @media(min-width: 600px){
     .login-modal > .modal-dialog{
         width: 562px;

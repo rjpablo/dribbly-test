@@ -38,6 +38,16 @@
             })
         }
 
+        vm.isFullwidth = function () {
+            var stateName = $state.current.name
+            if(stateName == 'login' ||
+                stateName == 'registration') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         $rootScope.$on('AUTHORIZATION_SUCCESSFUL', function (evt, user) {
             $scope.setCurrentUser(user);
         });

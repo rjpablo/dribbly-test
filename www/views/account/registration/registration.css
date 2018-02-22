@@ -1,3 +1,13 @@
 ﻿.registration{
     padding: 0 15px;
 }
+
+#registrationForm{
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#registrationForm a:not(:hover){
+    color:#4e4e4e;
+    text-decoration: underline;
+}

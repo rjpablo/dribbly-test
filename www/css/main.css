@@ -406,6 +406,11 @@ body{
     padding-top: 15px;
 }
 
+#content.full-width{
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
 @media(max-width: 519px){
     #content {
         padding: 15px 0;
