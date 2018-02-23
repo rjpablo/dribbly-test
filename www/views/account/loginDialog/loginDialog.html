@@ -31,22 +31,9 @@
             <p style="text-align:center;" >Don't have an account? <a class="button-link register" ng-click="loginCtrl.register()" >Register</a></p>
         </form>
     </div>
-    <div class="right-side" >
-        <h4 style="text-align:center;" >or</h4>
-        <a class="btn btn-block btn-social btn-facebook" ng-click="loginCtrl.LoginExternal('Facebook')">
-            <span class="fa fa-facebook"></span>
-            <span>Log in with Facebook</span>
-        </a>
-        <!--<a class="btn btn-block btn-social btn-twitter" ng-click="loginCtrl.LoginWithTwitter()">
-            <span class="fa fa-twitter"></span> 
-            <span>Log in with Twitter</span>
-        </a>-->
-        <a class="btn btn-block btn-social btn-google" ng-click="loginCtrl.LoginExternal('Google')">
-            <span class="fa fa-google"></span> 
-            <span>Log in with Google</span>
-        </a>
+    <div class="right-side">
+        <social-auth type="login"></social-auth>
     </div>
-    
 </div>
 <!--<div class="modal-footer">
 </div>-->

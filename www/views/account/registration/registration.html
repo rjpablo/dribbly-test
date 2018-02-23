@@ -1,6 +1,6 @@
 ﻿<div class="registration" ng-controller="registrationCtrl as regCtrl">
     <form name="RegistrationForm" id="registrationForm" class="form" data-toggle="validator">
-        <h4 class="text-center">Registration</h4>
+        <h4 class="text-center">Sign Up</h4>
         <div class="form-group has-feedback" ng-class="{'has-error':RegistrationForm.username.$invalid && RegistrationForm.username.$touched}">
             <input type="text" placeholder="Username" class="form-control" required minlength="6" name="username" ng-model="regCtrl.userData.Username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -41,6 +41,8 @@
             </div>
         </div>
         <button type="submit" ng-click="regCtrl.Register(RegistrationForm)" class="btn btn-primary">Submit</button>
-        <a class="float-right" ui-sref="login">I already have an account</a>
+        <a class="float-right login" ui-sref="login">I already have an account</a>
+        <social-auth type="register"></social-auth>
     </form>
+    
 </div>

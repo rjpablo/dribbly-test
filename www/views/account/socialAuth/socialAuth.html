@@ -1,0 +1,11 @@
+﻿<div class="social-auth">
+    <h4 style="text-align:center;">or</h4>
+    <a class="btn btn-block btn-social btn-facebook" ng-click="socialAuthCtrl.LoginExternal('Facebook')">
+        <span class="fa fa-facebook"></span>
+        <span>{{socialAuthCtrl.type == 'login'? 'Log in': 'Sign up'}} with Facebook</span>
+    </a>
+    <a class="btn btn-block btn-social btn-google" ng-click="socialAuthCtrl.LoginExternal('Google')">
+        <span class="fa fa-google"></span>
+        <span>{{socialAuthCtrl.type == 'login'? 'Log in': 'Sign up'}} with Google</span>
+    </a>
+</div>

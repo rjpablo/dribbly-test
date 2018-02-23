@@ -7,7 +7,7 @@
     margin: 0 auto;
 }
 
-#registrationForm a:not(:hover){
+#registrationForm a.login:not(:hover){
     color:#4e4e4e;
     text-decoration: underline;
 }

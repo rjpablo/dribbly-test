@@ -93,12 +93,6 @@
             $state.go('registration')
         }
 
-        this.LoginExternal = function (provider) {
-            var redirectUri = settings.siteRoot + (settings.runLocally ? '#/' : '') + 'login'
-            var externalProviderUrl = settings.apiBaseURL + "Account/ExternalLogin?provider=" + provider + "&response_type=token&client_id=" + settings.clientId + "&redirect_uri=" + redirectUri;
-            window.location.href = externalProviderUrl;
-        }
-
     };
 
 })();
