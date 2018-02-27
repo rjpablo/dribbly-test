@@ -11,9 +11,9 @@ gulp.task('html', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('www/**/*.css', ['js-css'], browserSync.reload);
-    gulp.watch('www/**/*.html', ['html'], browserSync.reload);
-    gulp.watch('www/**/*.js', ['js-css'], browserSync.reload);
+    gulp.watch('www/**/*.css', ['js-css']);
+    gulp.watch('www/**/*.html', ['html']);
+    gulp.watch('www/**/*.js', ['js-css']);
     // Other watchers
 })
 
