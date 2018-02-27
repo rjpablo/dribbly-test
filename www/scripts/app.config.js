@@ -126,13 +126,27 @@
           })
 
           .state('court.details', {
+              params: { id: null },
               url: '/details/{id}',
               templateUrl: 'views/courts/court/details/court.details.html'
           })
 
           .state('court.schedule', {
+              params: { id: null },
               url: '/schedule/{id}',
               templateUrl: 'views/courts/court/schedule/court.schedule.html'
+          })
+
+          .state('court.photos', {
+              params: { id: null },
+              url: '/photos/{id}',
+              templateUrl: 'views/courts/court/photos/court.photos.html'
+          })
+
+          .state('court.videos', {
+              params: { id: null },
+              url: '/videos/{id}',
+              templateUrl: 'views/courts/court/videos/court.videos.html'
           })
 
            /* Games */

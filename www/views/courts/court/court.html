@@ -1,19 +1,24 @@
 ﻿<div class="court" ng-controller="courtCtrl as courtCtrl">
     <div class="tab-wrap">
         <div class="media">
+            <div class="header">
+                <h3 class="court-name">{{courtCtrl.court.name}}</h3>
+            </div>
             <div class="left-side-bar">
-                <!--<div class="tab-headers pull-left">
-                    <ul class="nav nav-tabs nav-stacked">
-                        <li ng-class="{'active':$state.current.name.startsWith('court.details')}" class=""><a ui-sref="court.details({id:{{courtCtrl.courtId}}})" ng-click="setActiveTab(0)" class="analistic-01">Court&nbsp;Details</a></li>
-                        <li ng-class="{'active':$state.current.name.startsWith('court.schedule')}" class=""><a ui-sref="court.schedule({id:{{courtCtrl.courtId}}})" ng-click="setActiveTab(1)" class="analistic-02">Schedule</a></li>
+                <div class="tab-headers">
+                    <ul>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.details'}"><a ui-sref="court.details({ id : courtCtrl.court.id })">Details</a></li>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.photos'}"><a ui-sref="court.photos({ id : courtCtrl.court.id })">Photos</a></li>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.videos'}"><a ui-sref="court.videos({ id : courtCtrl.court.id })">Videos</a></li>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.schedule'}"><a ui-sref="court.schedule({ id : courtCtrl.court.id })">Schedule</a></li>
                     </ul>
-                </div>-->
+                </div>
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
-            </div>                
+            </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    <ui-view></ui-view>                    
+                    <ui-view></ui-view>
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">
