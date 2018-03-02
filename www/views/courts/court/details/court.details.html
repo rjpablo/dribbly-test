@@ -1,21 +1,5 @@
-﻿<div class="tab-pane active transparent-bg" id="court-details-tab">
-    <!--<div class="col-lg-12 photos">
-        <ng-image-gallery images="courtCtrl.court.photos"
-                          methods="courtCtrl.methods"
-                          thumbnails="true"
-                          inline="true"
-                          url-prefix="courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/'"
-                          img-bubbles="true"
-                          bubbles="false"
-                          img-anim="pop"
-                          show-add-button="true"
-                          add-file="courtCtrl.addPhotos"
-                          remove-function="courtCtrl.removePhoto(index)"
-                          set-primary="courtCtrl.setPrimary(index)"
-                          show-controls="courtCtrl.owned"></ng-image-gallery>
-    </div>-->
-    <div ng-form="editCourtForm" class="col-lg-12 details-block" ng-class="{'on-edit-mode':courtCtrl.onEditMode}"> 
-        <h3 class="header">Court Details</h3>
+﻿<div class="tab-pane active " id="court-details-tab">
+    <div ng-form="editCourtForm" class="col-lg-12 details-block text-container" ng-class="{'on-edit-mode':courtCtrl.onEditMode}"> 
         <div class="detail-group">
             <label>Court Name</label>
             <div class="value-field full-width">

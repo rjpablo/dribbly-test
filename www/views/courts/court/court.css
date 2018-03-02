@@ -1,6 +1,36 @@
 ﻿.court .header h3.court-name {
+    display: table-cell;
     color: #41b8b6;
     font-size: 18px;
     font-weight: bold;
-    display: inline-block;
+    margin: 0;
+    padding: 10px 5px;
+}
+
+.court .header .court-actions {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.court .header .bottom {
+    display: table;
+}
+
+@media (max-width: 767px) {
+    .court .header .bottom {
+        width: 100%;
+    }
+
+    .left-side-bar {
+        width: 100%;
+    }
+
+    .court .left-side-bar .tab-headers ul > li {
+        display: inline-block;
+    }
+
+    .court .header .court-actions {
+        padding-left:0;
+    }
 }
