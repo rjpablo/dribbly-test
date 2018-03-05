@@ -333,10 +333,9 @@ rating{
 .titled-container{
     display:inline-block;
     width: 100%;
-    background: #fff;
     margin-bottom: 10px;
-    background: #3c3c3c;
-    color: #ccc;
+    /*background: #3c3c3c;
+    color: #ccc;*/
 }
 
 .titled-container .header{
