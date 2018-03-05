@@ -475,6 +475,7 @@ body{
     .center-content {
         width: 560px;
         clear: none !important;
+        padding-right: 0;
     }
 
     .right-side-bar {
@@ -486,6 +487,15 @@ body{
     .center-content {
         padding: 0;
     }
+}
+
+/*************************
+*******Right side bar******
+**************************/
+
+
+.right-side-bar ng-include:first-child .side-content {
+    margin-top: 0;
 }
 
 /*************************
