@@ -46,7 +46,7 @@
 .details-block .detail-group .edit-field{
     margin: 0;
     line-height: 22px;
-    float:left;
+    /*float:left;*/
 }
 
 .details-block .edit-field .input-field,
