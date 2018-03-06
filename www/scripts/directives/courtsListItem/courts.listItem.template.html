@@ -1,11 +1,12 @@
 ﻿<div class="courts-list-item col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <a ui-sref="court.details({id:{{court.id}}})" class="court-details-wrap">
-        <div style="background:url({{ngSrcPrefix + court.userId + '/courtPhotos/' +  court.imagePath}}) no-repeat center; background-size: cover" class="image-with-bg court-image-wrap"><img class="court-image" ng-src="{{ngSrcPrefix + court.userId + '/courtPhotos/' +  court.imagePath}}" /></div>
-        <div ng-cloak class="court-details">
-            <h4 class="button-link" uib-tooltip="{{court.name}}">{{court.name}}</h4>
-            <p><b>Rate: </b><span>₱{{court.rate}}</span></p>
-            <p class="ellipsis"><b>Address: </b><span>{{court.address}}</span></p>
-            <p><b>Contact #: </b><span>{{court.contactNo}}</span></p>
+    <a ui-sref="court.details({id:{{court.id}}})" class="court-details-wrap text-container">
+        <div style="background:url({{ngSrcPrefix + court.userId + '/courtPhotos/' +  court.imagePath}}) no-repeat center; background-size: cover" class="court-image-container image-with-bg court-image-wrap">
+            <img class="court-image" ng-src="{{ngSrcPrefix + court.userId + '/courtPhotos/' +  court.imagePath}}" />
+            <div class="rate">₱ {{court.rate}}<span class="per-hour">/hr</span></div>
+        </div>
+        <div ng-cloak class="court-details details-block">
+            <h5 class="button-link court-name">{{court.name}}</h5>
+            <p class="court-address text-primary">{{court.address}}</p>
         </div>
     </a>
 </div>
