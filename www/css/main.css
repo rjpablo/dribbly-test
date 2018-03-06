@@ -334,8 +334,8 @@ rating{
     display:inline-block;
     width: 100%;
     margin-bottom: 10px;
-    /*background: #3c3c3c;
-    color: #ccc;*/
+    background-color: rgba(14, 14, 14, 0.85);
+    color: #fff;
 }
 
 .titled-container .header{
