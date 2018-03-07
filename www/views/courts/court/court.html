@@ -1,19 +1,71 @@
 ﻿<div class="court" ng-controller="courtCtrl as courtCtrl">
     <div class="tab-wrap">
         <div class="media">
+            <div class="header">
+                <div class="image-gallery-container">
+                    <ng-image-gallery ng-if="courtCtrl.court.photos"
+                                      images="courtCtrl.court.photos"
+                                      methods="courtCtrl.methods"
+                                      thumbnails="true"
+                                      inline="true"
+                                      url-prefix="courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/'"
+                                      img-bubbles="true"
+                                      bubbles="false"
+                                      img-anim="pop"
+                                      show-add-button="true"
+                                      add-file="courtCtrl.addPhotos"
+                                      remove-function="courtCtrl.removePhoto(index)"
+                                      set-primary="courtCtrl.setPrimary(index)"
+                                      show-controls="courtCtrl.owned"></ng-image-gallery>
+                    <span class="rate">₱ {{courtCtrl.court.rate}}<span class="per-hour">/hr</span></span>
+                </div>
+                <div class="bottom">
+                    <div class="details">
+                        <h3 class="court-name">{{courtCtrl.court.name}}</h3>                   
+                        <span class="address">{{courtCtrl.court.address}}</span>                        
+                    </div>      
+                    <div class="rate-container">
+                        <span class="rate">₱ {{courtCtrl.court.rate}}<span class="per-hour">/hr</span></span>
+                    </div>               
+                    <div class="court-actions">                        
+                        <div class="btn-group options-dropdown" on-toggle="teamCtrl.optionsDropdownToggled(open)" is-open="teamCtrl.dropDownIsOpen" uib-dropdown>
+                            <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+                                Options <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                                <li ng-show="true" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
+                                <li ng-show="true" role="menuitem"><a ng-click="teamCtrl.respondToInvitation(true)">Follow Court</a></li>
+                                <li ng-show="true" role="menuitem"><a ng-click="teamCtrl.respondToInvitation(true)">Unfollow Court</a></li>
+                                <li ng-show="true" role="menuitem"><a ng-click="teamCtrl.join()">Set a game here</a></li>
+                                <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.hasRequested" role="menuitem"><a ng-click="teamCtrl.cancelRequest(true)">Cancel Request</a></li>
+                                <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isCurrentMember" role="menuitem"><a ng-click="teamCtrl.leave()">Leave</a></li>
+                                <li ng-show="!teamCtrl.loadingTeamOptions" class="divider"></li>
+                                <li ng-show="!teamCtrl.loadingTeamOptions && !teamCtrl.userToTeamRelation.isOwner" role="menuitem"><a href="#">Report</a></li>
+                                <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isOwner" role="menuitem"><a href="#">Deactivate</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="left-side-bar">
-                <!--<div class="tab-headers pull-left">
-                    <ul class="nav nav-tabs nav-stacked">
-                        <li ng-class="{'active':$state.current.name.startsWith('court.details')}" class=""><a ui-sref="court.details({id:{{courtCtrl.courtId}}})" ng-click="setActiveTab(0)" class="analistic-01">Court&nbsp;Details</a></li>
-                        <li ng-class="{'active':$state.current.name.startsWith('court.schedule')}" class=""><a ui-sref="court.schedule({id:{{courtCtrl.courtId}}})" ng-click="setActiveTab(1)" class="analistic-02">Schedule</a></li>
+                <!--<div style="background:url({{courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/' +  courtCtrl.court.imagePath}}) no-repeat center; background-size: cover" class="image-with-bg court-image-wrap">
+                    <img class="court-image" ng-src="{{courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/' +  courtCtrl.court.imagePath}}" />
+                </div>
+                <h3 class="court-name">{{courtCtrl.court.name}}</h3>-->
+                <div class="tab-headers">
+                    <ul>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.details'}"><a ui-sref="court.details({ id : courtCtrl.court.id })">Details</a></li>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.photos'}"><a ui-sref="court.photos({ id : courtCtrl.court.id })">Photos</a></li>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.videos'}"><a ui-sref="court.videos({ id : courtCtrl.court.id })">Videos</a></li>
+                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.schedule'}"><a ui-sref="court.schedule({ id : courtCtrl.court.id })">Schedule</a></li>
                     </ul>
-                </div>-->
+                </div>
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
-            </div>                
+            </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    <ui-view></ui-view>                    
+                    <ui-view></ui-view>
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">

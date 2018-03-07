@@ -1,4 +1,8 @@
-﻿.details-block > .header{
+﻿.details-block{
+    width:100%;
+    display:inline-block;
+}
+.details-block > .header{
     font-weight: bold;
     color: #777;
     border-bottom: 1px solid #eee;
@@ -6,11 +10,11 @@
 }
 
 .details-block .detail-group{
-    border-bottom: 1px solid #eee;
+    /*border-bottom: 1px solid #eee;*/
 }
 
 .details-block .detail-group:first-child{
-    border-top: 1px solid #eee;
+    /*border-top: 1px solid #eee;*/
 }
 
 .details-block .detail-group,
@@ -42,7 +46,7 @@
 .details-block .detail-group .edit-field{
     margin: 0;
     line-height: 22px;
-    float:left;
+    /*float:left;*/
 }
 
 .details-block .edit-field .input-field,

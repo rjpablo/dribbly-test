@@ -1,0 +1,75 @@
+﻿
+.courts-list-item {
+}
+
+    .courts-list-item .court-details-wrap {
+        display: inline-block;
+        width: 100%;
+        color: #fff;
+    }
+
+    .courts-list-item .court-image-wrap {
+        display: inline-block;
+        width: 40%;
+        float: left;
+    }
+
+    .courts-list-item .court-image-container .rate {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        z-index: 3;
+        background-color: rgba(64, 183, 73, 0.8);
+        padding: 0 5px;
+        font-size: 16px;
+        color: #fafafa;
+        font-weight: bold;
+    }
+
+    .courts-list-item .court-image-container .per-hour {
+        font-size: 13px;
+    }
+
+    .courts-list-item .court-details {
+        padding: 0 5px;
+        display: inline-block;
+        width: 60%;
+        float: left;
+    }
+
+    .courts-list-item .court-name {
+        color: #fefefe;
+        font-size: 20px;
+        text-decoration: none;
+        margin: 0;
+        margin-top: 5px;
+    }
+
+    .courts-list-item .court-address {
+        color: #aaa;
+        line-height: 15px;
+    }
+
+    .courts-list-item .court-details p {
+        margin-bottom: 0;
+    }
+
+@media(max-width:568px) {
+    .courts-list-item {
+        width: 100%;
+    }
+
+        .courts-list-item .court-image-wrap,
+        .courts-list-item .court-details {
+            width: 100%;
+        }
+
+        .courts-list-item .court-details {
+            padding-bottom: 10px;
+            min-height: 100px;
+        }
+
+        .courts-list-item .court-details-wrap {
+            margin-bottom: 10px;
+        }
+}

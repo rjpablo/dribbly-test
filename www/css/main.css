@@ -11,7 +11,12 @@
 body{
     font-size: 12px;
     line-height: 22px;
-    background-color: #333;
+    background-color: #f9f9f9;
+}
+
+.text-container{
+    background-color: rgba(14, 14, 14, 0.85);
+    color: #fff;
 }
 
 .std-container{
@@ -21,6 +26,12 @@ body{
 
 .color-primary{
     color:#2dc5c3 !important;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: #000;
 }
 
 p{
@@ -50,10 +61,6 @@ a:hover, a:focus{
 }
 
 .opaque{
-    background-color: #fff;
-}
-
-.text-container{
     background-color: #fff;
 }
 
@@ -326,10 +333,9 @@ rating{
 .titled-container{
     display:inline-block;
     width: 100%;
-    background: #fff;
     margin-bottom: 10px;
-    background: #3c3c3c;
-    color: #ccc;
+    background-color: rgba(14, 14, 14, 0.85);
+    color: #fff;
 }
 
 .titled-container .header{
@@ -387,7 +393,7 @@ rating{
 **************************/
 
 body{
-    /*background: url("../images/backgrounds/2.jpg") fixed center;*/
+    background: url("../images/backgrounds/2.jpg") fixed center;
     /*background-color:transparent;
     background-image:url("../images/backgrounds/1.jpg");*/
 }
@@ -401,9 +407,9 @@ body{
 #content{
     margin-top: 60px;
     min-height: 500px;
-    background: rgba(34, 34, 34, 0.81);
+    /*background: rgba(34, 34, 34, 0.81);*/
     /*width: 100%;*/
-    padding-top: 15px;
+    /*padding-top: 15px;*/
 }
 
 #content.full-width{
@@ -468,6 +474,7 @@ body{
     .center-content {
         width: 560px;
         clear: none !important;
+        padding-right: 0;
     }
 
     .right-side-bar {
@@ -479,6 +486,15 @@ body{
     .center-content {
         padding: 0;
     }
+}
+
+/*************************
+*******Right side bar******
+**************************/
+
+
+.right-side-bar ng-include:first-child .side-content {
+    margin-top: 0;
 }
 
 /*************************
