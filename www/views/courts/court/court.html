@@ -2,23 +2,32 @@
     <div class="tab-wrap">
         <div class="media">
             <div class="header">
-                <ng-image-gallery ng-if="courtCtrl.court.photos"
-                                  images="courtCtrl.court.photos"
-                                  methods="courtCtrl.methods"
-                                  thumbnails="true"
-                                  inline="true"
-                                  url-prefix="courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/'"
-                                  img-bubbles="true"
-                                  bubbles="false"
-                                  img-anim="pop"
-                                  show-add-button="true"
-                                  add-file="courtCtrl.addPhotos"
-                                  remove-function="courtCtrl.removePhoto(index)"
-                                  set-primary="courtCtrl.setPrimary(index)"
-                                  show-controls="courtCtrl.owned"></ng-image-gallery>
+                <div class="image-gallery-container">
+                    <ng-image-gallery ng-if="courtCtrl.court.photos"
+                                      images="courtCtrl.court.photos"
+                                      methods="courtCtrl.methods"
+                                      thumbnails="true"
+                                      inline="true"
+                                      url-prefix="courtCtrl.courtImgSrcPrefix + courtCtrl.court.userId + '/courtPhotos/'"
+                                      img-bubbles="true"
+                                      bubbles="false"
+                                      img-anim="pop"
+                                      show-add-button="true"
+                                      add-file="courtCtrl.addPhotos"
+                                      remove-function="courtCtrl.removePhoto(index)"
+                                      set-primary="courtCtrl.setPrimary(index)"
+                                      show-controls="courtCtrl.owned"></ng-image-gallery>
+                    <span class="rate">₱ {{courtCtrl.court.rate}}<span class="per-hour">/hr</span></span>
+                </div>
                 <div class="bottom">
-                    <h3 class="court-name">{{courtCtrl.court.name}}</h3>
-                    <div class="court-actions">
+                    <div class="details">
+                        <h3 class="court-name">{{courtCtrl.court.name}}</h3>                   
+                        <span class="address">{{courtCtrl.court.address}}</span>                        
+                    </div>      
+                    <div class="rate-container">
+                        <span class="rate">₱ {{courtCtrl.court.rate}}<span class="per-hour">/hr</span></span>
+                    </div>               
+                    <div class="court-actions">                        
                         <div class="btn-group options-dropdown" on-toggle="teamCtrl.optionsDropdownToggled(open)" is-open="teamCtrl.dropDownIsOpen" uib-dropdown>
                             <button type="button" class="btn btn-primary" uib-dropdown-toggle>
                                 Options <span class="caret"></span>
