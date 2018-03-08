@@ -20,6 +20,7 @@ gulp.task('watch', function () {
 
 var browserSync = require('browser-sync').create();
 
+//run app from dist folder
 gulp.task('browserSync', function () {
     browserSync.init({
         startPath: '/',
@@ -30,6 +31,7 @@ gulp.task('browserSync', function () {
     })
 })
 
+//run app using raw files
 gulp.task('browserSync-dev', function () {
     browserSync.init({
         server: {
@@ -61,10 +63,30 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('dist/fonts/'));
 });
 
-gulp.task('build', function () {
-    gulp.start(['html','js-css','fonts','images', 'browserSync', 'watch'])
+gulp.task('htaccess', function () {
+    return gulp.src(['./www/.htaccess'])
+        .pipe(gulp.dest('./dist/'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
-gulp.task('build-dev', function () {
+//compile files 
+gulp.task('build', function () {
+    gulp.start(['html', 'js-css', 'fonts', 'htaccess', 'images'])
+});
+
+//run app without minifying scripts and css
+gulp.task('serve-dev', function () {
     gulp.start(['browserSync-dev', 'watch'])
+});
+
+//run compiled app from dist folder
+gulp.task('serve-prod', function () {
+    gulp.start(['build', 'browserSync', 'watch'])
+});
+
+//rum uncompiled app but also compile app into dist folder
+gulp.task('serve-dev+build', function () {
+    gulp.start(['browserSync-dev', 'watch', 'build'])
 });
