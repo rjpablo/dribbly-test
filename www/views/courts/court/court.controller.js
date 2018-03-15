@@ -11,49 +11,22 @@
 
         var vm = this;
         this.owned; //whether or not the viewer owns the court being viewed
-	    
-		this.court = {}
-		this.courtId = $stateParams.id;
-		this.imageDir = settings.imageUploadPath;
-		this.tempCourt = {}
-		this.onEditMode = false;
-		this.detailsUpdating = false;
-		this.location = {}
 
-		this.imageUploadPath = settings.imageUploadPath;
-		this.courtImgSrcPrefix = settings.fileUploadBasePath;
+        this.court = {}
+        this.courtId = $stateParams.id;
+        this.imageDir = settings.imageUploadPath;
+        this.tempCourt = {}
+        this.onEditMode = false;
+        this.detailsUpdating = false;
+        this.location = {}
 
-        var setCourtsSearched = function(courts){
+        this.imageUploadPath = settings.imageUploadPath;
+        this.courtImgSrcPrefix = settings.fileUploadBasePath;
+        vm.loadingCourtOptions = false;
+
+        var setCourtsSearched = function (courts) {
             return courts;
         }
-
-        var tempCourt = {
-            userId: 'test-user',
-            name: 'MGM Basketball Court',
-            address: '#123 Paraiso St., Makati City, Manila',
-            rate: '200',
-            contactNo: '+63 932 987 7865',
-            imagePath: '1.jpg',
-            email: 'mgmbasketballcourt.gmail.com',
-            photos: [
-                {
-                    id: 1,
-                    fileName: '1.jpg'
-                },
-                {
-                    id: 2,
-                    fileName: '2.jpg'
-                },
-                {
-                    id: 3,
-                    fileName: '3.jpg'
-                },
-                {
-                    id: 4,
-                    fileName: '4.jpg'
-                }
-            ]
-        }//dummy court
 
         this.setPrimaryByFileName = function (fileName) {
             var done = false;
@@ -65,11 +38,7 @@
             }
         }
 
-        if (settings.useLocalData) {
-            vm.court = tempCourt;
-            vm.setPrimaryByFileName(vm.court.imagePath);
-        } else {
-            courtContext.getCourtDetails(vm.courtId).then(
+        courtContext.getCourtDetails(vm.courtId).then(
             function (result) {
                 vm.court = result.data
                 if (vm.court) {
@@ -84,6 +53,41 @@
                 commonServices.handleError(error);
                 vm.court = null;
             });
+
+        vm.getUserToCourtRelation = function () {
+            vm.loadingCourtOptions = true;
+            courtContext.getUserToCourtRelation(vm.court.id, $scope.currentUser.UserId).then(
+                function (result) {
+                    vm.loadingCourtOptions = false;
+                    vm.userToCourtRelation = result.data;
+                }, function (err) {
+                    vm.loadingCourtOptions = false;
+                    commonServices.handleError(err);
+                })
+        }
+
+        vm.followCourt = function () {
+            courtContext.followCourt(vm.court.id, $scope.currentUser.UserId).then(
+                function (result) {
+                    vm.userToCourtRelation.isFollowing = true
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+        }
+
+        vm.unfollowCourt = function () {
+            courtContext.unfollowCourt(vm.court.id, $scope.currentUser.UserId).then(
+                function (result) {
+                    vm.userToCourtRelation.isFollowing = false
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+        }
+
+        vm.optionsDropdownToggled = function (open) {
+            if (vm.dropDownIsOpen) {
+                vm.getUserToCourtRelation();
+            }
         }
 
         vm.edit = function () {
@@ -137,7 +141,7 @@
             var isPrimary = (vm.court.photos[index].isPrimary);
 
             if (!isPrimary) {
-                commonServices.confirm('Delete photo?', function() {
+                commonServices.confirm('Delete photo?', function () {
                     courtContext.deletePhoto(fileName).then(
                         function () {
                             //commonServices.toast.info('Photo deleted')
@@ -173,7 +177,7 @@
                 vm.map = map;
                 vm.showOnMap();
             });
-        }        
+        }
 
     };
 

@@ -17,14 +17,14 @@
         }
 
         var _getCourtDetails = function (courtId) {
-            return httpService.get(settings.apiBaseURL + 'court', {courtId : courtId})
+            return httpService.get(settings.apiBaseURL + 'court', { courtId: courtId })
         }
 
         var _register = function (court) {
             return httpService.post(settings.apiBaseURL + 'court/register/', court);
         }
 
-        var _deletePhoto = function(fileName, userId) {
+        var _deletePhoto = function (fileName, userId) {
             return fileService.deleteCourtPhoto(fileName, userId);
         }
 
@@ -46,6 +46,18 @@
             deferred.resolve(2000);
 
             return deferred.promise;
+        }
+
+        var _followCourt = function (courtId, userId) {
+            return httpService.put(settings.apiBaseURL + 'court/follow/' + courtId + '/' + userId)
+        }
+
+        var _unfollowCourt = function (courtId, userId) {
+            return httpService.put(settings.apiBaseURL + 'court/unfollow/' + courtId + '/' + userId)
+        }
+
+        var _getUserToCourtRelation = function (courtId, userId) {
+            return httpService.get(settings.apiBaseURL + 'court/getUserToCourtRelation', { courtId: courtId, userId: userId })
         }
 
         var _getTestCourts = function () {
@@ -171,6 +183,9 @@
         this.getTestCourts = _getTestCourts;
         this.getMaxRate = _getMaxRate;
         this.courtSearchRemoteUrl = _courtSearchRemoteUrl;
+        this.followCourt = _followCourt;
+        this.unfollowCourt = _unfollowCourt;
+        this.getUserToCourtRelation = _getUserToCourtRelation;
 
         return this;
 

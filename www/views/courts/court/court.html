@@ -28,20 +28,15 @@
                         <span class="rate">₱ {{courtCtrl.court.rate}}<span class="per-hour">/hr</span></span>
                     </div>               
                     <div class="court-actions">                        
-                        <div class="btn-group options-dropdown" on-toggle="teamCtrl.optionsDropdownToggled(open)" is-open="teamCtrl.dropDownIsOpen" uib-dropdown>
+                        <div class="btn-group options-dropdown" on-toggle="courtCtrl.optionsDropdownToggled(open)" is-open="courtCtrl.dropDownIsOpen" ng-class="[{'loading': courtCtrl.loadingCourtOptions}]" uib-dropdown>
                             <button type="button" class="btn btn-primary" uib-dropdown-toggle>
                                 Options <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                                <li ng-show="true" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
-                                <li ng-show="true" role="menuitem"><a ng-click="teamCtrl.respondToInvitation(true)">Follow Court</a></li>
-                                <li ng-show="true" role="menuitem"><a ng-click="teamCtrl.respondToInvitation(true)">Unfollow Court</a></li>
-                                <li ng-show="true" role="menuitem"><a ng-click="teamCtrl.join()">Set a game here</a></li>
-                                <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.hasRequested" role="menuitem"><a ng-click="teamCtrl.cancelRequest(true)">Cancel Request</a></li>
-                                <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isCurrentMember" role="menuitem"><a ng-click="teamCtrl.leave()">Leave</a></li>
-                                <li ng-show="!teamCtrl.loadingTeamOptions" class="divider"></li>
-                                <li ng-show="!teamCtrl.loadingTeamOptions && !teamCtrl.userToTeamRelation.isOwner" role="menuitem"><a href="#">Report</a></li>
-                                <li ng-show="!teamCtrl.loadingTeamOptions && teamCtrl.userToTeamRelation.isOwner" role="menuitem"><a href="#">Deactivate</a></li>
+                                <li class="loading-indicator" role="menuitem"><a href="#"><i class="fa fa-spinner loader"></i> Loading...</a></li>
+                                <li ng-show="!courtCtrl.userToCourtRelation.isFollowing" role="menuitem"><a ng-click="courtCtrl.followCourt()">Follow Court</a></li>
+                                <li ng-show="courtCtrl.userToCourtRelation.isFollowing" role="menuitem"><a ng-click="courtCtrl.unfollowCourt()">Unfollow Court</a></li>
+                                <li><a ng-click="courtCtrl.SetGame()">Set a game here</a></li>
                             </ul>
                         </div>
                     </div>
