@@ -4,10 +4,10 @@
     angular
         .module('mainApp')
         .controller('courtCtrl', ['$scope', 'settings', 'httpService', 'commonServices', '$stateParams',
-            'courtContext', 'NgMap', 'mapService', '$timeout', courtDetailsCtrl]);
+            'courtContext', 'NgMap', 'mapService', '$timeout', '$uibModal', 'authentication', courtDetailsCtrl]);
 
     function courtDetailsCtrl($scope, settings, httpService, commonServices, $stateParams,
-        courtContext, NgMap, mapService, $timeout) {
+        courtContext, NgMap, mapService, $timeout, $uibModal, authentication) {
 
         var vm = this;
         this.owned; //whether or not the viewer owns the court being viewed
@@ -73,6 +73,40 @@
                 }, function (err) {
                     commonServices.handleError(err);
                 })
+        }
+
+        vm.SetGame = function () {
+            authentication.checkAuthentication('Please log in to proceed.').then(function (res) {
+
+                var addCourtModal = $uibModal.open({
+                    animation: true,
+                    backdrop: 'static',
+                    ariaLabelledBy: 'modal-title',
+                    ariaDescribedBy: 'modal-body',
+                    component: 'gameDetailsModal',
+                    resolve: {
+                        modalData: function(){
+                            return {
+                                isAdd: true,
+                                game: {
+                                    courtId: vm.court.id,
+                                    court: vm.court
+                                }
+                            }
+                        }
+                    },
+                    size: 'md'
+                });
+
+                addCourtModal.result.then(function (game) {
+                    //$state.go('gameDetails.players', { gameId: game.id });
+                    //commonServices.toast.success('New game created successfully.')
+                }, function (reason) {
+                    //commonServices.toast.info('No new court was added.')
+                });
+            }, function () {
+
+            })
         }
 
         vm.unfollowCourt = function () {
