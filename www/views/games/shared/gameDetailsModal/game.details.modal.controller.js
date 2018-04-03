@@ -3,7 +3,7 @@
 
     angular.module('mainApp').component('gameDetailsModal', {
         templateUrl: '/views/games/shared/gameDetailsModal/game-details-modal-template.html',
-        controller: ['commonServices', 'gameContext', 'courtContext', '$rootScope', '$scope', CtrlFn],
+        controller: ['commonServices', 'gameContext', 'courtContext', '$rootScope', '$scope', 'authentication', CtrlFn],
         controllerAs: 'gdm',
         bindings: {
             modalInstance: '<',
@@ -11,7 +11,7 @@
         }
     });
     
-    function CtrlFn(commonServices, gameContext, courtContext, $rootScope, $scope) {
+    function CtrlFn(commonServices, gameContext, courtContext, $rootScope, $scope, authentication) {
 
         var $ctrl = this;
         
@@ -37,7 +37,7 @@
             if (validateGame($ctrl.game) && theForm.$valid) {
                 $ctrl.saving = true;
                 $ctrl.game.dateCreated = new Date();
-                $ctrl.game.creatorId = currentUser.UserId;
+                $ctrl.game.creatorId = authentication.getCurrentUser().UserId;
                 $ctrl.game.isProtected = ($ctrl.game.password ? ($ctrl.game.password.trim().length > 0 ? true : false) : false)
                 $ctrl.game.court = null;
 
