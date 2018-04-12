@@ -4,10 +4,10 @@
     angular
         .module('mainApp')
         .controller('courtCtrl', ['$scope', 'settings', 'httpService', 'commonServices', '$stateParams',
-            'courtContext', 'NgMap', 'mapService', '$timeout', '$uibModal', 'authentication', courtDetailsCtrl]);
+            'courtContext', 'NgMap', 'mapService', '$timeout', '$uibModal', 'authentication', '$rootScope', courtDetailsCtrl]);
 
     function courtDetailsCtrl($scope, settings, httpService, commonServices, $stateParams,
-        courtContext, NgMap, mapService, $timeout, $uibModal, authentication) {
+        courtContext, NgMap, mapService, $timeout, $uibModal, authentication, $rootScope) {
 
         var vm = this;
         this.owned; //whether or not the viewer owns the court being viewed
@@ -23,9 +23,41 @@
         this.imageUploadPath = settings.imageUploadPath;
         this.courtImgSrcPrefix = settings.fileUploadBasePath;
         vm.loadingCourtOptions = false;
+        vm.currentTabIndex = 0;
+        vm.tabs = [
+            {
+                title: 'Details',
+                enabled: true,
+                index: 0,
+                isActive: false
+            },
+            {
+                title: 'Photos',
+                enabled: true,
+                index: 1,
+                isActive: false
+            },
+            {
+                title: 'Videos',
+                enabled: true,
+                index: 2,
+                isActive: false
+            },
+            {
+                title: 'Schedule',
+                enabled: true,
+                index: 3,
+                isActive: false
+            }
+        ]
 
-        var setCourtsSearched = function (courts) {
-            return courts;
+        vm.setActiveTab = function (tabIndex) {
+            if (tabIndex < vm.tabs.length) {
+                vm.tabs.forEach(function (tab) {
+                    tab.isActive = tab.index == tabIndex;
+                });
+                vm.currentTabIndex = tabIndex;
+            }
         }
 
         this.setPrimaryByFileName = function (fileName) {
@@ -48,6 +80,7 @@
                         vm.owned = ($scope.currentUser.UserId == vm.court.userId)
                     }
                     initializeMap()
+                    vm.setActiveTab(0);
                 }
             }, function (error) {
                 commonServices.handleError(error);
@@ -190,6 +223,11 @@
             }
         }
 
+        $scope.$on('DELETE_COURT_PHOTO', function (event) {
+            vm.methods.open(0); //reload the image gallery
+            event.stopPropagation(); //handle only here
+        });
+
         vm.showOnMap = function () {
 
             if (vm.mapMarker) { //delete marker if existing
@@ -212,6 +250,8 @@
                 vm.showOnMap();
             });
         }
+
+        
 
     };
 

@@ -21,13 +21,13 @@
                 </div>
                 <div class="bottom">
                     <div class="details">
-                        <h3 class="court-name">{{courtCtrl.court.name}}</h3>                   
-                        <span class="address">{{courtCtrl.court.address}}</span>                        
-                    </div>      
+                        <h3 class="court-name">{{courtCtrl.court.name}}</h3>
+                        <span class="address">{{courtCtrl.court.address}}</span>
+                    </div>
                     <div class="rate-container">
                         <span class="rate">₱ {{courtCtrl.court.rate}}<span class="per-hour">/hr</span></span>
-                    </div>               
-                    <div class="court-actions">                        
+                    </div>
+                    <div class="court-actions">
                         <div class="btn-group options-dropdown" on-toggle="courtCtrl.optionsDropdownToggled(open)" is-open="courtCtrl.dropDownIsOpen" ng-class="[{'loading': courtCtrl.loadingCourtOptions}]" uib-dropdown>
                             <button type="button" class="btn btn-primary" uib-dropdown-toggle>
                                 Options <span class="caret"></span>
@@ -49,10 +49,7 @@
                 <h3 class="court-name">{{courtCtrl.court.name}}</h3>-->
                 <div class="tab-headers">
                     <ul>
-                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.details'}"><a ui-sref="court.details({ id : courtCtrl.court.id })">Details</a></li>
-                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.photos'}"><a ui-sref="court.photos({ id : courtCtrl.court.id })">Photos</a></li>
-                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.videos'}"><a ui-sref="court.videos({ id : courtCtrl.court.id })">Videos</a></li>
-                        <li ng-class="{'active' : indexCtrl.state.current.name == 'court.schedule'}"><a ui-sref="court.schedule({ id : courtCtrl.court.id })">Schedule</a></li>
+                        <li ng-repeat="tab in courtCtrl.tabs" ng-class="{'active':tab.isActive}" ng-click="courtCtrl.setActiveTab(tab.index)"><a ng-click="">{{tab.title}}</a></li>
                     </ul>
                 </div>
                 <ng-include src="'views/shared/side-contents/quick-links.html'"></ng-include>
@@ -60,7 +57,7 @@
             </div>
             <div class="center-content parrent media-body">
                 <div class="tab-content">
-                    <ui-view></ui-view>
+                    <dbl-courtphotos ng-if="courtCtrl.currentTabIndex == 1" court="courtCtrl.court" set-primary="courtCtrl.setPrimary(index)" court-img-src-prefix="{{courtCtrl.courtImgSrcPrefix}}"></dbl-courtphotos>
                 </div> <!--/.tab-content-->
             </div> <!--/.media-body-->
             <div class="right-side-bar">

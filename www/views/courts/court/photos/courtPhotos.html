@@ -1,0 +1,30 @@
+﻿<div class="tab-pane court-photos">
+    <div class="titled-container photos">
+        <div class="header col-md-12">
+            <h5 class="title">Photos({{courtCtrl.court.photos.length}})</h5>
+            <div class="action-buttons">
+                <a class="button-link" ng-if="true" ngf-select="cph.uploadPhoto($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="fa fa-plus"></i> Add Photo</a>
+            </div>
+        </div>
+        <div class="content col-md-12">
+            <ng-image-gallery ng-if="cph.court.photos"
+                              images="cph.court.photos"
+                              methods="cph.methods"
+                              thumbnails="true"
+                              inline="false"
+                              url-prefix="cph.courtImgSrcPrefix + cph.court.userId + '/courtPhotos/'"
+                              img-bubbles="false"
+                              bg-close="true"
+                              bubbles="false"
+                              img-anim="pop"
+                              show-add-button="true"
+                              add-file="cph.addPhotos"
+                              remove-function="cph.removePhoto(index)"
+                              set-primary="cph.setPrimary({index: index})"
+                              show-controls="cph.isOwned||true"></ng-image-gallery>
+        </div>
+        <div class="footer col-md-12">
+
+        </div>
+    </div>
+</div>

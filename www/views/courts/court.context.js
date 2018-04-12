@@ -24,8 +24,8 @@
             return httpService.post(settings.apiBaseURL + 'court/register/', court);
         }
 
-        var _deletePhoto = function (fileName, userId) {
-            return fileService.deleteCourtPhoto(fileName, userId);
+        var _deletePhoto = function (fileName, courtId) {
+            return fileService.deleteCourtPhoto(fileName, courtId);
         }
 
         var _updateCourt = function (court) {

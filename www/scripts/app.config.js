@@ -140,7 +140,7 @@
           .state('court.photos', {
               params: { id: null },
               url: '/photos/{id}',
-              templateUrl: 'views/courts/court/photos/court.photos.html'
+              template: '<dbl-courtphotos></dbl-courtphotos>'
           })
 
           .state('court.videos', {
