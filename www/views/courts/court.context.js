@@ -36,6 +36,10 @@
             return httpService.put(encodeURI(settings.apiBaseURL + 'court/setPrimaryPhoto/?courtId=' + courtId + '&fileName=' + fileName));
         }
 
+        var _uploadPhoto = function (file, courtId, userId) {
+            return fileService.uploadCourtPhoto(file, courtId, userId);
+        }
+
         var _searchCourts = function (criteria) {
             return httpService.get(settings.apiBaseURL + 'courts/search', { searchCriteria: criteria })
         }
@@ -179,6 +183,7 @@
         this.deletePhoto = _deletePhoto;
         this.updateCourt = _updateCourt;
         this.updatePrimaryPhoto = _updatePrimaryPhoto;
+        this.uploadPhoto = _uploadPhoto;
         this.searchCourts = _searchCourts;
         this.getTestCourts = _getTestCourts;
         this.getMaxRate = _getMaxRate;

@@ -6,15 +6,15 @@
 
     function fileService(settings, httpService, Upload) {
 
-        var uploadCourtPhotoUrl = settings.apiBaseURL + 'file/UploadCourtPhoto/';
+        var uploadCourtPhotoUrl = settings.apiBaseURL + 'court/uploadPhoto';
         var deleteCourtPhotoUrl = settings.apiBaseURL + 'file/deleteCourtPhoto/';
         var uploadUserPhotoUrl = settings.apiBaseURL + 'UserProfiles/UploadPhoto/';
         var deleteUserPhotoUrl = settings.apiBaseURL + 'file/deleteUserPhoto/';
         var maxSizeKB = 2000000; //1M = 1G, 0 = no limit
 
-        this.uploadCourtPhoto = function (file, userId) {
+        this.uploadCourtPhoto = function (file, courtId, userId) {
             return Upload.upload({
-                url: uploadCourtPhotoUrl + userId,
+                url: uploadCourtPhotoUrl + '/' + courtId + '/' + userId,
                 file: file
             });
         }

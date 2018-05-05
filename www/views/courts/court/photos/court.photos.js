@@ -46,6 +46,20 @@ $stateParams) {
             }
         }
 
+        vm.uploadPhoto = function (file) {
+            authentication.checkAuthentication().then(function () {
+                courtContext.uploadPhoto(file, vm.court.id, authentication.currentUser.UserId).then(
+                function (res) {
+                    vm.court.photos.push(res.data);
+                }, function (err) {
+                    commonServices.handleError(err);
+                })
+            }, function () {
+
+            });
+            
+        }
+
     }
 
 })();
