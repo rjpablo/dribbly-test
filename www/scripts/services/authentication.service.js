@@ -14,19 +14,19 @@
         var _username = 'RJ';
         var _token = '1234-5678-9012';
         var _isAuthenticated = false;
-        var _currentUser = null;
+        var _currentUser = {};
 
         var baseURL = settings.apiBaseURL + 'Account/';
 
         var _isLoggedIn = function () {
-
+            return (_currentUser.UserId);
         }
 
         var _checkAuthentication = function (message) {
-            
+
             var deferred = $q.defer()
 
-            if (_currentUser) {
+            if (_isLoggedIn()) {
                 deferred.resolve(_currentUser)
             } else {
                 _showLoginModal(message).then(function (res) {
@@ -42,28 +42,19 @@
 
         var _retrieveSavedAuthData = function () {
             var authData = $localStorage.authorizationData
+            if (authData) {
+                _currentUser.Username = authData.Username;
+                _currentUser.UserId = authData.UserId;
+            }
         }
 
         var _getCurrentUser = function () {
             if (settings.useLocalData) {
-                _currentUser = {
-                    Username: 'Test',
-                    UserId: 'test-user'
-                }
+                _currentUser.Username = 'Test';
+                _currentUser.UserId = 'test-user';
                 return _currentUser;
             }
-            if (!_currentUser){
-                var authData = $localStorage.authorizationData;
-                if (authData && authData.UserId) {
-                    //TODO: Check if token is still valid
-                    _currentUser = {
-                        Username: authData.Username,
-                        UserId: authData.UserId
-                    }
-                } else {
-                    return null;
-                }
-            }
+
             return _currentUser;
         }
 
@@ -107,15 +98,13 @@
                     UserId: response.data.userId
                 };
 
-                _currentUser = {
-                    Username: response.data.userName,
-                    UserId: response.data.userId
-                }
+                _currentUser.Username = response.data.userName;
+                _currentUser.UserId = response.data.userId;
 
                 $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
 
                 deffered.resolve(_currentUser);
-                
+
             }, function (response) {
                 $rootScope.$broadcast('AUTHORIZATION_FAILED');
                 deffered.reject(response);
@@ -139,10 +128,8 @@
                     UserId: response.data.userId
                 };
 
-                _currentUser = {
-                    Username: response.data.userName,
-                    UserId: response.data.userId
-                }
+                _currentUser.Username = response.data.userName;
+                _currentUser.UserId = response.data.userId;
 
                 $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
 
@@ -207,10 +194,8 @@
                     UserId: response.data.userId
                 };
 
-                _currentUser = {
-                    Username: response.data.userName,
-                    UserId: response.data.userId
-                }
+                _currentUser.Username = response.data.userName;
+                _currentUser.UserId = response.data.userId;
 
                 $rootScope.$broadcast('AUTHORIZATION_SUCCESSFUL', _currentUser);
 
@@ -232,7 +217,8 @@
         };
 
         var _clearAuthData = function () {
-            _currentUser = null;
+            _currentUser.Username = '';
+            _currentUser.UserId = '';
             delete $localStorage.authorizationData
         }
 
@@ -277,17 +263,19 @@
         //variables
 
         //functions
-        this.register = _register;
+        this.checkAuthentication = _checkAuthentication;
+        this.clearAuthData = _clearAuthData;
+        this.currentUser = _currentUser;
+        this.getCurrentUser = _getCurrentUser;
+        this.isLoggedIn = _isLoggedIn;
         this.login = _login;
         this.logout = _logout;
-        this.isLoggedIn = _isLoggedIn;
-        this.showLoginModal = _showLoginModal;
-        this.getCurrentUser = _getCurrentUser;
-        this.checkAuthentication = _checkAuthentication;
-        this.refreshToken = _refreshToken;
-        this.clearAuthData = _clearAuthData;
-        this.registerExternal = _registerExternal;
         this.obtainAccessToken = _obtainAccessToken;
+        this.refreshToken = _refreshToken;
+        this.register = _register;
+        this.registerExternal = _registerExternal;
+        this.retrieveSavedAuthData = _retrieveSavedAuthData;
+        this.showLoginModal = _showLoginModal;
 
     }
 

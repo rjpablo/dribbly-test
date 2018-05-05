@@ -30,10 +30,10 @@
             </ul>
         </div>
         <div id="user-menu" class="collapse navbar-collapse navbar-right">
-            <div id="show-login-btn-container" class="button-link" ng-show="!currentUser" >
+            <div id="show-login-btn-container" class="button-link" ng-show="!currentUser.Username" >
                 <a id="show-login-btn" ng-click="showLoginModal()">Login</a>
             </div>
-            <ul class="nav navbar-nav navbar-right" ng-show="currentUser">
+            <ul class="nav navbar-nav navbar-right" ng-show="currentUser.Username">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
                         <img id="profile_pic" src="images/profile_pic.png" />&nbsp;<span class="menu-text username">{{currentUser.Username}} &nbsp;<i class="fa fa-angle-down"></i></span>

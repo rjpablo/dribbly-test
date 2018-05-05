@@ -4,7 +4,10 @@
     angular.module('mainApp')
     .run(runFn);
 
-    function runFn($rootScope, $state, $stateParams) {
+    function runFn($rootScope, $state, $stateParams, authentication) {
+
+        authentication.retrieveSavedAuthData();
+
         var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (event, next, toParams, from, fromParams, error) {
             var stateName = next.name;            
 
